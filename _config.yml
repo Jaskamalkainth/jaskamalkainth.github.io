@@ -33,6 +33,13 @@ colors:
   purple:    '#c869bf'
   orange:    '#fab125'
   turquoise: '#0fbfcf'
+  blue3:     '#88c7dc'
+  themeLighter: '#deecf9'
+  themeLight: '#c7e0f4'
+  themeTertiary: '#71afe5'
+  themeSecondary: '#2db88d8'
+  themeDarkAlt: '#106ebe'
+  themeDarker: '#004578'
 
 kramdown:
   auto_ids:  false
