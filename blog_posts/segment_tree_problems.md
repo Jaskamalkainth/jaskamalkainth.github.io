@@ -13,13 +13,15 @@ star: true
 
 <div style="display: inline-block; text-align: left;"  markdown="1">
 
-  <br>
-  <a href="http://jaskamalkainth.github.io/">Back to the Home page</a> 
-  <br><br>
+
+# Segment tree Problems
+
   <img src="/img/segtree.png">  
 
   
 **Different levels :** ``` Beginner ```, ``` Easy```, ```Medium```, ```Hard```, ```Expert```
+
+***
 
 
 **Problem 1.** 	Query minimum value in [l,r].

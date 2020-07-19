@@ -12,9 +12,8 @@ star: true
 
 <div style="display: inline-block; text-align: left;"  markdown="1">
 
-  <br>
-  <a href="http://jaskamalkainth.github.io/">Back to the Home page</a> 
-  <br><br>
+# Disjoin Set Union Problems
+
   <img src="/img/dsu.jpg">  
 
 1.  [http://codeforces.com/problemset/problem/566/D](http://codeforces.com/problemset/problem/566/D)
