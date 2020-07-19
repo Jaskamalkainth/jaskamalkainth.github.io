@@ -371,5 +371,11 @@ span.lineno {
 	flex-direction: row;
 	justify-content: space-evenly;
 	align-items: center;
+}
 
+.BlogPost {
+	display: inline-block;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: left;
 }
