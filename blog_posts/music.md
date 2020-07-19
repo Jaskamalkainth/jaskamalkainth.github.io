@@ -1,6 +1,5 @@
 ---
 title: "Music is my only drug"
-layout: post
 ---
 
 
