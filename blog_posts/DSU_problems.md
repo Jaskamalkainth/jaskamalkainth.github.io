@@ -1,11 +1,6 @@
 ---
 title: "Disjoint Set Union Problems"
 date: 2016-05-07 02:20
-tag:
-- Disjoint set union
-- Union find
-blog: true
-star: true
 ---
 
 <div style="text-align: center;" markdown="1">

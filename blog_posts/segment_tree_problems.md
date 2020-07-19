@@ -1,13 +1,7 @@
 ---
 title: "Segment tree problems"
 date: 2016-06-08
-tag:
-- segment tree
-- lazy propagation 
-blog: true
-star: true
 ---
-
 
 <div style="text-align: center;" markdown="1">
 
