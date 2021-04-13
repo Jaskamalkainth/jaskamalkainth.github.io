@@ -12,7 +12,7 @@ date: 2021-05-07 02:20
   <img src="/img/cpplogo.png">  
 
 
-**1. Template explicit vs implicit specialization** 
+> **1. Template explicit vs implicit specialization** 
 ```c++
     #include <iostream>
     using std::cout;
@@ -51,7 +51,7 @@ date: 2021-05-07 02:20
 
 
 ********************************************************************* 
-**2. Ill Formed function call due to Ambiguous function overloading** 
+> **2. Ill Formed function call due to Ambiguous function overloading** 
 
 ```c++
 #include <iostream>
