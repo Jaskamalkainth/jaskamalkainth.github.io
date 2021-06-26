@@ -1,1 +1,1 @@
-Stay curious. Stay Alive!
+<marquee behavior="scroll" direction="left">Stay curious. Stay Alive!</marquee>
