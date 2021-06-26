@@ -1505,9 +1505,17 @@ var pJS = function(tag_id, params){
     var canvas_el = document.createElement('canvas');
     canvas_el.className = pJS_canvas_class;
   
+    // var body_jk = document.body,
+    // html_jk = document.documentElement;
+
+    // var height_jk = Math.max( body_jk.scrollHeight, body_jk.offsetHeight, 
+    //                    html_jk.clientHeight, html_jk.scrollHeight, html_jk.offsetHeight );
+
     /* set size canvas */
     canvas_el.style.width = "100%";
-    canvas_el.style.height = "100%";
+    // canvas_el.style.height = height_jk+"px";
+    //console.log(height_jk);
+     canvas_el.style.height = "100%";
   
     /* append canvas */
     var canvas = document.getElementById(tag_id).appendChild(canvas_el);

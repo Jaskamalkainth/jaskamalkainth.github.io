@@ -11,7 +11,7 @@
       "value": "#000000"
     },
     "shape": {
-      "type": "star",
+      "type": "circle",
       "stroke": {
         "width": 0,
         "color": "#000000"
@@ -46,7 +46,7 @@
       }
     },
     "line_linked": {
-      "enable": false,
+      "enable": true,
       "distance": 300,
       "color": "#000000",
       "opacity": 0.4,
