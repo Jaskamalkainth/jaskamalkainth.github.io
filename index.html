@@ -16,9 +16,9 @@
   <script data-ad-client="ca-pub-4384498028906460" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
+  <div id="header">
   <div id="main">
-
-    <nav><ul>
+     <nav><ul>
       {% for node in site.posts reversed %}
         {% capture id %}{{ node.id | remove:'/' | downcase }}{% endcapture %}
         <li class="p-{{id}}"><a href="#{{id}}">{{node.title}}</a></li>
@@ -55,11 +55,18 @@
         {% capture foottext %} {% include footer.md %} {% endcapture %}
         {{ foottext | markdownify }}
       </div>
-    </div>
+    </div> 
   </div>
+</div>
 
 {% include analytics.html %}
 </body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="site.js"></script>
+<script src="particles.js"></script>
+<script>
+particlesJS.load('header', 'particles.json', function() {
+  console.log('callback - particles.js config loaded');
+});
+</script>
 </html>
