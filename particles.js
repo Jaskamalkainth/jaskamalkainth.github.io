@@ -496,8 +496,11 @@ var pJS = function(tag_id, params){
       
     };
   
-  
     pJS.fn.particlesCreate = function(){
+      let ht = screen.availHeight;
+      let wd = screen.availWidth;
+      let ratio = 40/(1920*1003)
+      pJS.particles.number.value = ratio * ht * wd; 
       for(var i = 0; i < pJS.particles.number.value; i++) {
         pJS.particles.array.push(new pJS.fn.particle(pJS.particles.color, pJS.particles.opacity.value));
       }
