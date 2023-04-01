@@ -11,4 +11,4 @@ Experiments with OpenAi Chatgpt
 </span>
 </p>
 
-- [Random bounce pattern with dots](/blog_posts/dots.html)
+- [Random bounce pattern with dots](/blog_posts/experiments/experiment1/dots.html)
