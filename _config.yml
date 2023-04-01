@@ -39,6 +39,7 @@ colors:
   themeTertiary: '#71afe5'
   themeSecondary: '#2db88d8'
   themeDarkAlt: '#106ebe'
+  themeDarkAlt2: '#0a4c87'
   themeDarker: '#004578'
 
 kramdown:

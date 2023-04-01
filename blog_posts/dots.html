@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ant pattern in 3D using dots</title>
+    <style>
+      canvas {
+        background-color: transparent;
+        border: 5px solid #000;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+      }
+
+      button {
+        font-size: 16px;
+        color: #fff;
+        background-color: #333;
+        back
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin: 0 10px;
+        cursor: pointer;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <button id="toggle">Pause</button>
+    <script>
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+
+      // Set up the canvas
+      canvas.width = window.innerWidth * 0.8;
+      canvas.height = window.innerHeight * 0.8;
+
+      // Set up the ant parameters
+      let dots = [];
+      for (let i = 0; i < 50; i++) {
+        let x = Math.random() * (canvas.width - 20) + 10;
+        let y = Math.random() * (canvas.height - 20) + 10;
+        let z = Math.random() * 20 - 10;
+        let vx = Math.random() * 10 - 5;
+        let vy = Math.random() * 10 - 5;
+        let vz = Math.random() * 10 - 5;
+        let radius = 3;
+        let color = '#000';
+        dots.push({ x, y, z, vx, vy, vz, radius, color });
+      }
+
+      // Draw the dots
+      function drawDots() {
+        for (let dot of dots) {
+          // Draw the dot
+          ctx.beginPath();
+          ctx.arc(dot.x, dot.y, dot.radius * 2, 0, Math.PI * 2);
+          ctx.fillStyle = dot.color;
+          ctx.fill();
+          ctx.closePath();
+
+          // Update the position
+          dot.x += dot.vx;
+          dot.y += dot.vy;
+          dot.z += dot.vz;
+
+          // Bounce off the walls
+          if (dot.x < dot.radius || dot.x > canvas.width - dot.radius) {
+            dot.vx = -dot.vx;
+          }
+          if (dot.y < dot.radius || dot.y > canvas.height - dot.radius) {
+            dot.vy = -dot.vy;
+          }
+          if (dot.z < -10 || dot.z > 10) {
+            dot.vz = -dot.vz;
+          }
+        }
+      }
+
+      let animationId;
+      let isRunning = true;
+
+      // Draw the scene
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawDots();
+        animationId = requestAnimationFrame(draw);
+      }
+
+      // Start the animation
+      draw();
+
+      const toggleButton = document.getElementById('toggle');
+      toggleButton.addEventListener('click', function() {
+        if (isRunning) {
+          cancelAnimationFrame(animationId);
+          toggleButton.textContent = 'Start';
+        } else {
+          draw();
+          toggleButton.textContent = 'Pause';
+        }
+        isRunning = !isRunning;
+      });
+    </script>
+  </body>
+</html>
