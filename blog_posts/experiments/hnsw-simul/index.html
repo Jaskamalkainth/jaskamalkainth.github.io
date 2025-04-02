@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HNSW Algorithm Visualization</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>HNSW Algorithm Simulation</h1>
+        <div class="description">
+            <p>
+                This is a simple simulation of the Hierarchical Navigable Small World (HNSW) algorithm, 
+                used for Approximate Nearest Neighbor (ANN) search.
+            </p>
+        </div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <button id="reset" title="Start over with a fresh graph">Clear All & Reset</button>
+                <button id="addPoint" title="Add a random point to the graph">Add Random Point</button>
+                <button id="runQuery" title="Create a random query point and find its nearest neighbor">Find Nearest to Random Point</button>
+            </div>
+            <div class="control-group">
+                <label for="maxLayers">Max Layers: </label>
+                <input type="number" id="maxLayers" min="1" max="10" value="3" title="Maximum number of hierarchy layers. Higher values improve search speed but use more memory.">
+                
+                <label for="m">M (connections): </label>
+                <input type="number" id="m" min="2" max="100" value="5" title="Maximum number of connections per node. Higher values improve accuracy but slow down insertion.">
+                
+                <label for="efConstruction">ef Construction: </label>
+                <input type="number" id="efConstruction" min="1" max="200" value="50" title="Size of dynamic candidate list during graph construction. Higher values create better connections but are slower.">
+            </div>
+            <div class="control-group">
+                <label for="searchMode">Interaction Mode:</label>
+                <select id="searchMode" title="Choose how clicking on the visualization area works">
+                    <option value="insertion">Click to Add Points</option>
+                    <option value="search">Click to Search</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="distanceMetric">Distance Metric:</label>
+                <select id="distanceMetric" title="Choose the distance metric for nearest neighbor calculations">
+                    <option value="euclidean">Euclidean Distance</option>
+                    <option value="manhattan">Manhattan Distance</option>
+                    <option value="chebyshev">Chebyshev Distance</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Floating navigation controls that stay visible for both sections -->
+        <div class="floating-navigation-controls" id="floatingNavigationButtons" style="display: none;">
+            <button id="floatingPrevStep" title="Go to previous step"><i class="arrow left"></i> Previous</button>
+            <span id="floatingStepCounter">Step 0/0</span>
+            <button id="floatingNextStep" title="Go to next step">Next <i class="arrow right"></i></button>
+            <button id="floatingSkipToEnd" title="Skip to final result">Skip to End</button>
+        </div>
+        
+        <div class="visualization">
+            <div class="layers-container" id="layersContainer"></div>
+            <div class="explanation-panel">
+                <!-- Original Explanation Panel -->
+                <div id="explanationPanel" class="explanation">
+                    <h3>Explanation</h3>
+                    <div id="explanationText">
+                        Welcome to the HNSW simulation. Use the controls to add points and run queries.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- New Skip List Explanation Box - Moved outside the visualization container -->
+        <div id="skipListExplanation" class="skip-list-explanation" style="display: none;">
+            <h3>Skip List Navigation</h3>
+            <div id="skipListContent" class="skip-list-content">
+                <!-- Skip list explanation content will be injected here -->
+            </div>
+        </div>
+        
+        <div class="info-panel">
+            <h3>How HNSW Works</h3>
+            <p>
+                The HNSW algorithm creates a multi-layered graph structure:
+            </p>
+            <ol>
+                <li><strong>Layers:</strong> Points are assigned to layers with decreasing probability</li>
+                <li><strong>Insertion:</strong> When a new point is added, it's connected to nearest neighbors in each layer</li>
+                <li><strong>Search:</strong> Queries start at the top layer, moving to lower layers while improving accuracy</li>
+            </ol>
+            <p>
+                Benefits include logarithmic search complexity and high recall rates, making it suitable for large-scale ANN search.
+            </p>
+            
+            <h3>Understanding Layers</h3>
+            <p>
+                In HNSW, the same point can appear in multiple layers:
+            </p>
+            <ul>
+                <li><strong>Layer 0 (bottom):</strong> Contains ALL points - provides highest accuracy but slow to search entirely</li>
+                <li><strong>Higher layers:</strong> Contain fewer points - act like "highways" for faster navigation</li>
+                <li><strong>Layer assignment:</strong> Each point is randomly assigned a maximum layer (with decreasing probability for higher layers)</li>
+                <li><strong>Navigation strategy:</strong> Start at highest layer with few points, then move down to more detailed layers</li>
+            </ul>
+            <p>
+                Think of it like a transportation system: highways (top layers) for long distances, then local roads (bottom layers) to reach the exact destination.
+            </p>
+            
+            <h3>Algorithm Parameters</h3>
+            <ul>
+                <li><strong>Max Layers:</strong> The maximum number of hierarchy levels in the graph. Increasing this parameter can improve search speed for large datasets but uses more memory. Higher values work better for larger datasets.</li>
+                <li><strong>M (connections):</strong> The maximum number of connections per node. Higher values create a denser graph with better search accuracy but slower insertion times and more memory usage. Typical values range from 5-48.</li>
+                <li><strong>ef Construction:</strong> Controls how thoroughly HNSW explores the graph during insertion. Higher values result in higher-quality connections (better recall) but slower construction. This has a significant impact on the final graph quality.</li>
+            </ul>
+            <p>
+                The best parameter values depend on your dataset size and the trade-off between speed and accuracy you need.
+            </p>
+            
+            <h3>How to Use This Simulation</h3>
+            <ul>
+                <li><strong>Add Random Point:</strong> Adds a point at a random position in the space</li>
+                <li><strong>Find Nearest to Random Point:</strong> Creates a random query point (shown in red) and finds its nearest neighbor</li>
+                <li><strong>Click Mode:</strong> Switch between adding points by clicking or searching by clicking</li>
+                <li><strong>Parameters:</strong> Adjust the number of layers and connections to see how they affect the graph structure</li>
+                <li><strong>Step-by-Step Controls:</strong> Use the navigation buttons to walk through the algorithm process one step at a time</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="simulation.js"></script>
+</body>
+</html> 

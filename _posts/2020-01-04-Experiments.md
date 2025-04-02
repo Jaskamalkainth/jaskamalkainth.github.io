@@ -12,3 +12,4 @@ Experiments with OpenAi Chatgpt
 </p>
 
 - [Random bounce pattern with dots](/blog_posts/experiments/experiment1/dots.html)
+- [ANN HNSW Simulation](/blog_posts/experiments/hnsw-simul/index.html)
