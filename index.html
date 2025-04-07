@@ -14,10 +14,63 @@
   {% if site.favicon %}<link rel="shortcut icon" href="{{ site.favicon }}" type="image/x-icon">{% endif %}
   {% if site.touch_icon %}<link rel="apple-touch-icon" href="{{ site.touch_icon }}">{% endif %}
   <script data-ad-client="ca-pub-4384498028906460" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <style>
+    #header {
+      position: relative;
+    }
+    
+    .fixed-header-contacts {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      display: flex;
+      gap: 15px;
+      z-index: 1000; /* Very high z-index to ensure it's on top */
+    }
+    
+    .fixed-header-contacts a {
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 35px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    
+    .fixed-header-contacts a:hover {
+      transform: scale(1.1);
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+    @media (max-width: 768px) {
+      .fixed-header-contacts {
+        top: 10px;
+        right: 10px;
+        gap: 10px;
+      }
+      
+      .fixed-header-contacts a {
+        font-size: 1rem;
+        width: 30px;
+        height: 30px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div id="header">
+  <!-- Place this outside and before your header div -->
+  <div class="fixed-header-contacts">
+    <a href="mailto:kainthjaskamal@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a>
+    <a href="https://github.com/Jaskamalkainth" target="_blank"><i class="fa fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/j1k77/" target="_blank"><i class="fa fa-linkedin"></i></a>
+  </div>
 
+  <div id="header">
     <nav><ul>
       {% for node in site.posts reversed %}
         {% capture id %}{{ node.id | remove:'/' | downcase }}{% endcapture %}
