@@ -1,0 +1,217 @@
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  font-family: 'Raleway', sans-serif;
+  color: #333;
+}
+
+/* Header styling */
+.about-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.profile-intro {
+  display: inline-block;
+  position: relative;
+}
+
+.name {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.title-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #71afe5, #2b88d8);
+  color: white;
+  padding: 0.4rem 1.2rem;
+  border-radius: 25px;
+  font-weight: 500;
+  font-size: 1rem;
+  box-shadow: 0 2px 10px rgba(43, 136, 216, 0.3);
+}
+
+/* Section styling */
+.section-heading {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  border-bottom: 2px solid rgba(0,0,0,0.1);
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.section-icon {
+  margin-right: 0.8rem;
+  color: #2b88d8;
+}
+
+.bio-section, .coding-section {
+  margin-bottom: 3rem;
+  background: white;
+  border-radius: 10px;
+  padding: 1.8rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.bio-content {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.highlight {
+  color: #2b88d8;
+  font-weight: 500;
+}
+
+/* Skills tags */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.skill-tag {
+  background-color: #f0f7ff;
+  border: 1px solid #d0e4fa;
+  color: #2b88d8;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.skill-tag:hover {
+  background-color: #e0efff;
+  transform: translateY(-2px);
+}
+
+/* Platforms grid */
+.platforms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+}
+
+.platform-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  padding: 1.2rem;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.platform-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.platform-link img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 0.8rem;
+  object-fit: contain;
+}
+
+/* ICPC section */
+.icpc-section {
+  margin-top: 2.5rem;
+}
+
+.icpc-container {
+  background: linear-gradient(to right, #f8f9fa, #f0f7ff);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.icpc-label {
+  margin-bottom: 1rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.icpc-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.2s ease;
+}
+
+.icpc-link:hover {
+  transform: scale(1.05);
+}
+
+.icpc-link img {
+  width: 60px;
+  height: 60px;
+  margin-right: 1.2rem;
+}
+
+.icpc-id {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: #2b88d8;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+}
+
+.text-link {
+  color: #2b88d8;
+  text-decoration: none;
+  border-bottom: 1px dotted #2b88d8;
+  transition: color 0.2s ease, border-bottom 0.2s ease;
+}
+
+.text-link:hover {
+  color: #1a5a99;
+  border-bottom: 1px solid #1a5a99;
+}
+
+@media (max-width: 768px) {
+  .name {
+    font-size: 2rem;
+  }
+  
+  .platforms-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+  
+  .icpc-link {
+    flex-direction: column;
+  }
+  
+  .icpc-link img {
+    margin-right: 0;
+    margin-bottom: 0.8rem;
+  }
+  
+  .bio-section, .coding-section {
+    padding: 1.2rem;
+  }
+  
+  .skills-container {
+    gap: 0.5rem;
+  }
+  
+  .skill-tag {
+    font-size: 0.8rem;
+  }
+} 
