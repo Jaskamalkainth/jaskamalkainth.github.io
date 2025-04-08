@@ -52,6 +52,28 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Create a notification element
+    function showNotification(message, type = 'info') {
+        // Remove any existing notification
+        const existingNotification = document.querySelector('.notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+        
+        // Create new notification
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        
+        // Add to document
+        document.querySelector('.container').appendChild(notification);
+        
+        // Auto-remove after 5 seconds
+        setTimeout(() => {
+            notification.remove();
+        }, 5000);
+    }
+    
     // Pixelate the image
     function pixelateImage() {
         const pixelSize = parseInt(pixelSizeSlider.value);
@@ -80,38 +102,104 @@ document.addEventListener('DOMContentLoaded', function() {
         // Clear the result canvas
         ctx.clearRect(0, 0, resultCanvas.width, resultCanvas.height);
         
-        // Process pixels
-        for (let y = 0; y < resultCanvas.height; y += pixelSize) {
-            for (let x = 0; x < resultCanvas.width; x += pixelSize) {
-                // Calculate the width and height of this pixel block
-                const pixelWidth = Math.min(pixelSize, resultCanvas.width - x);
-                const pixelHeight = Math.min(pixelSize, resultCanvas.height - y);
-                
-                // Get the average color of the pixel block
-                const averageColor = getAverageColor(tempCtx, x, y, pixelWidth, pixelHeight);
-                
-                // Fill the pixel block with the average color
-                ctx.fillStyle = `rgba(${averageColor.r}, ${averageColor.g}, ${averageColor.b}, ${averageColor.a})`;
-                ctx.fillRect(x, y, pixelWidth, pixelHeight);
-                
-                // Add character if enabled
-                if (addCharacters) {
-                    // Choose a contrasting text color
-                    const brightness = (averageColor.r * 299 + averageColor.g * 587 + averageColor.b * 114) / 1000;
-                    ctx.fillStyle = brightness > 125 ? 'black' : 'white';
+        // Start timing
+        const startTime = performance.now();
+        
+        // Define the timeout duration (5 seconds = 5000ms)
+        const timeoutDuration = 5000;
+        let processingTimeout = null;
+        let timeoutId = null;
+        
+        // Process pixels chunk by chunk with timeout handling
+        let x = 0;
+        let y = 0;
+        
+        function processNextChunk() {
+            const chunkStartTime = performance.now();
+            let processed = 0;
+            
+            // Process a chunk of the image
+            while (y < resultCanvas.height) {
+                while (x < resultCanvas.width) {
+                    // Calculate the width and height of this pixel block
+                    const pixelWidth = Math.min(pixelSize, resultCanvas.width - x);
+                    const pixelHeight = Math.min(pixelSize, resultCanvas.height - y);
                     
-                    // Add a random character
-                    ctx.font = `${pixelSize * 0.7}px Arial`;
-                    ctx.textAlign = 'center';
-                    ctx.textBaseline = 'middle';
-                    const randomChar = characters.charAt(Math.floor(Math.random() * characters.length));
-                    ctx.fillText(randomChar, x + pixelWidth / 2, y + pixelHeight / 2);
+                    // Get the average color of the pixel block
+                    const averageColor = getAverageColor(tempCtx, x, y, pixelWidth, pixelHeight);
+                    
+                    // Fill the pixel block with the average color
+                    ctx.fillStyle = `rgba(${averageColor.r}, ${averageColor.g}, ${averageColor.b}, ${averageColor.a})`;
+                    ctx.fillRect(x, y, pixelWidth, pixelHeight);
+                    
+                    // Add character if enabled
+                    if (addCharacters) {
+                        // Choose a contrasting text color
+                        const brightness = (averageColor.r * 299 + averageColor.g * 587 + averageColor.b * 114) / 1000;
+                        ctx.fillStyle = brightness > 125 ? 'black' : 'white';
+                        
+                        // Add a random character
+                        ctx.font = `${pixelSize * 0.7}px Arial`;
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        const randomChar = characters.charAt(Math.floor(Math.random() * characters.length));
+                        ctx.fillText(randomChar, x + pixelWidth / 2, y + pixelHeight / 2);
+                    }
+                    
+                    x += pixelSize;
+                    processed++;
+                    
+                    // Check if we've processed enough pixels for this chunk
+                    // or if we're approaching the time limit
+                    if (processed > 100 && performance.now() - chunkStartTime > 16) {
+                        // Schedule the next chunk and return
+                        processingTimeout = setTimeout(processNextChunk, 0);
+                        return;
+                    }
                 }
+                x = 0;
+                y += pixelSize;
             }
+            
+            // We've completed processing
+            const endTime = performance.now();
+            const timeTaken = ((endTime - startTime) / 1000).toFixed(2);
+            
+            // Clear the timeout since we've completed successfully
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+                timeoutId = null;
+            }
+            
+            // Show time taken
+            showNotification(`Pixelation completed in ${timeTaken} seconds`, 'success');
+            
+            // Enable download button
+            downloadBtn.disabled = false;
         }
         
-        // Enable download button
-        downloadBtn.disabled = false;
+        // Start processing
+        processingTimeout = setTimeout(processNextChunk, 0);
+        
+        // Set a timeout to cancel if it takes too long
+        timeoutId = setTimeout(() => {
+            if (processingTimeout) {
+                clearTimeout(processingTimeout);
+                processingTimeout = null;
+                
+                // Show a notification with suggestion
+                const currentPixelSize = pixelSizeSlider.value;
+                const suggestedSize = Math.min(50, parseInt(currentPixelSize) * 2);
+                showNotification(`Processing taking too long! Try a larger pixel size (${suggestedSize} or higher).`, 'warning');
+                
+                // Update slider to suggested value
+                pixelSizeSlider.value = suggestedSize;
+                updatePixelSizeValue();
+                
+                // Enable download button in case partial results are usable
+                downloadBtn.disabled = false;
+            }
+        }, timeoutDuration);
     }
     
     // Calculate average color of a region
