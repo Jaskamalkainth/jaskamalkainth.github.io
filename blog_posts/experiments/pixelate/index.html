@@ -1,0 +1,53 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Pixelator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Image Pixelator</h1>
+        
+        <div class="upload-container">
+            <label for="imageInput" class="upload-btn">Choose Image</label>
+            <input type="file" id="imageInput" accept="image/*">
+            <span id="fileName">No file chosen</span>
+        </div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="pixelSize">Pixel Size:</label>
+                <input type="range" id="pixelSize" min="5" max="50" value="15">
+                <span id="pixelSizeValue">15</span>
+            </div>
+            
+            <div class="control-group">
+                <label for="useCharacters">Add Characters:</label>
+                <input type="checkbox" id="useCharacters">
+            </div>
+        </div>
+        
+        <button id="pixelateBtn" disabled>Pixelate Image</button>
+        
+        <div class="image-container">
+            <div class="image-box">
+                <h3>Original Image</h3>
+                <img id="originalImage" src="placeholder.png" alt="Original Image">
+            </div>
+            
+            <div class="image-box">
+                <h3>Pixelated Image</h3>
+                <canvas id="resultCanvas"></canvas>
+                <button id="downloadBtn" disabled>Download</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
