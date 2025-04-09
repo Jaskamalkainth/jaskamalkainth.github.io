@@ -8,6 +8,7 @@
   <title>{{ site.title }}</title>
 	<meta name="keywords" content="{{ site.keywords }}">
 	<meta name="description" content="{{ site.description }}">
+  {% include gtm-head.html %}
   <link rel="stylesheet" href="combo.css">
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -81,6 +82,7 @@
   </style>
 </head>
 <body>
+  {% include gtm-body.html %}
   <!-- Place this outside and before your header div -->
   <div class="fixed-header-contacts">
     <a href="mailto:kainthjaskamal@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
