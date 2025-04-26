@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom Filter Visualization</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔍</text></svg>">
+    <script src="bloom-filter-preview.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .bloom-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+            margin: 20px 0;
+        }
+        .bloom-bit {
+            width: 20px;
+            height: 20px;
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .bloom-bit.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .bloom-bit.highlight {
+            background-color: #FF5722;
+            color: white;
+            animation: pulse 1s infinite alternate;
+        }
+        @keyframes pulse {
+            from {
+                background-color: #FF5722;
+            }
+            to {
+                background-color: #ff9800;
+            }
+        }
+        .controls {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+        input, button, select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            background-color: #2980b9;
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #3498db;
+        }
+        .status {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .logs {
+            margin-top: 20px;
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+        }
+        .log-entry {
+            margin: 4px 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 4px;
+        }
+        .hash-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .hash-value {
+            background-color: #e8f4f8;
+            padding: 5px 10px;
+            border-radius: 4px;
+            border-left: 3px solid #2980b9;
+        }
+        .history {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .history-item {
+            padding: 5px 10px;
+            background-color: #eee;
+            border-radius: 15px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .history-item:hover {
+            background-color: #ddd;
+        }
+        .history-item.inserted {
+            background-color: #c8e6c9;
+        }
+        .legend {
+            display: flex;
+            gap: 15px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+        }
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            margin-right: 5px;
+            border: 1px solid #ccc;
+        }
+        .false-positive-info {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-left: 3px solid #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bloom Filter Visualization</h1>
+    
+    <div class="container">
+        <h2>See It In Action</h2>
+        <p>Watch a quick animation that demonstrates the basic concept of a Bloom filter:</p>
+        <div id="bloom-filter-preview"></div>
+    </div>
+    
+    <div class="container">
+        <h2>Interactive Bloom Filter</h2>
+        <p>This visualization demonstrates how a Bloom filter works based on the implementation described in the blog post.</p>
+        
+        <div class="controls">
+            <label for="buffer-size">Buffer Size:</label>
+            <select id="buffer-size" onchange="resizeBloomFilter()">
+                <option value="32">32 bits</option>
+                <option value="64">64 bits</option>
+                <option value="128" selected>128 bits</option>
+                <option value="256">256 bits</option>
+            </select>
+            
+            <label for="text-input">String:</label>
+            <input type="text" id="text-input" placeholder="Enter a string">
+            
+            <button id="insert-btn" onclick="insertString()">Insert</button>
+            <button id="check-btn" onclick="checkString()">Check</button>
+            <button id="reset-btn" onclick="resetBloomFilter()">Reset</button>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #e0e0e0;"></div>
+                <span>Bit = 0</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #4CAF50;"></div>
+                <span>Bit = 1</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #FF5722;"></div>
+                <span>Highlighted Position</span>
+            </div>
+        </div>
+        
+        <div class="bloom-filter" id="bloom-filter"></div>
+        
+        <div class="hash-details" id="hash-details"></div>
+        
+        <div class="status" id="status"></div>
+        
+        <h3>History</h3>
+        <div class="history" id="history"></div>
+        
+        <h3>Logs</h3>
+        <div class="logs" id="logs"></div>
+        
+        <div class="false-positive-info">
+            <h3>False Positive Rate</h3>
+            <p>Estimated false positive rate with current parameters: <span id="fp-rate">0%</span></p>
+            <p>Formula: (1 - e<sup>-kn/m</sup>)<sup>k</sup> where:</p>
+            <ul>
+                <li>k = Number of hash functions (2 in this demo)</li>
+                <li>m = Size of the bit array (<span id="m-value">128</span> bits)</li>
+                <li>n = Number of elements inserted (<span id="n-value">0</span>)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Bloom filter implementation
+        class BloomFilter {
+            constructor(size) {
+                this.size = size;
+                this.buffer = new Array(size).fill(0);
+                this.hashFunctions = [(str) => this.hashFunction1(str), (str) => this.hashFunction2(str)];
+                this.insertedItems = new Set();
+            }
+            
+            hashFunction1(str) {
+                const b = 31;
+                let res = 0;
+                for (let i = 0; i < str.length; i++) {
+                    res = res * b + str.charCodeAt(i);
+                }
+                return Math.abs(res) % this.size;
+            }
+            
+            hashFunction2(str) {
+                const b = 3727;
+                let res = 0;
+                for (let i = 0; i < str.length; i++) {
+                    res = res * b + (str.charCodeAt(i) - 48);
+                }
+                return Math.abs(res) % this.size;
+            }
+            
+            insert(str) {
+                const hashValues = [];
+                for (let i = 0; i < this.hashFunctions.length; i++) {
+                    const index = this.hashFunctions[i](str);
+                    this.buffer[index] = 1;
+                    hashValues.push(index);
+                }
+                this.insertedItems.add(str);
+                return hashValues;
+            }
+            
+            isPresent(str) {
+                const hashValues = [];
+                for (let i = 0; i < this.hashFunctions.length; i++) {
+                    const index = this.hashFunctions[i](str);
+                    hashValues.push(index);
+                    if (this.buffer[index] !== 1) {
+                        return { result: false, hashValues };
+                    }
+                }
+                return { 
+                    result: true, 
+                    hashValues,
+                    isFalsePositive: !this.insertedItems.has(str)
+                };
+            }
+            
+            reset() {
+                this.buffer.fill(0);
+                this.insertedItems.clear();
+            }
+        }
+        
+        // UI Variables
+        let bloomFilter;
+        const insertedHistory = new Set();
+        const checkedHistory = new Set();
+        
+        // Initialize Bloom filter
+        function initBloomFilter() {
+            const size = parseInt(document.getElementById('buffer-size').value);
+            bloomFilter = new BloomFilter(size);
+            renderBloomFilter();
+            updateFalsePositiveRate();
+            
+            // Update m value in formula explanation
+            document.getElementById('m-value').textContent = size;
+        }
+        
+        // Render Bloom filter bits
+        function renderBloomFilter() {
+            const bloomFilterDiv = document.getElementById('bloom-filter');
+            bloomFilterDiv.innerHTML = '';
+            
+            for (let i = 0; i < bloomFilter.size; i++) {
+                const bit = document.createElement('div');
+                bit.className = 'bloom-bit';
+                bit.dataset.index = i;
+                bit.textContent = i;
+                if (bloomFilter.buffer[i] === 1) {
+                    bit.classList.add('active');
+                }
+                bloomFilterDiv.appendChild(bit);
+            }
+        }
+        
+        // Resize Bloom filter
+        function resizeBloomFilter() {
+            initBloomFilter();
+            document.getElementById('history').innerHTML = '';
+            document.getElementById('logs').innerHTML = '';
+            document.getElementById('hash-details').innerHTML = '';
+            document.getElementById('status').innerHTML = '';
+            insertedHistory.clear();
+            checkedHistory.clear();
+        }
+        
+        // Insert a string
+        function insertString() {
+            const inputElement = document.getElementById('text-input');
+            const str = inputElement.value.trim();
+            
+            if (!str) {
+                updateStatus('Please enter a string', 'error');
+                return;
+            }
+            
+            // Reset any highlights
+            clearHighlights();
+            
+            // Insert the string
+            console.log(`Inserting string: "${str}"`);
+            const hashValues = bloomFilter.insert(str);
+            
+            // Log hash values for debugging
+            console.log(`Hash values for "${str}": ${JSON.stringify(hashValues)}`);
+            console.log(`Current buffer state: ${JSON.stringify(bloomFilter.buffer)}`);
+            
+            // Highlight the bits
+            highlightBits(hashValues);
+            
+            // Show hash values
+            showHashDetails(str, hashValues, true);
+            
+            // Add to history
+            addToHistory(str, true);
+            
+            // Log the action
+            addLogEntry(`Inserted: "${str}" - Hash values: [${hashValues.join(', ')}]`);
+            
+            // Update status
+            updateStatus(`String "${str}" inserted successfully`, 'success');
+            
+            // Update false positive rate
+            updateFalsePositiveRate();
+            
+            // Clear input
+            inputElement.value = '';
+            
+            // Re-render bloom filter display
+            renderBloomFilter();
+        }
+        
+        // Check if a string is present
+        function checkString() {
+            const inputElement = document.getElementById('text-input');
+            const str = inputElement.value.trim();
+            
+            if (!str) {
+                updateStatus('Please enter a string', 'error');
+                return;
+            }
+            
+            // Reset any highlights
+            clearHighlights();
+            
+            // Check if the string is present
+            console.log(`Checking string: "${str}"`);
+            const result = bloomFilter.isPresent(str);
+            
+            // Log hash values for debugging
+            console.log(`Hash values for "${str}": ${JSON.stringify(result.hashValues)}`);
+            console.log(`Result: ${result.result}, isFalsePositive: ${result.isFalsePositive}`);
+            
+            // Highlight the bits
+            highlightBits(result.hashValues);
+            
+            // Show hash values
+            showHashDetails(str, result.hashValues, false);
+            
+            // Add to history if not already in history
+            if (!insertedHistory.has(str)) {
+                addToHistory(str, false);
+            }
+            
+            // Log the action
+            if (result.result) {
+                if (result.isFalsePositive) {
+                    addLogEntry(`Check: "${str}" - MAYBE in set (FALSE POSITIVE) - Hash values: [${result.hashValues.join(', ')}]`);
+                    updateStatus(`String "${str}" was detected as MAYBE in the set (FALSE POSITIVE)`, 'warning');
+                } else {
+                    addLogEntry(`Check: "${str}" - DEFINITELY in set - Hash values: [${result.hashValues.join(', ')}]`);
+                    updateStatus(`String "${str}" is DEFINITELY in the set`, 'success');
+                }
+            } else {
+                addLogEntry(`Check: "${str}" - NOT in set - Hash values: [${result.hashValues.join(', ')}]`);
+                updateStatus(`String "${str}" is DEFINITELY NOT in the set`, 'error');
+            }
+            
+            // Clear input
+            inputElement.value = '';
+        }
+        
+        // Reset the Bloom filter
+        function resetBloomFilter() {
+            bloomFilter.reset();
+            renderBloomFilter();
+            document.getElementById('hash-details').innerHTML = '';
+            document.getElementById('status').innerHTML = '';
+            document.getElementById('history').innerHTML = '';
+            document.getElementById('logs').innerHTML = '';
+            insertedHistory.clear();
+            checkedHistory.clear();
+            updateFalsePositiveRate();
+        }
+        
+        // Highlight bits
+        function highlightBits(indices) {
+            const bits = document.querySelectorAll('.bloom-bit');
+            for (const index of indices) {
+                bits[index].classList.add('highlight');
+            }
+        }
+        
+        // Clear highlights
+        function clearHighlights() {
+            const bits = document.querySelectorAll('.bloom-bit.highlight');
+            bits.forEach(bit => bit.classList.remove('highlight'));
+            document.getElementById('hash-details').innerHTML = '';
+        }
+        
+        // Show hash details
+        function showHashDetails(str, hashValues, isInsert) {
+            const hashDetailsDiv = document.getElementById('hash-details');
+            hashDetailsDiv.innerHTML = '';
+            
+            const title = document.createElement('div');
+            title.innerHTML = `<strong>${isInsert ? 'Inserting' : 'Checking'} string: "${str}"</strong>`;
+            hashDetailsDiv.appendChild(title);
+            
+            for (let i = 0; i < hashValues.length; i++) {
+                const hashValue = document.createElement('div');
+                hashValue.className = 'hash-value';
+                hashValue.innerHTML = `Hash ${i+1}: ${hashValues[i]}`;
+                hashDetailsDiv.appendChild(hashValue);
+            }
+        }
+        
+        // Update status
+        function updateStatus(message, type) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.innerHTML = message;
+            statusDiv.className = 'status';
+            
+            if (type === 'success') {
+                statusDiv.style.backgroundColor = '#d4edda';
+                statusDiv.style.color = '#155724';
+                statusDiv.style.border = '1px solid #c3e6cb';
+            } else if (type === 'error') {
+                statusDiv.style.backgroundColor = '#f8d7da';
+                statusDiv.style.color = '#721c24';
+                statusDiv.style.border = '1px solid #f5c6cb';
+            } else if (type === 'warning') {
+                statusDiv.style.backgroundColor = '#fff3cd';
+                statusDiv.style.color = '#856404';
+                statusDiv.style.border = '1px solid #ffeeba';
+            }
+        }
+        
+        // Add log entry
+        function addLogEntry(message) {
+            const logsDiv = document.getElementById('logs');
+            const logEntry = document.createElement('div');
+            logEntry.className = 'log-entry';
+            logEntry.textContent = message;
+            logsDiv.insertBefore(logEntry, logsDiv.firstChild);
+        }
+        
+        // Add to history
+        function addToHistory(str, isInserted) {
+            const historyDiv = document.getElementById('history');
+            
+            // Don't add duplicates
+            if ((isInserted && insertedHistory.has(str)) || 
+                (!isInserted && checkedHistory.has(str) && !insertedHistory.has(str))) {
+                return;
+            }
+            
+            const historyItem = document.createElement('div');
+            historyItem.className = 'history-item';
+            if (isInserted) {
+                historyItem.classList.add('inserted');
+                insertedHistory.add(str);
+            } else {
+                checkedHistory.add(str);
+            }
+            
+            historyItem.textContent = str;
+            historyItem.onclick = function() {
+                document.getElementById('text-input').value = str;
+            };
+            
+            historyDiv.appendChild(historyItem);
+        }
+        
+        // Calculate and update false positive rate
+        function updateFalsePositiveRate() {
+            const m = bloomFilter.size;
+            const k = 2; // Number of hash functions
+            const n = bloomFilter.insertedItems.size;
+            
+            // Update n value in formula explanation
+            document.getElementById('n-value').textContent = n;
+            
+            if (n === 0) {
+                document.getElementById('fp-rate').textContent = '0%';
+                return;
+            }
+            
+            // Calculate false positive rate: (1 - e^(-kn/m))^k
+            const rate = Math.pow(1 - Math.exp(-k * n / m), k) * 100;
+            document.getElementById('fp-rate').textContent = rate.toFixed(6) + '%';
+        }
+        
+        // Initialize on page load
+        window.onload = initBloomFilter;
+    </script>
+</body>
+</html> 

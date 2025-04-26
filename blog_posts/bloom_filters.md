@@ -5,6 +5,8 @@ date: 2025-03-15
 categories: algorithms data-structures
 ---
 
+<link rel="stylesheet" href="/css/blog_post.css">
+
 # Bloom Filters: A Probabilistic Data Structure
 
 Bloom filters are space-efficient probabilistic data structures that are used to test whether an element is a member of a set. They can have false positives but never false negatives, making them perfect for certain applications where space efficiency is crucial.
@@ -14,6 +16,12 @@ Bloom filters are space-efficient probabilistic data structures that are used to
 A Bloom filter consists of a bit array of m bits, initially all set to 0, and k different hash functions. When inserting an element, it is hashed by all k hash functions, and the bits at the resulting k positions are set to 1.
 
 To check if an element is in the set, we hash it with the same k hash functions and check if all the corresponding bits are set to 1. If any bit is 0, the element is definitely not in the set. If all bits are 1, the element is probably in the set.
+
+<div class="demo-link">
+  <a href="/blog_posts/experiments/bloom-filter/index.html" class="btn btn-primary">
+    <i class="fa fa-play-circle"></i> Try the Interactive Bloom Filter Demo
+  </a>
+</div>
 
 ## Implementation in C++
 
