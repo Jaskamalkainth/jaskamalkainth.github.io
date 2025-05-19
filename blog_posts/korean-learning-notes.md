@@ -166,45 +166,45 @@ fa-icon: language
           <div class="number-section">
             <h4>Sino-Korean Numbers</h4>
             <ul class="korean-list">
-              <li>일 (1)</li>
-              <li>이 (2)</li>
-              <li>삼 (3)</li>
-              <li>사 (4)</li>
-              <li>오 (5)</li>
-              <li>육 (6)</li>
-              <li>칠 (7)</li>
-              <li>팔 (8)</li>
-              <li>구 (9)</li>
-              <li>십 (10)</li>
-              <li>백 (100)</li>
-              <li>천 (1,000)</li>
-              <li>만 (10,000)</li>
-              <li>억 (100,000,000)</li>
-              <li>조 (1,000,000,000,000)</li>
+              <li>일 (il) - 1</li>
+              <li>이 (i) - 2</li>
+              <li>삼 (sam) - 3</li>
+              <li>사 (sa) - 4</li>
+              <li>오 (o) - 5</li>
+              <li>육 (yuk) - 6</li>
+              <li>칠 (chil) - 7</li>
+              <li>팔 (pal) - 8</li>
+              <li>구 (gu) - 9</li>
+              <li>십 (sip) - 10</li>
+              <li>백 (baek) - 100</li>
+              <li>천 (cheon) - 1,000</li>
+              <li>만 (man) - 10,000</li>
+              <li>억 (eok) - 100,000,000</li>
+              <li>조 (jo) - 1,000,000,000,000</li>
             </ul>
           </div>
           <div class="number-section">
             <h4>Native Korean Numbers</h4>
             <ul class="korean-list">
-              <li>하나 (1)</li>
-              <li>둘 (2)</li>
-              <li>셋 (3)</li>
-              <li>넷 (4)</li>
-              <li>다섯 (5)</li>
-              <li>여섯 (6)</li>
-              <li>일곱 (7)</li>
-              <li>여덟 (8)</li>
-              <li>아홉 (9)</li>
-              <li>열 (10)</li>
-              <li>열하나 (11)</li>
-              <li>스물 (20)</li>
-              <li>서른 (30)</li>
-              <li>마흔 (40)</li>
-              <li>쉰 (50)</li>
-              <li>예순 (60)</li>
-              <li>일흔 (70)</li>
-              <li>여든 (80)</li>
-              <li>아흔 (90)</li>
+              <li>하나 (hana) - 1</li>
+              <li>둘 (dul) - 2</li>
+              <li>셋 (set) - 3</li>
+              <li>넷 (net) - 4</li>
+              <li>다섯 (daseot) - 5</li>
+              <li>여섯 (yeoseot) - 6</li>
+              <li>일곱 (ilgop) - 7</li>
+              <li>여덟 (yeodeol) - 8</li>
+              <li>아홉 (ahop) - 9</li>
+              <li>열 (yeol) - 10</li>
+              <li>열하나 (yeol hana) - 11</li>
+              <li>스물 (seumul) - 20</li>
+              <li>서른 (seoreun) - 30</li>
+              <li>마흔 (maheun) - 40</li>
+              <li>쉰 (swin) - 50</li>
+              <li>예순 (yesun) - 60</li>
+              <li>일흔 (ilheun) - 70</li>
+              <li>여든 (yeodeun) - 80</li>
+              <li>아흔 (aheun) - 90</li>
             </ul>
           </div>
           <div class="time-section">
@@ -324,6 +324,7 @@ fa-icon: language
             <li>베트남 사람 (beteunam saram) - Vietnamese person</li>
             <li>아일랜드 사람 (aillaendeu saram) - Irish person</li>
             <li>러시아 사람 (reosia saram) - Russian person</li>
+            <li>인도 사람 (indo saram) - Indian person</li>
           </ul>
         </div>
       </div>
