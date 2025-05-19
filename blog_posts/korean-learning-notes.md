@@ -600,9 +600,7 @@ fa-icon: language
   padding: 0.25rem 0;
   border-bottom: 1px solid #eee;
   color: #444;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  display: block;
 }
 
 .korean-list li:last-child {
