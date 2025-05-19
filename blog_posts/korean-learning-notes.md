@@ -472,7 +472,7 @@ fa-icon: language
         </div>
       </div>
 
-      <div class="reference-card">
+      <div class="reference-card proverbs-card">
         <h3>Korean Proverbs</h3>
         <div class="reference-content">
           <ul class="korean-list">
@@ -502,12 +502,12 @@ fa-icon: language
 <style>
 /* Override GitHub Pages container styles */
 .container-lg {
-  max-width: 1200px !important;
+  max-width: 1400px !important;
   padding: 0 2rem !important;
 }
 
 .markdown-body {
-  max-width: 1200px !important;
+  max-width: 1400px !important;
   padding: 0 !important;
 }
 
@@ -579,8 +579,8 @@ fa-icon: language
 
 .reference-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
 .reference-card {
@@ -610,10 +610,11 @@ fa-icon: language
 }
 
 .korean-list li {
-  padding: 0.25rem 0;
+  padding: 0.5rem 0;
   border-bottom: 1px solid #eee;
   color: #444;
   display: block;
+  line-height: 1.5;
 }
 
 .korean-list li:last-child {
@@ -645,9 +646,55 @@ fa-icon: language
 
 .proverb-meaning {
   display: block;
-  font-size: 0.85em;
+  font-size: 0.9em;
   color: #666;
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
   font-style: italic;
+  line-height: 1.5;
+}
+
+/* Special styling for proverbs */
+.reference-card.proverbs-card {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.reference-card.proverbs-card .reference-content {
+  max-width: none;
+  margin: 0;
+}
+
+.reference-card.proverbs-card .korean-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reference-card.proverbs-card .korean-list li {
+  border: 1px solid #eee;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.reference-card.proverbs-card .proverb-meaning {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #eee;
+  font-size: 1rem;
+}
+
+.reference-card.proverbs-card h3 {
+  font-size: 1.4rem;
+}
+
+/* Make certain cards span full width */
+.reference-card.grammar-card,
+.reference-card.pronunciation-card {
+  grid-column: 1 / -1;
 }
 </style> 
