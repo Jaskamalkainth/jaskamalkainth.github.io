@@ -601,9 +601,8 @@ fa-icon: language
   border-bottom: 1px solid #eee;
   color: #444;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .korean-list li:last-child {
@@ -611,9 +610,7 @@ fa-icon: language
 }
 
 .korean-list li::after {
-  content: attr(data-romanization);
-  color: #666;
-  font-size: 0.85em;
+  content: none;
 }
 
 .alphabet-section, .number-section, .time-section, .vocab-section, .rules-section, .grammar-section {
