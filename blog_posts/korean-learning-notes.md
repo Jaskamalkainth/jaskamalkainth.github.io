@@ -272,6 +272,7 @@ fa-icon: language
               <li>안녕하세요 (annyeonghaseyo) - Hello</li>
               <li>감사합니다 (kamsahamnida) - Thank you</li>
               <li>죄송합니다 (joesonghamnida) - I'm sorry</li>
+              <li>환영합니다 (hwanyeonghamnida) - Welcome</li>
               <li>만나서 반갑습니다 (mannaseo bangapseumnida) - Nice to meet you</li>
             </ul>
           </div>
