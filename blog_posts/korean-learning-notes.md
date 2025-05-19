@@ -500,6 +500,18 @@ fa-icon: language
 </div>
 
 <style>
+/* Override GitHub Pages container styles */
+.container-lg {
+  max-width: 1200px !important;
+  padding: 0 2rem !important;
+}
+
+.markdown-body {
+  max-width: 1200px !important;
+  padding: 0 !important;
+}
+
+/* Existing styles */
 .korean-notes-header {
   text-align: center;
   margin-bottom: 3rem;
