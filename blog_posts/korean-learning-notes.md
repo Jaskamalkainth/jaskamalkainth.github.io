@@ -397,11 +397,15 @@ fa-icon: language
           <ul class="korean-list">
             <li>사과 (sagwa) - apple</li>
             <li>오렌지 (orenji) - orange</li>
+            <li>수박 (subak) - watermelon</li>
+            <li>포도 (podo) - grapes</li>
+            <li>구아바 (guaba) - guava</li>
             <li>우유 (uyu) - milk</li>
             <li>주스 (juseu) - juice</li>
             <li>빵 (ppang) - bread</li>
             <li>물 (mul) - water</li>
             <li>펜 (pen) - pen</li>
+            <li>주스 (juseu) - juice</li>
             <li>책 (chaek) - book</li>
           </ul>
         </div>
