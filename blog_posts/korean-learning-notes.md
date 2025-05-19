@@ -588,6 +588,7 @@ fa-icon: language
 
 .reference-content {
   font-size: 0.9rem;
+  padding: 0;
 }
 
 .korean-list {
@@ -613,6 +614,7 @@ fa-icon: language
 
 .alphabet-section, .number-section, .time-section, .vocab-section, .rules-section, .grammar-section {
   margin-bottom: 1rem;
+  padding: 0;
 }
 
 .alphabet-section h4, .number-section h4, .time-section h4, .vocab-section h4, .rules-section h4, .grammar-section h4 {
@@ -620,6 +622,7 @@ fa-icon: language
   margin-bottom: 0.5rem;
   font-size: 0.95rem;
   font-weight: 600;
+  padding: 0;
 }
 
 .formality-section {
