@@ -165,7 +165,7 @@ fa-icon: language
       </div>
 
       <div class="reference-card">
-        <h3>Numbers & Time</h3>
+        <h3>Numbers</h3>
         <div class="reference-content">
           <div class="number-section">
             <h4>Sino-Korean Numbers</h4>
@@ -213,6 +213,12 @@ fa-icon: language
               <li>아흔 (aheun) - 90</li>
             </ul>
           </div>
+        </div>
+      </div>
+
+      <div class="reference-card">
+        <h3>Time</h3>
+        <div class="reference-content">
           <div class="time-section">
             <h4>Months</h4>
             <ul class="korean-list">
@@ -241,6 +247,42 @@ fa-icon: language
               <li>토요일 (to-yoil) - Saturday (Earth day)</li>
               <li>일요일 (il-yoil) - Sunday (Sun day)</li>
             </ul>
+          </div>
+          <div class="time-section">
+            <h4>Time Expressions (시간 표현 - Sigan Pyohyeon)</h4>
+            <div class="time-subsection">
+              <h5>AM/PM</h5>
+              <ul class="korean-list">
+                <li>오전 (ojeon) - AM</li>
+                <li>오후 (ohu) - PM</li>
+              </ul>
+            </div>
+            <div class="time-subsection">
+              <h5>Time Format</h5>
+              <ul class="korean-list">
+                <li>시간 (sigan) - hour</li>
+                <li>분 (bun) - minute</li>
+                <li>시 (si) - used after the hour</li>
+              </ul>
+            </div>
+            <div class="time-subsection">
+              <h5>Examples</h5>
+              <ul class="korean-list">
+                <li>3:05 PM → 오후 세 시 오 분 (ohu se si o bun)</li>
+                <li>9:30 AM → 오전 아홉 시 삼십 분 (ojeon ahop si samsip bun)</li>
+                <li>12:00 PM → 오후 열두 시 (ohu yeoldu si)</li>
+                <li>11:45 AM → 오전 열한 시 사십오 분 (ojeon yeolhan si sasibo bun)</li>
+              </ul>
+            </div>
+            <div class="time-subsection">
+              <h5>Notes</h5>
+              <ul class="korean-list">
+                <li>Use native Korean numbers (하나, 둘, 셋...) for hours</li>
+                <li>Use Sino-Korean numbers (일, 이, 삼...) for minutes</li>
+                <li>When it's exactly on the hour, 분 is omitted</li>
+                <li>Example: 3:00 PM → 오후 세 시 (ohu se si)</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -720,6 +762,25 @@ fa-icon: language
 
 .usage-note strong {
   color: #0d47a1;
+}
+
+/* Time subsection styling */
+.time-subsection {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.time-subsection h5 {
+  color: #666;
+  margin-bottom: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.time-subsection:not(:last-child) {
+  border-bottom: 1px solid #f0f0f0;
 }
 
 /* Make certain cards span full width */
