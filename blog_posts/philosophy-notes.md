@@ -10,10 +10,61 @@ layout: post
   <div class="intro-section">
     <h1>Philosophy Timeline: Understanding the Human Mind</h1>
     <p>I'm fascinated by philosophy, psychology, and the study of human mind - what we do, why we do it. This timeline traces the evolution of human thought from ancient wisdom to modern insights about consciousness and behavior.</p>
+    
+    <div class="philosophy-note">
+      <h4>🏛️ Design Philosophy: Stoic Ataraxia</h4>
+      <p>This page's color palette is inspired by <strong>Stoic philosophy</strong> and the concept of <em>Ataraxia</em> (tranquility of mind). The earth tones represent the four cardinal virtues: <span class="virtue-wisdom">Wisdom</span> (deep blues), <span class="virtue-justice">Justice</span> (balanced grays), <span class="virtue-courage">Courage</span> (warm browns), and <span class="virtue-temperance">Temperance</span> (muted greens). These colors promote calm contemplation and focused learning.</p>
+    </div>
+  </div>
+
+  <div class="quick-reference">
+    <h2>Quick Reference Timeline</h2>
+    <div class="reference-grid">
+      <div class="reference-period">
+        <h3>Ancient Philosophy</h3>
+        <span class="period-span">6th Century BCE - 6th Century CE</span>
+        <div class="key-figures">Socrates, Plato, Aristotle, Confucius, Buddha, Augustine</div>
+        <div class="key-theme">Foundation of human inquiry: virtue, knowledge, suffering, love</div>
+      </div>
+      
+      <div class="reference-period">
+        <h3>Medieval Philosophy</h3>
+        <span class="period-span">5th - 15th Century</span>
+        <div class="key-figures">Thomas Aquinas, Ibn Rushd (Averroes)</div>
+        <div class="key-theme">Synthesis of faith and reason</div>
+      </div>
+      
+      <div class="reference-period">
+        <h3>Renaissance & Early Modern</h3>
+        <span class="period-span">15th - 18th Century</span>
+        <div class="key-figures">Descartes, Spinoza, Locke, Hume, Kant</div>
+        <div class="key-theme">Rationalism vs. empiricism; foundations of modern thought</div>
+      </div>
+      
+      <div class="reference-period">
+        <h3>19th Century</h3>
+        <span class="period-span">1800 - 1900</span>
+        <div class="key-figures">Hegel, Kierkegaard, Marx, Nietzsche</div>
+        <div class="key-theme">Individual existence, social conditions, will to power</div>
+      </div>
+      
+      <div class="reference-period">
+        <h3>20th Century</h3>
+        <span class="period-span">1900 - 2000</span>
+        <div class="key-figures">Freud, Heidegger, Sartre, de Beauvoir, Wittgenstein, Foucault</div>
+        <div class="key-theme">Unconscious mind, existentialism, language, power structures</div>
+      </div>
+      
+      <div class="reference-period">
+        <h3>Contemporary</h3>
+        <span class="period-span">2000 - Present</span>
+        <div class="key-figures">Dennett, Nussbaum</div>
+        <div class="key-theme">Consciousness, capabilities, modern psychology</div>
+      </div>
+    </div>
   </div>
 
   <div class="timeline">
-    
     <div class="timeline-period">
       <div class="period-header">
         <h2>Ancient Philosophy</h2>
@@ -437,43 +488,219 @@ layout: post
 
 ---
 
-*Last updated: May 2025 | This timeline grows as I discover new connections between historical wisdom and modern insights*
-
 <style>
 .research-container {
   max-width: 1200px;
   margin: 0 auto;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: #3c3c3c;
+  background: linear-gradient(135deg, #f7f5f3 0%, #f0ede8 100%);
+  min-height: 100vh;
+  padding: 2rem 1rem;
 }
 
 .intro-section {
-  background: #f8f9fa;
+  background: linear-gradient(135deg, #8b7355 0%, #a0896b 100%);
+  color: #f7f5f3;
   padding: 3rem 2rem;
-  border-radius: 8px;
+  border-radius: 12px;
   margin-bottom: 3rem;
   text-align: center;
-  border: 1px solid #e9ecef;
+  box-shadow: 0 8px 32px rgba(139, 115, 85, 0.2);
 }
 
 .intro-section h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   font-weight: 300;
-  color: #2c3e50;
+  color: #f7f5f3;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .intro-section p {
   font-size: 1.2rem;
   max-width: 800px;
-  margin: 0 auto;
-  color: #495057;
+  margin: 0 auto 2rem auto;
+  color: #f0ede8;
+  opacity: 0.95;
 }
 
-.timeline {
+.philosophy-note {
+  background: rgba(247, 245, 243, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(247, 245, 243, 0.3);
+  text-align: left;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.philosophy-note h4 {
+  color: #f7f5f3;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.philosophy-note p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.virtue-wisdom {
+  color: #4a6741;
+  font-weight: 600;
+  background: rgba(74, 103, 65, 0.2);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+.virtue-justice {
+  color: #6b5b73;
+  font-weight: 600;
+  background: rgba(107, 91, 115, 0.2);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+.virtue-courage {
+  color: #8b7355;
+  font-weight: 600;
+  background: rgba(139, 115, 85, 0.2);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+.virtue-temperance {
+  color: #5d6b5d;
+  font-weight: 600;
+  background: rgba(93, 107, 93, 0.2);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+.quick-reference {
+  background: linear-gradient(135deg, #f7f5f3 0%, #ede8e0 100%);
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  margin-bottom: 3rem;
+  border: 1px solid #d4c4a8;
   position: relative;
-  margin: 2rem 0;
+  box-shadow: 0 4px 16px rgba(139, 115, 85, 0.1);
+}
+
+.quick-reference h2 {
+  text-align: center;
+  color: #5d4e37;
+  margin-bottom: 2.5rem;
+  font-size: 2.2rem;
+  font-weight: 300;
+  position: relative;
+  z-index: 1;
+}
+
+.reference-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.reference-period {
+  background: #f7f5f3;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #d4c4a8;
+  box-shadow: 0 4px 12px rgba(139, 115, 85, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.reference-period::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #4a6741, #6b5b73, #8b7355, #5d6b5d);
+  border-radius: 12px 12px 0 0;
+}
+
+.reference-period:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(139, 115, 85, 0.15);
+  background: #faf8f6;
+}
+
+.reference-period h3 {
+  color: #5d4e37;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.reference-period h3::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #8b7355;
+  flex-shrink: 0;
+}
+
+.period-span {
+  color: #6b5b73;
+  font-style: italic;
+  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 1.2rem;
+  padding: 0.5rem 1rem;
+  background: #ede8e0;
+  border-radius: 6px;
+  border-left: 3px solid #8b7355;
+  font-weight: 500;
+}
+
+.key-figures {
+  color: #5d4e37;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  padding: 1rem;
+  background: #ede8e0;
+  border-radius: 8px;
+  border-left: 3px solid #4a6741;
+}
+
+.key-figures::before {
+  content: '• ';
+  margin-right: 0.5rem;
+  color: #4a6741;
+}
+
+.key-theme {
+  color: #6b5b73;
+  font-size: 0.95rem;
+  font-style: italic;
+  padding: 1rem;
+  background: #ede8e0;
+  border-radius: 8px;
+  border-left: 3px solid #5d6b5d;
+  line-height: 1.4;
+}
+
+.key-theme::before {
+  content: '→ ';
+  margin-right: 0.5rem;
+  color: #5d6b5d;
 }
 
 .timeline::before {
@@ -483,36 +710,42 @@ layout: post
   top: 0;
   bottom: 0;
   width: 2px;
-  background: #dee2e6;
+  background: linear-gradient(180deg, #8b7355, #6b5b73, #4a6741, #5d6b5d);
   transform: translateX(-50%);
   z-index: 0;
+}
+
+.period-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #f7f5f3 0%, #ede8e0 100%);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #d4c4a8;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(139, 115, 85, 0.1);
+}
+
+.period-header h2 {
+  color: #5d4e37;
+  margin-bottom: 0.5rem;
+}
+
+.period-header .period-dates {
+  color: #6b5b73;
+  font-style: italic;
+}
+
+.timeline {
+  position: relative;
+  margin: 2rem 0;
 }
 
 .timeline-period {
   margin-bottom: 4rem;
   position: relative;
   z-index: 1;
-}
-
-.period-header {
-  text-align: center;
-  margin-bottom: 2rem;
-  background: #f8f9fa;
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid #e9ecef;
-  position: relative;
-  z-index: 2;
-}
-
-.period-header h2 {
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
-}
-
-.period-header .period-dates {
-  color: #6c757d;
-  font-style: italic;
 }
 
 .timeline-item {
@@ -531,18 +764,19 @@ layout: post
 }
 
 .timeline-content {
-  background: white;
-  border: 1px solid #e9ecef;
+  background: #f7f5f3;
+  border: 1px solid #d4c4a8;
   border-radius: 8px;
   padding: 1.5rem;
   width: 45%;
   position: relative;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(139, 115, 85, 0.08);
 }
 
 .timeline-content:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(139, 115, 85, 0.15);
   transition: box-shadow 0.3s ease;
+  background: #faf8f6;
 }
 
 .timeline-item:nth-child(odd) .timeline-content {
@@ -578,46 +812,47 @@ layout: post
   top: 20px;
   width: 16px;
   height: 16px;
-  background: #495057;
-  border: 3px solid white;
+  background: #8b7355;
+  border: 3px solid #f7f5f3;
   border-radius: 50%;
   transform: translateX(-50%);
   z-index: 1;
 }
 
 .philosopher-name {
-  color: #2c3e50;
+  color: #5d4e37;
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
 .philosopher-dates {
-  color: #6c757d;
+  color: #6b5b73;
   font-style: italic;
   margin-bottom: 1rem;
 }
 
 .philosopher-school {
-  background: #e9ecef;
-  color: #495057;
+  background: #ede8e0;
+  color: #5d4e37;
   padding: 0.3rem 0.8rem;
   border-radius: 4px;
   font-size: 0.85rem;
   display: inline-block;
   margin-bottom: 1rem;
+  border: 1px solid #d4c4a8;
 }
 
 .key-insight {
-  background: #f8f9fa;
+  background: #ede8e0;
   padding: 1rem;
   border-radius: 6px;
   margin: 1rem 0;
-  border-left: 3px solid #6c757d;
+  border-left: 3px solid #4a6741;
 }
 
 .key-insight h4 {
-  color: #495057;
+  color: #5d4e37;
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
   text-transform: uppercase;
@@ -625,24 +860,53 @@ layout: post
 }
 
 .research-questions {
-  background: #f8f9fa;
+  background: linear-gradient(135deg, #f7f5f3 0%, #ede8e0 100%);
   padding: 2rem;
   border-radius: 8px;
   margin: 3rem 0;
-  border: 1px solid #e9ecef;
+  border: 1px solid #d4c4a8;
+  box-shadow: 0 4px 16px rgba(139, 115, 85, 0.1);
 }
 
 .research-questions h3 {
   margin-bottom: 1.5rem;
-  color: #2c3e50;
+  color: #5d4e37;
+}
+
+.research-questions ul {
+  list-style: none;
+  padding: 0;
+}
+
+.research-questions li {
+  padding: 0.8rem 0;
+  padding-left: 2rem;
+  position: relative;
+  color: #5d4e37;
+}
+
+.research-questions li:before {
+  content: "🤔";
+  position: absolute;
+  left: 0;
 }
 
 .my-research {
-  background: #f8f9fa;
+  background: linear-gradient(135deg, #f7f5f3 0%, #ede8e0 100%);
   padding: 2rem;
   border-radius: 8px;
   margin: 3rem 0;
-  border: 2px dashed #dee2e6;
+  border: 2px dashed #8b7355;
+  box-shadow: 0 4px 16px rgba(139, 115, 85, 0.1);
+}
+
+.my-research h3 {
+  color: #5d4e37;
+  margin-bottom: 1rem;
+}
+
+.my-research p, .my-research li {
+  color: #5d4e37;
 }
 
 @media (max-width: 768px) {
