@@ -19,15 +19,21 @@ title: "Music is my only drug"
     
     <div class="legends-grid">
       <div class="legend-card">
-        <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/96ed9b0919b25388599fd3e0dd926db4.jpg" alt="Classical composer" />
+        <a href="https://raw.githubusercontent.com/Jaskamalkainth/images/master/96ed9b0919b25388599fd3e0dd926db4.jpg" target="_blank" class="image-link">
+          <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/96ed9b0919b25388599fd3e0dd926db4.jpg" alt="Classical composer" />
+        </a>
       </div>
       
       <div class="legend-card">
-        <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/Ludwig-van-Beethoven-Quotes.jpg" alt="Beethoven quote" />
+        <a href="https://raw.githubusercontent.com/Jaskamalkainth/images/master/Ludwig-van-Beethoven-Quotes.jpg" target="_blank" class="image-link">
+          <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/Ludwig-van-Beethoven-Quotes.jpg" alt="Beethoven quote" />
+        </a>
       </div>
       
       <div class="legend-card">
-        <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/mozart_quote_4_new.jpg" alt="Mozart quote" />
+        <a href="https://raw.githubusercontent.com/Jaskamalkainth/images/master/mozart_quote_4_new.jpg" target="_blank" class="image-link">
+          <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/mozart_quote_4_new.jpg" alt="Mozart quote" />
+        </a>
       </div>
     </div>
   </div>
@@ -150,6 +156,7 @@ title: "Music is my only drug"
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .legend-card:hover {
@@ -157,10 +164,43 @@ title: "Music is my only drug"
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
+.image-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  position: relative;
+}
+
+.image-link::after {
+  content: '🔍';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 5px 8px;
+  border-radius: 50%;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.legend-card:hover .image-link::after {
+  opacity: 1;
+}
+
 .legend-card img {
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+  background: #f8f9fa;
+  transition: transform 0.3s ease;
+}
+
+.legend-card:hover img {
+  transform: scale(1.05);
 }
 
 .music-grid {
