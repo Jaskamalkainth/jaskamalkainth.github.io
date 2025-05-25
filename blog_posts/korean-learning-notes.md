@@ -169,6 +169,7 @@ fa-icon: language
         <div class="reference-content">
           <div class="number-section">
             <h4>Sino-Korean Numbers</h4>
+            <p class="usage-note"><strong>Used for:</strong> Dates, months, years, phone numbers, addresses, money, minutes, seconds, mathematical calculations</p>
             <ul class="korean-list">
               <li>일 (il) - 1</li>
               <li>이 (i) - 2</li>
@@ -189,6 +190,7 @@ fa-icon: language
           </div>
           <div class="number-section">
             <h4>Native Korean Numbers</h4>
+            <p class="usage-note"><strong>Used for:</strong> Counting objects, people, animals, hours (1-12), age, ordering food/drinks</p>
             <ul class="korean-list">
               <li>하나 (hana) - 1</li>
               <li>둘 (dul) - 2</li>
@@ -502,6 +504,9 @@ fa-icon: language
             <li>운는 집에 보기 있다 (Unneun jibe bogi itda) - "A happy home begets good luck"
               <br><span class="proverb-meaning">Meaning: A harmonious and happy home brings good fortune</span>
             </li>
+            <li>천리 길도 한 걸음부터 (cheolli gildo han georeumbuteo) - "Even a thousand-mile journey begins with a single step"
+              <br><span class="proverb-meaning">Meaning: Every great achievement starts with taking the first step, no matter how small</span>
+            </li>
           </ul>
         </div>
       </div>
@@ -700,6 +705,21 @@ fa-icon: language
 
 .reference-card.proverbs-card h3 {
   font-size: 1.4rem;
+}
+
+/* Usage notes styling */
+.usage-note {
+  background: #e3f2fd;
+  border-left: 4px solid #2196F3;
+  padding: 0.75rem;
+  margin: 0.5rem 0 1rem 0;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #1565c0;
+}
+
+.usage-note strong {
+  color: #0d47a1;
 }
 
 /* Make certain cards span full width */
