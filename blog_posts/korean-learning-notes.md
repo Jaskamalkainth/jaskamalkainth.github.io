@@ -530,6 +530,65 @@ fa-icon: language
         </div>
       </div>
 
+      <div class="reference-card">
+        <h3>Seasons & Weather</h3>
+        <div class="reference-content">
+          <div class="vocab-section">
+            <h4>Seasons (계절 - Gyejeol)</h4>
+            <ul class="korean-list">
+              <li>봄 [bom] - spring (March-May)</li>
+              <li>여름 [yeoreum] - summer (June-August)</li>
+              <li>가을 [gaeul] - fall/autumn (September-November)</li>
+              <li>겨울 [gyeoul] - winter (December-February)</li>
+            </ul>
+          </div>
+          <div class="vocab-section">
+            <h4>Weather States</h4>
+            <ul class="korean-list">
+              <li>덥다 [deopda] - hot</li>
+              <li>춥다 [chupda] - cold</li>
+              <li>따뜻하다 [ttatteuthada] - warm</li>
+              <li>시원하다 [siwonhada] - cool</li>
+              <li>습하다 [seupada] - humid</li>
+              <li>흐리다 [heurida] - cloudy</li>
+              <li>맑다 [makda] - clear</li>
+            </ul>
+          </div>
+          <div class="vocab-section">
+            <h4>Weather Events</h4>
+            <ul class="korean-list">
+              <li>비가 오다 [biga oda] - it rains</li>
+              <li>눈이 오다 [nuni oda] - it snows</li>
+              <li>바람이 불다 [barami bulda] - it's windy</li>
+              <li>폭풍이 치다 [pokpungi chida] - it's stormy</li>
+              <li>안개가 끼다 [angaega kkida] - it's foggy</li>
+              <li>무지개가 뜨다 [mujigaega tteuda] - there's a rainbow</li>
+              <li>우박이 내리다 [ubagi naerida] - it's hailing</li>
+            </ul>
+          </div>
+          <div class="vocab-section">
+            <h4>Temperature (온도 - Ondo)</h4>
+            <ul class="korean-list">
+              <li>영상 [yeongsang] - above zero (e.g., 영상 20도 = +20°C)</li>
+              <li>영하 [yeongha] - below zero (e.g., 영하 5도 = -5°C)</li>
+              <li>도 [do] - degree</li>
+              <li>섭씨 [seopsi] - Celsius</li>
+              <li>화씨 [hwasi] - Fahrenheit</li>
+            </ul>
+          </div>
+          <div class="vocab-section">
+            <h4>Common Phrases</h4>
+            <ul class="korean-list">
+              <li>날씨가 어때요? [nalssiga eottaeyo?] - How's the weather?</li>
+              <li>날씨가 좋아요 [nalssiga joayo] - The weather is nice</li>
+              <li>날씨가 나빠요 [nalssiga nappayo] - The weather is bad</li>
+              <li>비가 많이 와요 [biga mani wayo] - It rains a lot</li>
+              <li>오늘도 눈이 와요? [oneuldo nuni wayo?] - Is it snowing today too?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       <div class="reference-card proverbs-card">
         <h3>Korean Proverbs</h3>
         <div class="reference-content">
