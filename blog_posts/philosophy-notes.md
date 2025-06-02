@@ -22,6 +22,11 @@ layout: post
       <p><em>This deep dive connects the philosophical insights from this timeline with modern psychology and neuroscience, exploring how ancient questions about human nature relate to contemporary findings about the mind.</em></p>
     </div>
     
+    <div class="ai-research-note">
+      <h4>🤖 AI Research Credit</h4>
+      <p>This philosophical exploration is enhanced through collaboration with AI research assistants. While AI tools help synthesize and articulate ideas, all perspectives and critical analysis remain my own.</p>
+    </div>
+    
     <h4>Additional Research Connections to Explore:</h4>
     <ul>
       <li>How Buddhist mindfulness relates to modern cognitive therapy</li>
@@ -922,6 +927,25 @@ layout: post
 }
 
 .featured-research h4 {
+  color: #2c2c2c;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ai-research-note {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  border: 1px solid #e9ecef;
+  border-left: 4px solid #666666;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.ai-research-note h4 {
   color: #2c2c2c;
   margin-bottom: 1rem;
   font-size: 1.1rem;
