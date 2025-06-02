@@ -10,11 +10,39 @@ layout: post
   <div class="intro-section">
     <h1>Philosophy Timeline: Understanding the Human Mind</h1>
     <p>I'm fascinated by philosophy, psychology, and the study of human mind - what we do, why we do it. This timeline traces the evolution of human thought from ancient wisdom to modern insights about consciousness and behavior.</p>
+  </div>
+
+  <div class="my-research">
+    <h3>My Research Notes</h3>
     
-    <div class="philosophy-note">
-      <h4>🏛️ Design Philosophy: Stoic Ataraxia</h4>
-      <p>This page's color palette is inspired by <strong>Stoic philosophy</strong> and the concept of <em>Ataraxia</em> (tranquility of mind). The earth tones represent the four cardinal virtues: <span class="virtue-wisdom">Wisdom</span> (deep blues), <span class="virtue-justice">Justice</span> (balanced grays), <span class="virtue-courage">Courage</span> (warm browns), and <span class="virtue-temperance">Temperance</span> (muted greens). These colors promote calm contemplation and focused learning.</p>
+    <div class="featured-research">
+      <h4>📖 Featured Research: Why Do We Do What We Do?</h4>
+      <p>I've written a comprehensive exploration of human motivation through the lens of philosophy, tracing how great thinkers from ancient Greece to modern neuroscience have answered this fundamental question about human behavior.</p>
+      <p><strong><a href="/blog_posts/whatwedowhywedo.html" class="research-link">→ Read the full research: "Why Do We Do What We Do? A Philosophical Journey Across the Ages"</a></strong></p>
+      <p><em>This deep dive connects the philosophical insights from this timeline with modern psychology and neuroscience, exploring how ancient questions about human nature relate to contemporary findings about the mind.</em></p>
     </div>
+    
+    <h4>Additional Research Connections to Explore:</h4>
+    <ul>
+      <li>How Buddhist mindfulness relates to modern cognitive therapy</li>
+      <li>Connections between Stoic philosophy and resilience research</li>
+      <li>Aristotelian virtue ethics and positive psychology</li>
+      <li>Existentialist anxiety and modern understanding of mental health</li>
+      <li>Foucault's power analysis and social psychology</li>
+      <li>Ancient debates about free will and neuroscience findings</li>
+    </ul>
+  </div>
+
+  <div class="research-questions">
+    <h3>Timeless Questions About Human Nature</h3>
+    <ul>
+      <li>What drives human behavior - reason, emotion, or something else?</li>
+      <li>Are we fundamentally good, evil, or neutral?</li>
+      <li>How much of our behavior is determined vs. free?</li>
+      <li>What role do social structures play in shaping who we are?</li>
+      <li>How has our understanding of consciousness evolved?</li>
+      <li>What can ancient wisdom teach us about modern psychology?</li>
+    </ul>
   </div>
 
   <div class="quick-reference">
@@ -457,33 +485,6 @@ layout: post
       </div>
     </div>
   </div>
-
-  <div class="research-questions">
-    <h3>Timeless Questions About Human Nature</h3>
-    <ul>
-      <li>What drives human behavior - reason, emotion, or something else?</li>
-      <li>Are we fundamentally good, evil, or neutral?</li>
-      <li>How much of our behavior is determined vs. free?</li>
-      <li>What role do social structures play in shaping who we are?</li>
-      <li>How has our understanding of consciousness evolved?</li>
-      <li>What can ancient wisdom teach us about modern psychology?</li>
-    </ul>
-  </div>
-
-  <div class="my-research">
-    <h3>My Research Notes</h3>
-    <p><em>This section is reserved for my ongoing research connecting historical philosophical insights with modern psychology and neuroscience. I'll explore how ancient questions about human nature relate to contemporary findings about the mind.</em></p>
-    
-    <h4>Research Connections to Explore:</h4>
-    <ul>
-      <li>How Buddhist mindfulness relates to modern cognitive therapy</li>
-      <li>Connections between Stoic philosophy and resilience research</li>
-      <li>Aristotelian virtue ethics and positive psychology</li>
-      <li>Existentialist anxiety and modern understanding of mental health</li>
-      <li>Foucault's power analysis and social psychology</li>
-      <li>Ancient debates about free will and neuroscience findings</li>
-    </ul>
-  </div>
 </div>
 
 ---
@@ -494,51 +495,50 @@ layout: post
   margin: 0 auto;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  color: #3c3c3c;
-  background: linear-gradient(135deg, #f7f5f3 0%, #f0ede8 100%);
+  color: #2c2c2c;
+  background: #ffffff;
   min-height: 100vh;
   padding: 2rem 1rem;
 }
 
 .intro-section {
-  background: linear-gradient(135deg, #8b7355 0%, #a0896b 100%);
-  color: #f7f5f3;
+  background: #2c2c2c;
+  color: #ffffff;
   padding: 3rem 2rem;
-  border-radius: 12px;
+  border-radius: 8px;
   margin-bottom: 3rem;
   text-align: center;
-  box-shadow: 0 8px 32px rgba(139, 115, 85, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .intro-section h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   font-weight: 300;
-  color: #f7f5f3;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  color: #ffffff;
 }
 
 .intro-section p {
   font-size: 1.2rem;
   max-width: 800px;
   margin: 0 auto 2rem auto;
-  color: #f0ede8;
+  color: #f5f5f5;
   opacity: 0.95;
 }
 
 .philosophy-note {
-  background: rgba(247, 245, 243, 0.15);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   padding: 1.5rem;
   border-radius: 8px;
-  border: 1px solid rgba(247, 245, 243, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   text-align: left;
   max-width: 700px;
   margin: 0 auto;
 }
 
 .philosophy-note h4 {
-  color: #f7f5f3;
+  color: #ffffff;
   margin-bottom: 1rem;
   font-size: 1.1rem;
 }
@@ -550,50 +550,50 @@ layout: post
 }
 
 .virtue-wisdom {
-  color: #4a6741;
+  color: #666666;
   font-weight: 600;
-  background: rgba(74, 103, 65, 0.2);
+  background: rgba(102, 102, 102, 0.1);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
 }
 
 .virtue-justice {
-  color: #6b5b73;
+  color: #666666;
   font-weight: 600;
-  background: rgba(107, 91, 115, 0.2);
+  background: rgba(102, 102, 102, 0.1);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
 }
 
 .virtue-courage {
-  color: #8b7355;
+  color: #666666;
   font-weight: 600;
-  background: rgba(139, 115, 85, 0.2);
+  background: rgba(102, 102, 102, 0.1);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
 }
 
 .virtue-temperance {
-  color: #5d6b5d;
+  color: #666666;
   font-weight: 600;
-  background: rgba(93, 107, 93, 0.2);
+  background: rgba(102, 102, 102, 0.1);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
 }
 
 .quick-reference {
-  background: linear-gradient(135deg, #f7f5f3 0%, #ede8e0 100%);
+  background: #f8f9fa;
   padding: 3rem 2rem;
-  border-radius: 12px;
+  border-radius: 8px;
   margin-bottom: 3rem;
-  border: 1px solid #d4c4a8;
+  border: 1px solid #e9ecef;
   position: relative;
-  box-shadow: 0 4px 16px rgba(139, 115, 85, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .quick-reference h2 {
   text-align: center;
-  color: #5d4e37;
+  color: #2c2c2c;
   margin-bottom: 2.5rem;
   font-size: 2.2rem;
   font-weight: 300;
@@ -610,11 +610,11 @@ layout: post
 }
 
 .reference-period {
-  background: #f7f5f3;
+  background: #ffffff;
   padding: 2rem;
-  border-radius: 12px;
-  border: 1px solid #d4c4a8;
-  box-shadow: 0 4px 12px rgba(139, 115, 85, 0.08);
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   position: relative;
 }
@@ -626,18 +626,18 @@ layout: post
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #4a6741, #6b5b73, #8b7355, #5d6b5d);
-  border-radius: 12px 12px 0 0;
+  background: #2c2c2c;
+  border-radius: 8px 8px 0 0;
 }
 
 .reference-period:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(139, 115, 85, 0.15);
-  background: #faf8f6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  background: #fafafa;
 }
 
 .reference-period h3 {
-  color: #5d4e37;
+  color: #2c2c2c;
   margin-bottom: 0.8rem;
   font-size: 1.3rem;
   font-weight: 600;
@@ -651,56 +651,56 @@ layout: post
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #8b7355;
+  background: #666666;
   flex-shrink: 0;
 }
 
 .period-span {
-  color: #6b5b73;
+  color: #666666;
   font-style: italic;
   font-size: 0.95rem;
   display: block;
   margin-bottom: 1.2rem;
   padding: 0.5rem 1rem;
-  background: #ede8e0;
+  background: #f8f9fa;
   border-radius: 6px;
-  border-left: 3px solid #8b7355;
+  border-left: 3px solid #2c2c2c;
   font-weight: 500;
 }
 
 .key-figures {
-  color: #5d4e37;
+  color: #2c2c2c;
   font-weight: 600;
   margin-bottom: 1rem;
   font-size: 1rem;
   line-height: 1.4;
   padding: 1rem;
-  background: #ede8e0;
+  background: #f8f9fa;
   border-radius: 8px;
-  border-left: 3px solid #4a6741;
+  border-left: 3px solid #666666;
 }
 
 .key-figures::before {
   content: '• ';
   margin-right: 0.5rem;
-  color: #4a6741;
+  color: #666666;
 }
 
 .key-theme {
-  color: #6b5b73;
+  color: #666666;
   font-size: 0.95rem;
   font-style: italic;
   padding: 1rem;
-  background: #ede8e0;
+  background: #f8f9fa;
   border-radius: 8px;
-  border-left: 3px solid #5d6b5d;
+  border-left: 3px solid #999999;
   line-height: 1.4;
 }
 
 .key-theme::before {
   content: '→ ';
   margin-right: 0.5rem;
-  color: #5d6b5d;
+  color: #999999;
 }
 
 .timeline::before {
@@ -710,7 +710,7 @@ layout: post
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(180deg, #8b7355, #6b5b73, #4a6741, #5d6b5d);
+  background: #e9ecef;
   transform: translateX(-50%);
   z-index: 0;
 }
@@ -718,22 +718,22 @@ layout: post
 .period-header {
   text-align: center;
   margin-bottom: 2rem;
-  background: linear-gradient(135deg, #f7f5f3 0%, #ede8e0 100%);
+  background: #f8f9fa;
   padding: 1rem;
   border-radius: 8px;
-  border: 1px solid #d4c4a8;
+  border: 1px solid #e9ecef;
   position: relative;
   z-index: 2;
-  box-shadow: 0 2px 8px rgba(139, 115, 85, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .period-header h2 {
-  color: #5d4e37;
+  color: #2c2c2c;
   margin-bottom: 0.5rem;
 }
 
 .period-header .period-dates {
-  color: #6b5b73;
+  color: #666666;
   font-style: italic;
 }
 
@@ -764,19 +764,19 @@ layout: post
 }
 
 .timeline-content {
-  background: #f7f5f3;
-  border: 1px solid #d4c4a8;
+  background: #ffffff;
+  border: 1px solid #e9ecef;
   border-radius: 8px;
   padding: 1.5rem;
   width: 45%;
   position: relative;
-  box-shadow: 0 2px 8px rgba(139, 115, 85, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .timeline-content:hover {
-  box-shadow: 0 4px 12px rgba(139, 115, 85, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
-  background: #faf8f6;
+  background: #fafafa;
 }
 
 .timeline-item:nth-child(odd) .timeline-content {
@@ -812,47 +812,47 @@ layout: post
   top: 20px;
   width: 16px;
   height: 16px;
-  background: #8b7355;
-  border: 3px solid #f7f5f3;
+  background: #2c2c2c;
+  border: 3px solid #ffffff;
   border-radius: 50%;
   transform: translateX(-50%);
   z-index: 1;
 }
 
 .philosopher-name {
-  color: #5d4e37;
+  color: #2c2c2c;
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
 .philosopher-dates {
-  color: #6b5b73;
+  color: #666666;
   font-style: italic;
   margin-bottom: 1rem;
 }
 
 .philosopher-school {
-  background: #ede8e0;
-  color: #5d4e37;
+  background: #f8f9fa;
+  color: #2c2c2c;
   padding: 0.3rem 0.8rem;
   border-radius: 4px;
   font-size: 0.85rem;
   display: inline-block;
   margin-bottom: 1rem;
-  border: 1px solid #d4c4a8;
+  border: 1px solid #e9ecef;
 }
 
 .key-insight {
-  background: #ede8e0;
+  background: #f8f9fa;
   padding: 1rem;
   border-radius: 6px;
   margin: 1rem 0;
-  border-left: 3px solid #4a6741;
+  border-left: 3px solid #666666;
 }
 
 .key-insight h4 {
-  color: #5d4e37;
+  color: #2c2c2c;
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
   text-transform: uppercase;
@@ -860,17 +860,17 @@ layout: post
 }
 
 .research-questions {
-  background: linear-gradient(135deg, #f7f5f3 0%, #ede8e0 100%);
+  background: #f8f9fa;
   padding: 2rem;
   border-radius: 8px;
   margin: 3rem 0;
-  border: 1px solid #d4c4a8;
-  box-shadow: 0 4px 16px rgba(139, 115, 85, 0.1);
+  border: 1px solid #e9ecef;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .research-questions h3 {
   margin-bottom: 1.5rem;
-  color: #5d4e37;
+  color: #2c2c2c;
 }
 
 .research-questions ul {
@@ -882,31 +882,74 @@ layout: post
   padding: 0.8rem 0;
   padding-left: 2rem;
   position: relative;
-  color: #5d4e37;
+  color: #2c2c2c;
 }
 
 .research-questions li:before {
-  content: "🤔";
+  content: "?";
   position: absolute;
   left: 0;
+  color: #666666;
+  font-weight: bold;
 }
 
 .my-research {
-  background: linear-gradient(135deg, #f7f5f3 0%, #ede8e0 100%);
+  background: #f8f9fa;
   padding: 2rem;
   border-radius: 8px;
   margin: 3rem 0;
-  border: 2px dashed #8b7355;
-  box-shadow: 0 4px 16px rgba(139, 115, 85, 0.1);
+  border: 2px solid #e9ecef;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .my-research h3 {
-  color: #5d4e37;
+  color: #2c2c2c;
   margin-bottom: 1rem;
 }
 
 .my-research p, .my-research li {
-  color: #5d4e37;
+  color: #2c2c2c;
+}
+
+.featured-research {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  border: 1px solid #e9ecef;
+  border-left: 4px solid #2c2c2c;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.featured-research h4 {
+  color: #2c2c2c;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.research-link {
+  color: #2c2c2c;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+  margin: 0.5rem 0;
+}
+
+.research-link:hover {
+  color: #000000;
+  background: #ffffff;
+  border-color: #2c2c2c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
