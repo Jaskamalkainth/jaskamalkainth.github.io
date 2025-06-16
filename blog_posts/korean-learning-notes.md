@@ -60,6 +60,10 @@ fa-icon: language
         <span class="class-number">Class 11</span>
         <span class="class-date">June 6, 2025 (2025년 6월 6일)</span>
       </a>
+      <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-06-13-Class-12.txt" target="_blank" class="note-item">
+        <span class="class-number">Class 12</span>
+        <span class="class-date">June 13, 2025 (2025년 6월 13일)</span>
+      </a>
     </div>
   </div>
 
