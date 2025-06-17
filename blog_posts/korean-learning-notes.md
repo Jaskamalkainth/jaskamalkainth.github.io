@@ -320,11 +320,17 @@ fa-icon: language
             <strong>Greetings:</strong>
             <div class="compact-content">
               <div class="compact-item">안녕하세요 (annyeonghaseyo - hello)</div>
+              <div class="compact-item">안녕히 가세요 (annyeonghi gaseyo - goodbye to leaving)</div>
+              <div class="compact-item">안녕히 계세요 (annyeonghi gyeseyo - goodbye when you leave)</div>
               <div class="compact-item">환영합니다 (hwanyeonghamnida - welcome)</div>
               <div class="compact-item">감사합니다 (kamsahamnida - thank you)</div>
+              <div class="compact-item">고맙습니다 (gomapseumnida - thank you polite)</div>
               <div class="compact-item">만나서 반갑습니다 (mannaseo bangapseumnida - nice to meet you)</div>
+              <div class="compact-item">처음 뵙겠습니다 (cheoeum boepgetseumnida - nice to meet you humble)</div>
               <div class="compact-item">죄송합니다 (joesonghamnida - I'm sorry)</div>
-              <div class="compact-item"></div>
+              <div class="compact-item">미안해요 (mianhaeyo - I'm sorry informal)</div>
+              <div class="compact-item">밥 먹었어요? (bap meogeosseoyo - have you eaten?)</div>
+              <div class="compact-item">식사하셨어요? (siksahasyeosseoyo - have you eaten honorific)</div>
             </div>
           </div>
           <div class="compact-row">
@@ -333,15 +339,183 @@ fa-icon: language
               <div class="compact-item">책을 펴세요 (chaegeul pyeoseyo - open book)</div>
               <div class="compact-item">알겠어요? (algesseoyo - understand?)</div>
               <div class="compact-item">책을 보세요 (chaegeul boseyo - look at book)</div>
-              <div class="compact-item">질문 있어요? (jilmun isseoyo - any questions?)</div>
+              <div class="compact-item">네 알겠어요 (ne algesseoyo - yes I understand)</div>
               <div class="compact-item">잘 들으세요 (jal deureuseyo - listen carefully)</div>
-              <div class="compact-item">질문하세요 (jilmun haseyo - ask question)</div>
+              <div class="compact-item">아니요 모르겠어요 (aniyo moreugesseoyo - no I don't understand)</div>
               <div class="compact-item">따라 하세요 (ttara haseyo - repeat after me)</div>
-              <div class="compact-item">대답하세요 (daedap haseyo - answer question)</div>
+              <div class="compact-item">질문 있어요? (jilmun isseoyo - any questions?)</div>
               <div class="compact-item">읽으세요 (ilgeuseyo - read it)</div>
-              <div class="compact-item"></div>
+              <div class="compact-item">질문하세요 (jilmun haseyo - ask question)</div>
               <div class="compact-item">쓰세요 (sseuseyo - write it)</div>
-              <div class="compact-item"></div>
+              <div class="compact-item">대답하세요 (daedap haseyo - answer question)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reference-card">
+        <h3>Verb Conjugations</h3>
+        <div class="reference-content">
+          <div class="compact-row">
+            <strong>Present Tense Polite (-요):</strong>
+            <div class="compact-content">
+              <div class="compact-item">가다 → 가요 (gada → gayo - go)</div>
+              <div class="compact-item">오다 → 와요 (oda → wayo - come)</div>
+              <div class="compact-item">보다 → 봐요 (boda → bwayo - see/watch)</div>
+              <div class="compact-item">먹다 → 먹어요 (meokda → meogeoyo - eat)</div>
+              <div class="compact-item">마시다 → 마셔요 (masida → masyeoyo - drink)</div>
+              <div class="compact-item">하다 → 해요 (hada → haeyo - do)</div>
+            </div>
+          </div>
+          <div class="compact-row">
+            <strong>Past Tense (-았어요/-었어요):</strong>
+            <div class="compact-content">
+              <div class="compact-item">갔어요 (gasseoyo - went)</div>
+              <div class="compact-item">왔어요 (wasseoyo - came)</div>
+              <div class="compact-item">봤어요 (bwasseoyo - saw/watched)</div>
+              <div class="compact-item">먹었어요 (meogeosseoyo - ate)</div>
+              <div class="compact-item">마셨어요 (masyeosseoyo - drank)</div>
+              <div class="compact-item">했어요 (haesseoyo - did)</div>
+            </div>
+          </div>
+          <div class="compact-row">
+            <strong>Suggestions & Requests:</strong>
+            <div class="compact-content">
+              <div class="compact-item">갈까요? (galkkayo - shall we go?)</div>
+              <div class="compact-item">가세요 (gaseyo - please go)</div>
+              <div class="compact-item">가고 싶어요 (gago sipeoyo - I want to go)</div>
+              <div class="compact-item">가지 마세요 (gaji maseyo - please don't go)</div>
+              <div class="compact-item">안 가요 (an gayo - won't go by choice)</div>
+              <div class="compact-item">못 가요 (mot gayo - can't go due to circumstances)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reference-card">
+        <h3>Question Words & Useful Expressions</h3>
+        <div class="reference-content">
+          <div class="compact-row">
+            <strong>Question Words:</strong>
+            <div class="compact-content">
+              <div class="compact-item">뭐 (mwo - what)</div>
+              <div class="compact-item">어디 (eodi - where)</div>
+              <div class="compact-item">언제 (eonje - when)</div>
+              <div class="compact-item">몇 시 (myeot si - what time)</div>
+              <div class="compact-item">무슨 요일 (museun yoil - what day)</div>
+              <div class="compact-item">몇 개 (myeot gae - how many items)</div>
+              <div class="compact-item">얼마 (eolma - how much)</div>
+              <div class="compact-item">어떻게 (eotteoke - how)</div>
+            </div>
+          </div>
+          <div class="compact-row">
+            <strong>Daily Expressions:</strong>
+            <div class="compact-content">
+              <div class="compact-item">무엇을 드릴까요? (mueoseul deurilkkayo - may I help you)</div>
+              <div class="compact-item">얼마예요? (eolmayeyo - how much is it)</div>
+              <div class="compact-item">어떻게 지내세요? (eotteoke jinaeseyo - how are you)</div>
+              <div class="compact-item">어때요? (eottaeyo - how about it)</div>
+              <div class="compact-item">좋아요 (joayo - good/sounds good)</div>
+              <div class="compact-item">괜찮아요 (gwaenchanhayo - it's okay)</div>
+              <div class="compact-item">잘 먹겠습니다 (jal meokgetseumnida - before eating)</div>
+              <div class="compact-item">잘 먹었습니다 (jal meogeotseumnida - after eating)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reference-card">
+        <h3>Transportation & Places</h3>
+        <div class="reference-content">
+          <div class="compact-row">
+            <strong>Transportation:</strong>
+            <div class="compact-content">
+              <div class="compact-item">버스 (beoseu - bus)</div>
+              <div class="compact-item">지하철 (jihacheol - subway)</div>
+              <div class="compact-item">택시 (taeksi - taxi)</div>
+              <div class="compact-item">KTX (keiteekseu - high-speed rail)</div>
+              <div class="compact-item">버스 정류장 (beoseu jeongryujang - bus stop)</div>
+              <div class="compact-item">지하철역 (jihacheoryeok - subway station)</div>
+              <div class="compact-item">교통 카드 (gyotong kadeu - transportation card)</div>
+              <div class="compact-item">운전하다 (unjeonhada - to drive)</div>
+            </div>
+          </div>
+          <div class="compact-row">
+            <strong>More Places:</strong>
+            <div class="compact-content">
+              <div class="compact-item">영화관 (yeonghwagwan - movie theater)</div>
+              <div class="compact-item">도서관 (doseogwan - library)</div>
+              <div class="compact-item">백화점 (baekhwajeom - department store)</div>
+              <div class="compact-item">카페 (kape - café)</div>
+              <div class="compact-item">교실 (gyosil - classroom)</div>
+              <div class="compact-item">회의실 (hoeuisil - meeting room)</div>
+              <div class="compact-item">병원 (byeongwon - hospital)</div>
+              <div class="compact-item">은행 (eunhaeng - bank)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reference-card">
+        <h3>Currency & Business</h3>
+        <div class="reference-content">
+          <div class="compact-row">
+            <strong>Money:</strong>
+            <div class="compact-content">
+              <div class="compact-item">원 (won - Korean currency)</div>
+              <div class="compact-item">천원 (cheonwon - 1,000 won)</div>
+              <div class="compact-item">만원 (manwon - 10,000 won)</div>
+              <div class="compact-item">지폐 (jipye - banknote)</div>
+              <div class="compact-item">동전 (dongjeon - coin)</div>
+              <div class="compact-item">신용카드 (sinyongkadeu - credit card)</div>
+            </div>
+          </div>
+          <div class="compact-row">
+            <strong>Business Terms:</strong>
+            <div class="compact-content">
+              <div class="compact-item">회사 이름 (hoesa ireum - company name)</div>
+              <div class="compact-item">이름 (ireum - name)</div>
+              <div class="compact-item">전화번호 (jeonhwabeonho - phone number)</div>
+              <div class="compact-item">이메일 (imeil - email)</div>
+              <div class="compact-item">주소 (juso - address)</div>
+              <div class="compact-item">회의 (hoeui - meeting)</div>
+              <div class="compact-item">약속 (yaksok - appointment)</div>
+              <div class="compact-item">시간이 있다/없다 (sigani itda/eopda - have/don't have time)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reference-card">
+        <h3>Korean Holidays & Culture</h3>
+        <div class="reference-content">
+          <div class="compact-row">
+            <strong>Major Holidays:</strong>
+            <div class="compact-content">
+              <div class="compact-item">설날 (seollal - Lunar New Year)</div>
+              <div class="compact-item">추석 (chuseok - Harvest Festival)</div>
+              <div class="compact-item">한글날 (hangeulnal - Hangul Day Oct 9)</div>
+              <div class="compact-item">어린이날 (eorininal - Children's Day May 5)</div>
+              <div class="compact-item">어버이날 (eobeoinal - Parents Day May 8)</div>
+              <div class="compact-item">광복절 (gwangbokjeol - Liberation Day Aug 15)</div>
+            </div>
+          </div>
+          <div class="compact-row">
+            <strong>Traditional Foods:</strong>
+            <div class="compact-content">
+              <div class="compact-item">떡국 (tteokguk - rice cake soup for New Year)</div>
+              <div class="compact-item">송편 (songpyeon - half-moon rice cakes for Chuseok)</div>
+              <div class="compact-item">전 (jeon - savory pancakes)</div>
+              <div class="compact-item">갈비탕 (galbitang - beef short rib soup)</div>
+            </div>
+          </div>
+          <div class="compact-row">
+            <strong>Cultural Terms:</strong>
+            <div class="compact-content">
+              <div class="compact-item">세배 (sebae - deep bow to elders)</div>
+              <div class="compact-item">세뱃돈 (sebaetdon - New Year money gift)</div>
+              <div class="compact-item">한류 (hallyu - Korean Wave)</div>
+              <div class="compact-item">차례 (charye - ancestor memorial service)</div>
             </div>
           </div>
         </div>
@@ -356,7 +530,7 @@ fa-icon: language
               <div class="compact-item">개 (gae - general item)</div>
               <div class="compact-item">권 (gwon - book)</div>
               <div class="compact-item">병 (byeong - bottle)</div>
-              <div class="compact-item">장 (jang - flat object)</div>
+              <div class="compact-item">장 (jang - flat object/paper/tickets)</div>
               <div class="compact-item">명 (myeong - person formal)</div>
               <div class="compact-item">마리 (mari - animal)</div>
               <div class="compact-item">사람 (saram - person informal)</div>
@@ -367,26 +541,24 @@ fa-icon: language
             <strong>Nationalities:</strong>
             <div class="compact-content">
               <div class="compact-item">한국 사람 (hanguk saram - Korean)</div>
-              <div class="compact-item">프랑스 사람 (peurangseu saram - French)</div>
               <div class="compact-item">미국 사람 (miguk saram - American)</div>
-              <div class="compact-item">파키스탄 사람 (pakiseutan saram - Pakistani)</div>
               <div class="compact-item">일본 사람 (ilbon saram - Japanese)</div>
-              <div class="compact-item">베트남 사람 (beteunam saram - Vietnamese)</div>
               <div class="compact-item">중국 사람 (jungguk saram - Chinese)</div>
+              <div class="compact-item">프랑스 사람 (peurangseu saram - French)</div>
+              <div class="compact-item">독일 사람 (dogil saram - German)</div>
               <div class="compact-item">호주 사람 (hoju saram - Australian)</div>
+              <div class="compact-item">베트남 사람 (beteunam saram - Vietnamese)</div>
+              <div class="compact-item">파키스탄 사람 (pakiseutan saram - Pakistani)</div>
               <div class="compact-item">몽골 사람 (monggol saram - Mongolian)</div>
               <div class="compact-item">아일랜드 사람 (aillaendeu saram - Irish)</div>
-              <div class="compact-item">독일 사람 (dogil saram - German)</div>
               <div class="compact-item">러시아 사람 (reosia saram - Russian)</div>
-              <div class="compact-item"></div>
-              <div class="compact-item">인도 사람 (indo saram - Indian)</div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="reference-card">
-        <h3>Occupations</h3>
+        <h3>Occupations & Activities</h3>
         <div class="reference-content">
           <div class="compact-row">
             <strong>Jobs:</strong>
@@ -394,54 +566,28 @@ fa-icon: language
               <div class="compact-item">의사 (uisa - doctor)</div>
               <div class="compact-item">선생님 (seonsaengnim - teacher)</div>
               <div class="compact-item">경찰 (gyeongchal - police officer)</div>
-              <div class="compact-item">감독 (gamdok - director)</div>
+              <div class="compact-item">간호사 (ganhosa - nurse)</div>
               <div class="compact-item">공무원 (gongmuwon - civil servant)</div>
               <div class="compact-item">변호사 (byeonhosa - lawyer)</div>
               <div class="compact-item">회사원 (hoesawon - office worker)</div>
-              <div class="compact-item">간호사 (ganhosa - nurse)</div>
               <div class="compact-item">학생 (haksaeng - student)</div>
-              <div class="compact-item">운전사/기사 (unjeonsa/gisa - driver)</div>
-              <div class="compact-item"></div>
+              <div class="compact-item">기사/운전사 (gisa/unjeonsa - driver)</div>
               <div class="compact-item">기자 (gija - reporter)</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="reference-card">
-        <h3>Common Words</h3>
-        <div class="reference-content">
-          <div class="compact-row">
-            <strong>Activities:</strong>
-            <div class="compact-content">
-              <div class="compact-item">하다 (hada - to do)</div>
-              <div class="compact-item">전화하다 (jeonhwa-hada - to call)</div>
-              <div class="compact-item">운동하다 (undong-hada - to exercise)</div>
-              <div class="compact-item">이야기하다 (iyagi-hada - to talk)</div>
-              <div class="compact-item">일하다 (il-hada - to work)</div>
-              <div class="compact-item">공부하다 (gongbu-hada - to study)</div>
+              <div class="compact-item">요리사 (yorisa - chef)</div>
+              <div class="compact-item">가수 (gasu - singer)</div>
             </div>
           </div>
           <div class="compact-row">
-            <strong>Places:</strong>
+            <strong>Common Activities:</strong>
             <div class="compact-content">
-              <div class="compact-item">학교 (hakgyo - school)</div>
-              <div class="compact-item">공원 (gongwon - park)</div>
-              <div class="compact-item">회사 (hoesa - office/company)</div>
-              <div class="compact-item">시장 (sijang - market)</div>
-              <div class="compact-item">집 (jip - home)</div>
-              <div class="compact-item">식당 (sikdang - restaurant)</div>
-            </div>
-          </div>
-          <div class="compact-row">
-            <strong>Time Words:</strong>
-            <div class="compact-content">
-              <div class="compact-item">오늘 (oneul - today)</div>
-              <div class="compact-item">내일 (naeil - tomorrow)</div>
-              <div class="compact-item">지금 (jigeum - now)</div>
-              <div class="compact-item">어제 (eoje - yesterday)</div>
-              <div class="compact-item">저녁 (jeonyeok - evening)</div>
-              <div class="compact-item">주말 (jumal - weekend)</div>
+              <div class="compact-item">공부하다 (gongbuhada - to study)</div>
+              <div class="compact-item">일하다 (ilhada - to work)</div>
+              <div class="compact-item">운동하다 (undonghada - to exercise)</div>
+              <div class="compact-item">전화하다 (jeonhwahada - to call)</div>
+              <div class="compact-item">이야기하다 (iyagihada - to talk)</div>
+              <div class="compact-item">요리하다 (yorihada - to cook)</div>
+              <div class="compact-item">쇼핑하다 (syopinghada - to shop)</div>
+              <div class="compact-item">운전하다 (unjeonhada - to drive)</div>
             </div>
           </div>
         </div>
@@ -451,156 +597,102 @@ fa-icon: language
         <h3>Food & Shopping</h3>
         <div class="reference-content">
           <div class="compact-row">
-            <strong>Fruits:</strong>
-            <div class="compact-content">
-              <div class="compact-item">사과 (sagwa - apple)</div>
-              <div class="compact-item">포도 (podo - grapes)</div>
-              <div class="compact-item">오렌지 (orenji - orange)</div>
-              <div class="compact-item">구아바 (guaba - guava)</div>
-              <div class="compact-item">수박 (subak - watermelon)</div>
-              <div class="compact-item"></div>
-            </div>
-          </div>
-          <div class="compact-row">
-            <strong>Items:</strong>
-            <div class="compact-content">
-              <div class="compact-item">우유 (uyu - milk)</div>
-              <div class="compact-item">물 (mul - water)</div>
-              <div class="compact-item">주스 (juseu - juice)</div>
-              <div class="compact-item">펜 (pen - pen)</div>
-              <div class="compact-item">빵 (ppang - bread)</div>
-              <div class="compact-item">책 (chaek - book)</div>
-            </div>
-          </div>
-          <div class="compact-row">
             <strong>Korean Food:</strong>
             <div class="compact-content">
-              <div class="compact-item">소주 (soju - Korean distilled alcoholic drink)</div>
-              <div class="compact-item">떡볶이 (tteokbokki - spicy rice cakes)</div>
-              <div class="compact-item">막걸리 (makgeolli - traditional rice wine)</div>
               <div class="compact-item">김밥 (gimbap - seaweed rice rolls)</div>
-              <div class="compact-item">호떡 (hotteok - sweet pancake)</div>
               <div class="compact-item">비빔밥 (bibimbap - mixed rice dish)</div>
-              <div class="compact-item">닭꼬치 (dakkkochi - grilled chicken skewers)</div>
               <div class="compact-item">볶음밥 (bokkeumbap - fried rice)</div>
+              <div class="compact-item">라면 (ramyeon - ramen noodles)</div>
+              <div class="compact-item">떡볶이 (tteokbokki - spicy rice cakes)</div>
+              <div class="compact-item">삼겹살 (samgyeopsal - pork belly)</div>
+              <div class="compact-item">치킨 (chikin - chicken)</div>
+              <div class="compact-item">호떡 (hotteok - sweet pancake)</div>
             </div>
           </div>
           <div class="compact-row">
-            <strong>Sauces/Condiments:</strong>
+            <strong>Drinks & Items:</strong>
+            <div class="compact-content">
+              <div class="compact-item">소주 (soju - Korean alcoholic drink)</div>
+              <div class="compact-item">막걸리 (makgeolli - rice wine)</div>
+              <div class="compact-item">우유 (uyu - milk)</div>
+              <div class="compact-item">커피 (keopi - coffee)</div>
+              <div class="compact-item">물 (mul - water)</div>
+              <div class="compact-item">주스 (juseu - juice)</div>
+              <div class="compact-item">사과 (sagwa - apple)</div>
+              <div class="compact-item">수박 (subak - watermelon)</div>
+            </div>
+          </div>
+          <div class="compact-row">
+            <strong>Condiments:</strong>
             <div class="compact-content">
               <div class="compact-item">된장 (doenjang - soybean paste)</div>
-              <div class="compact-item">쌈장 (ssamjang - thick soybean paste)</div>
               <div class="compact-item">고추장 (gochujang - red chili paste)</div>
               <div class="compact-item">간장 (ganjang - soy sauce)</div>
+              <div class="compact-item">쌈장 (ssamjang - thick soybean paste)</div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="reference-card">
-        <h3>Body Parts</h3>
+        <h3>Body Parts & Position Words</h3>
         <div class="reference-content">
           <div class="compact-row">
             <strong>Head/Face:</strong>
             <div class="compact-content">
               <div class="compact-item">머리 (meori - head)</div>
-              <div class="compact-item">코 (ko - nose)</div>
               <div class="compact-item">머리카락 (meorikarak - hair)</div>
-              <div class="compact-item">입 (ip - mouth)</div>
               <div class="compact-item">얼굴 (eolgul - face)</div>
-              <div class="compact-item">귀 (gwi - ears)</div>
               <div class="compact-item">눈 (nun - eyes)</div>
+              <div class="compact-item">코 (ko - nose)</div>
+              <div class="compact-item">입 (ip - mouth)</div>
+              <div class="compact-item">귀 (gwi - ears)</div>
               <div class="compact-item">목 (mok - neck)</div>
             </div>
           </div>
           <div class="compact-row">
-            <strong>Body:</strong>
+            <strong>Body & Position:</strong>
             <div class="compact-content">
-              <div class="compact-item">어깨 (eokkae - shoulder)</div>
-              <div class="compact-item">배 (bae - stomach)</div>
-              <div class="compact-item">팔 (pal - arm)</div>
-              <div class="compact-item">등 (deung - back)</div>
               <div class="compact-item">손 (son - hand)</div>
+              <div class="compact-item">팔 (pal - arm)</div>
               <div class="compact-item">다리 (dari - leg)</div>
-              <div class="compact-item">손가락 (songarak - finger)</div>
-              <div class="compact-item">무릎 (mureup - knee)</div>
-              <div class="compact-item">가슴 (gaseum - chest)</div>
               <div class="compact-item">발 (bal - foot)</div>
-              <div class="compact-item">발가락 (balgarak - toe)</div>
-              <div class="compact-item">피부 (pibu - skin)</div>
+              <div class="compact-item">앞 (ap - front)</div>
+              <div class="compact-item">뒤 (dwi - back/behind)</div>
+              <div class="compact-item">옆 (yeop - next to)</div>
+              <div class="compact-item">위 (wi - above/on)</div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="reference-card">
-        <h3>Traditional & Weather</h3>
+        <h3>Weather & Traditional</h3>
         <div class="reference-content">
           <div class="compact-row">
-            <strong>Hanbok:</strong>
+            <strong>Seasons & Weather:</strong>
             <div class="compact-content">
-              <div class="compact-item">한복 (hanbok - traditional Korean clothing)</div>
-              <div class="compact-item">마고자 (magoja - jacket)</div>
+              <div class="compact-item">봄 (bom - spring)</div>
+              <div class="compact-item">여름 (yeoreum - summer)</div>
+              <div class="compact-item">가을 (gaeul - fall/autumn)</div>
+              <div class="compact-item">겨울 (gyeoul - winter)</div>
+              <div class="compact-item">덥다 → 더워요 (deopda → deowoyo - hot)</div>
+              <div class="compact-item">춥다 → 추워요 (chupda → chuwoyo - cold)</div>
+              <div class="compact-item">비가 와요 (biga wayo - it's raining)</div>
+              <div class="compact-item">눈이 와요 (nuni wayo - it's snowing)</div>
+            </div>
+          </div>
+          <div class="compact-row">
+            <strong>Traditional Items:</strong>
+            <div class="compact-content">
+              <div class="compact-item">한복 (hanbok - traditional clothing)</div>
               <div class="compact-item">치마 (chima - skirt)</div>
-              <div class="compact-item">바지 (baji - pants)</div>
-              <div class="compact-item">저고리 (jeogori - top)</div>
-              <div class="compact-item">갓 (gat - traditional hat)</div>
-              <div class="compact-item">고름 (goreum - long ties)</div>
-              <div class="compact-item">상투 (sangtu - top knot)</div>
-              <div class="compact-item">당의 (dangui - elongated top)</div>
-              <div class="compact-item">도포 (dopo - long coat)</div>
-              <div class="compact-item"></div>
-              <div class="compact-item">노리개 (norigae - ornaments)</div>
-            </div>
-          </div>
-          <div class="compact-row">
-            <strong>Seasons (계절-Gyejeol):</strong>
-            <div class="compact-content">
-              <div class="compact-item">봄 (bom - spring Mar-May)</div>
-              <div class="compact-item">가을 (gaeul - fall/autumn Sep-Nov)</div>
-              <div class="compact-item">여름 (yeoreum - summer Jun-Aug)</div>
-              <div class="compact-item">겨울 (gyeoul - winter Dec-Feb)</div>
-            </div>
-          </div>
-          <div class="compact-row">
-            <strong>Weather States:</strong>
-            <div class="compact-content">
-              <div class="compact-item">덥다 (deopda - hot)</div>
-              <div class="compact-item">습하다 (seupada - humid)</div>
-              <div class="compact-item">춥다 (chupda - cold)</div>
-              <div class="compact-item">흐리다 (heurida - cloudy)</div>
-              <div class="compact-item">따뜻하다 (ttatteuthada - warm)</div>
-              <div class="compact-item">맑다 (makda - clear)</div>
-              <div class="compact-item">시원하다 (siwonhada - cool)</div>
-              <div class="compact-item"></div>
-            </div>
-          </div>
-          <div class="compact-row">
-            <strong>Weather Events:</strong>
-            <div class="compact-content">
-              <div class="compact-item">비가 오다 (biga oda - it rains)</div>
-              <div class="compact-item">폭풍이 치다 (pokpungi chida - it's stormy)</div>
-              <div class="compact-item">눈이 오다 (nuni oda - it snows)</div>
-              <div class="compact-item">안개가 끼다 (angaega kkida - it's foggy)</div>
-              <div class="compact-item">바람이 불다 (barami bulda - it's windy)</div>
-              <div class="compact-item">무지개가 뜨다 (mujigaega tteuda - rainbow)</div>
-              <div class="compact-item"></div>
-              <div class="compact-item">우박이 내리다 (ubagi naerida - it's hailing)</div>
-            </div>
-          </div>
-          <div class="compact-row">
-            <strong>Temperature & Phrases:</strong>
-            <div class="compact-content">
-              <div class="compact-item">영상 (yeongsang - above zero: 영상 20도=+20°C)</div>
-              <div class="compact-item">날씨가 어때요? (nalssiga eottaeyo - How's the weather?)</div>
-              <div class="compact-item">영하 (yeongha - below zero: 영하 5도=-5°C)</div>
-              <div class="compact-item">날씨가 좋아요 (nalssiga joayo - weather is nice)</div>
-              <div class="compact-item">도 (do - degree)</div>
-              <div class="compact-item">날씨가 나빠요 (nalssiga nappayo - weather is bad)</div>
-              <div class="compact-item">섭씨 (seopsi - Celsius)</div>
-              <div class="compact-item"></div>
-              <div class="compact-item">화씨 (hwasi - Fahrenheit)</div>
-              <div class="compact-item"></div>
+              <div class="compact-item">저고리 (jeogori - top/jacket)</div>
+              <div class="compact-item">한옥 (hanok - traditional house)</div>
+              <div class="compact-item">온돌 (ondol - underfloor heating)</div>
+              <div class="compact-item">한글 (hangeul - Korean alphabet)</div>
+              <div class="compact-item">윷놀이 (yunnori - traditional game)</div>
+              <div class="compact-item">제기차기 (jegi chagi - traditional kicking game)</div>
             </div>
           </div>
         </div>
@@ -623,11 +715,8 @@ fa-icon: language
             <li>무소식이 희소식이다 (Musosigi huisosigida) - "No news is good news"
               <br><span class="proverb-meaning">Meaning: When you don't hear anything, it usually means everything is fine</span>
             </li>
-            <li>운는 집에 보기 있다 (Unneun jibe bogi itda) - "A happy home begets good luck"
-              <br><span class="proverb-meaning">Meaning: A harmonious and happy home brings good fortune</span>
-            </li>
             <li>천리 길도 한 걸음부터 (cheolli gildo han georeumbuteo) - "Even a thousand-mile journey begins with a single step"
-              <br><span class="proverb-meaning">Meaning: Every great achievement starts with taking the first step, no matter how small</span>
+              <br><span class="proverb-meaning">Meaning: Every significant accomplishment begins with a small initial action, emphasizing the importance of starting</span>
             </li>
           </ul>
         </div>
