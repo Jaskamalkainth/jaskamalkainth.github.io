@@ -103,6 +103,93 @@ fa-icon: language
     </div>
   </div>
 
+  <div class="cultural-content-section">
+    <h2>Cultural Videos & Songs from Classes</h2>
+    
+    <div class="cultural-grid">
+      <div class="cultural-card">
+        <h3>📺 Culture Videos</h3>
+        <div class="video-links">
+          <a href="https://www.youtube.com/watch?v=1K6Spf_JmQc" target="_blank" class="video-link">
+            <span class="video-title">Korean Food Culture</span>
+          </a>
+          <a href="https://www.youtube.com/watch?v=l-trIfHnbBs" target="_blank" class="video-link">
+            <span class="video-title">Korean Homes (Ep.4)</span>
+          </a>
+          <a href="https://www.youtube.com/watch?v=Q4J7uylaOLA" target="_blank" class="video-link">
+            <span class="video-title">Korean Greetings (Ep.1)</span>
+          </a>
+          <a href="https://www.youtube.com/watch?v=RCBtMJZCGRE" target="_blank" class="video-link">
+            <span class="video-title">Korean Festivals</span>
+          </a>
+          <a href="https://www.youtube.com/watch?v=Up1Bd7hoLO0" target="_blank" class="video-link">
+            <span class="video-title">Korean Attire (Ep.7)</span>
+          </a>
+          <a href="https://www.youtube.com/watch?v=PQjxB1iAH2I" target="_blank" class="video-link">
+            <span class="video-title">Korean Transportation (Ep.6)</span>
+          </a>
+          <a href="https://www.youtube.com/watch?v=bjMf6r4KI80" target="_blank" class="video-link">
+            <span class="video-title">Weather Phrases</span>
+          </a>
+          <a href="https://www.youtube.com/watch?v=uRvvbTD5cIw" target="_blank" class="video-link">
+            <span class="video-title">Korean Dialogue Listening</span>
+          </a>
+          <a href="https://www.youtube.com/watch?v=xYli4WL_Zsg" target="_blank" class="video-link">
+            <span class="video-title">Daily Routine Phrases</span>
+          </a>
+          <a href="https://www.youtube.com/watch?v=096Ix_ueCZo" target="_blank" class="video-link">
+            <span class="video-title">Role Play Video</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="cultural-card">
+        <h3>🎵 Korean Songs & Poems</h3>
+        <div class="songs-content">
+          <div class="song-item">
+            <h4>Korean Happy Birthday Song</h4>
+            <div class="lyrics">
+              <div class="lyric-line">생일 축하합니다 <em>(saengil chukahamnida)</em> - Happy birthday to you</div>
+              <div class="lyric-line">사랑하는 (name) 씨 <em>(saranghaneun ... ssi)</em> - Dear (name)</div>
+            </div>
+          </div>
+
+          <div class="song-item">
+            <h4>Three Bears Song (곰 세 마리)</h4>
+            <div class="lyrics">
+              <div class="lyric-line">곰 세 마리가 한 집에 있어 <em>(gom se mariga han jibe isseo)</em></div>
+              <div class="lyric-translation">Three bears are in one house</div>
+              <div class="lyric-line">아빠 곰은 뚱뚱해 <em>(appa gomeun ttungttunghae)</em></div>
+              <div class="lyric-translation">Daddy bear is fat</div>
+              <div class="lyric-line">엄마 곰은 날씬해 <em>(eomma gomeun nalssinhae)</em></div>
+              <div class="lyric-translation">Mommy bear is slim</div>
+              <div class="lyric-line">애기 곰은 너무 귀여워 <em>(aegi gomeun neomu gwiyeowo)</em></div>
+              <div class="lyric-translation">Baby bear is very cute</div>
+              <div class="lyric-line">으쓱 으쓱 잘한다 <em>(eusseuk eusseuk jalhanda)</em></div>
+              <div class="lyric-translation">Wiggle wiggle well done!</div>
+            </div>
+          </div>
+
+          <div class="song-item">
+            <h4>Twinkle Little Star (반짝 반짝 작은 별)</h4>
+            <div class="lyrics">
+              <a href="https://www.youtube.com/watch?v=vp-ZsZ28li4" target="_blank" class="video-link">
+                <span class="video-title">🎬 Watch Korean Nursery Song</span>
+              </a>
+            </div>
+          </div>
+          <div class="song-item">
+            <h4>Head Shoulders Knees and Toes</h4>
+            <div class="lyrics">
+              <a href="https://www.youtube.com/watch?v=YMUBFumKXHA" target="_blank" class="video-link">
+                <span class="video-title">🎬 Korean & EnglishㅣWekiz Songs for Children</span>
+              </a>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
   <div class="quick-reference-section">
     <h2>Quick Reference</h2>
     
@@ -367,6 +454,7 @@ fa-icon: language
               <div class="compact-item">미안해요 (mianhaeyo - I'm sorry informal)</div>
               <div class="compact-item">밥 먹었어요? (bap meogeosseoyo - have you eaten?)</div>
               <div class="compact-item">식사하셨어요? (siksahasyeosseoyo - have you eaten honorific)</div>
+              <div class="compact-item">잠시만요 (jamsimanyo - excuse me)</div>
             </div>
           </div>
           <div class="compact-row">
@@ -1091,5 +1179,134 @@ fa-icon: language
   font-style: normal;
   color: #666;
   font-size: 0.9em;
+}
+
+/* Cultural Content Section Styles */
+.cultural-content-section {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.cultural-content-section h2 {
+  color: #333;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.cultural-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.cultural-card {
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  background: #f8f9fa;
+}
+
+.cultural-card h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #2196F3;
+  text-align: center;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 0.5rem;
+}
+
+.video-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.video-link {
+  display: block;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #ddd;
+  transition: all 0.2s ease;
+}
+
+.video-link:hover {
+  background: #e3f2fd;
+  border-color: #2196F3;
+  transform: translateX(2px);
+}
+
+.video-title {
+  font-weight: 500;
+  color: #2196F3;
+}
+
+.songs-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.song-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.song-item h4 {
+  margin: 0 0 0.75rem 0;
+  color: #333;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.lyrics {
+  font-family: 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans CJK KR', sans-serif;
+}
+
+.lyric-line {
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.lyric-line em {
+  color: #666;
+  font-style: italic;
+  font-size: 0.85rem;
+}
+
+.lyric-translation {
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  color: #888;
+  font-style: italic;
+  padding-left: 1rem;
+}
+
+/* Responsive design for cultural section */
+@media (max-width: 768px) {
+  .cultural-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .cultural-card {
+    padding: 1rem;
+  }
+  
+  .cultural-content-section {
+    padding: 1rem;
+  }
 }
 </style> 
