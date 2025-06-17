@@ -17,52 +17,88 @@ fa-icon: language
     <h2>Class Notes</h2>
     <div class="notes-list">
       <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-03-21-Class-01.txt" target="_blank" class="note-item">
-        <span class="class-number">Class 1</span>
-        <span class="class-date">March 21, 2025 (2025년 3월 21일)</span>
+        <div class="note-content">
+          <span class="class-number">Class 1</span>
+          <span class="class-date">March 21, 2025 (2025년 3월 21일)</span>
+          <span class="class-summary">Introduction to Korean alphabet (Hangul) - basic consonants and vowels created by King Sejong in 1443</span>
+        </div>
       </a>
       <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-03-28-Class-02.txt" target="_blank" class="note-item">
-        <span class="class-number">Class 2</span>
-        <span class="class-date">March 28, 2025 (2025년 3월 28일)</span>
+        <div class="note-content">
+          <span class="class-number">Class 2</span>
+          <span class="class-date">March 28, 2025 (2025년 3월 28일)</span>
+          <span class="class-summary">Complex consonants, complex vowels, basic vocabulary, and Korean drinking/food culture</span>
+        </div>
       </a>
       <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-04-04-Class-03.txt" target="_blank" class="note-item">
-        <span class="class-number">Class 3</span>
-        <span class="class-date">April 4, 2025 (2025년 4월 4일)</span>
+        <div class="note-content">
+          <span class="class-number">Class 3</span>
+          <span class="class-date">April 4, 2025 (2025년 4월 4일)</span>
+          <span class="class-summary">Batchim rules (final consonant sounds), consonant assimilation, Korean greetings, and food vocabulary</span>
+        </div>
       </a>
       <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-04-11-Class-04.txt" target="_blank" class="note-item">
-        <span class="class-number">Class 4</span>
-        <span class="class-date">April 11, 2025 (2025년 4월 11일)</span>
+        <div class="note-content">
+          <span class="class-number">Class 4</span>
+          <span class="class-date">April 11, 2025 (2025년 4월 11일)</span>
+          <span class="class-summary">Self-introduction (이에요/예요), nationality, occupation, topic markers (은/는), and Korean home vocabulary</span>
+        </div>
       </a>
       <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-04-17-Class-05.txt" target="_blank" class="note-item">
-        <span class="class-number">Class 5</span>
-        <span class="class-date">April 17, 2025 (2025년 4월 17일)</span>
+        <div class="note-content">
+          <span class="class-number">Class 5</span>
+          <span class="class-date">April 17, 2025 (2025년 4월 17일)</span>
+          <span class="class-summary">Daily activities and places, present tense verbs, three levels of formality, and Korean greeting culture</span>
+        </div>
       </a>
       <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-04-25-Class-06.txt" target="_blank" class="note-item">
-        <span class="class-number">Class 6</span>
-        <span class="class-date">April 25, 2025 (2025년 4월 25일)</span>
+        <div class="note-content">
+          <span class="class-number">Class 6</span>
+          <span class="class-date">April 25, 2025 (2025년 4월 25일)</span>
+          <span class="class-summary">Locations and positions, existence (있다/없다), subject markers (이/가), and Korean festivals</span>
+        </div>
       </a>
       <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-05-09-Class-07.txt" target="_blank" class="note-item">
-        <span class="class-number">Class 7</span>
-        <span class="class-date">May 9, 2025 (2025년 5월 9일)</span>
+        <div class="note-content">
+          <span class="class-number">Class 7</span>
+          <span class="class-date">May 9, 2025 (2025년 5월 9일)</span>
+          <span class="class-summary">Shopping vocabulary, Sino-Korean numbers, object markers (을/를), and months of the year</span>
+        </div>
       </a>
       <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-05-16-Class-08.txt" target="_blank" class="note-item">
-        <span class="class-number">Class 8</span>
-        <span class="class-date">May 16, 2025 (2025년 5월 16일)</span>
+        <div class="note-content">
+          <span class="class-number">Class 8</span>
+          <span class="class-date">May 16, 2025 (2025년 5월 16일)</span>
+          <span class="class-summary">Days of the week, counters with Native Korean numbers, body parts, and Korean traditional clothing</span>
+        </div>
       </a>
       <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-05-23-Class-09.txt" target="_blank" class="note-item">
-        <span class="class-number">Class 9</span>
-        <span class="class-date">May 23, 2025 (2025년 5월 23일)</span>
+        <div class="note-content">
+          <span class="class-number">Class 9</span>
+          <span class="class-date">May 23, 2025 (2025년 5월 23일)</span>
+          <span class="class-summary">Past tense expressions (-았어요/-었어요), location markers (에서), and Korean transportation vocabulary</span>
+        </div>
       </a>
       <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-05-30-Class-10.txt" target="_blank" class="note-item">
-        <span class="class-number">Class 10</span>
-        <span class="class-date">May 30, 2025 (2025년 5월 30일)</span>
+        <div class="note-content">
+          <span class="class-number">Class 10</span>
+          <span class="class-date">May 30, 2025 (2025년 5월 30일)</span>
+          <span class="class-summary">Seasons and weather expressions, temperature reading, negation (안), and connecting words (도, 그리고)</span>
+        </div>
       </a>
       <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-06-06-Class-11.txt" target="_blank" class="note-item">
-        <span class="class-number">Class 11</span>
-        <span class="class-date">June 6, 2025 (2025년 6월 6일)</span>
+        <div class="note-content">
+          <span class="class-number">Class 11</span>
+          <span class="class-date">June 6, 2025 (2025년 6월 6일)</span>
+          <span class="class-summary">Time expressions, making appointments, time markers (에), duration (부터~까지), and prohibitive forms</span>
+        </div>
       </a>
       <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-06-13-Class-12.txt" target="_blank" class="note-item">
-        <span class="class-number">Class 12</span>
-        <span class="class-date">June 13, 2025 (2025년 6월 13일)</span>
+        <div class="note-content">
+          <span class="class-number">Class 12</span>
+          <span class="class-date">June 13, 2025 (2025년 6월 13일)</span>
+          <span class="class-summary">Making suggestions and appointments using -(으)ㄹ까요?, -자/-ㅂ시다, and expressing desires with -고 싶어요</span>
+        </div>
       </a>
     </div>
   </div>
@@ -716,7 +752,7 @@ fa-icon: language
               <br><span class="proverb-meaning">Meaning: When you don't hear anything, it usually means everything is fine</span>
             </li>
             <li>천리 길도 한 걸음부터 (cheolli gildo han georeumbuteo) - "Even a thousand-mile journey begins with a single step"
-              <br><span class="proverb-meaning">Meaning: Every significant accomplishment begins with a small initial action, emphasizing the importance of starting</span>
+              <br><span class="proverb-meaning">Meaning: Every great achievement starts with taking the first step, no matter how small</span>
             </li>
           </ul>
         </div>
@@ -775,10 +811,8 @@ fa-icon: language
 }
 
 .note-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 1rem;
+  display: block;
+  padding: 1rem;
   background: #f8f9fa;
   border-radius: 4px;
   text-decoration: none;
@@ -793,14 +827,29 @@ fa-icon: language
   border-color: #ddd;
 }
 
+.note-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .class-number {
-  font-weight: 500;
+  font-weight: 600;
   color: #2196F3;
+  font-size: 1.1rem;
 }
 
 .class-date {
   color: #666;
   font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.class-summary {
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-top: 0.25rem;
 }
 
 .reference-grid {
