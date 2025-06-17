@@ -111,34 +111,34 @@ fa-icon: language
         <h3>📺 Culture Videos</h3>
         <div class="video-links">
           <a href="https://www.youtube.com/watch?v=1K6Spf_JmQc" target="_blank" class="video-link">
-            <span class="video-title">Korean Food Culture</span>
+            <span class="video-title">Class 3 - Korean Language & Culture Series (Ep.3: Korean Food)</span>
           </a>
           <a href="https://www.youtube.com/watch?v=l-trIfHnbBs" target="_blank" class="video-link">
-            <span class="video-title">Korean Homes (Ep.4)</span>
+            <span class="video-title">Class 4 - Korean Language & Culture Series (Ep.4: Korean Homes)</span>
           </a>
           <a href="https://www.youtube.com/watch?v=Q4J7uylaOLA" target="_blank" class="video-link">
-            <span class="video-title">Korean Greetings (Ep.1)</span>
+            <span class="video-title">Class 5 - Korean Language & Culture Series (Ep.1: Korean Greetings)</span>
           </a>
           <a href="https://www.youtube.com/watch?v=RCBtMJZCGRE" target="_blank" class="video-link">
-            <span class="video-title">Korean Festivals</span>
+            <span class="video-title">Class 6 - Korean Language & Culture Series (Ep.5: Korean Holidays)</span>
           </a>
           <a href="https://www.youtube.com/watch?v=Up1Bd7hoLO0" target="_blank" class="video-link">
-            <span class="video-title">Korean Attire (Ep.7)</span>
+            <span class="video-title">Class 8 - Korean Language & Culture Series (Ep.7: Korean Attire)</span>
           </a>
           <a href="https://www.youtube.com/watch?v=PQjxB1iAH2I" target="_blank" class="video-link">
-            <span class="video-title">Korean Transportation (Ep.6)</span>
+            <span class="video-title">Class 9 - Korean Language & Culture Series (Ep.6: Korean Transportation)</span>
           </a>
           <a href="https://www.youtube.com/watch?v=bjMf6r4KI80" target="_blank" class="video-link">
-            <span class="video-title">Weather Phrases</span>
+            <span class="video-title">Class 10 - Korean Phrases 5: Describing the Weather</span>
           </a>
           <a href="https://www.youtube.com/watch?v=uRvvbTD5cIw" target="_blank" class="video-link">
-            <span class="video-title">Korean Dialogue Listening</span>
+            <span class="video-title">Class 10 - Korean Dialogue Listening</span>
           </a>
           <a href="https://www.youtube.com/watch?v=xYli4WL_Zsg" target="_blank" class="video-link">
-            <span class="video-title">Daily Routine Phrases</span>
+            <span class="video-title">Class 11 - Daily Routine Phrases</span>
           </a>
           <a href="https://www.youtube.com/watch?v=096Ix_ueCZo" target="_blank" class="video-link">
-            <span class="video-title">Role Play Video</span>
+            <span class="video-title">Class 11 - Role Play Video</span>
           </a>
         </div>
       </div>
@@ -174,7 +174,7 @@ fa-icon: language
             <h4>Twinkle Little Star (반짝 반짝 작은 별)</h4>
             <div class="lyrics">
               <a href="https://www.youtube.com/watch?v=vp-ZsZ28li4" target="_blank" class="video-link">
-                <span class="video-title">🎬 Watch Korean Nursery Song</span>
+                <span class="video-title">🎬 Class 10 - Watch Korean Nursery Song</span>
               </a>
             </div>
           </div>
