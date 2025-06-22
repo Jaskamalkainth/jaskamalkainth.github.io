@@ -104,7 +104,7 @@ fa-icon: language
         <div class="note-content">
           <span class="class-number">Class 13</span>
           <span class="class-date">June 20, 2025 (2025년 6월 20일)</span>
-          <span class="class-summary">Weekend activities, future plans</span>
+          <span class="class-summary">Weekend activities, future plans, grammar pattern: -(으)ㄹ 거예요</span>
         </div>
       </a>
     </div>
