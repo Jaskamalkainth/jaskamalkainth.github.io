@@ -203,7 +203,7 @@ fa-icon: language
                 <div class="lyric-line">우리는 하나예요 <span class="inline-author">- JK</span></div>
               </div>
               <div class="poem-explanation">
-                <em>A poem about unity - even though our names are different, we all live under the same sky and we are one.</em>
+                <em> Though our names, cultures, religions, and countries may differ, we all live under the same sky and are one.</em>
               </div>
             </div>
           </div>
