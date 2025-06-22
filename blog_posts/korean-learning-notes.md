@@ -100,6 +100,13 @@ fa-icon: language
           <span class="class-summary">Making suggestions and appointments using -(으)ㄹ까요?, -자/-ㅂ시다, and expressing desires with -고 싶어요</span>
         </div>
       </a>
+      <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-06-20-Class-13.txt" target="_blank" class="note-item">
+        <div class="note-content">
+          <span class="class-number">Class 13</span>
+          <span class="class-date">June 20, 2025 (2025년 6월 20일)</span>
+          <span class="class-summary">Weekend activities, future plans</span>
+        </div>
+      </a>
     </div>
   </div>
 
