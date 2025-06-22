@@ -193,6 +193,20 @@ fa-icon: language
               </a>
             </div>
           </div>
+
+          <div class="song-item">
+            <h4>Unity Haiku (통일 하이쿠)</h4>
+            <div class="lyrics">
+              <div class="korean-poem">
+                <div class="lyric-line">우리 이름이 달라도</div>
+                <div class="lyric-line">우리는 같은 하늘 아래 살아요</div>
+                <div class="lyric-line">우리는 하나예요 <span class="inline-author">- JK</span></div>
+              </div>
+              <div class="poem-explanation">
+                <em>A poem about unity - even though our names are different, we all live under the same sky and we are one.</em>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>
@@ -1299,6 +1313,31 @@ fa-icon: language
   color: #888;
   font-style: italic;
   padding-left: 1rem;
+}
+
+.korean-poem {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 6px;
+  border-left: 3px solid #2196F3;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.poem-explanation {
+  color: #666;
+  font-size: 0.9rem;
+  text-align: center;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.inline-author {
+  font-style: italic;
+  color: #888;
+  font-size: 0.85em;
+  font-weight: 300;
 }
 
 /* Responsive design for cultural section */
