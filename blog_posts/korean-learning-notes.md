@@ -150,7 +150,7 @@ fa-icon: language
           <div class="class-notes-subsection">
             <h4>📚 Class Notes</h4>
             <div class="notes-list">
-              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/Level2/2025-09-12-Class-01.txt" target="_blank" class="note-item">
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2025-09-12-Class-01.txt" target="_blank" class="note-item">
                 <div class="note-content">
                   <span class="class-number">Class 1</span>
                   <span class="class-date">September 12, 2025 (2025년 9월 12일)</span>
