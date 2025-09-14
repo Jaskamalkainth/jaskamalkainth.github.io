@@ -13,100 +13,155 @@ fa-icon: language
     <p class="subtitle">My journey of learning Korean language and culture</p>
   </div>
 
-  <div class="class-notes-section">
-    <h2>Class Notes</h2>
-    <div class="notes-list">
-      <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-03-21-Class-01.txt" target="_blank" class="note-item">
-        <div class="note-content">
-          <span class="class-number">Class 1</span>
-          <span class="class-date">March 21, 2025 (2025년 3월 21일)</span>
-          <span class="class-summary">Introduction to Korean alphabet (Hangul) - basic consonants and vowels created by King Sejong in 1443</span>
+  <div class="levels-section">
+    <h2>Course Levels</h2>
+    
+    <div class="level-container">
+      <div class="level-header" onclick="toggleLevel('level1')">
+        <div class="level-info">
+          <h3>🎯 Level 1 - Foundation Korean</h3>
+          <div class="level-summary">
+            <span class="level-status completed">✅ Completed</span>
+            <span class="level-stats">13 Classes • March - June 2025</span>
+          </div>
+          <p class="level-description">Mastered Korean alphabet (Hangul), basic grammar, numbers, time expressions, and fundamental conversation skills including greetings, self-introduction, and daily activities.</p>
         </div>
-      </a>
-      <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-03-28-Class-02.txt" target="_blank" class="note-item">
-        <div class="note-content">
-          <span class="class-number">Class 2</span>
-          <span class="class-date">March 28, 2025 (2025년 3월 28일)</span>
-          <span class="class-summary">Complex consonants, complex vowels, basic vocabulary, and Korean drinking/food culture</span>
+        <div class="expand-icon" id="level1-icon">+</div>
+      </div>
+      
+      <div class="level-content" id="level1-content">
+        <div class="level-details">
+          <div class="class-notes-subsection">
+            <h4>📚 Class Notes</h4>
+            <div class="notes-list">
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-03-21-Class-01.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 1</span>
+                  <span class="class-date">March 21, 2025 (2025년 3월 21일)</span>
+                  <span class="class-summary">Introduction to Korean alphabet (Hangul) - basic consonants and vowels created by King Sejong in 1443</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-03-28-Class-02.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 2</span>
+                  <span class="class-date">March 28, 2025 (2025년 3월 28일)</span>
+                  <span class="class-summary">Complex consonants, complex vowels, basic vocabulary, and Korean drinking/food culture</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-04-04-Class-03.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 3</span>
+                  <span class="class-date">April 4, 2025 (2025년 4월 4일)</span>
+                  <span class="class-summary">Batchim rules (final consonant sounds), consonant assimilation, Korean greetings, and food vocabulary</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-04-11-Class-04.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 4</span>
+                  <span class="class-date">April 11, 2025 (2025년 4월 11일)</span>
+                  <span class="class-summary">Self-introduction (이에요/예요), nationality, occupation, topic markers (은/는), and Korean home vocabulary</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-04-17-Class-05.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 5</span>
+                  <span class="class-date">April 17, 2025 (2025년 4월 17일)</span>
+                  <span class="class-summary">Daily activities and places, present tense verbs, three levels of formality, and Korean greeting culture</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-04-25-Class-06.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 6</span>
+                  <span class="class-date">April 25, 2025 (2025년 4월 25일)</span>
+                  <span class="class-summary">Locations and positions, existence (있다/없다), subject markers (이/가), and Korean festivals</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-05-09-Class-07.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 7</span>
+                  <span class="class-date">May 9, 2025 (2025년 5월 9일)</span>
+                  <span class="class-summary">Shopping vocabulary, Sino-Korean numbers, object markers (을/를), and months of the year</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-05-16-Class-08.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 8</span>
+                  <span class="class-date">May 16, 2025 (2025년 5월 16일)</span>
+                  <span class="class-summary">Days of the week, counters with Native Korean numbers, body parts, and Korean traditional clothing</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-05-23-Class-09.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 9</span>
+                  <span class="class-date">May 23, 2025 (2025년 5월 23일)</span>
+                  <span class="class-summary">Past tense expressions (-았어요/-었어요), location markers (에서), and Korean transportation vocabulary</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-05-30-Class-10.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 10</span>
+                  <span class="class-date">May 30, 2025 (2025년 5월 30일)</span>
+                  <span class="class-summary">Seasons and weather expressions, temperature reading, negation (안), and connecting words (도, 그리고)</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-06-06-Class-11.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 11</span>
+                  <span class="class-date">June 6, 2025 (2025년 6월 6일)</span>
+                  <span class="class-summary">Time expressions, making appointments, time markers (에), duration (부터~까지), and prohibitive forms</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-06-13-Class-12.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 12</span>
+                  <span class="class-date">June 13, 2025 (2025년 6월 13일)</span>
+                  <span class="class-summary">Making suggestions and appointments using -(으)ㄹ까요?, -자/-ㅂ시다, and expressing desires with -고 싶어요</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-06-20-Class-13.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 13</span>
+                  <span class="class-date">June 20, 2025 (2025년 6월 20일)</span>
+                  <span class="class-summary">Weekend activities, future plans, grammar pattern: -(으)ㄹ 거예요</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
         </div>
-      </a>
-      <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-04-04-Class-03.txt" target="_blank" class="note-item">
-        <div class="note-content">
-          <span class="class-number">Class 3</span>
-          <span class="class-date">April 4, 2025 (2025년 4월 4일)</span>
-          <span class="class-summary">Batchim rules (final consonant sounds), consonant assimilation, Korean greetings, and food vocabulary</span>
+      </div>
+    </div>
+
+    <div class="level-container">
+      <div class="level-header" onclick="toggleLevel('level2')">
+        <div class="level-info">
+          <h3>🚀 Level 2 - Intermediate Korean</h3>
+          <div class="level-summary">
+            <span class="level-status in-progress">🔄 In Progress</span>
+            <span class="level-stats">1 Class • September 2025</span>
+          </div>
+          <p class="level-description">Building on foundation knowledge to develop intermediate conversation skills, complex grammar patterns, and expanded vocabulary for daily communication.</p>
         </div>
-      </a>
-      <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-04-11-Class-04.txt" target="_blank" class="note-item">
-        <div class="note-content">
-          <span class="class-number">Class 4</span>
-          <span class="class-date">April 11, 2025 (2025년 4월 11일)</span>
-          <span class="class-summary">Self-introduction (이에요/예요), nationality, occupation, topic markers (은/는), and Korean home vocabulary</span>
+        <div class="expand-icon" id="level2-icon">+</div>
+      </div>
+      
+      <div class="level-content" id="level2-content">
+        <div class="level-details">
+          <div class="class-notes-subsection">
+            <h4>📚 Class Notes</h4>
+            <div class="notes-list">
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/Level2/2025-09-12-Class-01.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 1</span>
+                  <span class="class-date">September 12, 2025 (2025년 9월 12일)</span>
+                  <span class="class-summary">Level 2 Introduction - Review of Level 1 foundations and introduction to intermediate Korean grammar</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
         </div>
-      </a>
-      <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-04-17-Class-05.txt" target="_blank" class="note-item">
-        <div class="note-content">
-          <span class="class-number">Class 5</span>
-          <span class="class-date">April 17, 2025 (2025년 4월 17일)</span>
-          <span class="class-summary">Daily activities and places, present tense verbs, three levels of formality, and Korean greeting culture</span>
-        </div>
-      </a>
-      <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-04-25-Class-06.txt" target="_blank" class="note-item">
-        <div class="note-content">
-          <span class="class-number">Class 6</span>
-          <span class="class-date">April 25, 2025 (2025년 4월 25일)</span>
-          <span class="class-summary">Locations and positions, existence (있다/없다), subject markers (이/가), and Korean festivals</span>
-        </div>
-      </a>
-      <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-05-09-Class-07.txt" target="_blank" class="note-item">
-        <div class="note-content">
-          <span class="class-number">Class 7</span>
-          <span class="class-date">May 9, 2025 (2025년 5월 9일)</span>
-          <span class="class-summary">Shopping vocabulary, Sino-Korean numbers, object markers (을/를), and months of the year</span>
-        </div>
-      </a>
-      <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-05-16-Class-08.txt" target="_blank" class="note-item">
-        <div class="note-content">
-          <span class="class-number">Class 8</span>
-          <span class="class-date">May 16, 2025 (2025년 5월 16일)</span>
-          <span class="class-summary">Days of the week, counters with Native Korean numbers, body parts, and Korean traditional clothing</span>
-        </div>
-      </a>
-      <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-05-23-Class-09.txt" target="_blank" class="note-item">
-        <div class="note-content">
-          <span class="class-number">Class 9</span>
-          <span class="class-date">May 23, 2025 (2025년 5월 23일)</span>
-          <span class="class-summary">Past tense expressions (-았어요/-었어요), location markers (에서), and Korean transportation vocabulary</span>
-        </div>
-      </a>
-      <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-05-30-Class-10.txt" target="_blank" class="note-item">
-        <div class="note-content">
-          <span class="class-number">Class 10</span>
-          <span class="class-date">May 30, 2025 (2025년 5월 30일)</span>
-          <span class="class-summary">Seasons and weather expressions, temperature reading, negation (안), and connecting words (도, 그리고)</span>
-        </div>
-      </a>
-      <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-06-06-Class-11.txt" target="_blank" class="note-item">
-        <div class="note-content">
-          <span class="class-number">Class 11</span>
-          <span class="class-date">June 6, 2025 (2025년 6월 6일)</span>
-          <span class="class-summary">Time expressions, making appointments, time markers (에), duration (부터~까지), and prohibitive forms</span>
-        </div>
-      </a>
-      <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-06-13-Class-12.txt" target="_blank" class="note-item">
-        <div class="note-content">
-          <span class="class-number">Class 12</span>
-          <span class="class-date">June 13, 2025 (2025년 6월 13일)</span>
-          <span class="class-summary">Making suggestions and appointments using -(으)ㄹ까요?, -자/-ㅂ시다, and expressing desires with -고 싶어요</span>
-        </div>
-      </a>
-      <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/2025-06-20-Class-13.txt" target="_blank" class="note-item">
-        <div class="note-content">
-          <span class="class-number">Class 13</span>
-          <span class="class-date">June 20, 2025 (2025년 6월 20일)</span>
-          <span class="class-summary">Weekend activities, future plans, grammar pattern: -(으)ㄹ 거예요</span>
-        </div>
-      </a>
+      </div>
     </div>
   </div>
 
@@ -898,7 +953,7 @@ fa-icon: language
   color: #666;
 }
 
-.class-notes-section, .quick-reference-section {
+.levels-section, .quick-reference-section {
   background: white;
   border-radius: 10px;
   padding: 2rem;
@@ -906,34 +961,298 @@ fa-icon: language
   margin-bottom: 2rem;
 }
 
-.class-notes-section h2, .quick-reference-section h2 {
-  color: #333;
+.levels-section h2, .quick-reference-section h2 {
+  color: #1a1f36;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.75rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.75rem;
+  letter-spacing: -0.025em;
+}
+
+/* Modern Minimalistic Design */
+.level-container {
   margin-bottom: 1.5rem;
-  border-bottom: 2px solid #eee;
+  border: 1px solid #e1e5e9;
+  border-radius: 12px;
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  transition: all 0.2s ease;
+}
+
+.level-container:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border-color: #d1d9e0;
+}
+
+.level-header {
+  padding: 2rem 2.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border-bottom: 1px solid #f8f9fa;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.level-header:hover {
+  background: #fafbfc;
+}
+
+.level-header.level-upcoming {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-left: 4px solid #6366f1;
+}
+
+.level-header.level-upcoming:hover {
+  background: linear-gradient(135deg, #f1f3f4 0%, #fafbfc 100%);
+}
+
+.level-info {
+  flex: 1;
+}
+
+.level-info h3 {
+  margin: 0 0 0.75rem 0;
+  color: #1a1f36;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+  letter-spacing: -0.025em;
+  line-height: 1.3;
+}
+
+.level-summary {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.level-status {
+  padding: 0.375rem 0.875rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+}
+
+.level-status.completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.level-status.in-progress {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.level-stats {
+  color: #6b7280;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+.level-description {
+  margin: 0;
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+.expand-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #6b7280;
+  transition: all 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.expand-icon:hover {
+  background: #e5e7eb;
+  border-color: #d1d5db;
+}
+
+.expand-icon.rotated {
+  transform: rotate(180deg);
+  background: #3b82f6;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+
+.expand-icon.upcoming {
+  background: #6366f1;
+  color: #ffffff;
+  border-color: #6366f1;
+}
+
+.level-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #ffffff;
+}
+
+.level-content.expanded {
+  max-height: 3000px;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.level-details {
+  padding: 2rem 2.5rem 2.5rem 2.5rem;
+  border-top: 1px solid #f1f3f4;
+  background: #fafbfc;
+}
+
+.class-notes-subsection {
+  margin-bottom: 2rem;
+}
+
+.class-notes-subsection h4 {
+  color: #1a1f36;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-bottom: 2px solid #e5e7eb;
   padding-bottom: 0.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+  letter-spacing: -0.025em;
+}
+
+.cultural-subsection h4 {
+  color: #1a1f36;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+  letter-spacing: -0.025em;
+}
+
+.cultural-mini-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.cultural-mini-card {
+  background: #ffffff;
+  padding: 1.25rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.cultural-mini-card h5 {
+  margin: 0 0 0.75rem 0;
+  color: #1a1f36;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+.video-links-mini {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.video-link-mini {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #3b82f6;
+  font-size: 0.85rem;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+.video-link-mini:hover {
+  background: #dbeafe;
+  border-color: #3b82f6;
+  color: #1d4ed8;
+}
+
+.songs-mini {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.song-mini {
+  padding: 0.5rem 0.75rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  color: #4b5563;
+  font-size: 0.85rem;
+  border: 1px solid #e5e7eb;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+.upcoming-content {
+  padding: 2rem;
+  text-align: center;
+  background: #f8f9fa;
+  border-top: 1px solid #e5e7eb;
+}
+
+.upcoming-message p {
+  margin: 0.5rem 0;
+  color: #6b7280;
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
 }
 
 .notes-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .note-item {
   display: block;
-  padding: 1rem;
-  background: #f8f9fa;
-  border-radius: 4px;
+  padding: 1.25rem;
+  background: #ffffff;
+  border-radius: 8px;
   text-decoration: none;
   color: inherit;
   transition: all 0.2s ease;
-  border: 1px solid #eee;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .note-item:hover {
-  background: #f0f0f0;
-  transform: translateX(3px);
-  border-color: #ddd;
+  background: #fafbfc;
+  border-color: #3b82f6;
+  box-shadow: 0 4px 12px rgba(59,130,246,0.1);
+  transform: translateY(-1px);
 }
 
 .note-content {
@@ -944,21 +1263,26 @@ fa-icon: language
 
 .class-number {
   font-weight: 600;
-  color: #2196F3;
-  font-size: 1.1rem;
+  color: #3b82f6;
+  font-size: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+  letter-spacing: -0.025em;
 }
 
 .class-date {
-  color: #666;
-  font-size: 0.9rem;
+  color: #6b7280;
+  font-size: 0.85rem;
   font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
 }
 
 .class-summary {
-  color: #555;
+  color: #4b5563;
   font-size: 0.9rem;
-  line-height: 1.4;
+  line-height: 1.6;
   margin-top: 0.25rem;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
 }
 
 .reference-grid {
@@ -1354,5 +1678,89 @@ fa-icon: language
   .cultural-content-section {
     padding: 1rem;
   }
+  
+  /* Modern minimalistic responsive design */
+  .level-container {
+    margin-bottom: 1rem;
+  }
+  
+  .level-header {
+    padding: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    position: relative;
+  }
+  
+  .level-summary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  
+  .expand-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    margin-left: 0;
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.875rem;
+  }
+  
+  .cultural-mini-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .level-details {
+    padding: 1.5rem;
+  }
+  
+  .levels-section {
+    padding: 1rem;
+  }
+  
+  .note-item {
+    padding: 1rem;
+  }
+  
+  .cultural-mini-card {
+    padding: 1rem;
+  }
+  
+  .class-notes-subsection h4,
+  .cultural-subsection h4 {
+    font-size: 1rem;
+  }
+  
+  .level-info h3 {
+    font-size: 1.25rem;
+  }
 }
-</style> 
+</style>
+
+<script>
+function toggleLevel(levelId) {
+  const content = document.getElementById(levelId + '-content');
+  const icon = document.getElementById(levelId + '-icon');
+  
+  if (content.classList.contains('expanded')) {
+    content.classList.remove('expanded');
+    icon.classList.remove('rotated');
+    icon.textContent = '+';
+  } else {
+    content.classList.add('expanded');
+    icon.classList.add('rotated');
+    icon.textContent = '−';
+  }
+}
+
+// Initialize all levels as collapsed by default
+document.addEventListener('DOMContentLoaded', function() {
+  // All levels start collapsed - no initialization needed
+  // Users can click to expand any level they want to view
+});
+</script> 
+
