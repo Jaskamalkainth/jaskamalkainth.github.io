@@ -138,7 +138,7 @@ fa-icon: language
           <h3>🚀 Level 2 - Intermediate Korean</h3>
           <div class="level-summary">
             <span class="level-status in-progress">🔄 In Progress</span>
-            <span class="level-stats">1 Class • September 2025</span>
+            <span class="level-stats">2 Classes • September 2025</span>
           </div>
           <p class="level-description">Building on foundation knowledge to develop intermediate conversation skills, complex grammar patterns, and expanded vocabulary for daily communication.</p>
         </div>
@@ -154,7 +154,14 @@ fa-icon: language
                 <div class="note-content">
                   <span class="class-number">Class 1</span>
                   <span class="class-date">September 12, 2025 (2025년 9월 12일)</span>
-                  <span class="class-summary">Level 2 Introduction - Review of Level 1 foundations and introduction to intermediate Korean grammar</span>
+                  <span class="class-summary">Essential connecting grammar: -고 (and), 그런데 (but/however), 도 (also/too) for linking actions and adding emphasis</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2025-09-19-Class-02.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 2</span>
+                  <span class="class-date">September 19, 2025 (2025년 9월 19일)</span>
+                  <span class="class-summary">Connecting sentences (그런데), Korean counters review, text/email comprehension, and intermediate grammar patterns (에게/에게서, 때문에, 수 있어요/없어요)</span>
                 </div>
               </a>
             </div>
@@ -937,6 +944,11 @@ fa-icon: language
   padding: 0 !important;
 }
 
+/* Smooth scrolling for better hash navigation */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Existing styles */
 .korean-notes-header {
   text-align: center;
@@ -959,6 +971,7 @@ fa-icon: language
   padding: 2rem;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   margin-bottom: 2rem;
+  scroll-margin-top: 15vh;
 }
 
 .levels-section h2, .quick-reference-section h2 {
@@ -981,6 +994,7 @@ fa-icon: language
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0,0,0,0.04);
   transition: all 0.2s ease;
+  scroll-margin-top: 20vh;
 }
 
 .level-container:hover {
@@ -1123,6 +1137,7 @@ fa-icon: language
 
 .class-notes-subsection {
   margin-bottom: 2rem;
+  scroll-margin-top: 25vh;
 }
 
 .class-notes-subsection h4 {
@@ -1533,6 +1548,7 @@ fa-icon: language
   padding: 2rem;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   margin-bottom: 2rem;
+  scroll-margin-top: 15vh;
 }
 
 .cultural-content-section h2 {
