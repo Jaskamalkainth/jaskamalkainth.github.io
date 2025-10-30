@@ -138,7 +138,7 @@ fa-icon: language
           <h3>🚀 Level 2 - Intermediate Korean</h3>
           <div class="level-summary">
             <span class="level-status in-progress">🔄 In Progress</span>
-            <span class="level-stats">3 Classes • September 2025</span>
+            <span class="level-stats">4 Classes • September - October 2025</span>
           </div>
           <p class="level-description">Building on foundation knowledge to develop intermediate conversation skills, complex grammar patterns, and expanded vocabulary for daily communication.</p>
         </div>
@@ -169,6 +169,13 @@ fa-icon: language
                   <span class="class-number">Class 3</span>
                   <span class="class-date">September 26, 2025 (2025년 9월 26일)</span>
                   <span class="class-summary">Chapter 2: 취미 활동 (Hobby Activities) - Grammar: 못 (cannot/unable to) and -아서/어서 (because/since), hobby vocabulary, expressing abilities and reasons</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2025-10-17-Class-04.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 4</span>
+                  <span class="class-date">October 17, 2025 (2025년 10월 17일)</span>
+                  <span class="class-summary">Ch2: frequency/reason dialogues; Read&Write — 축사모 poster (Sat 7 a.m., Hana Univ) + Badminton OX (2 correct). Ch3: food ordering/taste; dialogues (ordering, preference); grammar — -(으)ㄹ래요, 무슨+N, 그러면/그런데/그래서; vocab: core dishes & taste adjectives.</span>
                 </div>
               </a>
             </div>
