@@ -138,7 +138,7 @@ fa-icon: language
           <h3>🚀 Level 2 - Intermediate Korean</h3>
           <div class="level-summary">
             <span class="level-status in-progress">🔄 In Progress</span>
-            <span class="level-stats">4 Classes • September - October 2025</span>
+            <span class="level-stats">7 Classes • September - November 2025</span>
           </div>
           <p class="level-description">Building on foundation knowledge to develop intermediate conversation skills, complex grammar patterns, and expanded vocabulary for daily communication.</p>
         </div>
@@ -176,6 +176,27 @@ fa-icon: language
                   <span class="class-number">Class 4</span>
                   <span class="class-date">October 17, 2025 (2025년 10월 17일)</span>
                   <span class="class-summary">Ch2: frequency/reason dialogues; Read&Write — 축사모 poster (Sat 7 a.m., Hana Univ) + Badminton OX (2 correct). Ch3: food ordering/taste; dialogues (ordering, preference); grammar — -(으)ㄹ래요, 무슨+N, 그러면/그런데/그래서; vocab: core dishes & taste adjectives.</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2025-10-31-Class-05.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 5</span>
+                  <span class="class-date">October 31, 2025 (2025년 10월 31일)</span>
+                  <span class="class-summary">Chapter 3: Menu ordering, Read &amp; Write poster, restaurant intro.</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2025-11-07-Class-06.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 6</span>
+                  <span class="class-date">November 7, 2025 (2025년 11월 7일)</span>
+                  <span class="class-summary">CHAPTER: 교통 (Transportation) — Grammar: 이/가 걸리다 (it takes [time]), …에서 …까지 (from … to …); Vocabulary: transportation modes and verbs; Dialogues: asking how you go/come, directions with transfers; Practice: durations (얼마나 … 걸려요/걸렸어요), routes, commute talk.</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2025-11-14-Class-07.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 7</span>
+                  <span class="class-date">November 14, 2025 (2025년 11월 14일)</span>
+                  <span class="class-summary">CHAPTER: 교통 (Transportation) — Grammar: …에서 …까지, [교통수단]을/를 타고 가다/오다/다니다, 갈아타다, 내리다, (시간)이/가 걸리다, -(으)세요; Practice: transfer routes, where to get off, durations; Read &amp; Write: Airport→city table, Beijing→hometown reading; Vocab: transportation/route words and common places.</span>
                 </div>
               </a>
             </div>
