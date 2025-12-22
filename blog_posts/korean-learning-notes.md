@@ -138,7 +138,7 @@ fa-icon: language
           <h3>🚀 Level 2 - Intermediate Korean</h3>
           <div class="level-summary">
             <span class="level-status in-progress">🔄 In Progress</span>
-            <span class="level-stats">7 Classes • September - November 2025</span>
+            <span class="level-stats">10 Classes • September - December 2025</span>
           </div>
           <p class="level-description">Building on foundation knowledge to develop intermediate conversation skills, complex grammar patterns, and expanded vocabulary for daily communication.</p>
         </div>
@@ -197,6 +197,27 @@ fa-icon: language
                   <span class="class-number">Class 7</span>
                   <span class="class-date">November 14, 2025 (2025년 11월 14일)</span>
                   <span class="class-summary">CHAPTER: 교통 (Transportation) — Grammar: …에서 …까지, [교통수단]을/를 타고 가다/오다/다니다, 갈아타다, 내리다, (시간)이/가 걸리다, -(으)세요; Practice: transfer routes, where to get off, durations; Read &amp; Write: Airport→city table, Beijing→hometown reading; Vocab: transportation/route words and common places.</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2025-11-28-Class-08.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 8</span>
+                  <span class="class-date">November 28, 2025 (2025년 11월 28일)</span>
+                  <span class="class-summary">CHAPTER: 길 찾기 (Finding the way) — Grammar: (으)로 (toward/into/by), -아서/어서 (sequence); Actions: 건너다/지나다, 들어가다/나오다/올라가다/내려가다; Patterns: 오른쪽/왼쪽(으)로, 똑바로(쭉) 가세요; Tasks: “오시는 길” style directions.</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2025-12-05-Class-09.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 9</span>
+                  <span class="class-date">December 5, 2025 (2025년 12월 5일)</span>
+                  <span class="class-summary">Theme: 회사생활 (Office life) — Vocab: 출근/퇴근, 근무시간, 회의, 제안서/서류, 첨부/복사/출력, 동료, 쉬는 시간, 점심; Patterns: -(으)면서, -(으)면 돼요, -(으)세요, -아서/어서; Practice: Q&amp;A and office verb examples.</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2025-12-12-Class-10.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 10</span>
+                  <span class="class-date">December 12, 2025 (2025년 12월 12일)</span>
+                  <span class="class-summary">Chapter 5 wrap-up — Integrated directions practice using (으)로 and -아서/어서; Read &amp; Write: “오시는 길” poster, email directions; Speaking: 위치 묻고 답하기, 집 찾아오는 안내 편지 쓰기; Vocab: 이동 동사, 방향어, 장소.</span>
                 </div>
               </a>
             </div>
