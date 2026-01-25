@@ -932,6 +932,11 @@ fa-icon: language
               <div class="compact-item">입 (ip - mouth)</div>
               <div class="compact-item">귀 (gwi - ears)</div>
               <div class="compact-item">목 (mok - neck)</div>
+              <div class="compact-item">이마 (ima - forehead)</div>
+              <div class="compact-item">턱 (teok - chin)</div>
+              <div class="compact-item">입술 (ipsul - lips)</div>
+              <div class="compact-item">이 (i - teeth)</div>
+              <div class="compact-item">혀 (hyeo - tongue)</div>
             </div>
           </div>
           <div class="compact-row">
@@ -941,10 +946,25 @@ fa-icon: language
               <div class="compact-item">팔 (pal - arm)</div>
               <div class="compact-item">다리 (dari - leg)</div>
               <div class="compact-item">발 (bal - foot)</div>
+              <div class="compact-item">어깨 (eokkae - shoulder)</div>
+              <div class="compact-item">무릎 (mureup - knee)</div>
+              <div class="compact-item">허리 (heori - waist)</div>
+              <div class="compact-item">가슴 (gaseum - chest)</div>
+              <div class="compact-item">배 (bae - stomach/abdomen)</div>
+              <div class="compact-item">등 (deung - back)</div>
+              <div class="compact-item">손가락 (songarak - finger)</div>
+              <div class="compact-item">발가락 (balgarak - toe)</div>
               <div class="compact-item">앞 (ap - front)</div>
               <div class="compact-item">뒤 (dwi - back/behind)</div>
               <div class="compact-item">옆 (yeop - next to)</div>
               <div class="compact-item">위 (wi - above/on)</div>
+              <div class="compact-item">아래/밑 (arae/mit - below/under)</div>
+              <div class="compact-item">안 (an - inside)</div>
+              <div class="compact-item">밖 (bak - outside)</div>
+              <div class="compact-item">사이 (sai - between)</div>
+              <div class="compact-item">가운데 (gaunde - middle/center)</div>
+              <div class="compact-item">오른쪽 (oreunjjok - right)</div>
+              <div class="compact-item">왼쪽 (oenjjok - left)</div>
             </div>
           </div>
         </div>
@@ -964,6 +984,13 @@ fa-icon: language
               <div class="compact-item">춥다 → 추워요 (chupda → chuwoyo - cold)</div>
               <div class="compact-item">비가 와요 (biga wayo - it's raining)</div>
               <div class="compact-item">눈이 와요 (nuni wayo - it's snowing)</div>
+              <div class="compact-item">바람이 불어요 (barami bureoyo - it's windy)</div>
+              <div class="compact-item">맑아요 (malgayo - it's clear)</div>
+              <div class="compact-item">흐려요 (heuryeoyo - it's cloudy)</div>
+              <div class="compact-item">습해요 (seuphaeyo - it's humid)</div>
+              <div class="compact-item">건조해요 (geonjohaeyo - it's dry)</div>
+              <div class="compact-item">따뜻해요 (ttatteuthaeyo - it's warm)</div>
+              <div class="compact-item">시원해요 (siwonhaeyo - it's cool)</div>
             </div>
           </div>
           <div class="compact-row">
