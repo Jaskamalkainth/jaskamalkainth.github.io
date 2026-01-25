@@ -220,6 +220,27 @@ fa-icon: language
                   <span class="class-summary">Chapter 5 wrap-up — Integrated directions practice using (으)로 and -아서/어서; Read &amp; Write: “오시는 길” poster, email directions; Speaking: 위치 묻고 답하기, 집 찾아오는 안내 편지 쓰기; Vocab: 이동 동사, 방향어, 장소.</span>
                 </div>
               </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2026-01-09-Class-12.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 12</span>
+                  <span class="class-date">January 9, 2026 (2026년 1월 9일)</span>
+                  <span class="class-summary">Chapter 6 — 전화 (Phone calls): ask/give phone numbers, make calls; Grammar: -아/어 주다 (do for someone), -지요 (confirmation); Vocab: phone/text/call expressions.</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2026-01-16-Class-13.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 13</span>
+                  <span class="class-date">January 16, 2026 (2026년 1월 16일)</span>
+                  <span class="class-summary">Chapter 6 wrap-up — phone conversation practice and application; Activities: role-plays (asking numbers, calling offices), comprehension (texts/emails), writing about phone usage; Vocab: Chapter 6 review.</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2026-01-23-Class-14.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 14</span>
+                  <span class="class-date">January 23, 2026 (2026년 1월 23일)</span>
+                  <span class="class-summary">Chapter 7 — 외모 (Appearance): describe appearance and clothing; Grammar: -(으)ㄴ (adjective modifier), -고 있다 (wearing/current state); Vocab: 외모, 옷차림.</span>
+                </div>
+              </a>
             </div>
           </div>
 
