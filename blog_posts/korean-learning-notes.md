@@ -940,7 +940,7 @@ fa-icon: language
             </div>
           </div>
           <div class="compact-row">
-            <strong>Body & Position:</strong>
+            <strong>Body:</strong>
             <div class="compact-content">
               <div class="compact-item">손 (son - hand)</div>
               <div class="compact-item">팔 (pal - arm)</div>
@@ -954,6 +954,11 @@ fa-icon: language
               <div class="compact-item">등 (deung - back)</div>
               <div class="compact-item">손가락 (songarak - finger)</div>
               <div class="compact-item">발가락 (balgarak - toe)</div>
+            </div>
+          </div>
+          <div class="compact-row">
+            <strong>Position Words:</strong>
+            <div class="compact-content">
               <div class="compact-item">앞 (ap - front)</div>
               <div class="compact-item">뒤 (dwi - back/behind)</div>
               <div class="compact-item">옆 (yeop - next to)</div>
