@@ -1014,6 +1014,829 @@ fa-icon: language
         </div>
       </div>
 
+      <div class="reference-card verbs-card">
+        <h3>Korean Verb Conjugation Table (해요체)</h3>
+        <div class="reference-content">
+                              <details>
+            <summary><strong>Click to expand the verb table</strong></summary>
+            <div style="overflow-x:auto; margin-top: 1rem;">
+              <table class="verbs-table">
+                <thead>
+                  <tr>
+                    <th>Verb (dict.)</th>
+                    <th>English meaning</th>
+                    <th>Present</th>
+                    <th>Past</th>
+                    <th>Future</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Generated from blog_posts/verbs_tenses.tsv (simple -다 verbs only; edit TSV, then run: python tools_update_verb_table.py) -->
+                  <tr>
+                    <td class="ko-cell"><div class="ko">가깝다</div><div class="rom">gakkapda</div></td>
+                    <td>to be close/near</td>
+                    <td class="ko-cell"><div class="ko">가까워요</div><div class="rom">gakkawoyo</div></td>
+                    <td class="ko-cell"><div class="ko">가까웠어요</div><div class="rom">gakkawosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">가까울 거예요</div><div class="rom">gakkaul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">가다</div><div class="rom">gada</div></td>
+                    <td>go</td>
+                    <td class="ko-cell"><div class="ko">가요</div><div class="rom">gayo</div></td>
+                    <td class="ko-cell"><div class="ko">갔어요</div><div class="rom">gasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">갈 거예요</div><div class="rom">gal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">가르치다</div><div class="rom">gareuchida</div></td>
+                    <td>to teach / to tell (someone)</td>
+                    <td class="ko-cell"><div class="ko">가르쳐요</div><div class="rom">gareuchyeoyo</div></td>
+                    <td class="ko-cell"><div class="ko">가르쳤어요</div><div class="rom">gareuchyeosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">가르칠 거예요</div><div class="rom">gareuchil geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">가져오다</div><div class="rom">gajyeooda</div></td>
+                    <td>to bring</td>
+                    <td class="ko-cell"><div class="ko">가져와요</div><div class="rom">gajyeowayo</div></td>
+                    <td class="ko-cell"><div class="ko">가져왔어요</div><div class="rom">gajyeowasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">가져올 거예요</div><div class="rom">gajyeool geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">갈아타다</div><div class="rom">garatada</div></td>
+                    <td>to transfer</td>
+                    <td class="ko-cell"><div class="ko">갈아타요</div><div class="rom">garatayo</div></td>
+                    <td class="ko-cell"><div class="ko">갈아탔어요</div><div class="rom">garatasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">갈아탈 거예요</div><div class="rom">garatal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">걱정하다</div><div class="rom">geokjeonghada</div></td>
+                    <td>to worry</td>
+                    <td class="ko-cell"><div class="ko">걱정해요</div><div class="rom">geokjeonghaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">걱정했어요</div><div class="rom">geokjeonghaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">걱정할 거예요</div><div class="rom">geokjeonghal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">건너다</div><div class="rom">geonneoda</div></td>
+                    <td>to cross</td>
+                    <td class="ko-cell"><div class="ko">건너요</div><div class="rom">geonneoyo</div></td>
+                    <td class="ko-cell"><div class="ko">건넜어요</div><div class="rom">geonneosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">건널 거예요</div><div class="rom">geonneol geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">걸어가다</div><div class="rom">georeogada</div></td>
+                    <td>to go by walking</td>
+                    <td class="ko-cell"><div class="ko">걸어가요</div><div class="rom">georeogayo</div></td>
+                    <td class="ko-cell"><div class="ko">걸어갔어요</div><div class="rom">georeogasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">걸어갈 거예요</div><div class="rom">georeogal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">걸어오다</div><div class="rom">georeooda</div></td>
+                    <td>to come by walking</td>
+                    <td class="ko-cell"><div class="ko">걸어와요</div><div class="rom">georeowayo</div></td>
+                    <td class="ko-cell"><div class="ko">걸어왔어요</div><div class="rom">georeowasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">걸어올 거예요</div><div class="rom">georeool geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">공부하다</div><div class="rom">gongbuhada</div></td>
+                    <td>to study</td>
+                    <td class="ko-cell"><div class="ko">공부해요</div><div class="rom">gongbuhaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">공부했어요</div><div class="rom">gongbuhaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">공부할 거예요</div><div class="rom">gongbuhal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">괜찮다</div><div class="rom">gwaenchanda</div></td>
+                    <td>to be okay</td>
+                    <td class="ko-cell"><div class="ko">괜찮아요</div><div class="rom">gwaenchanayo</div></td>
+                    <td class="ko-cell"><div class="ko">괜찮았어요</div><div class="rom">gwaenchanasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">괜찮을 거예요</div><div class="rom">gwaenchaneul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">구경하다</div><div class="rom">gugyeonghada</div></td>
+                    <td>to see/sightsee</td>
+                    <td class="ko-cell"><div class="ko">구경해요</div><div class="rom">gugyeonghaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">구경했어요</div><div class="rom">gugyeonghaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">구경할 거예요</div><div class="rom">gugyeonghal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">귀엽다</div><div class="rom">gwiyeopda</div></td>
+                    <td>to be cute</td>
+                    <td class="ko-cell"><div class="ko">귀여워요</div><div class="rom">gwiyeowoyo</div></td>
+                    <td class="ko-cell"><div class="ko">귀여웠어요</div><div class="rom">gwiyeowosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">귀여울 거예요</div><div class="rom">gwiyeoul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">그렇다</div><div class="rom">geureotda</div></td>
+                    <td>to be so</td>
+                    <td class="ko-cell"><div class="ko">그래요</div><div class="rom">geuraeyo</div></td>
+                    <td class="ko-cell"><div class="ko">그랬어요</div><div class="rom">geuraesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">그렇을 거예요</div><div class="rom">geureoheul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">그리다</div><div class="rom">geurida</div></td>
+                    <td>to draw</td>
+                    <td class="ko-cell"><div class="ko">그려요</div><div class="rom">geuryeoyo</div></td>
+                    <td class="ko-cell"><div class="ko">그렸어요</div><div class="rom">geuryeosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">그릴 거예요</div><div class="rom">geuril geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">기다리다</div><div class="rom">gidarida</div></td>
+                    <td>to wait</td>
+                    <td class="ko-cell"><div class="ko">기다려요</div><div class="rom">gidaryeoyo</div></td>
+                    <td class="ko-cell"><div class="ko">기다렸어요</div><div class="rom">gidaryeosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">기다릴 거예요</div><div class="rom">gidaril geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">길다</div><div class="rom">gilda</div></td>
+                    <td>to be long</td>
+                    <td class="ko-cell"><div class="ko">길어요</div><div class="rom">gireoyo</div></td>
+                    <td class="ko-cell"><div class="ko">길었어요</div><div class="rom">gireosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">길 거예요</div><div class="rom">gil geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">깨다</div><div class="rom">kkaeda</div></td>
+                    <td>To break, shatter</td>
+                    <td class="ko-cell"><div class="ko">깨요</div><div class="rom">kkaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">깼어요</div><div class="rom">kkaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">깰 거예요</div><div class="rom">kkael geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">나가다</div><div class="rom">nagada</div></td>
+                    <td>to go out</td>
+                    <td class="ko-cell"><div class="ko">나가요</div><div class="rom">nagayo</div></td>
+                    <td class="ko-cell"><div class="ko">나갔어요</div><div class="rom">nagasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">나갈 거예요</div><div class="rom">nagal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">나오다</div><div class="rom">naoda</div></td>
+                    <td>to come out</td>
+                    <td class="ko-cell"><div class="ko">나와요</div><div class="rom">nawayo</div></td>
+                    <td class="ko-cell"><div class="ko">나왔어요</div><div class="rom">nawasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">나올 거예요</div><div class="rom">naol geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">날씬하다</div><div class="rom">nalssinhada</div></td>
+                    <td>to be slim</td>
+                    <td class="ko-cell"><div class="ko">날씬해요</div><div class="rom">nalssinhaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">날씬했어요</div><div class="rom">nalssinhaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">날씬할 거예요</div><div class="rom">nalssinhal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">내려가다</div><div class="rom">naeryeogada</div></td>
+                    <td>to go down</td>
+                    <td class="ko-cell"><div class="ko">내려가요</div><div class="rom">naeryeogayo</div></td>
+                    <td class="ko-cell"><div class="ko">내려갔어요</div><div class="rom">naeryeogasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">내려갈 거예요</div><div class="rom">naeryeogal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">내려오다</div><div class="rom">naeryeooda</div></td>
+                    <td>to come down</td>
+                    <td class="ko-cell"><div class="ko">내려와요</div><div class="rom">naeryeowayo</div></td>
+                    <td class="ko-cell"><div class="ko">내려왔어요</div><div class="rom">naeryeowasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">내려올 거예요</div><div class="rom">naeryeool geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">내리다</div><div class="rom">naerida</div></td>
+                    <td>to get off</td>
+                    <td class="ko-cell"><div class="ko">내려요</div><div class="rom">naeryeoyo</div></td>
+                    <td class="ko-cell"><div class="ko">내렸어요</div><div class="rom">naeryeosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">내릴 거예요</div><div class="rom">naeril geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">놀다</div><div class="rom">nolda</div></td>
+                    <td>to play</td>
+                    <td class="ko-cell"><div class="ko">놀아요</div><div class="rom">norayo</div></td>
+                    <td class="ko-cell"><div class="ko">놀았어요</div><div class="rom">norasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">놀 거예요</div><div class="rom">nol geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">늦다</div><div class="rom">neutda</div></td>
+                    <td>to be late</td>
+                    <td class="ko-cell"><div class="ko">늦어요</div><div class="rom">neujeoyo</div></td>
+                    <td class="ko-cell"><div class="ko">늦었어요</div><div class="rom">neujeosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">늦을 거예요</div><div class="rom">neujeul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">달다</div><div class="rom">dalda</div></td>
+                    <td>sweet</td>
+                    <td class="ko-cell"><div class="ko">달아요</div><div class="rom">darayo</div></td>
+                    <td class="ko-cell"><div class="ko">달았어요</div><div class="rom">darasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">달 거예요</div><div class="rom">dal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">덥다</div><div class="rom">deopda</div></td>
+                    <td>hot</td>
+                    <td class="ko-cell"><div class="ko">더워요</div><div class="rom">deowoyo</div></td>
+                    <td class="ko-cell"><div class="ko">더웠어요</div><div class="rom">deowosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">더울 거예요</div><div class="rom">deoul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">듣다</div><div class="rom">deutda</div></td>
+                    <td>to listen</td>
+                    <td class="ko-cell"><div class="ko">들어요</div><div class="rom">deureoyo</div></td>
+                    <td class="ko-cell"><div class="ko">들었어요</div><div class="rom">deureosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">들을 거예요</div><div class="rom">deureul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">들어가다</div><div class="rom">deureogada</div></td>
+                    <td>to go in / enter</td>
+                    <td class="ko-cell"><div class="ko">들어가요</div><div class="rom">deureogayo</div></td>
+                    <td class="ko-cell"><div class="ko">들어갔어요</div><div class="rom">deureogasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">들어갈 거예요</div><div class="rom">deureogal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">들어오다</div><div class="rom">deureooda</div></td>
+                    <td>to come in / enter</td>
+                    <td class="ko-cell"><div class="ko">들어와요</div><div class="rom">deureowayo</div></td>
+                    <td class="ko-cell"><div class="ko">들어왔어요</div><div class="rom">deureowasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">들어올 거예요</div><div class="rom">deureool geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">따뜻하다</div><div class="rom">ttatteuthada</div></td>
+                    <td>warm</td>
+                    <td class="ko-cell"><div class="ko">따뜻해요</div><div class="rom">ttatteuthaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">따뜻했어요</div><div class="rom">ttatteuthaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">따뜻할 거예요</div><div class="rom">ttatteuthal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">뚱뚱하다</div><div class="rom">ttungttunghada</div></td>
+                    <td>to be fat</td>
+                    <td class="ko-cell"><div class="ko">뚱뚱해요</div><div class="rom">ttungttunghaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">뚱뚱했어요</div><div class="rom">ttungttunghaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">뚱뚱할 거예요</div><div class="rom">ttungttunghal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">마르다</div><div class="rom">mareuda</div></td>
+                    <td>to be skinny / thin</td>
+                    <td class="ko-cell"><div class="ko">말라요</div><div class="rom">malrayo</div></td>
+                    <td class="ko-cell"><div class="ko">말랐어요</div><div class="rom">malrasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">마를 거예요</div><div class="rom">mareul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">만나다</div><div class="rom">mannada</div></td>
+                    <td>to meet</td>
+                    <td class="ko-cell"><div class="ko">만나요</div><div class="rom">mannayo</div></td>
+                    <td class="ko-cell"><div class="ko">만났어요</div><div class="rom">mannasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">만날 거예요</div><div class="rom">mannal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">만들다</div><div class="rom">mandeulda</div></td>
+                    <td>to make</td>
+                    <td class="ko-cell"><div class="ko">만들어요</div><div class="rom">mandeureoyo</div></td>
+                    <td class="ko-cell"><div class="ko">만들었어요</div><div class="rom">mandeureosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">만들 거예요</div><div class="rom">mandeul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">많다</div><div class="rom">manda</div></td>
+                    <td>to be many/much (only ㄴ pronounced)</td>
+                    <td class="ko-cell"><div class="ko">많아요</div><div class="rom">manayo</div></td>
+                    <td class="ko-cell"><div class="ko">많았어요</div><div class="rom">manasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">많을 거예요</div><div class="rom">maneul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">말하다</div><div class="rom">malhada</div></td>
+                    <td>to speak</td>
+                    <td class="ko-cell"><div class="ko">말해요</div><div class="rom">malhaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">말했어요</div><div class="rom">malhaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">말할 거예요</div><div class="rom">malhal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">맑다</div><div class="rom">makda</div></td>
+                    <td>clear</td>
+                    <td class="ko-cell"><div class="ko">맑아요</div><div class="rom">magayo</div></td>
+                    <td class="ko-cell"><div class="ko">맑았어요</div><div class="rom">magasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">맑을 거예요</div><div class="rom">mageul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">맛없다</div><div class="rom">maseotda</div></td>
+                    <td>not tasty</td>
+                    <td class="ko-cell"><div class="ko">맛없어요</div><div class="rom">maseobeoyo</div></td>
+                    <td class="ko-cell"><div class="ko">맛없었어요</div><div class="rom">maseobeosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">맛없을 거예요</div><div class="rom">maseobeul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">맛있다</div><div class="rom">masitda</div></td>
+                    <td>tasty</td>
+                    <td class="ko-cell"><div class="ko">맛있어요</div><div class="rom">masisseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">맛있었어요</div><div class="rom">masisseosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">맛있을 거예요</div><div class="rom">masisseul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">맞다</div><div class="rom">matda</div></td>
+                    <td>to be right / correct</td>
+                    <td class="ko-cell"><div class="ko">맞아요</div><div class="rom">majayo</div></td>
+                    <td class="ko-cell"><div class="ko">맞았어요</div><div class="rom">majasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">맞을 거예요</div><div class="rom">majeul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">맵다</div><div class="rom">maepda</div></td>
+                    <td>spicy</td>
+                    <td class="ko-cell"><div class="ko">매워요</div><div class="rom">maewoyo</div></td>
+                    <td class="ko-cell"><div class="ko">매웠어요</div><div class="rom">maewosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">매울 거예요</div><div class="rom">maeul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">먹다</div><div class="rom">meokda</div></td>
+                    <td>eat</td>
+                    <td class="ko-cell"><div class="ko">먹어요</div><div class="rom">meogeoyo</div></td>
+                    <td class="ko-cell"><div class="ko">먹었어요</div><div class="rom">meogeosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">먹을 거예요</div><div class="rom">meogeul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">멋있다</div><div class="rom">meositda</div></td>
+                    <td>to be stylish / cool</td>
+                    <td class="ko-cell"><div class="ko">멋있어요</div><div class="rom">meosisseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">멋있었어요</div><div class="rom">meosisseosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">멋있을 거예요</div><div class="rom">meosisseul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">모르다</div><div class="rom">moreuda</div></td>
+                    <td>to not know</td>
+                    <td class="ko-cell"><div class="ko">몰라요</div><div class="rom">molrayo</div></td>
+                    <td class="ko-cell"><div class="ko">몰랐어요</div><div class="rom">molrasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">모를 거예요</div><div class="rom">moreul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">물어보다</div><div class="rom">mureoboda</div></td>
+                    <td>to ask</td>
+                    <td class="ko-cell"><div class="ko">물어봐요</div><div class="rom">mureobwayo</div></td>
+                    <td class="ko-cell"><div class="ko">물어봤어요</div><div class="rom">mureobwasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">물어볼 거예요</div><div class="rom">mureobol geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">바쁘다</div><div class="rom">bappeuda</div></td>
+                    <td>to be busy</td>
+                    <td class="ko-cell"><div class="ko">바빠요</div><div class="rom">bappayo</div></td>
+                    <td class="ko-cell"><div class="ko">바빴어요</div><div class="rom">bappasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">바쁠 거예요</div><div class="rom">bappeul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">배우다</div><div class="rom">baeuda</div></td>
+                    <td>to learn</td>
+                    <td class="ko-cell"><div class="ko">배워요</div><div class="rom">baewoyo</div></td>
+                    <td class="ko-cell"><div class="ko">배웠어요</div><div class="rom">baewosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">배울 거예요</div><div class="rom">baeul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">보내다</div><div class="rom">bonaeda</div></td>
+                    <td>to spend (time)</td>
+                    <td class="ko-cell"><div class="ko">보내요</div><div class="rom">bonaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">보냈어요</div><div class="rom">bonaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">보낼 거예요</div><div class="rom">bonael geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">보다</div><div class="rom">boda</div></td>
+                    <td>see/watch</td>
+                    <td class="ko-cell"><div class="ko">봐요</div><div class="rom">bwayo</div></td>
+                    <td class="ko-cell"><div class="ko">봤어요</div><div class="rom">bwasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">볼 거예요</div><div class="rom">bol geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">보이다</div><div class="rom">boida</div></td>
+                    <td>to be visible / to see</td>
+                    <td class="ko-cell"><div class="ko">보여요</div><div class="rom">boyeoyo</div></td>
+                    <td class="ko-cell"><div class="ko">보였어요</div><div class="rom">boyeosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">보일 거예요</div><div class="rom">boil geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">비싸다</div><div class="rom">bissada</div></td>
+                    <td>to be expensive</td>
+                    <td class="ko-cell"><div class="ko">비싸요</div><div class="rom">bissayo</div></td>
+                    <td class="ko-cell"><div class="ko">비쌌어요</div><div class="rom">bissasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">비쌀 거예요</div><div class="rom">bissal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">빌리다</div><div class="rom">bilrida</div></td>
+                    <td>to borrow</td>
+                    <td class="ko-cell"><div class="ko">빌려요</div><div class="rom">bilryeoyo</div></td>
+                    <td class="ko-cell"><div class="ko">빌렸어요</div><div class="rom">bilryeosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">빌릴 거예요</div><div class="rom">bilril geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">사다</div><div class="rom">sada</div></td>
+                    <td>to buy</td>
+                    <td class="ko-cell"><div class="ko">사요</div><div class="rom">sayo</div></td>
+                    <td class="ko-cell"><div class="ko">샀어요</div><div class="rom">sasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">살 거예요</div><div class="rom">sal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">사랑하다</div><div class="rom">saranghada</div></td>
+                    <td>to love</td>
+                    <td class="ko-cell"><div class="ko">사랑해요</div><div class="rom">saranghaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">사랑했어요</div><div class="rom">saranghaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">사랑할 거예요</div><div class="rom">saranghal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">살다</div><div class="rom">salda</div></td>
+                    <td>to live</td>
+                    <td class="ko-cell"><div class="ko">살아요</div><div class="rom">sarayo</div></td>
+                    <td class="ko-cell"><div class="ko">살았어요</div><div class="rom">sarasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">살 거예요</div><div class="rom">sal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">새다</div><div class="rom">saeda</div></td>
+                    <td>To leak</td>
+                    <td class="ko-cell"><div class="ko">새요</div><div class="rom">saeyo</div></td>
+                    <td class="ko-cell"><div class="ko">샜어요</div><div class="rom">saesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">샐 거예요</div><div class="rom">sael geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">소개하다</div><div class="rom">sogaehada</div></td>
+                    <td>to introduce</td>
+                    <td class="ko-cell"><div class="ko">소개해요</div><div class="rom">sogaehaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">소개했어요</div><div class="rom">sogaehaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">소개할 거예요</div><div class="rom">sogaehal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">쇼핑하다</div><div class="rom">syopinghada</div></td>
+                    <td>to go shopping</td>
+                    <td class="ko-cell"><div class="ko">쇼핑해요</div><div class="rom">syopinghaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">쇼핑했어요</div><div class="rom">syopinghaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">쇼핑할 거예요</div><div class="rom">syopinghal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">쉬다</div><div class="rom">swida</div></td>
+                    <td>to rest</td>
+                    <td class="ko-cell"><div class="ko">쉬어요</div><div class="rom">swieoyo</div></td>
+                    <td class="ko-cell"><div class="ko">쉬었어요</div><div class="rom">swieosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">쉴 거예요</div><div class="rom">swil geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">습하다</div><div class="rom">seuphada</div></td>
+                    <td>humid</td>
+                    <td class="ko-cell"><div class="ko">습해요</div><div class="rom">seuphaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">습했어요</div><div class="rom">seuphaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">습할 거예요</div><div class="rom">seuphal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">시다</div><div class="rom">sida</div></td>
+                    <td>sour</td>
+                    <td class="ko-cell"><div class="ko">셔요</div><div class="rom">syeoyo</div></td>
+                    <td class="ko-cell"><div class="ko">셨어요</div><div class="rom">syeosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">실 거예요</div><div class="rom">sil geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">시원하다</div><div class="rom">siwonhada</div></td>
+                    <td>cool</td>
+                    <td class="ko-cell"><div class="ko">시원해요</div><div class="rom">siwonhaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">시원했어요</div><div class="rom">siwonhaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">시원할 거예요</div><div class="rom">siwonhal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">싱겁다</div><div class="rom">singgeopda</div></td>
+                    <td>bland</td>
+                    <td class="ko-cell"><div class="ko">싱거워요</div><div class="rom">singgeowoyo</div></td>
+                    <td class="ko-cell"><div class="ko">싱거웠어요</div><div class="rom">singgeowosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">싱거울 거예요</div><div class="rom">singgeoul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">싸다</div><div class="rom">ssada</div></td>
+                    <td>to be cheap</td>
+                    <td class="ko-cell"><div class="ko">싸요</div><div class="rom">ssayo</div></td>
+                    <td class="ko-cell"><div class="ko">쌌어요</div><div class="rom">ssasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">쌀 거예요</div><div class="rom">ssal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">쓰다</div><div class="rom">sseuda</div></td>
+                    <td>to write</td>
+                    <td class="ko-cell"><div class="ko">써요</div><div class="rom">sseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">썼어요</div><div class="rom">sseosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">쓸 거예요</div><div class="rom">sseul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">아프다</div><div class="rom">apeuda</div></td>
+                    <td>to be sick</td>
+                    <td class="ko-cell"><div class="ko">아파요</div><div class="rom">apayo</div></td>
+                    <td class="ko-cell"><div class="ko">아팠어요</div><div class="rom">apasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">아플 거예요</div><div class="rom">apeul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">앉다</div><div class="rom">anda</div></td>
+                    <td>to sit</td>
+                    <td class="ko-cell"><div class="ko">앉아요</div><div class="rom">anayo</div></td>
+                    <td class="ko-cell"><div class="ko">앉았어요</div><div class="rom">anasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">앉을 거예요</div><div class="rom">aneul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">알다</div><div class="rom">alda</div></td>
+                    <td>to know</td>
+                    <td class="ko-cell"><div class="ko">알아요</div><div class="rom">arayo</div></td>
+                    <td class="ko-cell"><div class="ko">알았어요</div><div class="rom">arasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">알 거예요</div><div class="rom">al geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">연락하다</div><div class="rom">yeonrakhada</div></td>
+                    <td>to contact</td>
+                    <td class="ko-cell"><div class="ko">연락해요</div><div class="rom">yeonrakhaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">연락했어요</div><div class="rom">yeonrakhaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">연락할 거예요</div><div class="rom">yeonrakhal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">예쁘다</div><div class="rom">yeppeuda</div></td>
+                    <td>to be pretty</td>
+                    <td class="ko-cell"><div class="ko">예뻐요</div><div class="rom">yeppeoyo</div></td>
+                    <td class="ko-cell"><div class="ko">예뻤어요</div><div class="rom">yeppeosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">예쁠 거예요</div><div class="rom">yeppeul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">오다</div><div class="rom">oda</div></td>
+                    <td>come</td>
+                    <td class="ko-cell"><div class="ko">와요</div><div class="rom">wayo</div></td>
+                    <td class="ko-cell"><div class="ko">왔어요</div><div class="rom">wasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">올 거예요</div><div class="rom">ol geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">올라가다</div><div class="rom">olragada</div></td>
+                    <td>to go up</td>
+                    <td class="ko-cell"><div class="ko">올라가요</div><div class="rom">olragayo</div></td>
+                    <td class="ko-cell"><div class="ko">올라갔어요</div><div class="rom">olragasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">올라갈 거예요</div><div class="rom">olragal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">올라오다</div><div class="rom">olraoda</div></td>
+                    <td>to come up</td>
+                    <td class="ko-cell"><div class="ko">올라와요</div><div class="rom">olrawayo</div></td>
+                    <td class="ko-cell"><div class="ko">올라왔어요</div><div class="rom">olrawasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">올라올 거예요</div><div class="rom">olraol geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">요리하다</div><div class="rom">yorihada</div></td>
+                    <td>to cook</td>
+                    <td class="ko-cell"><div class="ko">요리해요</div><div class="rom">yorihaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">요리했어요</div><div class="rom">yorihaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">요리할 거예요</div><div class="rom">yorihal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">운동하다</div><div class="rom">undonghada</div></td>
+                    <td>to exercise</td>
+                    <td class="ko-cell"><div class="ko">운동해요</div><div class="rom">undonghaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">운동했어요</div><div class="rom">undonghaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">운동할 거예요</div><div class="rom">undonghal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">운전하다</div><div class="rom">unjeonhada</div></td>
+                    <td>to drive</td>
+                    <td class="ko-cell"><div class="ko">운전해요</div><div class="rom">unjeonhaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">운전했어요</div><div class="rom">unjeonhaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">운전할 거예요</div><div class="rom">unjeonhal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">읊다</div><div class="rom">eulda</div></td>
+                    <td>to recite/chant (only ㅍ pronounced)</td>
+                    <td class="ko-cell"><div class="ko">읊어요</div><div class="rom">eupeoyo</div></td>
+                    <td class="ko-cell"><div class="ko">읊었어요</div><div class="rom">eupeosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">읊을 거예요</div><div class="rom">eupeul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">이사하다</div><div class="rom">isahada</div></td>
+                    <td>to move (houses)</td>
+                    <td class="ko-cell"><div class="ko">이사해요</div><div class="rom">isahaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">이사했어요</div><div class="rom">isahaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">이사할 거예요</div><div class="rom">isahal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">이야기하다</div><div class="rom">iyagihada</div></td>
+                    <td>to talk</td>
+                    <td class="ko-cell"><div class="ko">이야기해요</div><div class="rom">iyagihaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">이야기했어요</div><div class="rom">iyagihaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">이야기할 거예요</div><div class="rom">iyagihal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">일하다</div><div class="rom">ilhada</div></td>
+                    <td>to work</td>
+                    <td class="ko-cell"><div class="ko">일해요</div><div class="rom">ilhaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">일했어요</div><div class="rom">ilhaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">일할 거예요</div><div class="rom">ilhal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">읽다</div><div class="rom">ikda</div></td>
+                    <td>to read (only ㄱ pronounced)</td>
+                    <td class="ko-cell"><div class="ko">읽어요</div><div class="rom">igeoyo</div></td>
+                    <td class="ko-cell"><div class="ko">읽었어요</div><div class="rom">igeosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">읽을 거예요</div><div class="rom">igeul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">입다</div><div class="rom">ipda</div></td>
+                    <td>to wear</td>
+                    <td class="ko-cell"><div class="ko">입어요</div><div class="rom">ibeoyo</div></td>
+                    <td class="ko-cell"><div class="ko">입었어요</div><div class="rom">ibeosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">입을 거예요</div><div class="rom">ibeul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">자다</div><div class="rom">jada</div></td>
+                    <td>to sleep</td>
+                    <td class="ko-cell"><div class="ko">자요</div><div class="rom">jayo</div></td>
+                    <td class="ko-cell"><div class="ko">잤어요</div><div class="rom">jasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">잘 거예요</div><div class="rom">jal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">작다</div><div class="rom">jakda</div></td>
+                    <td>to be small</td>
+                    <td class="ko-cell"><div class="ko">작아요</div><div class="rom">jagayo</div></td>
+                    <td class="ko-cell"><div class="ko">작았어요</div><div class="rom">jagasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">작을 거예요</div><div class="rom">jageul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">잘생기다</div><div class="rom">jalsaenggida</div></td>
+                    <td>to be handsome</td>
+                    <td class="ko-cell"><div class="ko">잘생겨요</div><div class="rom">jalsaenggyeoyo</div></td>
+                    <td class="ko-cell"><div class="ko">잘생겼어요</div><div class="rom">jalsaenggyeosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">잘생길 거예요</div><div class="rom">jalsaenggil geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">재미없다</div><div class="rom">jaemieotda</div></td>
+                    <td>not fun, boring</td>
+                    <td class="ko-cell"><div class="ko">재미없어요</div><div class="rom">jaemieobeoyo</div></td>
+                    <td class="ko-cell"><div class="ko">재미없었어요</div><div class="rom">jaemieobeosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">재미없을 거예요</div><div class="rom">jaemieobeul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">재미있다</div><div class="rom">jaemiitda</div></td>
+                    <td>fun, interesting</td>
+                    <td class="ko-cell"><div class="ko">재미있어요</div><div class="rom">jaemiisseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">재미있었어요</div><div class="rom">jaemiisseosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">재미있을 거예요</div><div class="rom">jaemiisseul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">전화하다</div><div class="rom">jeonhwahada</div></td>
+                    <td>to call</td>
+                    <td class="ko-cell"><div class="ko">전화해요</div><div class="rom">jeonhwahaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">전화했어요</div><div class="rom">jeonhwahaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">전화할 거예요</div><div class="rom">jeonhwahal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">좋다</div><div class="rom">jotda</div></td>
+                    <td>[조따] (jo-tta) = to be good</td>
+                    <td class="ko-cell"><div class="ko">좋아요</div><div class="rom">johayo</div></td>
+                    <td class="ko-cell"><div class="ko">좋았어요</div><div class="rom">johasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">좋을 거예요</div><div class="rom">joheul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">좋아하다</div><div class="rom">johahada</div></td>
+                    <td>to like</td>
+                    <td class="ko-cell"><div class="ko">좋아해요</div><div class="rom">johahaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">좋아했어요</div><div class="rom">johahaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">좋아할 거예요</div><div class="rom">johahal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">주다</div><div class="rom">juda</div></td>
+                    <td>to give</td>
+                    <td class="ko-cell"><div class="ko">줘요</div><div class="rom">jwoyo</div></td>
+                    <td class="ko-cell"><div class="ko">줬어요</div><div class="rom">jwosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">줄 거예요</div><div class="rom">jul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">즐겁다</div><div class="rom">jeulgeopda</div></td>
+                    <td>to be pleased, enjoyable</td>
+                    <td class="ko-cell"><div class="ko">즐거워요</div><div class="rom">jeulgeowoyo</div></td>
+                    <td class="ko-cell"><div class="ko">즐거웠어요</div><div class="rom">jeulgeowosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">즐거울 거예요</div><div class="rom">jeulgeoul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">지나다</div><div class="rom">jinada</div></td>
+                    <td>to pass</td>
+                    <td class="ko-cell"><div class="ko">지나요</div><div class="rom">jinayo</div></td>
+                    <td class="ko-cell"><div class="ko">지났어요</div><div class="rom">jinasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">지날 거예요</div><div class="rom">jinal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">짜다</div><div class="rom">jjada</div></td>
+                    <td>salty</td>
+                    <td class="ko-cell"><div class="ko">짜요</div><div class="rom">jjayo</div></td>
+                    <td class="ko-cell"><div class="ko">짰어요</div><div class="rom">jjasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">짤 거예요</div><div class="rom">jjal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">짧다</div><div class="rom">jjalda</div></td>
+                    <td>to be short</td>
+                    <td class="ko-cell"><div class="ko">짧아요</div><div class="rom">jjabayo</div></td>
+                    <td class="ko-cell"><div class="ko">짧았어요</div><div class="rom">jjabasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">짧을 거예요</div><div class="rom">jjabeul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">쬐다</div><div class="rom">jjoeda</div></td>
+                    <td>To sunbathe, expose to sunlight</td>
+                    <td class="ko-cell"><div class="ko">쬐요</div><div class="rom">jjoeyo</div></td>
+                    <td class="ko-cell"><div class="ko">쬤어요</div><div class="rom">jjoesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">쬘 거예요</div><div class="rom">jjoel geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">찾다</div><div class="rom">chatda</div></td>
+                    <td>to look for</td>
+                    <td class="ko-cell"><div class="ko">찾아요</div><div class="rom">chajayo</div></td>
+                    <td class="ko-cell"><div class="ko">찾았어요</div><div class="rom">chajasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">찾을 거예요</div><div class="rom">chajeul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">첨부하다</div><div class="rom">cheopbuhada</div></td>
+                    <td>to attach — 첨부파일을 확인해 주세요.</td>
+                    <td class="ko-cell"><div class="ko">첨부해요</div><div class="rom">cheopbuhaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">첨부했어요</div><div class="rom">cheopbuhaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">첨부할 거예요</div><div class="rom">cheopbuhal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">청소하다</div><div class="rom">cheongsohada</div></td>
+                    <td>to clean</td>
+                    <td class="ko-cell"><div class="ko">청소해요</div><div class="rom">cheongsohaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">청소했어요</div><div class="rom">cheongsohaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">청소할 거예요</div><div class="rom">cheongsohal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">축하하다</div><div class="rom">chukhahada</div></td>
+                    <td>to congratulate</td>
+                    <td class="ko-cell"><div class="ko">축하해요</div><div class="rom">chukhahaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">축하했어요</div><div class="rom">chukhahaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">축하할 거예요</div><div class="rom">chukhahal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">출근하다</div><div class="rom">chulgeunhada</div></td>
+                    <td>to go to work — 아침 9시에 출근해요.</td>
+                    <td class="ko-cell"><div class="ko">출근해요</div><div class="rom">chulgeunhaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">출근했어요</div><div class="rom">chulgeunhaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">출근할 거예요</div><div class="rom">chulgeunhal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">춥다</div><div class="rom">chupda</div></td>
+                    <td>cold</td>
+                    <td class="ko-cell"><div class="ko">추워요</div><div class="rom">chuwoyo</div></td>
+                    <td class="ko-cell"><div class="ko">추웠어요</div><div class="rom">chuwosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">추울 거예요</div><div class="rom">chuul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">크다</div><div class="rom">keuda</div></td>
+                    <td>to be big/large</td>
+                    <td class="ko-cell"><div class="ko">커요</div><div class="rom">keoyo</div></td>
+                    <td class="ko-cell"><div class="ko">컸어요</div><div class="rom">keosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">클 거예요</div><div class="rom">keul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">타다</div><div class="rom">tada</div></td>
+                    <td>to get on/ride</td>
+                    <td class="ko-cell"><div class="ko">타요</div><div class="rom">tayo</div></td>
+                    <td class="ko-cell"><div class="ko">탔어요</div><div class="rom">tasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">탈 거예요</div><div class="rom">tal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">태다</div><div class="rom">taeda</div></td>
+                    <td>To clean, wipe</td>
+                    <td class="ko-cell"><div class="ko">태요</div><div class="rom">taeyo</div></td>
+                    <td class="ko-cell"><div class="ko">탰어요</div><div class="rom">taesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">탤 거예요</div><div class="rom">tael geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">퇴근하다</div><div class="rom">toegeunhada</div></td>
+                    <td>to leave work — 저녁 6시에 퇴근해요.</td>
+                    <td class="ko-cell"><div class="ko">퇴근해요</div><div class="rom">toegeunhaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">퇴근했어요</div><div class="rom">toegeunhaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">퇴근할 거예요</div><div class="rom">toegeunhal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">팔다</div><div class="rom">palda</div></td>
+                    <td>to sell</td>
+                    <td class="ko-cell"><div class="ko">팔아요</div><div class="rom">parayo</div></td>
+                    <td class="ko-cell"><div class="ko">팔았어요</div><div class="rom">parasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">팔 거예요</div><div class="rom">pal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">피곤하다</div><div class="rom">pigonhada</div></td>
+                    <td>to be tired</td>
+                    <td class="ko-cell"><div class="ko">피곤해요</div><div class="rom">pigonhaeyo</div></td>
+                    <td class="ko-cell"><div class="ko">피곤했어요</div><div class="rom">pigonhaesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">피곤할 거예요</div><div class="rom">pigonhal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">하다</div><div class="rom">hada</div></td>
+                    <td>to do</td>
+                    <td class="ko-cell"><div class="ko">해요</div><div class="rom">haeyo</div></td>
+                    <td class="ko-cell"><div class="ko">했어요</div><div class="rom">haesseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">할 거예요</div><div class="rom">hal geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">핥다</div><div class="rom">halda</div></td>
+                    <td>to lick (only ㄹ pronounced)</td>
+                    <td class="ko-cell"><div class="ko">핥아요</div><div class="rom">hatayo</div></td>
+                    <td class="ko-cell"><div class="ko">핥았어요</div><div class="rom">hatasseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">핥을 거예요</div><div class="rom">hateul geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">흐리다</div><div class="rom">heurida</div></td>
+                    <td>cloudy</td>
+                    <td class="ko-cell"><div class="ko">흐려요</div><div class="rom">heuryeoyo</div></td>
+                    <td class="ko-cell"><div class="ko">흐렸어요</div><div class="rom">heuryeosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">흐릴 거예요</div><div class="rom">heuril geoyeyo</div></td>
+                  </tr>
+                  <tr>
+                    <td class="ko-cell"><div class="ko">힘들다</div><div class="rom">hipdeulda</div></td>
+                    <td>to have a hard time</td>
+                    <td class="ko-cell"><div class="ko">힘들어요</div><div class="rom">hipdeureoyo</div></td>
+                    <td class="ko-cell"><div class="ko">힘들었어요</div><div class="rom">hipdeureosseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">힘들 거예요</div><div class="rom">hipdeul geoyeyo</div></td>
+                  </tr>
+</tbody>
+              </table>
+            </div>
+          </details>  
+        </div>
+      </div>
+
       <div class="reference-card proverbs-card">
         <h3>Korean Proverbs</h3>
         <div class="reference-content">
@@ -1537,6 +2360,65 @@ html {
 .reference-card.proverbs-card {
   grid-column: 1 / -1;
   width: 100%;
+}
+
+/* Make the verbs table span the full grid width (2-column layout) */
+.reference-card.verbs-card {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.reference-card.verbs-card table {
+  width: 100%;
+}
+
+/* Verbs table styling */
+.verbs-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.verbs-table thead th {
+  position: sticky;
+  top: 0;
+  background: #f8fafc;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111827;
+  font-weight: 700;
+  padding: 0.75rem 0.85rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.verbs-table tbody td {
+  border-top: 1px solid #f1f5f9;
+  padding: 0.75rem 0.85rem;
+  vertical-align: top;
+}
+
+.verbs-table tbody tr:nth-child(even) td {
+  background: #fcfcfd;
+}
+
+.verbs-table .ko {
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.verbs-table .rom {
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+  line-height: 1.2;
+}
+
+.verbs-table td.ko-cell {
+  min-width: 160px;
 }
 
 .reference-card.proverbs-card .reference-content {
