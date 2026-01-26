@@ -175,7 +175,7 @@ fa-icon: language
                 <div class="note-content">
                   <span class="class-number">Class 4</span>
                   <span class="class-date">October 17, 2025 (2025년 10월 17일)</span>
-                  <span class="class-summary">Ch2: frequency/reason dialogues; Read&Write — 축사모 poster (Sat 7 a.m., Hana Univ) + Badminton OX (2 correct). Ch3: food ordering/taste; dialogues (ordering, preference); grammar — -(으)ㄹ래요, 무슨+N, 그러면/그런데/그래서; vocab: core dishes & taste adjectives.</span>
+                  <span class="class-summary">Ch2: frequency/reason dialogues; Read&Write: 축사모 poster (Sat 7 a.m., Hana Univ) + Badminton OX (2 correct). Ch3: food ordering/taste; dialogues (ordering, preference); grammar: -(으)ㄹ래요, 무슨+N, 그러면/그런데/그래서; vocab: core dishes & taste adjectives.</span>
                 </div>
               </a>
               <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2025-10-31-Class-05.txt" target="_blank" class="note-item">
@@ -189,56 +189,56 @@ fa-icon: language
                 <div class="note-content">
                   <span class="class-number">Class 6</span>
                   <span class="class-date">November 7, 2025 (2025년 11월 7일)</span>
-                  <span class="class-summary">CHAPTER: 교통 (Transportation) — Grammar: 이/가 걸리다 (it takes [time]), …에서 …까지 (from … to …); Vocabulary: transportation modes and verbs; Dialogues: asking how you go/come, directions with transfers; Practice: durations (얼마나 … 걸려요/걸렸어요), routes, commute talk.</span>
+                  <span class="class-summary">CHAPTER: 교통 (Transportation) - Grammar: 이/가 걸리다 (it takes [time]), …에서 …까지 (from … to …); Vocabulary: transportation modes and verbs; Dialogues: asking how you go/come, directions with transfers; Practice: durations (얼마나 … 걸려요/걸렸어요), routes, commute talk.</span>
                 </div>
               </a>
               <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2025-11-14-Class-07.txt" target="_blank" class="note-item">
                 <div class="note-content">
                   <span class="class-number">Class 7</span>
                   <span class="class-date">November 14, 2025 (2025년 11월 14일)</span>
-                  <span class="class-summary">CHAPTER: 교통 (Transportation) — Grammar: …에서 …까지, [교통수단]을/를 타고 가다/오다/다니다, 갈아타다, 내리다, (시간)이/가 걸리다, -(으)세요; Practice: transfer routes, where to get off, durations; Read &amp; Write: Airport→city table, Beijing→hometown reading; Vocab: transportation/route words and common places.</span>
+                  <span class="class-summary">CHAPTER: 교통 (Transportation) - Grammar: …에서 …까지, [교통수단]을/를 타고 가다/오다/다니다, 갈아타다, 내리다, (시간)이/가 걸리다, -(으)세요; Practice: transfer routes, where to get off, durations; Read &amp; Write: Airport→city table, Beijing→hometown reading; Vocab: transportation/route words and common places.</span>
                 </div>
               </a>
               <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2025-11-28-Class-08.txt" target="_blank" class="note-item">
                 <div class="note-content">
                   <span class="class-number">Class 8</span>
                   <span class="class-date">November 28, 2025 (2025년 11월 28일)</span>
-                  <span class="class-summary">CHAPTER: 길 찾기 (Finding the way) — Grammar: (으)로 (toward/into/by), -아서/어서 (sequence); Actions: 건너다/지나다, 들어가다/나오다/올라가다/내려가다; Patterns: 오른쪽/왼쪽(으)로, 똑바로(쭉) 가세요; Tasks: “오시는 길” style directions.</span>
+                  <span class="class-summary">CHAPTER: 길 찾기 (Finding the way) - Grammar: (으)로 (toward/into/by), -아서/어서 (sequence); Actions: 건너다/지나다, 들어가다/나오다/올라가다/내려가다; Patterns: 오른쪽/왼쪽(으)로, 똑바로(쭉) 가세요; Tasks: "오시는 길" style directions.</span>
                 </div>
               </a>
               <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2025-12-05-Class-09.txt" target="_blank" class="note-item">
                 <div class="note-content">
                   <span class="class-number">Class 9</span>
                   <span class="class-date">December 5, 2025 (2025년 12월 5일)</span>
-                  <span class="class-summary">Theme: 회사생활 (Office life) — Vocab: 출근/퇴근, 근무시간, 회의, 제안서/서류, 첨부/복사/출력, 동료, 쉬는 시간, 점심; Patterns: -(으)면서, -(으)면 돼요, -(으)세요, -아서/어서; Practice: Q&amp;A and office verb examples.</span>
+                  <span class="class-summary">Theme: 회사생활 (Office life) - Vocab: 출근/퇴근, 근무시간, 회의, 제안서/서류, 첨부/복사/출력, 동료, 쉬는 시간, 점심; Patterns: -(으)면서, -(으)면 돼요, -(으)세요, -아서/어서; Practice: Q&amp;A and office verb examples.</span>
                 </div>
               </a>
               <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2025-12-12-Class-10.txt" target="_blank" class="note-item">
                 <div class="note-content">
                   <span class="class-number">Class 10</span>
                   <span class="class-date">December 12, 2025 (2025년 12월 12일)</span>
-                  <span class="class-summary">Chapter 5 wrap-up — Integrated directions practice using (으)로 and -아서/어서; Read &amp; Write: “오시는 길” poster, email directions; Speaking: 위치 묻고 답하기, 집 찾아오는 안내 편지 쓰기; Vocab: 이동 동사, 방향어, 장소.</span>
+                  <span class="class-summary">Chapter 5 wrap-up - Integrated directions practice using (으)로 and -아서/어서; Read &amp; Write: "오시는 길" poster, email directions; Speaking: 위치 묻고 답하기, 집 찾아오는 안내 편지 쓰기; Vocab: 이동 동사, 방향어, 장소.</span>
                 </div>
               </a>
               <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2026-01-09-Class-12.txt" target="_blank" class="note-item">
                 <div class="note-content">
                   <span class="class-number">Class 12</span>
                   <span class="class-date">January 9, 2026 (2026년 1월 9일)</span>
-                  <span class="class-summary">Chapter 6 — 전화 (Phone calls): ask/give phone numbers, make calls; Grammar: -아/어 주다 (do for someone), -지요 (confirmation); Vocab: phone/text/call expressions.</span>
+                  <span class="class-summary">Chapter 6 - 전화 (Phone calls): ask/give phone numbers, make calls; Grammar: -아/어 주다 (do for someone), -지요 (confirmation); Vocab: phone/text/call expressions.</span>
                 </div>
               </a>
               <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2026-01-16-Class-13.txt" target="_blank" class="note-item">
                 <div class="note-content">
                   <span class="class-number">Class 13</span>
                   <span class="class-date">January 16, 2026 (2026년 1월 16일)</span>
-                  <span class="class-summary">Chapter 6 wrap-up — phone conversation practice and application; Activities: role-plays (asking numbers, calling offices), comprehension (texts/emails), writing about phone usage; Vocab: Chapter 6 review.</span>
+                  <span class="class-summary">Chapter 6 wrap-up - phone conversation practice and application; Activities: role-plays (asking numbers, calling offices), comprehension (texts/emails), writing about phone usage; Vocab: Chapter 6 review.</span>
                 </div>
               </a>
               <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2026-01-23-Class-14.txt" target="_blank" class="note-item">
                 <div class="note-content">
                   <span class="class-number">Class 14</span>
                   <span class="class-date">January 23, 2026 (2026년 1월 23일)</span>
-                  <span class="class-summary">Chapter 7 — 외모 (Appearance): describe appearance and clothing; Grammar: -(으)ㄴ (adjective modifier), -고 있다 (wearing/current state); Vocab: 외모, 옷차림.</span>
+                  <span class="class-summary">Chapter 7 - 외모 (Appearance): describe appearance and clothing; Grammar: -(으)ㄴ (adjective modifier), -고 있다 (wearing/current state); Vocab: 외모, 옷차림.</span>
                 </div>
               </a>
             </div>
@@ -1017,9 +1017,9 @@ fa-icon: language
       <div class="reference-card verbs-card">
         <h3>Korean Verb Conjugation Table (해요체)</h3>
         <div class="reference-content">
-                              <details>
-            <summary><strong>Click to expand the verb table</strong></summary>
-            <div style="overflow-x:auto; margin-top: 1rem;">
+          <details>
+            <summary>Click to expand verb table (100+ verbs)</summary>
+            <div style="overflow-x:auto;">
               <table class="verbs-table">
                 <thead>
                   <tr>
@@ -1727,7 +1727,7 @@ fa-icon: language
                   </tr>
                   <tr>
                     <td class="ko-cell"><div class="ko">첨부하다</div><div class="rom">cheopbuhada</div></td>
-                    <td>to attach — 첨부파일을 확인해 주세요.</td>
+                    <td>to attach</td>
                     <td class="ko-cell"><div class="ko">첨부해요</div><div class="rom">cheopbuhaeyo</div></td>
                     <td class="ko-cell"><div class="ko">첨부했어요</div><div class="rom">cheopbuhaesseoyo</div></td>
                     <td class="ko-cell"><div class="ko">첨부할 거예요</div><div class="rom">cheopbuhal geoyeyo</div></td>
@@ -1748,7 +1748,7 @@ fa-icon: language
                   </tr>
                   <tr>
                     <td class="ko-cell"><div class="ko">출근하다</div><div class="rom">chulgeunhada</div></td>
-                    <td>to go to work — 아침 9시에 출근해요.</td>
+                    <td>to go to work</td>
                     <td class="ko-cell"><div class="ko">출근해요</div><div class="rom">chulgeunhaeyo</div></td>
                     <td class="ko-cell"><div class="ko">출근했어요</div><div class="rom">chulgeunhaesseoyo</div></td>
                     <td class="ko-cell"><div class="ko">출근할 거예요</div><div class="rom">chulgeunhal geoyeyo</div></td>
@@ -1783,7 +1783,7 @@ fa-icon: language
                   </tr>
                   <tr>
                     <td class="ko-cell"><div class="ko">퇴근하다</div><div class="rom">toegeunhada</div></td>
-                    <td>to leave work — 저녁 6시에 퇴근해요.</td>
+                    <td>to leave work</td>
                     <td class="ko-cell"><div class="ko">퇴근해요</div><div class="rom">toegeunhaeyo</div></td>
                     <td class="ko-cell"><div class="ko">퇴근했어요</div><div class="rom">toegeunhaesseoyo</div></td>
                     <td class="ko-cell"><div class="ko">퇴근할 거예요</div><div class="rom">toegeunhal geoyeyo</div></td>
@@ -2038,9 +2038,9 @@ html {
 
 .expand-icon.rotated {
   transform: rotate(180deg);
-  background: #3b82f6;
+  background: #2196F3;
   color: #ffffff;
-  border-color: #3b82f6;
+  border-color: #2196F3;
 }
 
 .expand-icon.upcoming {
@@ -2131,7 +2131,7 @@ html {
   background: #f8f9fa;
   border-radius: 6px;
   text-decoration: none;
-  color: #3b82f6;
+  color: #2196F3;
   font-size: 0.85rem;
   border: 1px solid #e5e7eb;
   transition: all 0.2s ease;
@@ -2140,9 +2140,9 @@ html {
 }
 
 .video-link-mini:hover {
-  background: #dbeafe;
-  border-color: #3b82f6;
-  color: #1d4ed8;
+  background: #e3f2fd;
+  border-color: #2196F3;
+  color: #1565C0;
 }
 
 .songs-mini {
@@ -2197,8 +2197,8 @@ html {
 
 .note-item:hover {
   background: #fafbfc;
-  border-color: #3b82f6;
-  box-shadow: 0 4px 12px rgba(59,130,246,0.1);
+  border-color: #2196F3;
+  box-shadow: 0 4px 12px rgba(33,150,243,0.1);
   transform: translateY(-1px);
 }
 
@@ -2210,7 +2210,7 @@ html {
 
 .class-number {
   font-weight: 600;
-  color: #3b82f6;
+  color: #2196F3;
   font-size: 1rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
   letter-spacing: -0.025em;
@@ -2368,6 +2368,11 @@ html {
   width: 100%;
 }
 
+.reference-card.verbs-card .reference-content {
+  padding: 0.75rem;
+  min-height: auto;
+}
+
 .reference-card.verbs-card table {
   width: 100%;
 }
@@ -2375,50 +2380,144 @@ html {
 /* Verbs table styling */
 .verbs-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   border: 1px solid #e5e7eb;
-  border-radius: 10px;
+  border-radius: 8px;
   overflow: hidden;
   background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .verbs-table thead th {
   position: sticky;
   top: 0;
-  background: #f8fafc;
-  border-bottom: 1px solid #e5e7eb;
-  color: #111827;
-  font-weight: 700;
-  padding: 0.75rem 0.85rem;
+  background: #2196F3;
+  border-bottom: 2px solid #1976D2;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.875rem 0.75rem;
   text-align: left;
   white-space: nowrap;
+  font-size: 0.875rem;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.verbs-table thead th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.verbs-table thead th:last-child {
+  border-top-right-radius: 8px;
 }
 
 .verbs-table tbody td {
-  border-top: 1px solid #f1f5f9;
-  padding: 0.75rem 0.85rem;
+  border-top: 1px solid #e5e7eb;
+  padding: 0.75rem;
   vertical-align: top;
+  transition: background-color 0.15s ease;
+  font-size: 0.9rem;
+}
+
+.verbs-table tbody tr {
+  transition: all 0.15s ease;
 }
 
 .verbs-table tbody tr:nth-child(even) td {
-  background: #fcfcfd;
+  background: #f9fafb;
+}
+
+.verbs-table tbody tr:hover td {
+  background: #e3f2fd;
+}
+
+.verbs-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+.verbs-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
 }
 
 .verbs-table .ko {
-  font-weight: 700;
-  color: #111827;
+  font-weight: 600;
+  color: #1976D2;
   line-height: 1.2;
+  font-size: 1rem;
+  font-family: 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans CJK KR', sans-serif;
 }
 
 .verbs-table .rom {
-  margin-top: 0.2rem;
-  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
   color: #6b7280;
-  line-height: 1.2;
+  line-height: 1.1;
+  font-style: italic;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
 }
 
 .verbs-table td.ko-cell {
   min-width: 160px;
+}
+
+.verbs-table tbody td:nth-child(2) {
+  color: #4b5563;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+/* Details/Summary styling for verb table */
+.reference-card.verbs-card details {
+  margin: 0;
+}
+
+.reference-card.verbs-card summary {
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  font-weight: 600;
+  color: #374151;
+  text-align: center;
+  transition: all 0.2s ease;
+  user-select: none;
+  font-size: 0.95rem;
+  list-style: none;
+}
+
+.reference-card.verbs-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.reference-card.verbs-card summary::before {
+  content: '▶ ';
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.reference-card.verbs-card details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.reference-card.verbs-card summary:hover {
+  background: #e5e7eb;
+  border-color: #d1d5db;
+  color: #1f2937;
+}
+
+.reference-card.verbs-card details[open] summary {
+  background: #2196F3;
+  color: white;
+  border-color: #2196F3;
+  margin-bottom: 1rem;
+}
+
+.reference-card.verbs-card details[open] summary::before {
+  color: white;
 }
 
 .reference-card.proverbs-card .reference-content {
