@@ -1034,7 +1034,7 @@ fa-icon: language
                   <!-- Generated from blog_posts/verbs_tenses.tsv (simple -다 verbs only; edit TSV, then run: python tools_update_verb_table.py) -->
                   <tr>
                     <td class="ko-cell"><div class="ko">가깝다</div><div class="rom">gakkapda</div></td>
-                    <td>@level2/2025-12-12-Class-10.txt (Vocab; also Class 8 dialogue)</td>
+                    <td>to be close/near</td>
                     <td class="ko-cell"><div class="ko">가까워요</div><div class="rom">gakkawoyo</div></td>
                     <td class="ko-cell"><div class="ko">가까웠어요</div><div class="rom">gakkawosseoyo</div></td>
                     <td class="ko-cell"><div class="ko">가까울 거예요</div><div class="rom">gakkaul geoyeyo</div></td>
