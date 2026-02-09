@@ -1153,7 +1153,7 @@ fa-icon: language
                   </tr>
                   <tr>
                     <td class="ko-cell"><div class="ko">길다</div><div class="rom">gilda</div></td>
-                    <td>긴</td>
+                    <td>to be long</td>
                     <td class="ko-cell"><div class="ko">길어요</div><div class="rom">gireoyo</div></td>
                     <td class="ko-cell"><div class="ko">길었어요</div><div class="rom">gireosseoyo</div></td>
                     <td class="ko-cell"><div class="ko">길 거예요</div><div class="rom">gil geoyeyo</div></td>
@@ -1321,7 +1321,7 @@ fa-icon: language
                   </tr>
                   <tr>
                     <td class="ko-cell"><div class="ko">많다</div><div class="rom">manda</div></td>
-                    <td>only ㄴ pronounced</td>
+                    <td>to be many/much (only ㄴ pronounced)</td>
                     <td class="ko-cell"><div class="ko">많아요</div><div class="rom">manayo</div></td>
                     <td class="ko-cell"><div class="ko">많았어요</div><div class="rom">manasseoyo</div></td>
                     <td class="ko-cell"><div class="ko">많을 거예요</div><div class="rom">maneul geoyeyo</div></td>
@@ -1525,8 +1525,8 @@ fa-icon: language
                   <tr>
                     <td class="ko-cell"><div class="ko">쉬다</div><div class="rom">swida</div></td>
                     <td>to rest</td>
-                    <td class="ko-cell"><div class="ko">쉬요</div><div class="rom">swiyo</div></td>
-                    <td class="ko-cell"><div class="ko">슀어요</div><div class="rom">swisseoyo</div></td>
+                    <td class="ko-cell"><div class="ko">쉬어요</div><div class="rom">swieoyo</div></td>
+                    <td class="ko-cell"><div class="ko">쉬었어요</div><div class="rom">swieosseoyo</div></td>
                     <td class="ko-cell"><div class="ko">쉴 거예요</div><div class="rom">swil geoyeyo</div></td>
                   </tr>
                   <tr>
@@ -1664,7 +1664,7 @@ fa-icon: language
                   </tr>
                   <tr>
                     <td class="ko-cell"><div class="ko">읊다</div><div class="rom">eulda</div></td>
-                    <td>only ㅍ is pronounced (exception to first consonant rule)</td>
+                    <td>to recite/chant (only ㅍ pronounced)</td>
                     <td class="ko-cell"><div class="ko">읊어요</div><div class="rom">eupeoyo</div></td>
                     <td class="ko-cell"><div class="ko">읊었어요</div><div class="rom">eupeosseoyo</div></td>
                     <td class="ko-cell"><div class="ko">읊을 거예요</div><div class="rom">eupeul geoyeyo</div></td>
@@ -1699,7 +1699,7 @@ fa-icon: language
                   </tr>
                   <tr>
                     <td class="ko-cell"><div class="ko">읽다</div><div class="rom">ikda</div></td>
-                    <td>only ㄱ pronounced</td>
+                    <td>to read (only ㄱ pronounced)</td>
                     <td class="ko-cell"><div class="ko">읽어요</div><div class="rom">igeoyo</div></td>
                     <td class="ko-cell"><div class="ko">읽었어요</div><div class="rom">igeosseoyo</div></td>
                     <td class="ko-cell"><div class="ko">읽을 거예요</div><div class="rom">igeul geoyeyo</div></td>
@@ -1720,7 +1720,7 @@ fa-icon: language
                   </tr>
                   <tr>
                     <td class="ko-cell"><div class="ko">작다</div><div class="rom">jakda</div></td>
-                    <td>작은</td>
+                    <td>to be small</td>
                     <td class="ko-cell"><div class="ko">작아요</div><div class="rom">jagayo</div></td>
                     <td class="ko-cell"><div class="ko">작았어요</div><div class="rom">jagasseoyo</div></td>
                     <td class="ko-cell"><div class="ko">작을 거예요</div><div class="rom">jageul geoyeyo</div></td>
@@ -1797,7 +1797,7 @@ fa-icon: language
                   </tr>
                   <tr>
                     <td class="ko-cell"><div class="ko">짧다</div><div class="rom">jjalda</div></td>
-                    <td>짧은</td>
+                    <td>to be short</td>
                     <td class="ko-cell"><div class="ko">짧아요</div><div class="rom">jjabayo</div></td>
                     <td class="ko-cell"><div class="ko">짧았어요</div><div class="rom">jjabasseoyo</div></td>
                     <td class="ko-cell"><div class="ko">짧을 거예요</div><div class="rom">jjabeul geoyeyo</div></td>
@@ -1818,7 +1818,7 @@ fa-icon: language
                   </tr>
                   <tr>
                     <td class="ko-cell"><div class="ko">첨부하다</div><div class="rom">cheopbuhada</div></td>
-                    <td>to attach — 첨부파일을 확인해 주세요.</td>
+                    <td>to attach</td>
                     <td class="ko-cell"><div class="ko">첨부해요</div><div class="rom">cheopbuhaeyo</div></td>
                     <td class="ko-cell"><div class="ko">첨부했어요</div><div class="rom">cheopbuhaesseoyo</div></td>
                     <td class="ko-cell"><div class="ko">첨부할 거예요</div><div class="rom">cheopbuhal geoyeyo</div></td>
@@ -1839,7 +1839,7 @@ fa-icon: language
                   </tr>
                   <tr>
                     <td class="ko-cell"><div class="ko">출근하다</div><div class="rom">chulgeunhada</div></td>
-                    <td>to go to work — 아침 9시에 출근해요.</td>
+                    <td>to go to work</td>
                     <td class="ko-cell"><div class="ko">출근해요</div><div class="rom">chulgeunhaeyo</div></td>
                     <td class="ko-cell"><div class="ko">출근했어요</div><div class="rom">chulgeunhaesseoyo</div></td>
                     <td class="ko-cell"><div class="ko">출근할 거예요</div><div class="rom">chulgeunhal geoyeyo</div></td>
@@ -1860,7 +1860,7 @@ fa-icon: language
                   </tr>
                   <tr>
                     <td class="ko-cell"><div class="ko">크다</div><div class="rom">keuda</div></td>
-                    <td>큰</td>
+                    <td>to be big/large</td>
                     <td class="ko-cell"><div class="ko">커요</div><div class="rom">keoyo</div></td>
                     <td class="ko-cell"><div class="ko">컸어요</div><div class="rom">keosseoyo</div></td>
                     <td class="ko-cell"><div class="ko">클 거예요</div><div class="rom">keul geoyeyo</div></td>
@@ -1881,7 +1881,7 @@ fa-icon: language
                   </tr>
                   <tr>
                     <td class="ko-cell"><div class="ko">퇴근하다</div><div class="rom">toegeunhada</div></td>
-                    <td>to leave work — 저녁 6시에 퇴근해요.</td>
+                    <td>to leave work</td>
                     <td class="ko-cell"><div class="ko">퇴근해요</div><div class="rom">toegeunhaeyo</div></td>
                     <td class="ko-cell"><div class="ko">퇴근했어요</div><div class="rom">toegeunhaesseoyo</div></td>
                     <td class="ko-cell"><div class="ko">퇴근할 거예요</div><div class="rom">toegeunhal geoyeyo</div></td>
@@ -1909,7 +1909,7 @@ fa-icon: language
                   </tr>
                   <tr>
                     <td class="ko-cell"><div class="ko">핥다</div><div class="rom">halda</div></td>
-                    <td>only ㄹ is pronounced</td>
+                    <td>to lick (only ㄹ pronounced)</td>
                     <td class="ko-cell"><div class="ko">핥아요</div><div class="rom">hatayo</div></td>
                     <td class="ko-cell"><div class="ko">핥았어요</div><div class="rom">hatasseoyo</div></td>
                     <td class="ko-cell"><div class="ko">핥을 거예요</div><div class="rom">hateul geoyeyo</div></td>
