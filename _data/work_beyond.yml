@@ -154,7 +154,7 @@ work:
 beyond:
   - title: "Philosophy Notes"
     date: "2025-01"
-    desc: "Great thinkers of the last century — what we do, why we do it."
+    desc: "Great thinkers of the last century - what we do, why we do it."
     meta: "Jan 2025"
     href: "/blog_posts/philosophy-notes.html"
     links:
@@ -165,7 +165,7 @@ beyond:
 
   - title: "한국어 학습 여정"
     date: "2025-06"
-    desc: "Korean learning journey — Hangul to grammar."
+    desc: "Korean learning journey - Hangul to grammar."
     meta: "Jun 2025"
     href: "/blog_posts/korean-learning-notes.html"
     links:
