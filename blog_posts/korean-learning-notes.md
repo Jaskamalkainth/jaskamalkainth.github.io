@@ -139,6 +139,7 @@ fa-icon: language
           <div class="level-summary">
             <span class="level-status in-progress">🔄 In Progress</span>
             <span class="level-stats">10 Classes • September - December 2025</span>
+            <span class="level-stats">18 Classes • September 2025 - February 2026</span>
           </div>
           <p class="level-description">Building on foundation knowledge to develop intermediate conversation skills, complex grammar patterns, and expanded vocabulary for daily communication.</p>
         </div>
@@ -239,6 +240,34 @@ fa-icon: language
                   <span class="class-number">Class 14</span>
                   <span class="class-date">January 23, 2026 (2026년 1월 23일)</span>
                   <span class="class-summary">Chapter 7 - 외모 (Appearance): describe appearance and clothing; Grammar: -(으)ㄴ (adjective modifier), -고 있다 (wearing/current state); Vocab: 외모, 옷차림.</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2026-01-23-Class-15.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 15</span>
+                  <span class="class-date">January 23, 2026 (2026년 1월 23일)</span>
+                  <span class="class-summary">Chapter 8 — 가족 (Family): introducing family, asking and answering about family; Grammar: 의 (possession), -(으)시- (honorific); Vocab: 가족, 존대 표현.</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2026-02-13-Class-16.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 16</span>
+                  <span class="class-date">February 13, 2026 (2026년 2월 13일)</span>
+                  <span class="class-summary">Chapter 8 — 가족 (Family) Part 2: reading tables and short texts, writing family introductions, practice with 직업/취미/외모.</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2026-02-20-Class-17.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 17</span>
+                  <span class="class-date">February 20, 2026 (2026년 2월 20일)</span>
+                  <span class="class-summary">Chapter 9 — Part 2.</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2026-02-27-Class-18.txt" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Class 18</span>
+                  <span class="class-date">February 27, 2026 (2026년 2월 27일)</span>
+                  <span class="class-summary">Class 18 notes (YT Video).</span>
                 </div>
               </a>
             </div>
