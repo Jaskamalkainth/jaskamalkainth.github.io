@@ -1,0 +1,182 @@
+# Work & Writing - full titles, descriptions, dates, and links
+work:
+  # —— Academic ——
+  - title: "Energy-Efficient Scheduling Algorithms"
+    date: "2018-05"
+    desc: "Benchmarking HEFT, NDES, GDES for real-time parallel applications on heterogeneous embedded systems."
+    meta: "May 2018"
+    links:
+      - label: "PDF"
+        url: "/projects/JaskamalKainthCS_Thesis.pdf"
+        external: true
+    href: "/projects/JaskamalKainthCS_Thesis.pdf"
+    external: true
+
+  - title: "Numerical solutions for PDEs in Option pricing"
+    date: "2017-12"
+    desc: "B-Spline collocation and Radial basis function methods for the Black–Scholes equation."
+    meta: "Dec 2017"
+    links:
+      - label: "PDF"
+        url: "/projects/JaskamalKainthMATH_Thesis.pdf"
+        external: true
+    href: "/projects/JaskamalKainthMATH_Thesis.pdf"
+    external: true
+
+  # —— Technical ——
+  - title: "Bloom Filters"
+    date: "2023-03"
+    desc: "Space-efficient probabilistic data structures; implementation and false-positive analysis."
+    meta: "Mar 2023"
+    links:
+      - label: "Article"
+        url: "/blog_posts/bloom_filters.html"
+      - label: "Code"
+        url: "https://github.com/Jaskamalkainth/BloomFilter/blob/master/bloom_filters.cpp"
+        external: true
+      - label: "Demo"
+        url: "/blog_posts/experiments/bloom-filter/index.html"
+    href: "/blog_posts/bloom_filters.html"
+
+  - title: "Fast Fourier Transformation (FFT)"
+    date: "2020-02"
+    desc: "Multiply polynomials in O(n log n); applications for large number multiplication."
+    meta: "Feb 2020"
+    links:
+      - label: "Blog"
+        url: "https://codeforces.com/blog/entry/43499"
+        external: true
+      - label: "Slides"
+        url: "/blog_posts/FFT_LargeNumberMultiplication.pdf"
+    href: "https://codeforces.com/blog/entry/43499"
+    external: true
+
+  - title: "7 Solutions to 1 Problem"
+    date: "2020-03"
+    desc: "Multiple approaches: triplets A[i] < B[j] < C[k]."
+    meta: "Mar 2020"
+    links:
+      - label: "Problem"
+        url: "https://www.geeksforgeeks.org/count-the-triplets-such-that-ai-bj-ck/"
+        external: true
+      - label: "Slides"
+        url: "/blog_posts/GoodTriplets.pdf"
+    href: "https://www.geeksforgeeks.org/count-the-triplets-such-that-ai-bj-ck/"
+    external: true
+
+  - title: "C++ Notes"
+    date: "2019-01"
+    desc: "Programming language concepts and techniques."
+    meta: "Jan 2019"
+    links:
+      - label: "Read"
+        url: "/blog_posts/CppNotes.html"
+    href: "/blog_posts/CppNotes.html"
+
+  - title: "Segment Tree Problems"
+    date: "2017-07"
+    desc: "Curated list of 20 problems, Easy to Hard."
+    meta: "Jul 2017"
+    links:
+      - label: "Read"
+        url: "/blog_posts/segment_tree_problems.html"
+    href: "/blog_posts/segment_tree_problems.html"
+
+  - title: "Disjoint Set Union (DSU) Problems"
+    date: "2017-05"
+    desc: "Problems using the DSU data structure."
+    meta: "May 2017"
+    links:
+      - label: "Read"
+        url: "/blog_posts/DSU_problems.html"
+    href: "/blog_posts/DSU_problems.html"
+
+  - title: "String Algorithm Problems"
+    date: "2017-06"
+    desc: "Z-Algorithm, Trie, Suffix Array, Aho–Corasick, Hashing."
+    meta: "Jun 2017"
+    links:
+      - label: "Read"
+        url: "https://codeforces.com/blog/entry/49938"
+        external: true
+    href: "https://codeforces.com/blog/entry/49938"
+    external: true
+
+  - title: "Graph Theory Notes"
+    date: "2015-04"
+    desc: "Concepts and problem-solving techniques."
+    meta: "Apr 2015"
+    links:
+      - label: "Read"
+        url: "https://codeforces.com/blog/entry/18585"
+        external: true
+    href: "https://codeforces.com/blog/entry/18585"
+    external: true
+
+  - title: "Elasticsearch Notes"
+    date: "2019-09"
+    desc: "Concepts and best practices for Elasticsearch."
+    meta: "Sep 2019"
+    links:
+      - label: "Read"
+        url: "/blog_posts/elasticsearchNotes.html"
+    href: "/blog_posts/elasticsearchNotes.html"
+
+  # —— Experiments ——
+  - title: "Pixelate Your Image"
+    date: "2025-04"
+    desc: "Upload any image and transform it into pixel art with character overlays."
+    meta: "Apr 2025"
+    links:
+      - label: "Demo"
+        url: "/blog_posts/experiments/Pixelate/index.html"
+    href: "/blog_posts/experiments/Pixelate/index.html"
+
+  - title: "ANN HNSW Simulation"
+    date: "2025-03"
+    desc: "Visualization of Hierarchical Navigable Small World for approximate nearest neighbor search."
+    meta: "Mar 2025"
+    links:
+      - label: "Demo"
+        url: "/blog_posts/experiments/hnsw-simul/index.html"
+    href: "/blog_posts/experiments/hnsw-simul/index.html"
+
+  - title: "Random Bounce Pattern (Dots)"
+    date: "2023-03"
+    desc: "Interactive particle simulation with bouncing dots."
+    meta: "Mar 2023"
+    links:
+      - label: "Demo"
+        url: "/blog_posts/experiments/experiment1/dots.html"
+    href: "/blog_posts/experiments/experiment1/dots.html"
+
+# Beyond Code
+beyond:
+  - title: "Philosophy Notes"
+    date: "2025-01"
+    desc: "Great thinkers of the last century — what we do, why we do it."
+    meta: "Jan 2025"
+    href: "/blog_posts/philosophy-notes.html"
+    links:
+      - label: "Notes"
+        url: "/blog_posts/philosophy-notes.html"
+      - label: "Related: Why I do what I do"
+        url: "/blog_posts/whatwedowhywedo.html"
+
+  - title: "한국어 학습 여정"
+    date: "2025-06"
+    desc: "Korean learning journey — Hangul to grammar."
+    meta: "Jun 2025"
+    href: "/blog_posts/korean-learning-notes.html"
+    links:
+      - label: "My notes"
+        url: "/blog_posts/korean-learning-notes.html"
+
+  - title: "Music"
+    date: "2022-01"
+    desc: "Sonic landscapes."
+    meta: "Jan 2022"
+    href: "/blog_posts/music.html"
+    links:
+      - label: "Read"
+        url: "/blog_posts/music.html"

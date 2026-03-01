@@ -14,6 +14,12 @@ markdown: kramdown
 highlighter: rouge
 
 
+### collections: render blog_posts to HTML ###
+collections:
+  blog_posts:
+    output: true
+    permalink: /blog_posts/:name.html
+
 ### content configuration ###
 title:       "Jaskamal Kainth"
 keywords:    "Graduate Student, BITS Pilani, Samsung, Programmer, Mathematician, Research, Personal Page"

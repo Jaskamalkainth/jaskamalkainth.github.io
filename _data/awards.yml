@@ -1,0 +1,63 @@
+# Awards & Recognition — years link to certificate photos (img/awards/).
+# Combined images use one file for multiple years/awards (e.g. "and" in filename).
+awards:
+  - name: "Ace Employee of the Year"
+    issuer: "Samsung Annual Awards"
+    years:
+      - year: "2024"
+        photo: "/img/awards/ace-employee-and-value-creator-2024.jpg"
+      - year: "2025"
+        photo: "/img/awards/ace-employee-2025.jpg"
+
+  - name: "Talent Transformers L&D Award"
+    issuer: "Samsung R&D Institute India"
+    years:
+      - year: "2024"
+        photo: "/img/awards/talent-transformers-2024.jpg"
+      - year: "2025"
+        photo: "/img/awards/talent-transformers-2025.jpg"
+
+  - name: "Korean Language Level 1"
+    issuer: "Mugunghwa Korean Language & Culture Academy"
+    years:
+      - year: "2025"
+        photo: "/img/awards/korean-mugunghwa-2025.jpg"
+    desc: "Certificate of Achievement & Special Contribution"
+
+  - name: "Team Awesome Award (Enterprise Search)"
+    issuer: "Samsung Excellence Award"
+    years:
+      - year: "2025"
+        photo: "/img/awards/team-awesome-and-star-of-the-quarter-2024.jpg"
+
+  - name: "Star of the Quarter — Lead by Example"
+    issuer: "Samsung Excellence Award"
+    years:
+      - year: "2023"
+        photo: "/img/awards/star-of-the-quarter-lead-by-example-2023.jpg"
+      - year: "2025"
+        photo: "/img/awards/team-awesome-and-star-of-the-quarter-2024.jpg"
+
+  - name: "Value Creator (Enterprise Search)"
+    issuer: "Samsung Annual Award"
+    years:
+      - year: "2024"
+        photo: "/img/awards/ace-employee-and-value-creator-2024.jpg"
+
+  - name: "Super Tech Award — Code Guru"
+    issuer: "Samsung Excellence Award"
+    years:
+      - year: "2024"
+        photo: "/img/awards/super-tech-award-code-guru-2024.jpg"
+
+  - name: "Software Pro League Champion"
+    issuer: "Samsung Annual Awards"
+    years:
+      - year: "2022-23"
+        photo: "/img/awards/software-pro-league-and-talent-transformers-2022-23.jpg"
+
+  - name: "SWC Talent Transformer"
+    issuer: "Samsung Annual Awards"
+    years:
+      - year: "2022-23"
+        photo: "/img/awards/software-pro-league-and-talent-transformers-2022-23.jpg"

@@ -4,142 +4,171 @@
 <html dir="ltr" lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{ site.title }}</title>
-	<meta name="keywords" content="{{ site.keywords }}">
-	<meta name="description" content="{{ site.description }}">
+  <meta name="keywords" content="{{ site.keywords }}">
+  <meta name="description" content="{{ site.description }}">
   {% include gtm-head.html %}
-  <link rel="stylesheet" href="combo.css">
-  <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/resume.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   {% if site.favicon %}<link rel="shortcut icon" href="{{ site.favicon }}" type="image/x-icon">{% endif %}
   {% if site.touch_icon %}<link rel="apple-touch-icon" href="{{ site.touch_icon }}">{% endif %}
   <script data-ad-client="ca-pub-4384498028906460" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <style>
-    #header {
-      position: relative;
-    }
-    
-    .fixed-header-contacts {
-      position: fixed;
-      top: 15px;
-      right: 20px;
-      display: flex;
-      gap: 15px;
-      z-index: 1000; /* Very high z-index to ensure it's on top */
-    }
-    
-    .fixed-header-contacts a {
-      color: white;
-      font-size: 1.2rem;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 35px;
-      height: 35px;
-      background-color: rgba(0, 0, 0, 0.5);
-      border-radius: 50%;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    }
-    
-    .fixed-header-contacts a i {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      position: relative;
-      left: 0;  /* Reset any default positioning */
-      top: 0;   /* Reset any default positioning */
-    }
-    
-    /* Specific styling for the envelope icon */
-    .fixed-header-contacts a .fa-envelope {
-      font-size: 1em;  /* Adjust size to match other icons */
-      margin: 0;       /* Remove any default margins */
-      padding: 0;      /* Remove any default padding */
-    }
-    
-    .fixed-header-contacts a:hover {
-      transform: scale(1.1);
-      background-color: rgba(0, 0, 0, 0.8);
-    }
-    
-    @media (max-width: 768px) {
-      .fixed-header-contacts {
-        top: 10px;
-        right: 10px;
-        gap: 10px;
-      }
-      
-      .fixed-header-contacts a {
-        font-size: 1rem;
-        width: 30px;
-        height: 30px;
-      }
-    }
-  </style>
 </head>
-<body>
+<body class="resume-layout">
   {% include gtm-body.html %}
-  <!-- Place this outside and before your header div -->
-  <div class="fixed-header-contacts">
-    <a href="mailto:kainthjaskamal@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
-    <a href="https://github.com/Jaskamalkainth" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="https://www.linkedin.com/in/j1k77/" target="_blank"><i class="fab fa-linkedin"></i></a>
-  </div>
 
-  <div id="header">
-    <nav><ul>
-      {% for node in site.posts reversed %}
-        {% capture id %}{{ node.id | remove:'/' | downcase }}{% endcapture %}
-        <li class="p-{{id}}"><a href="#{{id}}">{{node.title}}</a></li>
-      {% endfor %}
-    </ul></nav>
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <div>
+        <span class="name">{{ site.title }}</span>
+        <span class="role">Software Engineer, Samsung</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#beyond">Beyond</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <div id="main">
-    {% for page in site.posts reversed %}
-      {% capture id %}{{ page.id | remove:'/' | downcase }}{% endcapture %}
-      <div id="{{id}}" class="section p-{{id}}">
-        {% if page.icon %}
-        <div class="subtlecircle sectiondivider imaged">
-          <img src="{{page.icon}}" alt="section icon" />
-          <h5 class="icon-title">{{ page.title }}</h5>
-        </div>
-        {% elsif page.fa-icon %}
-        <div class="subtlecircle sectiondivider faicon">
-          <span class="fa-stack">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-{{ page.fa-icon }} fa-stack-1x"></i>
-          </span>
-          <h5 class="icon-title">{{ page.title }}</h5>
-        </div>
-        {% endif %}
-        <div class="container {{ page.style }}">
-          {{ page.content }}
+  <main class="main">
+    <aside class="sidebar">
+      <img src="{{ site.baseurl }}/img/pixelate.jpg" alt="{{ site.title }}" class="photo" />
+      <p class="tagline">Stay curious. Stay alive.</p>
+      <div>
+        <div class="block-title">Contact</div>
+        <div class="links">
+          <a href="mailto:kainthjaskamal@gmail.com"><i class="far fa-envelope"></i> Email</a>
+          <a href="https://github.com/Jaskamalkainth" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+          <a href="https://www.linkedin.com/in/j1k77/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
         </div>
       </div>
-    {% endfor %}
-
-
-    <div id="footer" class="section text-white">
-      <div class="container">
-        {% capture foottext %} {% include footer.md %} {% endcapture %}
-        {{ foottext | markdownify }}
+      <div>
+        <div class="block-title">Education</div>
+        <p style="margin:0;font-size:0.8rem;color:var(--resume-text-muted);">BITS Pilani · Math &amp; CS (Dual degree)</p>
       </div>
-    </div> 
-  </div>
-</div>
+      {% if site.data.awards.awards and site.data.awards.awards.size > 0 %}
+      <div>
+        <div class="block-title">Awards &amp; Recognition</div>
+        <ul class="awards-list">
+          {% for a in site.data.awards.awards %}
+          <li>
+            <span class="award-name">{{ a.name }}</span>
+            {% if a.issuer %}
+            <span class="award-meta">{{ a.issuer }}{% if a.years %} · {% for y in a.years %}{% if y.photo %}<a href="{{ site.baseurl }}{{ y.photo }}" target="_blank" rel="noopener" class="award-year-link">{{ y.year }}</a>{% else %}{{ y.year }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}{% elsif a.year %} · {{ a.year }}{% endif %}</span>
+            {% endif %}
+            {% if a.desc %}<span class="award-desc">{{ a.desc }}</span>{% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      <div>
+        <div class="block-title">Skills</div>
+        <div class="skills">
+          <span class="skill">NLP</span>
+          <span class="skill">AI / ML</span>
+          <span class="skill">Agentic AI</span>
+          <span class="skill">Search</span>
+          <span class="skill">Retrieval &amp; Ranking</span>
+          <span class="skill">OpenSearch</span>
+          <span class="skill">Gen AI</span>
+          <span class="skill">DSA</span>
+          <span class="skill">Spring</span>
+          <span class="skill">REST</span>
+          <span class="skill skill-link"><a href="https://codeforces.com/profile/jaskamalkainth" target="_blank" rel="noopener"><img src="https://api.iconify.design/simple-icons/codeforces.svg?height=14" class="skill-icon" alt="" width="14" height="14" /> Codeforces</a></span>
+          <span class="skill skill-link"><a href="https://www.codechef.com/users/j1k7_7" target="_blank" rel="noopener"><img src="https://api.iconify.design/simple-icons/codechef.svg?height=14" class="skill-icon" alt="" width="14" height="14" /> CodeChef</a></span>
+          <span class="skill skill-link"><a href="https://icpc.global/ICPCID/TY7NYK0ENIEA" target="_blank" rel="noopener"><i class="fas fa-trophy skill-fa-icon"></i> ICPC</a></span>
+          <span class="skill skill-link"><a href="https://www.spoj.com/users/jaskamal/" target="_blank" rel="noopener"><i class="fas fa-code skill-fa-icon"></i> SPOJ</a></span>
+          <span class="skill skill-link"><a href="https://www.hackerrank.com/jaskamalkainth" target="_blank" rel="noopener"><i class="fab fa-hackerrank skill-fa-icon"></i> HackerRank</a></span>
+          <span class="skill skill-link"><a href="https://www.hackerearth.com/@jaskamal" target="_blank" rel="noopener"><img src="https://api.iconify.design/simple-icons/hackerearth.svg?height=14" class="skill-icon" alt="" width="14" height="14" /> Hackerearth</a></span>
+        </div>
+      </div>
+    </aside>
 
-{% include analytics.html %}
+    <div class="content">
+      <section class="card" id="about">
+        <h2>About</h2>
+        <p>I build search systems that scale. For 8+ years I’ve worked on large-scale, intelligent search - from query preprocessing and retrieval to ranking, reranking, and weaving in NLP, AI/ML, and Gen AI. My stack: Data Structures &amp; Algorithms, AWS OpenSearch/Elasticsearch, Spring, RESTful APIs, and cloud-native design.</p>
+        <p>I lead a search team that owns backend microservices, Search &amp; Logging APIs, and end-to-end relevance. We took the platform from a single site to 55+ global markets while keeping it highly available and steadily improving relevance. My foundation is a dual degree in Mathematics and Computer Science (BITS Pilani), 300+ hours of DSA training and live problem-solving, and ACM-ICPC and competitive programming. I care about continuous learning and pushing AI-powered search forward.</p>
+      </section>
+
+      <section class="card" id="experience">
+        <h2>Experience</h2>
+        <div class="exp-where">Samsung</div>
+        <div class="exp-role">Software Engineer</div>
+        <div class="exp-meta">2018 – Present</div>
+        <ul>
+          <li>Lead search team - backend microservices, Search &amp; Logging APIs</li>
+          <li>Query preprocessing, retrieval, ranking, reranking; NLP, AI/ML, Gen AI integration</li>
+          <li>Scaled search platform from 1 to 55+ global site markets; high availability and relevance</li>
+        </ul>
+      </section>
+
+      <section class="card" id="work">
+        <h2>Work &amp; Writing</h2>
+        <p class="card-sub">Academic work, technical notes, and interactive demos.</p>
+        <div class="work-grid">
+          {% assign sorted_work = site.data.work_beyond.work | sort: "date" | reverse %}
+          {% for item in sorted_work %}
+            <div class="work-item">
+              <h3 class="work-item-title">
+                <a href="{% if item.external %}{{ item.href }}{% else %}{{ site.baseurl }}{{ item.href }}{% endif %}" class="work-title-link" {% if item.external %}target="_blank" rel="noopener"{% endif %}>{{ item.title }}</a>
+              </h3>
+              <p class="work-item-desc">{{ item.desc }}</p>
+              <div class="work-item-footer">
+                {% if item.links.size > 0 %}
+                  <span class="work-item-links">
+                    {% for link in item.links %}
+                      <a href="{% if link.external %}{{ link.url }}{% else %}{{ site.baseurl }}{{ link.url }}{% endif %}" class="work-link" {% if link.external %}target="_blank" rel="noopener"{% endif %}>{{ link.label }}</a>{% unless forloop.last %} · {% endunless %}
+                    {% endfor %}
+                  </span>
+                {% endif %}
+                {% if item.links.size > 0 and item.meta %}<span class="work-item-sep">|</span>{% endif %}
+                {% if item.meta %}<span class="work-item-date">{{ item.meta }}</span>{% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section class="card" id="beyond">
+        <h2>Beyond Code</h2>
+        <p class="card-sub">Philosophy, language, music.</p>
+        <div class="work-grid beyond-grid">
+          {% for item in site.data.work_beyond.beyond %}
+            <div class="work-item beyond-item">
+              <h3 class="work-item-title">
+                <a href="{{ site.baseurl }}{{ item.href }}" class="work-title-link">{{ item.title }}</a>
+              </h3>
+              <p class="work-item-desc">{{ item.desc }}</p>
+              <div class="work-item-footer">
+                {% if item.links.size > 0 %}
+                  <span class="work-item-links">
+                    {% for link in item.links %}
+                      <a href="{% if link.external %}{{ link.url }}{% else %}{{ site.baseurl }}{{ link.url }}{% endif %}" class="work-link" {% if link.external %}target="_blank" rel="noopener"{% endif %}>{{ link.label }}</a>{% unless forloop.last %} · {% endunless %}
+                    {% endfor %}
+                  </span>
+                {% endif %}
+                {% if item.links.size > 0 and item.meta %}<span class="work-item-sep">|</span>{% endif %}
+                {% if item.meta %}<span class="work-item-date">{{ item.meta }}</span>{% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="resume-footer">Stay curious. Stay alive.</footer>
+
+  {% include analytics.html %}
 </body>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="site.js"></script>
-<script src="particles.js"></script>
-<script>
-particlesJS.load('header', 'particles.json', function() {
-  console.log('callback - particles.js config loaded');
-});
-</script>
 </html>
