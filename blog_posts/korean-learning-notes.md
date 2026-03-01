@@ -138,7 +138,6 @@ fa-icon: language
           <h3>🚀 Level 2 - Intermediate Korean</h3>
           <div class="level-summary">
             <span class="level-status in-progress">🔄 In Progress</span>
-            <span class="level-stats">10 Classes • September - December 2025</span>
             <span class="level-stats">18 Classes • September 2025 - February 2026</span>
           </div>
           <p class="level-description">Building on foundation knowledge to develop intermediate conversation skills, complex grammar patterns, and expanded vocabulary for daily communication.</p>
