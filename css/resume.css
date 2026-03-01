@@ -246,8 +246,14 @@ html { scroll-behavior: smooth; }
 
 @media (max-width: 768px) {
   .resume-layout .top-bar-inner { padding: 12px 16px; }
-  .resume-layout .main { grid-template-columns: 1fr; }
+  .resume-layout .main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
   .resume-layout .sidebar {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
     border-right: none;
     border-bottom: 1px solid var(--resume-border);
     padding-right: 0;
