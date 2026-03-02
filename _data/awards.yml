@@ -12,6 +12,8 @@ awards:
   - name: "Talent Transformers L&D Award"
     issuer: "Samsung R&D Institute India"
     years:
+      - year: "2023"
+        photo: "/img/awards/software-pro-league-and-talent-transformers-2022-23.jpg"
       - year: "2024"
         photo: "/img/awards/talent-transformers-2024.jpg"
       - year: "2025"
@@ -56,8 +58,4 @@ awards:
       - year: "2022-23"
         photo: "/img/awards/software-pro-league-and-talent-transformers-2022-23.jpg"
 
-  - name: "SWC Talent Transformer"
-    issuer: "Samsung Annual Awards"
-    years:
-      - year: "2022-23"
-        photo: "/img/awards/software-pro-league-and-talent-transformers-2022-23.jpg"
+
