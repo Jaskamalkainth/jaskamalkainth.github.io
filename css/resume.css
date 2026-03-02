@@ -118,6 +118,19 @@ html { scroll-behavior: smooth; }
   margin-bottom: 4px;
 }
 .resume-layout .sidebar .links a:hover { color: var(--resume-accent); }
+.resume-layout .sidebar .links a .fab {
+  font-size: 0.9rem;
+}
+.resume-layout .sidebar .links a .fa-github {
+  color: #181717;
+}
+.resume-layout .sidebar .links a .fa-linkedin {
+  color: #0a66c2;
+}
+.resume-layout .sidebar .links a:hover .fa-github,
+.resume-layout .sidebar .links a:hover .fa-linkedin {
+  filter: brightness(1.1);
+}
 .resume-layout .sidebar .skills {
   display: flex;
   flex-wrap: wrap;
@@ -127,7 +140,14 @@ html { scroll-behavior: smooth; }
 .resume-layout .sidebar .skill a { color: var(--resume-accent); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
 .resume-layout .sidebar .skill a:hover { text-decoration: underline; }
 .resume-layout .sidebar .skill-icon { flex-shrink: 0; vertical-align: middle; }
-.resume-layout .sidebar .skill-fa-icon { font-size: 0.7rem; opacity: 0.9; }
+.resume-layout .sidebar .skill-fa-icon {
+  font-size: 0.7rem;
+  opacity: 0.9;
+  color: #d4af37;
+}
+.resume-layout .sidebar .skill a:hover .skill-fa-icon {
+  filter: brightness(1.15);
+}
 .resume-layout .awards-list { list-style: none; padding: 0; margin: 0; }
 .resume-layout .awards-list li { margin-bottom: 8px; font-size: 0.8rem; }
 .resume-layout .award-name { font-weight: 600; color: var(--resume-text); display: block; }
@@ -169,7 +189,26 @@ html { scroll-behavior: smooth; }
 .resume-layout .card a { color: var(--resume-accent); text-decoration: none; }
 .resume-layout .card a:hover { text-decoration: underline; }
 
-.resume-layout .exp-where { font-weight: 600; color: var(--resume-text); }
+.resume-layout .exp-where {
+  font-weight: 600;
+  color: var(--resume-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+.resume-layout .exp-company {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.resume-layout .exp-company-logo {
+  height: 48px;
+  width: auto;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
 .resume-layout .exp-role { color: var(--resume-accent); font-size: 0.85rem; }
 .resume-layout .exp-meta { font-size: 0.75rem; color: var(--resume-text-muted); margin-bottom: 8px; }
 

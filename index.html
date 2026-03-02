@@ -52,7 +52,10 @@
       </div>
       <div>
         <div class="block-title">Education</div>
-        <p style="margin:0;font-size:0.8rem;color:var(--resume-text-muted);"><a href="https://www.bits-pilani.ac.in/pilani/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">BITS Pilani</a> · Math &amp; CS (Dual degree)</p>
+        <p style="margin:0;font-size:0.8rem;color:var(--resume-text-muted);">
+          <img src="{{ site.baseurl }}/img/bits%20pilani.png" alt="BITS Pilani logo" style="height:14px;vertical-align:middle;margin-right:4px;border-radius:2px;" />
+          <a href="https://www.bits-pilani.ac.in/pilani/" target="_blank" rel="noopener">BITS Pilani</a> · Math &amp; CS (Dual degree)
+        </p>
       </div>
       {% if site.data.awards.awards and site.data.awards.awards.size > 0 %}
       <div>
@@ -83,8 +86,8 @@
           <span class="skill">DSA</span>
           <span class="skill">Spring</span>
           <span class="skill">REST</span>
-          <span class="skill skill-link"><a href="https://codeforces.com/profile/jaskamalkainth" target="_blank" rel="noopener"><img src="https://api.iconify.design/simple-icons/codeforces.svg?height=14" class="skill-icon" alt="" width="14" height="14" /> Codeforces</a></span>
-          <span class="skill skill-link"><a href="https://www.codechef.com/users/j1k7_7" target="_blank" rel="noopener"><img src="https://api.iconify.design/simple-icons/codechef.svg?height=14" class="skill-icon" alt="" width="14" height="14" /> CodeChef</a></span>
+          <span class="skill skill-link"><a href="https://codeforces.com/profile/jaskamalkainth" target="_blank" rel="noopener"><img src="https://api.iconify.design/simple-icons/codeforces.svg?height=14&color=%231F8ACB" class="skill-icon" alt="" width="14" height="14" /> Codeforces</a></span>
+          <span class="skill skill-link"><a href="https://www.codechef.com/users/j1k7_7" target="_blank" rel="noopener"><img src="https://api.iconify.design/simple-icons/codechef.svg?height=14&color=%235B4638" class="skill-icon" alt="" width="14" height="14" /> CodeChef</a></span>
           <span class="skill skill-link"><a href="https://icpc.global/ICPCID/TY7NYK0ENIEA" target="_blank" rel="noopener"><i class="fas fa-trophy skill-fa-icon"></i> ICPC</a></span>
         </div>
       </div>
@@ -99,9 +102,14 @@
 
       <section class="card" id="experience">
         <h2>Experience</h2>
-        <div class="exp-where">Samsung</div>
+        <div class="exp-where">
+          <div class="exp-company">
+            <img src="{{ site.baseurl }}/img/samsungrndindiabangalore_logo.jpg" alt="Samsung R&amp;D Institute India - Bangalore logo" class="exp-company-logo" />
+            <a href="https://www.linkedin.com/company/samsungrndindiabangalore/" target="_blank" rel="noopener">Samsung R&amp;D Institute India - Bangalore</a>
+          </div>
+          <div class="exp-meta">2018 – Present</div>
+        </div>
         <div class="exp-role">Chief Software Engineer</div>
-        <div class="exp-meta">2018 – Present</div>
         <ul>
           <li>Lead engineering of Samsung's global AI-powered product search platform</li>
           <li>Designed end-to-end search pipeline: query understanding → retrieval → ranking → reranking</li>
