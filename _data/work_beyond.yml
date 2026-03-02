@@ -1,28 +1,5 @@
 # Work & Writing - full titles, descriptions, dates, and links
 work:
-  # —— Academic ——
-  - title: "Energy-Efficient Scheduling Algorithms"
-    date: "2018-05"
-    desc: "Benchmarking HEFT, NDES, GDES for real-time parallel applications on heterogeneous embedded systems."
-    meta: "May 2018"
-    links:
-      - label: "PDF"
-        url: "/projects/JaskamalKainthCS_Thesis.pdf"
-        external: true
-    href: "/projects/JaskamalKainthCS_Thesis.pdf"
-    external: true
-
-  - title: "Numerical solutions for PDEs in Option pricing"
-    date: "2017-12"
-    desc: "B-Spline collocation and Radial basis function methods for the Black–Scholes equation."
-    meta: "Dec 2017"
-    links:
-      - label: "PDF"
-        url: "/projects/JaskamalKainthMATH_Thesis.pdf"
-        external: true
-    href: "/projects/JaskamalKainthMATH_Thesis.pdf"
-    external: true
-
   # —— Technical ——
   - title: "Bloom Filters"
     date: "2023-03"
@@ -180,3 +157,4 @@ beyond:
     links:
       - label: "Read"
         url: "/blog_posts/music.html"
+

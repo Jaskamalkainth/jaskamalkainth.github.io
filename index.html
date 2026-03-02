@@ -50,29 +50,7 @@
           <a href="https://www.linkedin.com/in/j1k77/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
         </div>
       </div>
-      <div>
-        <div class="block-title">Education</div>
-        <p style="margin:0;font-size:0.8rem;color:var(--resume-text-muted);">
-          <img src="{{ site.baseurl }}/img/bits%20pilani.png" alt="BITS Pilani logo" style="height:14px;vertical-align:middle;margin-right:4px;border-radius:2px;" />
-          <a href="https://www.bits-pilani.ac.in/pilani/" target="_blank" rel="noopener">BITS Pilani</a> · Math &amp; CS (Dual degree)
-        </p>
-      </div>
-      {% if site.data.awards.awards and site.data.awards.awards.size > 0 %}
-      <div>
-        <div class="block-title">Awards &amp; Recognition</div>
-        <ul class="awards-list">
-          {% for a in site.data.awards.awards %}
-          <li>
-            <span class="award-name">{{ a.name }}</span>
-            {% if a.issuer %}
-            <span class="award-meta">{{ a.issuer }}{% if a.years %} · {% for y in a.years %}{% if y.photo %}<a href="{{ site.baseurl }}{{ y.photo }}" target="_blank" rel="noopener" class="award-year-link">{{ y.year }}</a>{% else %}{{ y.year }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}{% elsif a.year %} · {{ a.year }}{% endif %}</span>
-            {% endif %}
-            {% if a.desc %}<span class="award-desc">{{ a.desc }}</span>{% endif %}
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-      {% endif %}
+
       <div>
         <div class="block-title">Skills</div>
         <div class="skills">
@@ -91,25 +69,65 @@
           <span class="skill skill-link"><a href="https://icpc.global/ICPCID/TY7NYK0ENIEA" target="_blank" rel="noopener"><i class="fas fa-trophy skill-fa-icon"></i> ICPC</a></span>
         </div>
       </div>
+
+      {% if site.data.awards.awards and site.data.awards.awards.size > 0 %}
+      <div>
+        <div class="block-title">Awards &amp; Recognition</div>
+        <ul class="awards-list">
+          {% for a in site.data.awards.awards %}
+          <li>
+            <span class="award-name">{{ a.name }}</span>
+            {% if a.issuer %}
+            <span class="award-meta">{{ a.issuer }}{% if a.years %} · {% for y in a.years %}{% if y.photo %}<a href="{{ site.baseurl }}{{ y.photo }}" target="_blank" rel="noopener" class="award-year-link">{{ y.year }}</a>{% else %}{{ y.year }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}{% elsif a.year %} · {{ a.year }}{% endif %}</span>
+            {% endif %}
+            {% if a.desc %}<span class="award-desc">{{ a.desc }}</span>{% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
     </aside>
 
     <div class="content">
       <section class="card" id="about">
         <h2>About</h2>
-        <p>I build search systems that scale. For 8+ years I’ve worked on large-scale, intelligent search - from query preprocessing and retrieval to ranking, reranking, and weaving in NLP, AI/ML, and Gen AI. My stack: Data Structures &amp; Algorithms, AWS OpenSearch/Elasticsearch, Spring, RESTful APIs, and cloud-native design.</p>
+        <p>I build search systems that scale. For 8+ years I’ve worked on large-scale, intelligent search - from query preprocessing and retrieval to ranking, reranking, and weaving in NLP, AI/ML, and Gen AI.</p>
         <p>I lead a search team that owns backend microservices, Search &amp; Logging APIs, and end-to-end relevance. We took the platform from a single site to 55+ global markets while keeping it highly available and steadily improving relevance. My foundation is a dual degree in Mathematics and Computer Science (BITS Pilani), 300+ hours of DSA training and live problem-solving, and ACM-ICPC and competitive programming. I care about continuous learning and pushing AI-powered search forward.</p>
+        <p>Tech stack: AWS OpenSearch/Elasticsearch (BM25, k-NN with HNSW/Faiss), Spring-based microservices, FastAPI/Flask services, Redis, AWS infrastructure, PyTorch-powered ML, LLM inference frameworks (vLLM, TGI, Ollama) and agentic AI systems (MCP servers/tools), RESTful APIs, and strong fundamentals in data structures &amp; algorithms.</p>
+      </section>
+
+      <section class="card" id="education">
+        <h2>Education</h2>
+        <div class="edu-header">
+          <img src="{{ site.baseurl }}/img/birla_institute_of_technology_and_science_pilani_logo.jpg" alt="BITS Pilani logo" class="edu-logo" />
+          <div>
+            <a href="https://www.bits-pilani.ac.in/pilani/" target="_blank" rel="noopener">Birla Institute of Technology and Science, Pilani (BITS Pilani)</a>
+            <div class="edu-meta">Dual Degree: B.E. (Computer Science) &amp; M.Sc. (Mathematics), 2013 – 2018</div>
+          </div>
+        </div>
+        <ul class="edu-details">
+          <li>
+            <div class="edu-thesis-header">
+              <span class="edu-thesis-label">Undergraduate thesis work</span>
+              <span class="edu-thesis-meta">2017 – 2018</span>
+            </div>
+            <ul class="edu-thesis-list">
+              <li><a href="{{ site.baseurl }}/projects/JaskamalKainthCS_Thesis.pdf" target="_blank" rel="noopener">Energy-Efficient Scheduling Algorithms</a> (Computer Science)</li>
+              <li><a href="{{ site.baseurl }}/projects/JaskamalKainthMATH_Thesis.pdf" target="_blank" rel="noopener">Numerical solutions for PDEs in Option pricing</a> (Mathematics)</li>
+            </ul>
+          </li>
+          <li>Selected coursework: Algebra, Computer Networks, Computer Programming, Cryptography, Data Structures &amp; Algorithms, Discrete Mathematics, Linear Algebra, Optimization, Partial Differential Equations, Probability &amp; Statistics.</li>
+        </ul>
       </section>
 
       <section class="card" id="experience">
         <h2>Experience</h2>
         <div class="exp-where">
-          <div class="exp-company">
-            <img src="{{ site.baseurl }}/img/samsungrndindiabangalore_logo.jpg" alt="Samsung R&amp;D Institute India - Bangalore logo" class="exp-company-logo" />
-            <a href="https://www.linkedin.com/company/samsungrndindiabangalore/" target="_blank" rel="noopener">Samsung R&amp;D Institute India - Bangalore</a>
-          </div>
-          <div class="exp-meta">2018 – Present</div>
+          <img src="{{ site.baseurl }}/img/samsungrndindiabangalore_logo.jpg" alt="Samsung R&amp;D Institute India - Bangalore logo" class="exp-company-logo" />
+          <a href="https://www.linkedin.com/company/samsungrndindiabangalore/" target="_blank" rel="noopener">Samsung R&amp;D Institute India - Bangalore</a>
         </div>
         <div class="exp-role">Chief Software Engineer</div>
+        <div class="exp-meta">2018 – Present</div>
         <ul>
           <li>Lead engineering of Samsung's global AI-powered product search platform</li>
           <li>Designed end-to-end search pipeline: query understanding → retrieval → ranking → reranking</li>

@@ -189,19 +189,59 @@ html { scroll-behavior: smooth; }
 .resume-layout .card a { color: var(--resume-accent); text-decoration: none; }
 .resume-layout .card a:hover { text-decoration: underline; }
 
+.resume-layout .edu-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.resume-layout .edu-logo {
+  height: 48px;
+  width: auto;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.resume-layout .edu-meta {
+  font-size: 0.8rem;
+  color: var(--resume-text-muted);
+}
+.resume-layout .edu-details {
+  margin-top: 4px;
+  padding-left: 18px;
+}
+.resume-layout .edu-details li {
+  margin-bottom: 4px;
+}
+.resume-layout .edu-thesis-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+.resume-layout .edu-thesis-label {
+  font-weight: 600;
+  color: var(--resume-text);
+}
+.resume-layout .edu-thesis-meta {
+  font-size: 0.75rem;
+  color: var(--resume-text-muted);
+}
+.resume-layout .edu-thesis-list {
+  margin: 2px 0 0 0;
+  padding-left: 16px;
+}
+.resume-layout .edu-thesis-list li {
+  margin-bottom: 2px;
+}
+
 .resume-layout .exp-where {
   font-weight: 600;
   color: var(--resume-text);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 4px;
-}
-.resume-layout .exp-company {
-  display: inline-flex;
-  align-items: center;
   gap: 6px;
+  margin-bottom: 4px;
 }
 .resume-layout .exp-company-logo {
   height: 48px;
