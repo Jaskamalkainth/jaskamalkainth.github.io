@@ -47,7 +47,16 @@ html { scroll-behavior: smooth; }
   margin: 0 auto;
   padding: 14px 24px;
 }
-.resume-layout .top-bar .name { font-weight: 700; font-size: 1.1rem; color: var(--resume-text); }
+.resume-layout .top-bar .name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--resume-text);
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--resume-accent);
+  animation: resume-typing 2s steps(18, end), resume-cursor 0.7s step-end infinite;
+}
 .resume-layout .top-bar .role { font-size: 0.8rem; color: var(--resume-text-muted); margin-left: 8px; }
 .resume-layout .top-bar nav ul {
   list-style: none;
@@ -64,6 +73,15 @@ html { scroll-behavior: smooth; }
   font-weight: 500;
 }
 .resume-layout .top-bar nav a:hover { color: var(--resume-accent); }
+
+@keyframes resume-typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes resume-cursor {
+  50% { border-color: transparent; }
+}
 
 .resume-layout .main {
   display: grid;
