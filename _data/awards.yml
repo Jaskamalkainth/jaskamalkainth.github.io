@@ -24,7 +24,6 @@ awards:
     years:
       - year: "2025"
         photo: "/img/awards/korean-mugunghwa-2025.jpg"
-    desc: "Certificate of Achievement & Special Contribution"
 
   - name: "Team Awesome Award (Enterprise Search)"
     issuer: "Samsung Excellence Award"
