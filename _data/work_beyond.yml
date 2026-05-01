@@ -100,6 +100,15 @@ work:
     href: "/blog_posts/elasticsearchNotes.html"
 
   # —— Experiments ——
+  - title: "Fourier Epicycles"
+    date: "2025-05"
+    desc: "Rotating circles summing to draw any shape — a visual proof of the DFT."
+    meta: "May 2025"
+    links:
+      - label: "Demo"
+        url: "/blog_posts/experiments/fourier-epicycles/index.html"
+    href: "/blog_posts/experiments/fourier-epicycles/index.html"
+
   - title: "Pixelate Your Image"
     date: "2025-04"
     desc: "Upload any image and transform it into pixel art with character overlays."
