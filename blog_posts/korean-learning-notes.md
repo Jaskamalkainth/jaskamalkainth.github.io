@@ -148,6 +148,23 @@ fa-icon: language
       <div class="level-content" id="level2-content">
         <div class="level-details">
           <div class="class-notes-subsection">
+            <h4>📖 Reference Materials</h4>
+            <div class="notes-list">
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/level2_patterns.md" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Grammar Patterns</span>
+                  <span class="class-summary">Sejong Korean 2 — Grammar Patterns Summary (Units 1–14)</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/level2_vocab.md" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Vocabulary</span>
+                  <span class="class-summary">Sejong Korean 2 — Vocabulary Summary (Units 1–14)</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="class-notes-subsection">
             <h4>📚 Class Notes</h4>
             <div class="notes-list">
               <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/2025-09-12-Class-01.txt" target="_blank" class="note-item">
