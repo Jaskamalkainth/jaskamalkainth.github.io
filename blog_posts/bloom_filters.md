@@ -15,8 +15,6 @@ The naive approach — scanning the entire list every time — is slow and expen
 
 That's the intuition behind a **Bloom filter**.
 
----
-
 ## The Core Idea
 
 A Bloom filter is a space-efficient data structure with one peculiar property:
@@ -27,8 +25,6 @@ A Bloom filter is a space-efficient data structure with one peculiar property:
 It **never** produces false negatives. If you added something, the Bloom filter will always recognize it.
 
 This asymmetry — "definitely no" vs. "probably yes" — turns out to be incredibly useful.
-
----
 
 ## How It Works (Simply)
 
@@ -51,8 +47,6 @@ That's it. No storing the actual elements — just flipping bits.
     <i class="fa fa-play-circle"></i> Try the Interactive Bloom Filter Demo
   </a>
 </div>
-
----
 
 ## Real-World Use Cases
 
@@ -94,8 +88,6 @@ The client sends a Bloom filter encoding its addresses. The full node filters tr
 ### 5. Weak Password Detection
 
 Services like HaveIBeenPwned track billions of compromised passwords. Checking "has this password ever been leaked?" against a massive database on every login would be slow. A Bloom filter over the leaked password set lets you do this check in microseconds — a "definitely not compromised" answer means skip the full lookup.
-
----
 
 ## Implementation in C++
 
@@ -193,8 +185,6 @@ int main()
 }
 ```
 
----
-
 ## Understanding False Positives
 
 The one downside: false positives. As more elements are added, more bits get flipped to 1, and eventually a *new* element's hash positions might all land on bits already set by other elements.
@@ -218,8 +208,6 @@ The key levers you control:
 - **More hash functions** (k) → fewer false positives up to a point, then they start increasing again.
 - **Fewer inserted elements** (n) → fewer false positives.
 
----
-
 ## The Fundamental Trade-off
 
 | Property | Bloom Filter | Hash Set |
@@ -233,8 +221,6 @@ The key levers you control:
 \* Counting Bloom filters support deletion at the cost of extra space.
 
 Use a Bloom filter when you can tolerate a small false positive rate and need to minimize memory usage. Use a regular hash set when you need exact answers and memory isn't a constraint.
-
----
 
 ## Conclusion
 
