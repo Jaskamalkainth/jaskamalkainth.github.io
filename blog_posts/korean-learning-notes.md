@@ -162,6 +162,12 @@ fa-icon: language
                   <span class="class-summary">Sejong Korean 2 — Vocabulary Summary (Units 1–14)</span>
                 </div>
               </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level2/level2_patterns_table.md" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Quick Reference</span>
+                  <span class="class-summary">Sejong Korean 2 — Grammar Patterns Quick Reference Table (Units 1–14) with Korean examples, romanization, and meanings</span>
+                </div>
+              </a>
             </div>
           </div>
           <div class="class-notes-subsection">
