@@ -13,6 +13,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/resume.css" />
+  <style>
+    .sidebar-epic-canvas { display:block; width:100%; aspect-ratio:1/1; border-radius:6px; margin-top:6px; background:#0f172a; }
+    .sidebar-epic-link   { display:block; font-size:12px; color:#0369a1; text-decoration:none; font-weight:500; margin-top:6px; }
+    .sidebar-epic-link:hover { text-decoration:underline; }
+  </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   {% if site.favicon %}<link rel="shortcut icon" href="{{ site.favicon }}" type="image/x-icon">{% endif %}
   {% if site.touch_icon %}<link rel="apple-touch-icon" href="{{ site.touch_icon }}">{% endif %}
@@ -73,6 +78,11 @@
         </ul>
       </div>
       {% endif %}
+      <div>
+        <div class="block-title">Fourier Epicycles</div>
+        <canvas id="sidebar-epic" class="sidebar-epic-canvas"></canvas>
+        <a href="/blog_posts/experiments/fourier-epicycles/index.html" class="sidebar-epic-link">Open interactive demo →</a>
+      </div>
     </aside>
 
     <div class="content">
@@ -193,5 +203,100 @@
   <footer class="resume-footer">Stay curious. Stay alive.</footer>
 
   {% include analytics.html %}
+  <script>
+  (function () {
+    var canvas = document.getElementById('sidebar-epic');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var dpr = window.devicePixelRatio || 1;
+    var N = 128;
+
+    function resize() {
+      var w = canvas.clientWidth, h = canvas.clientHeight;
+      if (!w || !h) return;
+      canvas.width  = w * dpr;
+      canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function lemniscate() {
+      var pts = [], a;
+      resize();
+      a = (canvas.width / dpr) * 0.39;
+      for (var i = 0; i < N; i++) {
+        var θ = 2 * Math.PI * i / N;
+        var d = 1 + Math.sin(θ) * Math.sin(θ);
+        pts.push({ re: a * Math.cos(θ) / d, im: a * Math.sin(θ) * Math.cos(θ) / d });
+      }
+      return pts;
+    }
+
+    function dft(pts) {
+      var n = pts.length, out = [];
+      for (var k = 0; k < n; k++) {
+        var re = 0, im = 0;
+        for (var j = 0; j < n; j++) {
+          var phi = 2 * Math.PI * k * j / n;
+          var c = Math.cos(phi), s = Math.sin(phi);
+          re += pts[j].re * c + pts[j].im * s;
+          im += pts[j].im * c - pts[j].re * s;
+        }
+        out.push({ freq: k <= n/2 ? k : k-n, amp: Math.hypot(re/n, im/n), phase: Math.atan2(im, re) });
+      }
+      return out.sort(function(a,b){ return b.amp - a.amp; });
+    }
+
+    var coeffs = dft(lemniscate());
+    var NEPI = 20, t = 0, path = [];
+
+    function draw() {
+      var w = canvas.width / dpr, h = canvas.height / dpr;
+      var cx = w / 2, cy = h / 2;
+      ctx.fillStyle = '#0f172a';
+      ctx.fillRect(0, 0, w, h);
+
+      var x = cx, y = cy;
+      for (var i = 0; i < NEPI; i++) {
+        var c = coeffs[i];
+        var px = x, py = y;
+        var angle = c.freq * t + c.phase;
+        x += c.amp * Math.cos(angle);
+        y += c.amp * Math.sin(angle);
+
+        ctx.beginPath();
+        ctx.arc(px, py, c.amp, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(14,165,233,0.12)';
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(px, py);
+        ctx.lineTo(x, y);
+        ctx.strokeStyle = 'rgba(14,165,233,0.55)';
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+      }
+
+      path.push({ x: x, y: y });
+      if (path.length > N) path.shift();
+
+      if (path.length > 1) {
+        ctx.beginPath();
+        ctx.moveTo(path[0].x, path[0].y);
+        for (var p = 1; p < path.length; p++) ctx.lineTo(path[p].x, path[p].y);
+        ctx.strokeStyle = '#f59e0b';
+        ctx.lineWidth = 1.8;
+        ctx.lineJoin = 'round';
+        ctx.stroke();
+      }
+
+      t += (2 * Math.PI / N) * 0.75;
+      if (t >= 2 * Math.PI) { t = 0; path = []; }
+      requestAnimationFrame(draw);
+    }
+
+    requestAnimationFrame(function() { resize(); draw(); });
+  }());
+  </script>
 </body>
 </html>
