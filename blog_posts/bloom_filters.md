@@ -11,7 +11,7 @@ categories: algorithms data-structures
 
 Imagine you're a bouncer at a club. You have a list of people who are banned. For every person who walks up, you need to decide: are they on the ban list?
 
-The naive approach — scanning the entire list every time — is slow and expensive. But you don't necessarily need *certainty*. You just need a fast answer to: **"Is this person definitely NOT banned?"** If the answer is yes, let them in quickly. If there's any doubt, do the full check.
+The naive approach -scanning the entire list every time -is slow and expensive. But you don't necessarily need *certainty*. You just need a fast answer to: **"Is this person definitely NOT banned?"** If the answer is yes, let them in quickly. If there's any doubt, do the full check.
 
 That's the intuition behind a **Bloom filter**.
 
@@ -20,11 +20,11 @@ That's the intuition behind a **Bloom filter**.
 A Bloom filter is a space-efficient data structure with one peculiar property:
 
 - It can tell you with **100% certainty** that something is **not** in a set.
-- It can tell you that something is **probably** in the set — but might occasionally be wrong (a false positive).
+- It can tell you that something is **probably** in the set -but might occasionally be wrong (a false positive).
 
 It **never** produces false negatives. If you added something, the Bloom filter will always recognize it.
 
-This asymmetry — "definitely no" vs. "probably yes" — turns out to be incredibly useful.
+This asymmetry -"definitely no" vs. "probably yes" -turns out to be incredibly useful.
 
 ## How It Works (Simply)
 
@@ -40,7 +40,7 @@ Picture a row of light switches, all starting in the **OFF** position.
 3. If **any** switch is **OFF** → the element was definitely never added.
 4. If **all** switches are **ON** → the element was *probably* added (but another combination of elements could have flipped those same switches).
 
-That's it. No storing the actual elements — just flipping bits.
+That's it. No storing the actual elements -just flipping bits.
 
 <div class="demo-link">
   <a href="/blog_posts/experiments/bloom-filter/index.html" class="btn btn-primary">
@@ -75,9 +75,9 @@ In write-heavy workloads, this can eliminate **up to 90% of unnecessary disk loo
 
 ### 3. Medium's "Already Read" Articles
 
-Medium used Bloom filters to track which articles a user has already seen — so they don't recommend the same article twice. 
+Medium used Bloom filters to track which articles a user has already seen -so they don't recommend the same article twice. 
 
-Storing every article ID a user has ever viewed in a database per user would be expensive at scale. A Bloom filter per user takes a tiny fraction of that space. A false positive just means occasionally not recommending an article the user hasn't actually read — a minor, acceptable inconvenience.
+Storing every article ID a user has ever viewed in a database per user would be expensive at scale. A Bloom filter per user takes a tiny fraction of that space. A false positive just means occasionally not recommending an article the user hasn't actually read -a minor, acceptable inconvenience.
 
 ### 4. Bitcoin Lite Clients (SPV Nodes)
 
@@ -87,11 +87,11 @@ The client sends a Bloom filter encoding its addresses. The full node filters tr
 
 ### 5. Weak Password Detection
 
-Services like HaveIBeenPwned track billions of compromised passwords. Checking "has this password ever been leaked?" against a massive database on every login would be slow. A Bloom filter over the leaked password set lets you do this check in microseconds — a "definitely not compromised" answer means skip the full lookup.
+Services like HaveIBeenPwned track billions of compromised passwords. Checking "has this password ever been leaked?" against a massive database on every login would be slow. A Bloom filter over the leaked password set lets you do this check in microseconds -a "definitely not compromised" answer means skip the full lookup.
 
 ## Implementation in C++
 
-Here's the core class — it's surprisingly simple:
+Here's the core class -it's surprisingly simple:
 
 ```cpp
 #include <iostream>
@@ -118,7 +118,7 @@ public:
         hashFunctions = functions;
     }
 
-    // O(k * |string|) — flip k bits for every insert
+    // O(k * |string|) -flip k bits for every insert
     void insert(const string& str) 
     {
         for (auto& func: hashFunctions) 
@@ -127,7 +127,7 @@ public:
         }
     }
 
-    // O(k * |string|) — check k bits; one 0 means definitely absent
+    // O(k * |string|) -check k bits; one 0 means definitely absent
     const bool isPresent(const string& str) const
     {
         for (auto& func: hashFunctions)
@@ -177,9 +177,9 @@ int main()
     bf.insert("google.com");
     bf.insert("github.com");
 
-    cout << bf.isPresent("google.com") << "\n"; // 1 — definitely added
-    cout << bf.isPresent("evil.com")   << "\n"; // 0 — definitely NOT added
-    cout << bf.isPresent("github.com") << "\n"; // 1 — definitely added
+    cout << bf.isPresent("google.com") << "\n"; // 1 -definitely added
+    cout << bf.isPresent("evil.com")   << "\n"; // 0 -definitely NOT added
+    cout << bf.isPresent("github.com") << "\n"; // 1 -definitely added
 
     return 0;
 }
@@ -201,7 +201,7 @@ And the optimal number of hash functions (minimizing false positives for given m
 k_{opt} = \frac{m}{n} \ln 2
 \]
 
-**A concrete example:** With 1 million bits and 1,000 inserted elements using 7 hash functions, the false positive rate is roughly **0.8%** — one in 125 lookups will incorrectly say "probably present."
+**A concrete example:** With 1 million bits and 1,000 inserted elements using 7 hash functions, the false positive rate is roughly **0.8%** -one in 125 lookups will incorrectly say "probably present."
 
 The key levers you control:
 - **Larger bit array** (m) → fewer false positives, more memory.
@@ -224,8 +224,8 @@ Use a Bloom filter when you can tolerate a small false positive rate and need to
 
 ## Conclusion
 
-Bloom filters are a masterclass in practical trade-offs. By accepting a small, tunable probability of false positives, they achieve memory efficiency that traditional data structures simply can't match. The "definitely not present" guarantee is the key insight — it lets you skip expensive operations (disk reads, network calls, database queries) with absolute confidence for the common case.
+Bloom filters are a masterclass in practical trade-offs. By accepting a small, tunable probability of false positives, they achieve memory efficiency that traditional data structures simply can't match. The "definitely not present" guarantee is the key insight -it lets you skip expensive operations (disk reads, network calls, database queries) with absolute confidence for the common case.
 
-Next time you browse the web safely, query a distributed database, or get article recommendations — there's a good chance a Bloom filter is quietly doing work behind the scenes.
+Next time you browse the web safely, query a distributed database, or get article recommendations -there's a good chance a Bloom filter is quietly doing work behind the scenes.
 
 The full implementation with additional test cases and an interactive query interface is available in my [GitHub repository](https://github.com/Jaskamalkainth/BloomFilter).
