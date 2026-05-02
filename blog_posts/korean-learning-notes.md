@@ -37,31 +37,19 @@ fa-icon: language
               <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level1/level1_patterns.md" target="_blank" class="note-item">
                 <div class="note-content">
                   <span class="class-number">Grammar Patterns</span>
-                  <span class="class-summary">Sejong Korean 1 — Grammar Patterns Summary (Units 1–10)</span>
+                  <span class="class-summary">Sejong Korean 1 — Grammar Patterns Summary (Units 1–12)</span>
                 </div>
               </a>
               <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level1/level1_vocab.md" target="_blank" class="note-item">
                 <div class="note-content">
                   <span class="class-number">Vocabulary</span>
-                  <span class="class-summary">Sejong Korean 1 — Vocabulary Summary (Units 1–10)</span>
-                </div>
-              </a>
-              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level1/level1_patterns.md" target="_blank" class="note-item">
-                <div class="note-content">
-                  <span class="class-number">Grammar Patterns</span>
-                  <span class="class-summary">Sejong Korean 1 — Grammar Patterns Summary (Units 1–10)</span>
-                </div>
-              </a>
-              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level1/level1_vocab.md" target="_blank" class="note-item">
-                <div class="note-content">
-                  <span class="class-number">Vocabulary</span>
-                  <span class="class-summary">Sejong Korean 1 — Vocabulary Summary (Units 1–10)</span>
+                  <span class="class-summary">Sejong Korean 1 — Vocabulary Summary (Units 1–12)</span>
                 </div>
               </a>
               <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level1/level1_patterns_table.md" target="_blank" class="note-item">
                 <div class="note-content">
                   <span class="class-number">Quick Reference</span>
-                  <span class="class-summary">Sejong Korean 1 — Grammar Patterns Quick Reference Table (Units 1–10) with Korean examples, romanization, and meanings</span>
+                  <span class="class-summary">Sejong Korean 1 — Grammar Patterns Quick Reference Table (Units 1–12) with Korean examples, romanization, and meanings</span>
                 </div>
               </a>
             </div>
