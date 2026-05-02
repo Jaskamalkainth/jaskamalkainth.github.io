@@ -14,7 +14,7 @@ fa-icon: language
   </div>
 
   <div class="levels-section">
-    <h2>Course Levels</h2>qy
+    <h2>Course Levels</h2>
     
     <div class="level-container">
       <div class="level-header" onclick="toggleLevel('level1')">
@@ -34,6 +34,30 @@ fa-icon: language
           <div class="class-notes-subsection">
             <h4>📖 Reference Materials</h4>
             <div class="notes-list">
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level1/level1_patterns.md" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Grammar Patterns</span>
+                  <span class="class-summary">Sejong Korean 1 — Grammar Patterns Summary (Units 1–10)</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level1/level1_vocab.md" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Vocabulary</span>
+                  <span class="class-summary">Sejong Korean 1 — Vocabulary Summary (Units 1–10)</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level1/level1_patterns.md" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Grammar Patterns</span>
+                  <span class="class-summary">Sejong Korean 1 — Grammar Patterns Summary (Units 1–10)</span>
+                </div>
+              </a>
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level1/level1_vocab.md" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Vocabulary</span>
+                  <span class="class-summary">Sejong Korean 1 — Vocabulary Summary (Units 1–10)</span>
+                </div>
+              </a>
               <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level1/level1_patterns_table.md" target="_blank" class="note-item">
                 <div class="note-content">
                   <span class="class-number">Quick Reference</span>
