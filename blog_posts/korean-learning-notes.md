@@ -14,7 +14,7 @@ fa-icon: language
   </div>
 
   <div class="levels-section">
-    <h2>Course Levels</h2>
+    <h2>Course Levels</h2>qy
     
     <div class="level-container">
       <div class="level-header" onclick="toggleLevel('level1')">
@@ -31,6 +31,17 @@ fa-icon: language
       
       <div class="level-content" id="level1-content">
         <div class="level-details">
+          <div class="class-notes-subsection">
+            <h4>📖 Reference Materials</h4>
+            <div class="notes-list">
+              <a href="https://github.com/Jaskamalkainth/korean-language-learning-notes/blob/main/level1/level1_patterns_table.md" target="_blank" class="note-item">
+                <div class="note-content">
+                  <span class="class-number">Quick Reference</span>
+                  <span class="class-summary">Sejong Korean 1 — Grammar Patterns Quick Reference Table (Units 1–10) with Korean examples, romanization, and meanings</span>
+                </div>
+              </a>
+            </div>
+          </div>
           <div class="class-notes-subsection">
             <h4>📚 Class Notes</h4>
             <div class="notes-list">
