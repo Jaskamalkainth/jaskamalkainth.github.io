@@ -183,6 +183,103 @@
       white-space: nowrap;
     }
     .play-btn:hover { background: #f4f4f5; }
+
+    .explainer {
+      margin-top: 24px;
+      display: grid;
+      gap: 14px;
+      line-height: 1.7;
+      font-size: 14px;
+      color: #3f3f46;
+    }
+
+    .info-card {
+      background: #fff;
+      border: 1px solid #e4e4e7;
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    }
+
+    .info-card h2 {
+      font-size: 1rem;
+      color: #18181b;
+      margin-bottom: 8px;
+    }
+
+    .info-card h3 {
+      font-size: 0.88rem;
+      color: #18181b;
+      margin: 14px 0 6px;
+    }
+
+    .info-card p + p { margin-top: 10px; }
+
+    .info-card ul,
+    .info-card ol {
+      margin: 8px 0 0 18px;
+    }
+
+    .info-card li + li { margin-top: 6px; }
+
+    .formula {
+      margin: 12px 0;
+      padding: 12px;
+      border-radius: 6px;
+      background: #f8fafc;
+      border-left: 3px solid #0369a1;
+      color: #0f172a;
+      font-family: "Courier New", monospace;
+      font-size: 12px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .formula-note {
+      font-size: 12px;
+      color: #52525b;
+      margin-top: -4px;
+    }
+
+    .term-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .term {
+      background: #f8fafc;
+      border: 1px solid #e4e4e7;
+      border-radius: 6px;
+      padding: 10px;
+    }
+
+    .term strong {
+      display: block;
+      color: #0369a1;
+      margin-bottom: 3px;
+    }
+
+    .callout {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 6px;
+      background: #eff6ff;
+      color: #1e3a8a;
+      border: 1px solid #bfdbfe;
+    }
+
+    .mini-label {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #0369a1;
+      font-size: 11px;
+      font-weight: 700;
+      margin-right: 4px;
+    }
   </style>
 </head>
 <body>
@@ -222,6 +319,165 @@
         </div>
       </div>
     </div>
+
+    <section class="explainer" aria-label="Fourier epicycles explanation">
+      <article class="info-card">
+        <h2>What is this?</h2>
+        <p>
+          This demo shows a shape being redrawn by a chain of rotating circles, also called
+          <strong>epicycles</strong>. The orange dot is attached to the last circle. As all circles rotate
+          at their own speeds, the dot traces the selected shape.
+        </p>
+        <p>
+          The surprising idea is that almost any closed 2D drawing can be described as a sum of circular
+          motions. Smooth curves usually need only a few circles. Sharp corners, jumps, and disconnected
+          strokes need many smaller, faster circles.
+        </p>
+        <div class="callout">
+          In simple terms: Fourier analysis is a way to say, "What simple waves are hiding inside this
+          complicated shape?" Epicycles turn those waves into visible rotating arrows.
+        </div>
+      </article>
+
+      <article class="info-card">
+        <h2>How the animation works, step by step</h2>
+        <ol>
+          <li>
+            <strong>Turn the drawing into points.</strong> The chosen shape is sampled into 256 points.
+            Each point is stored as a complex number: x is the real part, y is the imaginary part.
+          </li>
+          <li>
+            <strong>Run the Discrete Fourier Transform (DFT).</strong> The DFT asks how much of each
+            circular frequency is present in those points.
+          </li>
+          <li>
+            <strong>Sort the circles by importance.</strong> Bigger-amplitude coefficients are drawn
+            first because they contribute the largest visible motion.
+          </li>
+          <li>
+            <strong>Add the rotating vectors tip-to-tail.</strong> Each circle starts where the previous
+            circle ends. The final tip becomes the orange drawing point.
+          </li>
+          <li>
+            <strong>Trace one loop.</strong> As time moves from 0 to 2&pi;, the tip follows the
+            reconstructed path and then starts again.
+          </li>
+        </ol>
+      </article>
+
+      <article class="info-card">
+        <h2>The math behind it</h2>
+        <p>
+          A 2D drawing can be treated as one complex-valued signal. Instead of writing a point as
+          <code>(x, y)</code>, write it as:
+        </p>
+        <div class="formula">z(t) = x(t) + i y(t)</div>
+        <p>
+          The DFT represents the sampled path as a sum of complex exponentials:
+        </p>
+        <div class="formula">c<sub>k</sub> = (1 / N) &Sigma;<sub>j=0</sub><sup>N-1</sup> z<sub>j</sub> e<sup>-i 2&pi;k j / N</sup></div>
+        <p class="formula-note">
+          This asks: "How much does the drawing match a circle that spins k times per loop?"
+        </p>
+        <div class="formula">z(t) &asymp; &Sigma; A<sub>k</sub> e<sup>i(k t + &phi;<sub>k</sub>)</sup></div>
+        <p class="formula-note">
+          Reconstruction adds the strongest circles back together, where
+          A<sub>k</sub> is radius and &phi;<sub>k</sub> is starting angle.
+        </p>
+        <p>
+          Euler's formula, <code>e<sup>i&theta;</sup> = cos(&theta;) + i sin(&theta;)</code>, is why each
+          term is a circle. The real part moves left/right, the imaginary part moves up/down, and together
+          they rotate around a center.
+        </p>
+
+        <div class="term-grid">
+          <div class="term">
+            <strong>Frequency k</strong>
+            How fast the circle spins. Positive and negative frequencies rotate in opposite directions.
+          </div>
+          <div class="term">
+            <strong>Amplitude |c<sub>k</sub>|</strong>
+            The radius of the circle. Larger amplitudes describe the big outline of the shape.
+          </div>
+          <div class="term">
+            <strong>Phase &phi;<sub>k</sub></strong>
+            The starting angle. It decides where a circle begins at time zero.
+          </div>
+          <div class="term">
+            <strong>More epicycles</strong>
+            More Fourier terms. This improves detail, especially around corners and abrupt changes.
+          </div>
+        </div>
+
+        <h3>Why corners need more circles</h3>
+        <p>
+          A smooth curve changes gradually, so low frequencies capture it well. A sharp star corner changes
+          direction suddenly. Sudden changes contain high frequencies, so the slider needs more epicycles to
+          reproduce them cleanly.
+        </p>
+        <p>
+          If only a few high-frequency terms are used, corners may overshoot or ripple. That is the same
+          Fourier behavior behind ringing artifacts in compressed images and filtered signals.
+        </p>
+      </article>
+
+      <article class="info-card">
+        <h2>Simple intuition</h2>
+        <p>
+          Imagine describing a road trip by giving someone a stack of instructions: "walk in this big circle,
+          while carrying a smaller spinning arrow, while that arrow carries another smaller spinning arrow."
+          The final fingertip position is the drawing pen.
+        </p>
+        <p>
+          The largest circles describe the broad movement, like the overall width and height of the shape.
+          The tiny circles correct the details, like corners, bends, and small wiggles. Moving the slider upward
+          is like allowing the pen to use more correction instructions.
+        </p>
+      </article>
+
+      <article class="info-card">
+        <h2>How to read this demo</h2>
+        <ul>
+          <li><span class="mini-label">Epicycles</span> controls how many Fourier coefficients are used.</li>
+          <li><span class="mini-label">Speed</span> changes animation speed only; it does not change the math.</li>
+          <li><span class="mini-label">Circles</span> toggles the construction lines so you can focus on the traced path.</li>
+          <li>
+            Try <strong>&infin;</strong> first: it is smooth and converges quickly. Then try
+            <strong>&starf;</strong>: the corners show why high-frequency terms matter.
+          </li>
+        </ul>
+      </article>
+
+      <article class="info-card">
+        <h2>Use cases and why this matters</h2>
+        <ul>
+          <li>
+            <strong>Audio compression and equalizers:</strong> sound is decomposed into frequencies, which lets
+            systems boost bass, remove noise, or compress music.
+          </li>
+          <li>
+            <strong>Image processing:</strong> JPEG-like ideas use frequency components so smooth regions can be
+            stored cheaply while important edges are preserved.
+          </li>
+          <li>
+            <strong>Signal cleanup:</strong> engineers remove unwanted high-frequency noise from sensor readings,
+            medical signals, radio data, and financial time series.
+          </li>
+          <li>
+            <strong>Shape analysis:</strong> outlines can be compared, smoothed, compressed, or reconstructed from
+            Fourier descriptors.
+          </li>
+          <li>
+            <strong>Animation and generative art:</strong> a complex drawing can be turned into a beautiful chain
+            of rotating motions, as shown here.
+          </li>
+          <li>
+            <strong>Solving physics and engineering problems:</strong> heat flow, vibrations, waves, and circuits
+            are easier to analyze when broken into sine and cosine components.
+          </li>
+        </ul>
+      </article>
+    </section>
   </div>
 
   <script>
