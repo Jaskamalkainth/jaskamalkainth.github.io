@@ -50,7 +50,9 @@
 
     .shape-row {
       display: flex;
+      flex-wrap: wrap;
       width: fit-content;
+      max-width: 100%;
       border: 1px solid #e4e4e7;
       border-radius: 6px;
       overflow: hidden;
@@ -58,7 +60,7 @@
     }
 
     .shape-btn {
-      padding: 7px 24px;
+      padding: 7px 20px;
       font-size: 1.15rem;
       font-weight: 700;
       font-family: inherit;
@@ -66,6 +68,7 @@
       color: #52525b;
       border: none;
       border-right: 1px solid #e4e4e7;
+      border-bottom: 1px solid #e4e4e7;
       cursor: pointer;
       transition: background 0.12s, color 0.12s;
       line-height: 1;
@@ -295,6 +298,9 @@
       <button class="shape-btn active" data-shape="infinity">∞</button>
       <button class="shape-btn" data-shape="pi">π</button>
       <button class="shape-btn" data-shape="star">★</button>
+      <button class="shape-btn" data-shape="square">■</button>
+      <button class="shape-btn" data-shape="heart">♥</button>
+      <button class="shape-btn" data-shape="flower">✿</button>
     </div>
 
     <div class="canvas-wrap">
@@ -411,9 +417,9 @@
 
         <h3>Why corners need more circles</h3>
         <p>
-          A smooth curve changes gradually, so low frequencies capture it well. A sharp star corner changes
-          direction suddenly. Sudden changes contain high frequencies, so the slider needs more epicycles to
-          reproduce them cleanly.
+          A smooth curve changes gradually, so low frequencies capture it well. A sharp corner, like on the
+          star or square, changes direction suddenly. Sudden changes contain high frequencies, so the slider
+          needs more epicycles to reproduce them cleanly.
         </p>
         <p>
           If only a few high-frequency terms are used, corners may overshoot or ripple. That is the same
@@ -443,7 +449,14 @@
           <li><span class="mini-label">Circles</span> toggles the construction lines so you can focus on the traced path.</li>
           <li>
             Try <strong>&infin;</strong> first: it is smooth and converges quickly. Then try
-            <strong>&starf;</strong>: the corners show why high-frequency terms matter.
+            <strong>&starf;</strong> or <strong>&#9632;</strong> (square): the sharp corners show why
+            high-frequency terms matter.
+          </li>
+          <li>
+            <strong>&hearts;</strong> mixes both worlds: mostly smooth, with a single sharp cusp at the
+            bottom that resists a low epicycle count. <strong>&#10047;</strong> (flower) is smooth
+            everywhere but repeats its petals fast, so it needs a higher frequency floor before it looks
+            right at all.
           </li>
         </ul>
       </article>
@@ -609,6 +622,48 @@
       return uniformResample(verts, n);
     }
 
+    function shapeSquare(n) {
+      // ■  — four sharp 90° corners: same "corners need more circles" lesson as
+      // the star, but with straight edges so the ringing at each corner is easy to see
+      const R = 165 * S();
+      const verts = [
+        { x: -R, y: -R },
+        { x:  R, y: -R },
+        { x:  R, y:  R },
+        { x: -R, y:  R },
+      ];
+      return uniformResample(verts, n);
+    }
+
+    function shapeHeart(n) {
+      // ♥  — classic parametric heart curve: mostly smooth, but the cusp at the
+      // bottom is a single point of sharp curvature, unlike the star's evenly spaced corners
+      const sc = 10 * S();
+      const m  = 400;
+      const verts = [];
+      for (let i = 0; i < m; i++) {
+        const θ = 2 * Math.PI * i / m;
+        const x = 16 * Math.pow(Math.sin(θ), 3);
+        const y = -(13 * Math.cos(θ) - 5 * Math.cos(2 * θ) - 2 * Math.cos(3 * θ) - Math.cos(4 * θ));
+        verts.push({ x: x * sc, y: y * sc });
+      }
+      return uniformResample(verts, n);
+    }
+
+    function shapeFlower(n) {
+      // ✿  — quadrifolium rose curve (r = R·cos(2θ)): smooth everywhere, but the
+      // repeating petals are inherently a higher base frequency than the other shapes
+      const R = 190 * S();
+      const m = 400;
+      const verts = [];
+      for (let i = 0; i < m; i++) {
+        const θ = 2 * Math.PI * i / m;
+        const r = R * Math.cos(2 * θ);
+        verts.push({ x: r * Math.cos(θ), y: r * Math.sin(θ) });
+      }
+      return uniformResample(verts, n);
+    }
+
     // ── DFT ──────────────────────────────────────────────────────
 
     function computeDFT(pts) {
@@ -709,10 +764,15 @@
       // Recompute canvas scale-dependent shapes
       resizeCanvas();
 
-      let pts;
-      if      (name === 'infinity') pts = shapeLemniscate(N);
-      else if (name === 'star')     pts = shapeStar(N);
-      else                          pts = shapePi(N);
+      const builders = {
+        infinity: shapeLemniscate,
+        star:     shapeStar,
+        pi:       shapePi,
+        square:   shapeSquare,
+        heart:    shapeHeart,
+        flower:   shapeFlower,
+      };
+      const pts = (builders[name] || shapeLemniscate)(N);
 
       coeffs = computeDFT(pts);
 
