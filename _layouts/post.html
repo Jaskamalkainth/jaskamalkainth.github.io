@@ -6,16 +6,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   {% seo %}
+  {% include gtm-head.html %}
   <link rel="stylesheet" href="{{ site.baseurl }}/css/blog_post.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   {% if site.favicon %}<link rel="shortcut icon" href="{{ site.favicon }}" type="image/x-icon">{% endif %}
 </head>
 <body>
+  {% include gtm-body.html %}
   <div style="max-width:900px;margin:0 auto;padding:16px;">
   <a href="{{ site.baseurl }}/">&larr; Back to home</a>
   <article class="post-content">
     {{ content }}
   </article>
   </div>
+  {% include analytics.html %}
 </body>
 </html>
