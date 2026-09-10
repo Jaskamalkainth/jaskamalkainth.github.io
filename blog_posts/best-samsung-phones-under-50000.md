@@ -1,13 +1,11 @@
 ---
-published: false ## draft scaffold — fill in real picks/prices, then flip to true to publish
+published: false
 title: "Best Samsung Phones Under ₹50,000 (2026 Guide)"
 date: 2026-01-15
 description: "A buyer's guide to the best Samsung phones under ₹50,000 in 2026 — camera, battery, and performance compared across the top picks."
 categories: tech phones samsung buying-guide
 image: "/img/pixelate.jpg"
 ---
-
-> 🚧 **Draft scaffold.** Prices/specs below are pulled from Samsung's own product pages (see links) as of this writing — verify current pricing before publishing, since Samsung's prices/offers change frequently. Set `published: true` in the front matter above once you're happy with it.
 
 # Best Samsung Phones Under ₹50,000 (2026)
 
@@ -60,14 +58,8 @@ At under ₹13,000, this is less a "best under ₹50,000" pick and more proof of
 
 Picks were pulled directly from Samsung India's own "under ₹50,000" category page and each model's individual buy page, prioritizing models Samsung itself currently features as in-stock/buyable (not older or discontinued models still indexed elsewhere on the site) — then split by what most buyers optimize for: screen quality, battery life, and raw budget.
 
-## FAQ
-
-**Is it worth waiting for the next Galaxy launch?**
-Answer here.
-
-**Which of these has the best resale value?**
-Answer here.
-
 ## Conclusion
 
-Wrap-up paragraph with the single top recommendation for most readers.
+If you just want one answer: the **Galaxy A36 5G** (from ₹33,999) is the best all-round pick under ₹50,000 — it's the only one of the three with a Super AMOLED 120Hz display, and it still leaves ₹16,000+ of headroom under the budget cap. Pick the **M47 5G** instead if battery life matters more to you than screen quality, or the **M17e 5G** if you'd rather spend a fraction of the budget and put the rest toward accessories, a case, or savings.
+
+*Prices shown are Samsung's listed starting prices at the time of writing and include current launch/bank offers — check each buy page linked above for live pricing before purchasing.*
