@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: "Best Samsung Phones Under ₹50,000 (2026 Guide)"
 date: 2026-01-15
 description: "A buyer's guide to the best Samsung phones under ₹50,000 in 2026 — camera, battery, and performance compared across the top picks."

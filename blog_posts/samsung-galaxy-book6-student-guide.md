@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: "Samsung Galaxy Book6 Series: Which Tier Should Students Buy? (2026)"
 date: 2026-01-20
 description: "A breakdown of Samsung's Galaxy Book6, Book6 Pro, and Book6 Ultra for students — processor, display, RAM, and storage compared across all three tiers."
