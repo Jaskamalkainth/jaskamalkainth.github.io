@@ -1,4 +1,5 @@
 ---
+published: false
 title: "Cpp Notes"
 date: 2021-05-07 02:20
 ---

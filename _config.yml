@@ -7,18 +7,36 @@ safe: false
 
 ### site serving configuration ###
 exclude: [CNAME, README.md, .gitignore]
-permalink: /:title ## disables post output
+permalink: none ## no _posts dir is used; "none" keeps normal page URLs (e.g. /blog_posts/foo.html) intact
 timezone: null
 lsi: false
 markdown: kramdown
 highlighter: rouge
 
+### canonical URL of the site (required for sitemap.xml, canonical links, OG tags) ###
+url:     "https://jaskamalkainth.github.io"
+baseurl: ""
+
+### plugins used for SEO / indexability (all whitelisted by GitHub Pages, no Gemfile needed) ###
+plugins:
+  - jekyll-sitemap    # auto-generates /sitemap.xml from all pages + blog_posts collection
+  - jekyll-seo-tag     # auto-generates <title>, meta description, canonical, Open Graph, Twitter Card, JSON-LD
 
 ### collections: render blog_posts to HTML ###
 collections:
   blog_posts:
     output: true
     permalink: /blog_posts/:name.html
+
+### defaults: every file under blog_posts/ gets sensible SEO front matter unless overridden ###
+### (these are plain Jekyll pages, not a real collection, so scope is by path, not type) ###
+defaults:
+  - scope:
+      path: "blog_posts"
+    values:
+      layout: post
+      author: "Jaskamal Kainth"
+      image: "/img/pixelate.jpg" ## default social-share image; override per-post with `image:` front matter
 
 ### content configuration ###
 title:       "Jaskamal Kainth"
@@ -27,6 +45,8 @@ description: "Jaskamal Kainth's Personal Website"
 source_link: "https://github.com/Jaskamalkainth/jaskamalkainth.github.io"
 favicon:     "img/favicon.ico"
 touch_icon:  "img/apple-touch-icon.png"
+twitter:
+  username: "" ## put YOUR twitter/x handle here (without @) to enable Twitter Card attribution
 google_analytics_key: UA-77340824-1 ## put YOUR key here to enable tracking! (blank to disable)
 
 
