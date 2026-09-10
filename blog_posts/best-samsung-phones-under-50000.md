@@ -7,41 +7,58 @@ categories: tech phones samsung buying-guide
 image: "/img/pixelate.jpg"
 ---
 
-> 🚧 **Draft scaffold.** This page exists to test the SEO/indexing pipeline end-to-end. Replace the placeholder picks below with real, researched recommendations (actual model names, current prices, verified specs) before setting `published: false` in the front matter above.
+> 🚧 **Draft scaffold.** Prices/specs below are pulled from Samsung's own product pages (see links) as of this writing — verify current pricing before publishing, since Samsung's prices/offers change frequently. Set `published: true` in the front matter above once you're happy with it.
 
 # Best Samsung Phones Under ₹50,000 (2026)
 
-A short intro paragraph goes here: who this guide is for, what "under ₹50,000" gets you in Samsung's current lineup, and how these picks were chosen (e.g. camera quality, battery life, display, price-to-performance).
+Samsung's ₹50,000-and-under lineup spans the Galaxy M and Galaxy A series — from ultra-budget picks under ₹15,000 to near-flagship Super AMOLED displays just under the ₹35,000 mark. Here's how the current lineup breaks down, pulled directly from [Samsung India's "Best Mobiles under ₹50,000" page](https://www.samsung.com/in/smartphones/mobiles-by-price/under-rs50000/) and each model's own buy page.
 
 ## Quick Picks
 
-| Phone | Price | Best For |
+| Phone | Starting Price | Best For |
 |---|---|---|
-| [Placeholder Model A] | ₹XX,XXX | Best overall |
-| [Placeholder Model B] | ₹XX,XXX | Best camera |
-| [Placeholder Model C] | ₹XX,XXX | Best battery life |
+| [Galaxy A36 5G](https://www.samsung.com/in/smartphones/galaxy-a36/buy/) | ₹33,999 | Best overall (Super AMOLED, 120Hz) |
+| [Galaxy M47 5G](https://www.samsung.com/in/smartphones/galaxy-m/galaxy-m47-5g-rogue-red-128gb-sm-m476bzrdins/buy/) | ₹28,999 | Best battery life (6000mAh) |
+| [Galaxy M17e 5G](https://www.samsung.com/in/smartphones/galaxy-m/galaxy-m17e-5g-blitz-blue-128gb-sm-m076blbains/buy/) | ₹12,499 | Best budget pick |
 
-## 1. [Placeholder Model A] — Best Overall
+## 1. Galaxy A36 5G — Best Overall
 
-- **Display:** [spec]
-- **Processor:** [spec]
-- **Camera:** [spec]
-- **Battery:** [spec]
-- **Price:** ₹XX,XXX
+- **Display:** 6.7" Super AMOLED, 120Hz refresh rate
+- **RAM / Storage:** 8GB/128GB, 8GB/256GB, or 12GB/256GB
+- **Colors:** Awesome Black, Lavender, White, Lime, Sapphire Blue, Emerald Green
+- **Price:** Starting ₹33,999 (9-month no-cost EMI from ₹3,778/mo; ₹1,000 off first purchase)
 
-Why it made the list, and who should (or shouldn't) buy it.
+👉 **[See current price & configure →](https://www.samsung.com/in/smartphones/galaxy-a36/buy/)**
 
-## 2. [Placeholder Model B] — Best Camera
+The A36 5G is the pick if you want the closest thing to a flagship screen (Super AMOLED + 120Hz) without crossing ₹35,000. Best for anyone who spends a lot of time on video/social media and notices screen quality.
 
-Same structure as above.
+## 2. Galaxy M47 5G — Best Battery Life
 
-## 3. [Placeholder Model C] — Best Battery Life
+- **Battery:** 6000 mAh (typical)
+- **Display:** ~6.7" (16.91cm)
+- **RAM / Storage:** 8GB with 128GB or 256GB storage
+- **Colors:** Blaze Blue, Rogue Red
+- **Price:** ₹28,999 launch offer (₹4,000 instant bank discount)
 
-Same structure as above.
+👉 **[See current price & configure →](https://www.samsung.com/in/smartphones/galaxy-m/galaxy-m47-5g-rogue-red-128gb-sm-m476bzrdins/buy/)**
+
+If your phone needs to survive a full day of classes/work without a charger in sight, the M47 5G's 6000mAh battery is the standout spec in this price range.
+
+## 3. Galaxy M17e 5G — Best Budget Pick
+
+- **RAM / Storage:** 128GB (see product page for RAM configuration)
+- **Colors:** Blitz Blue and others
+- **Price:** ₹12,499
+
+👉 **[See current price & configure →](https://www.samsung.com/in/smartphones/galaxy-m/galaxy-m17e-5g-blitz-blue-128gb-sm-m076blbains/buy/)**
+
+At under ₹13,000, this is less a "best under ₹50,000" pick and more proof of how far your budget stretches in Samsung's current 5G lineup — a solid choice if ₹50,000 is your ceiling, not your target.
+
+*(Full, filterable list: [Samsung India — Best Mobiles under ₹50,000](https://www.samsung.com/in/smartphones/mobiles-by-price/under-rs50000/))*
 
 ## How We Chose These
 
-A short paragraph on methodology builds trust with readers (and gives search/AI crawlers clear signals about the page's intent) — e.g. hands-on testing, spec comparison, price tracking over N weeks.
+Picks were pulled directly from Samsung India's own "under ₹50,000" category page and each model's individual buy page, prioritizing models Samsung itself currently features as in-stock/buyable (not older or discontinued models still indexed elsewhere on the site) — then split by what most buyers optimize for: screen quality, battery life, and raw budget.
 
 ## FAQ
 
