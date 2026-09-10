@@ -18,7 +18,7 @@ Short intro: what students actually need (battery life, weight, price) vs. what 
 | Tier | Laptop | Price | Best For |
 |---|---|---|---|
 | Budget | [Placeholder Model A] | ₹XX,XXX | Note-taking, browsing |
-| Mid-range | [Placeholder Model B] | ₹XX,XXX | Coding, light editing |
+| Mid-range / Premium | Samsung Galaxy Book6 Series | [Configure & see price →](https://www.samsung.com/in/computers/galaxy-book/galaxy-book6-series/buy/) | Coding, engineering coursework |
 | Premium | [Placeholder Model C] | ₹XX,XXX | CS/engineering majors |
 
 ## 1. [Placeholder Model A] — Best Budget Pick
@@ -31,9 +31,25 @@ Short intro: what students actually need (battery life, weight, price) vs. what 
 
 Why it's a good fit for students, and its main trade-off.
 
-## 2. [Placeholder Model B] — Best Mid-Range Pick
+## 2. Samsung Galaxy Book6 Series — Best for Configurable Power
 
-Same structure as above.
+Samsung's current lineup spans three tiers, so you pick the exact balance of power vs. price rather than a single fixed spec:
+
+| Variant | Processor | Display | RAM | Storage |
+|---|---|---|---|---|
+| Galaxy Book6 | Intel Core Ultra 5 (325) | 14.0" | 16GB | 512GB |
+| Galaxy Book6 Pro | Intel Core Ultra 7 (356H / 355) | 14.0" or 16.0" | 16 / 32GB | 512GB / 1TB |
+| Galaxy Book6 Ultra | Intel Core Ultra X7 (358H) | 16.0" (touch available) | 32GB | 1TB |
+
+- **OS:** Windows 11 Home
+- **Colors:** Gray, Silver
+- **Price:** built-to-order — pricing depends on the configuration you pick, not a single fixed number
+
+For CS/engineering students who want headroom to run heavier IDEs, VMs, or design software, the **Book6 Pro** is the sensible middle ground; the base **Book6** covers writing/research/browsing students well below that price.
+
+👉 **[Configure and see current pricing on Samsung.in →](https://www.samsung.com/in/computers/galaxy-book/galaxy-book6-series/buy/)**
+
+*(Full range also browsable at [samsung.com/in/computers/all-computers](https://www.samsung.com/in/computers/all-computers/).)*
 
 ## 3. [Placeholder Model C] — Best Premium Pick
 
