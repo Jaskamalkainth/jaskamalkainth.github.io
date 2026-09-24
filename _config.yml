@@ -41,7 +41,9 @@ defaults:
 ### content configuration ###
 title:       "Jaskamal Kainth"
 keywords:    "Graduate Student, BITS Pilani, Samsung, Programmer, Mathematician, Research, Personal Page"
-description: "Jaskamal Kainth's Personal Website"
+description: "Jaskamal Kainth — search engineer. Query understanding, retrieval, ranking. Also: philosophy, music, algorithms."
+default_theme: "midnight"      ## midnight | terminal | paper | synthwave | nord | ember
+default_background: "graph"    ## graph | math | off
 source_link: "https://github.com/Jaskamalkainth/jaskamalkainth.github.io"
 favicon:     "img/favicon.ico"
 touch_icon:  "img/apple-touch-icon.png"

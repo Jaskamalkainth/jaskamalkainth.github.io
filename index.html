@@ -1,308 +1,311 @@
 ---
 ---
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="en" data-theme="{{ site.default_theme | default: 'midnight' }}" data-bg="{{ site.default_background | default: 'graph' }}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{ site.title }}</title>
   <meta name="keywords" content="{{ site.keywords }}">
   {% seo title=false %}
+  <script>
+    /* apply the saved theme before first paint so there is no flash */
+    (function () {
+      var d = document.documentElement;
+      d.setAttribute('data-default-theme', d.getAttribute('data-theme'));
+      try {
+        var t = localStorage.getItem('jk-theme'), b = localStorage.getItem('jk-bg');
+        if (t) d.setAttribute('data-theme', t);
+        if (b) d.setAttribute('data-bg', b);
+      } catch (e) {}
+    }());
+  </script>
   {% include gtm-head.html %}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/resume.css" />
-  <style>
-    .sidebar-epic-canvas { display:block; width:100%; aspect-ratio:1/1; border-radius:6px; margin-top:6px; background:#0f172a; }
-    .sidebar-epic-link   { display:block; font-size:12px; color:#0369a1; text-decoration:none; font-weight:500; margin-top:6px; }
-    .sidebar-epic-link:hover { text-decoration:underline; }
-  </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/site.css" />
   {% if site.favicon %}<link rel="shortcut icon" href="{{ site.favicon }}" type="image/x-icon">{% endif %}
   {% if site.touch_icon %}<link rel="apple-touch-icon" href="{{ site.touch_icon }}">{% endif %}
   <script data-ad-client="ca-pub-4384498028906460" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
-<body class="resume-layout">
+<body>
   {% include gtm-body.html %}
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="bg-vignette" aria-hidden="true"></div>
 
-  <header class="top-bar">
-    <div class="top-bar-inner">
-      <div>
-        <span class="name">{{ site.title }}</span>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#work">Work</a></li>
-          <li><a href="#beyond">Beyond</a></li>
-        </ul>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a href="#top" class="brand" aria-label="Home"><span class="brand-prompt">~/</span>jaskamal<span class="caret"></span></a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#pipeline">pipeline</a>
+        <a href="#path">path</a>
+        <a href="#work">work</a>
+        <a href="#beyond">beyond</a>
+        <a href="#contact">contact</a>
       </nav>
+      <div class="topbar-tools">
+        <button class="tool-btn" id="search-jump" type="button" title="Search (/)" aria-label="Search">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <kbd>/</kbd>
+        </button>
+        <button class="tool-btn" id="theme-toggle" type="button" title="Themes (t)" aria-haspopup="true" aria-expanded="false" aria-controls="theme-panel">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg>
+          <span class="tool-label">theme</span>
+        </button>
+      </div>
+    </div>
+    <div class="theme-panel" id="theme-panel" role="dialog" aria-label="Choose a theme" hidden>
+      <div class="panel-title">theme</div>
+      <div class="theme-grid" id="theme-grid"></div>
+      <div class="panel-title">background</div>
+      <div class="seg" id="bg-seg" role="radiogroup" aria-label="Background">
+        <button type="button" data-bg="graph" role="radio">graph</button>
+        <button type="button" data-bg="math" role="radio">math</button>
+        <button type="button" data-bg="off" role="radio">off</button>
+      </div>
+      <p class="panel-note">Saved in this browser. Press <kbd>t</kbd> to cycle.</p>
     </div>
   </header>
 
-  <main class="main">
-    <aside class="sidebar">
-      <img src="{{ site.baseurl }}/img/pixelate.jpg" alt="{{ site.title }}" class="photo" />
-      <div>
-        <div class="block-title">Contact</div>
-        <div class="links">
-          <a href="mailto:kainthjaskamal@gmail.com"><i class="far fa-envelope"></i> Email</a>
-          <a href="https://github.com/Jaskamalkainth" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
-          <a href="https://www.linkedin.com/in/j1k77/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+  <main id="top">
+    <!-- ============ HERO: the homepage is a search engine ============ -->
+    <section class="hero wrap">
+      <p class="hero-kicker mono"><span class="prompt">$</span> whoami</p>
+      <h1 class="hero-name">Jaskamal Kainth</h1>
+      <p class="hero-line">I build <span class="hl">search engines</span>: query understanding, retrieval, ranking. Off the clock I read <span class="hl">philosophy</span>, listen to a lot of <span class="hl">music</span>, and play with <span class="hl">algorithms</span>.</p>
+
+      <div class="search" id="search" role="search">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input id="q" type="search" autocomplete="off" spellcheck="false" aria-label="Search this site" aria-controls="results" placeholder="" />
+          <span class="search-ghost mono" id="q-ghost" aria-hidden="true"></span>
+          <kbd class="search-kbd">/</kbd>
+        </div>
+        <div class="search-meta mono" id="search-meta" aria-live="polite"></div>
+        <ol class="results" id="results" role="listbox" aria-label="Search results"></ol>
+        <div class="search-try mono">
+          <span class="muted">try:</span>
+          <button type="button" data-q="hnsw">hnsw</button>
+          <button type="button" data-q="why do we do">why do we do</button>
+          <button type="button" data-q="fourier">fourier</button>
+          <button type="button" data-q="music">music</button>
+          <button type="button" data-q=":theme terminal">:theme terminal</button>
+          <button type="button" data-q=":help">:help</button>
         </div>
       </div>
+    </section>
 
-      <div>
-        <div class="block-title">ICPC</div>
-        <div class="links">
-          <a href="https://icpc.global/ICPCID/TY7NYK0ENIEA" target="_blank" rel="noopener"><i class="fas fa-trophy"></i> ICPC Profile</a>
+    <!-- ============ PIPELINE ============ -->
+    <section class="section wrap" id="pipeline">
+      <header class="section-head">
+        <span class="section-idx mono">01</span>
+        <h2>What I work on</h2>
+        <p class="section-sub">Product search at Samsung, live in 55+ markets. A query goes in and ranked products come out. My team owns everything in between.</p>
+      </header>
+      <ol class="pipeline" id="pipeline-track">
+        <li class="stage">
+          <span class="stage-n mono">q</span>
+          <h3>Query understanding</h3>
+          <p>Normalise, correct, classify intent, expand. Work out what the person actually meant.</p>
+          <div class="chips"><span>NLP</span><span>spell-correct</span><span>LLMs</span></div>
+        </li>
+        <li class="stage">
+          <span class="stage-n mono">R</span>
+          <h3>Retrieval</h3>
+          <p>Lexical and semantic, fused. BM25 inverted indexes next to k-NN over HNSW graphs.</p>
+          <div class="chips"><span>OpenSearch</span><span>BM25</span><span>HNSW / Faiss</span></div>
+        </li>
+        <li class="stage">
+          <span class="stage-n mono">f(x)</span>
+          <h3>Ranking</h3>
+          <p>Ordering candidates by relevance with ML models and signals, tuned by measurement.</p>
+          <div class="chips"><span>PyTorch</span><span>relevance</span></div>
+        </li>
+        <li class="stage">
+          <span class="stage-n mono">σ</span>
+          <h3>Reranking</h3>
+          <p>GenAI and LLMs over the top of the list, where precision matters most.</p>
+          <div class="chips"><span>vLLM</span><span>TGI</span><span>Ollama</span><span>MCP</span></div>
+        </li>
+        <li class="stage">
+          <span class="stage-n mono">∞</span>
+          <h3>Serving</h3>
+          <p>Spring and FastAPI microservices on AWS, with Redis caching and logging APIs. It has to stay up, globally.</p>
+          <div class="chips"><span>AWS</span><span>Redis</span><span>observability</span></div>
+        </li>
+        <li class="packet" aria-hidden="true"></li>
+      </ol>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I lead a search engineering team that owns the backend microservices, search and logging APIs, and relevance end to end. The platform started in one market and now runs in more than 55, and it has stayed highly available while search quality kept improving.</p>
+          <p>Before that I spent a long time on algorithms: ACM-ICPC, competitive programming, and 300+ hours teaching data structures.</p>
         </div>
+        <figure class="epicycle-card">
+          <canvas id="epicycle" aria-label="A lemniscate drawn by twenty rotating circles"></canvas>
+          <figcaption class="mono">∞ drawn by 20 rotating circles · <a href="{{ site.baseurl }}/blog_posts/experiments/fourier-epicycles/index.html">DFT demo →</a></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ PATH (git log) ============ -->
+    <section class="section wrap" id="path">
+      <header class="section-head">
+        <span class="section-idx mono">02</span>
+        <h2>Path</h2>
+        <p class="section-sub mono">$ git log --graph --oneline</p>
+      </header>
+      <ol class="gitlog">
+        <li class="commit">
+          <span class="commit-dot"></span>
+          <div class="commit-body">
+            <div class="commit-head mono"><span class="hash">a7f3e2c</span> <span class="ref">HEAD → present</span> <span class="date">2018 –</span></div>
+            <h3><img src="{{ site.baseurl }}/img/samsungrndindiabangalore_logo.jpg" alt="" class="org-logo" />Chief Software Engineer · <a href="https://www.linkedin.com/company/samsungrndindiabangalore/" target="_blank" rel="noopener">Samsung R&amp;D Institute India, Bangalore</a></h3>
+            <ul>
+              <li>Lead engineering of Samsung's global AI-powered product search platform</li>
+              <li>Designed the end-to-end pipeline: query understanding → retrieval → ranking → reranking</li>
+              <li>Built scalable microservices and APIs powering search across 55+ markets</li>
+              <li>Integrated NLP, ML and generative AI to improve relevance and product discovery</li>
+            </ul>
+          </div>
+        </li>
+        <li class="commit">
+          <span class="commit-dot"></span>
+          <div class="commit-body">
+            <div class="commit-head mono"><span class="hash">3c19b80</span> <span class="date">2013 – 2018</span></div>
+            <h3><img src="{{ site.baseurl }}/img/birla_institute_of_technology_and_science_pilani_logo.jpg" alt="" class="org-logo" /><a href="https://www.bits-pilani.ac.in/pilani/" target="_blank" rel="noopener">BITS Pilani</a> · B.E. Computer Science &amp; M.Sc. Mathematics</h3>
+            <ul>
+              <li>Thesis (CS): <a href="{{ site.baseurl }}/projects/JaskamalKainthCS_Thesis.pdf" target="_blank" rel="noopener">Energy-Efficient Scheduling Algorithms</a></li>
+              <li>Thesis (Math): <a href="{{ site.baseurl }}/projects/JaskamalKainthMATH_Thesis.pdf" target="_blank" rel="noopener">Numerical Solutions for PDEs in Option Pricing</a></li>
+              <li class="muted">Algebra · Cryptography · DS&amp;A · Discrete Math · Linear Algebra · Optimization · PDEs · Probability</li>
+            </ul>
+          </div>
+        </li>
+        <li class="commit">
+          <span class="commit-dot"></span>
+          <div class="commit-body">
+            <div class="commit-head mono"><span class="hash">0000001</span> <span class="date">init</span></div>
+            <h3>Competitive programming · <a href="https://icpc.global/ICPCID/TY7NYK0ENIEA" target="_blank" rel="noopener">ACM-ICPC</a></h3>
+            <ul><li>Where the love for segment trees, DSU and FFT began.</li></ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section class="section wrap" id="work">
+      <header class="section-head">
+        <span class="section-idx mono">03</span>
+        <h2>Work &amp; writing</h2>
+        <p class="section-sub">Notes, problem sets, and interactive experiments.</p>
+      </header>
+      <div class="filters mono" role="group" aria-label="Filter work">
+        <button type="button" class="is-on" data-kind="all">all</button>
+        <button type="button" data-kind="search">search</button>
+        <button type="button" data-kind="algorithms">algorithms</button>
+        <button type="button" data-kind="math">math</button>
+        <button type="button" data-kind="experiments">experiments</button>
+        <button type="button" data-kind="notes">notes</button>
+      </div>
+      <div class="cards" id="work-cards">
+        {% assign sorted_work = site.data.work_beyond.work | sort: "date" | reverse %}
+        {% for item in sorted_work %}
+        <article class="card" data-kind="{{ item.kind }}">
+          <div class="card-top mono"><span class="tag">{{ item.kind }}</span><span class="muted">{{ item.meta }}</span></div>
+          <h3><a href="{% if item.external %}{{ item.href }}{% else %}{{ site.baseurl }}{{ item.href }}{% endif %}" {% if item.external %}target="_blank" rel="noopener"{% endif %}>{{ item.title }}</a></h3>
+          <p>{{ item.desc }}</p>
+          {% if item.links.size > 0 %}
+          <div class="card-links mono">
+            {% for link in item.links %}<a href="{% if link.external %}{{ link.url }}{% else %}{{ site.baseurl }}{{ link.url }}{% endif %}" {% if link.external %}target="_blank" rel="noopener"{% endif %}>{{ link.label | downcase }}</a>{% endfor %}
+          </div>
+          {% endif %}
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- ============ BEYOND ============ -->
+    <section class="section wrap" id="beyond">
+      <header class="section-head">
+        <span class="section-idx mono">04</span>
+        <h2>Beyond code</h2>
+        <p class="section-sub">What we do, and why we do it.</p>
+      </header>
+      <div class="beyond">
+        <div class="beyond-card philosophy">
+          <span class="beyond-glyph" aria-hidden="true">∴</span>
+          <h3>Philosophy</h3>
+          <blockquote id="quote" aria-live="polite">
+            <p>He who has a <em>why</em> to live can bear almost any <em>how</em>.</p>
+            <cite>Nietzsche</cite>
+          </blockquote>
+          <p>Psychology, consciousness, and the study of the human mind. What we do, and why we do it.</p>
+          <div class="beyond-links mono">
+            <a href="{{ site.baseurl }}/blog_posts/philosophy-notes.html">timeline of great thinkers →</a>
+            <a href="{{ site.baseurl }}/blog_posts/whatwedowhywedo.html">why do we do what we do? →</a>
+          </div>
+        </div>
+        <a class="beyond-card music" href="{{ site.baseurl }}/blog_posts/music.html">
+          <canvas class="wave" id="wave" aria-hidden="true"></canvas>
+          <h3>Music</h3>
+          <p>Without music, life would be a mistake. Sonic landscapes I keep coming back to.</p>
+          <span class="beyond-more mono">listen →</span>
+        </a>
+        <a class="beyond-card korean" href="{{ site.baseurl }}/blog_posts/korean-learning-notes.html">
+          <span class="beyond-glyph hangul" id="hangul" aria-hidden="true">한</span>
+          <h3>한국어 학습 여정</h3>
+          <p>Learning Korean, from Hangul to grammar. Hangul is an algorithm too: jamo compose into syllable blocks.</p>
+          <span class="beyond-more mono">my notes →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT + footnotes ============ -->
+    <section class="section wrap" id="contact">
+      <header class="section-head">
+        <span class="section-idx mono">05</span>
+        <h2>Say hello</h2>
+      </header>
+      <div class="contact mono">
+        <a href="mailto:kainthjaskamal@gmail.com"><span class="k">email</span> kainthjaskamal@gmail.com</a>
+        <a href="https://github.com/Jaskamalkainth" target="_blank" rel="noopener"><span class="k">github</span> Jaskamalkainth</a>
+        <a href="https://www.linkedin.com/in/j1k77/" target="_blank" rel="noopener"><span class="k">linkedin</span> j1k77</a>
+        <a href="https://icpc.global/ICPCID/TY7NYK0ENIEA" target="_blank" rel="noopener"><span class="k">icpc</span> profile</a>
       </div>
 
       {% if site.data.awards.awards and site.data.awards.awards.size > 0 %}
-      <div>
-        <div class="block-title">Awards &amp; Recognition</div>
-        <ul class="awards-list">
-          {% for a in site.data.awards.awards %}
-          <li>
-            <span class="award-name">{{ a.name }}</span>
-            {% if a.issuer %}
-            <span class="award-meta">{{ a.issuer }}{% if a.years %} · {% for y in a.years %}{% if y.photo %}<a href="{{ site.baseurl }}{{ y.photo }}" target="_blank" rel="noopener" class="award-year-link">{{ y.year }}</a>{% else %}{{ y.year }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}{% elsif a.year %} · {{ a.year }}{% endif %}</span>
-            {% endif %}
-            {% if a.desc %}<span class="award-desc">{{ a.desc }}</span>{% endif %}
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-      {% endif %}
-      <div>
-        <div class="block-title">Fourier Epicycles</div>
-        <canvas id="sidebar-epic" class="sidebar-epic-canvas"></canvas>
-        <a href="/blog_posts/experiments/fourier-epicycles/index.html" class="sidebar-epic-link">Open interactive demo →</a>
-      </div>
-    </aside>
-
-    <div class="content">
-      <section class="card card-about" id="about">
-        <h2>About</h2>
-        <p class="about-lead">I'm passionate about building large-scale intelligent search systems. I've worked across the full search stack - from query understanding and retrieval to ranking, reranking, and relevance optimization - integrating NLP, machine learning, and more recently GenAI to improve how users discover products and information.</p>
-        <p>I currently lead a search engineering team responsible for backend microservices, search and logging APIs, and end-to-end relevance systems. Our platform has scaled from a single market to 55+ global markets while maintaining high availability and continuously improving search quality.</p>
-        <p>My background combines strong algorithmic foundations with applied systems engineering. I hold a dual degree in Mathematics and Computer Science from BITS Pilani, have delivered 300+ hours of data structures and algorithms training, and have experience in ACM-ICPC and competitive programming. I enjoy tackling complex problems at the intersection of information retrieval, AI systems, and scalable backend infrastructure.</p>
-        <p class="about-values">I care deeply about continuous learning, experimentation, and pushing the frontier of AI-powered search.</p>
-        <div class="about-tech">
-          <span class="about-tech-label">Tech stack</span>
-          <ul class="tech-list">
-            <li><strong>Search &amp; Retrieval Systems</strong> — OpenSearch / Elasticsearch (BM25), vector search (k-NN with HNSW / Faiss), query understanding, ranking &amp; reranking, relevance optimization</li>
-            <li><strong>Backend Systems</strong> — Spring-based microservices, FastAPI / Flask services, Redis, RESTful APIs</li>
-            <li><strong>AI / ML Systems</strong> — NLP for search, PyTorch-based ML, GenAI &amp; LLM inference (vLLM, TGI, Ollama), agentic AI systems (MCP servers &amp; tools)</li>
-            <li><strong>Infrastructure</strong> — AWS cloud infrastructure, distributed systems</li>
-            <li><strong>Foundations</strong> — Data structures, algorithms, scalable system design</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="card" id="education">
-        <h2>Education</h2>
-        <div class="edu-header">
-          <img src="{{ site.baseurl }}/img/birla_institute_of_technology_and_science_pilani_logo.jpg" alt="BITS Pilani logo" class="edu-logo" />
-          <div>
-            <a href="https://www.bits-pilani.ac.in/pilani/" target="_blank" rel="noopener">Birla Institute of Technology and Science, Pilani (BITS Pilani)</a>
-            <div class="edu-meta">Dual Degree: B.E. (Computer Science) &amp; M.Sc. (Mathematics), 2013 – 2018</div>
-          </div>
-        </div>
-        <ul class="edu-details">
-          <li>
-            <div class="edu-thesis-header">
-              <span class="edu-thesis-label">Undergraduate thesis work</span>
-              <span class="edu-thesis-meta">2017 – 2018</span>
-            </div>
-            <ul class="edu-thesis-list">
-              <li><a href="{{ site.baseurl }}/projects/JaskamalKainthCS_Thesis.pdf" target="_blank" rel="noopener">Energy-Efficient Scheduling Algorithms</a> (Computer Science)</li>
-              <li><a href="{{ site.baseurl }}/projects/JaskamalKainthMATH_Thesis.pdf" target="_blank" rel="noopener">Numerical solutions for PDEs in Option pricing</a> (Mathematics)</li>
-            </ul>
-          </li>
-          <li>Selected coursework: Algebra, Computer Networks, Computer Programming, Cryptography, Data Structures &amp; Algorithms, Discrete Mathematics, Linear Algebra, Optimization, Partial Differential Equations, Probability &amp; Statistics.</li>
-        </ul>
-      </section>
-
-      <section class="card" id="experience">
-        <h2>Experience</h2>
-        <div class="exp-where">
-          <img src="{{ site.baseurl }}/img/samsungrndindiabangalore_logo.jpg" alt="Samsung R&amp;D Institute India - Bangalore logo" class="exp-company-logo" />
-          <a href="https://www.linkedin.com/company/samsungrndindiabangalore/" target="_blank" rel="noopener">Samsung R&amp;D Institute India - Bangalore</a>
-        </div>
-        <div class="exp-role">Chief Software Engineer</div>
-        <div class="exp-meta">2018 – Present</div>
+      <details class="footnotes">
+        <summary class="mono">† footnotes: a few kind recognitions from colleagues</summary>
         <ul>
-          <li>Lead engineering of Samsung's global AI-powered product search platform</li>
-          <li>Designed end-to-end search pipeline: query understanding → retrieval → ranking → reranking</li>
-          <li>Built scalable microservices and APIs powering search across 55+ global markets</li>
-          <li>Integrated NLP, ML, and Generative AI to improve search relevance and product discovery</li>
-          <li>Ensured high availability, performance, and observability for global search systems</li>
+          {% for a in site.data.awards.awards %}
+          <li><span>{{ a.name }}</span> <span class="muted">{{ a.issuer }}{% if a.years %} · {% for y in a.years %}{% if y.photo %}<a href="{{ site.baseurl }}{{ y.photo }}" target="_blank" rel="noopener">{{ y.year }}</a>{% else %}{{ y.year }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}{% endif %}</span></li>
+          {% endfor %}
         </ul>
-      </section>
-
-      <section class="card" id="work">
-        <h2>Work &amp; Writing</h2>
-        <p class="card-sub">Academic work, technical notes, and interactive demos.</p>
-        <div class="work-grid">
-          {% assign sorted_work = site.data.work_beyond.work | sort: "date" | reverse %}
-          {% for item in sorted_work %}
-            <div class="work-item">
-              <h3 class="work-item-title">
-                <a href="{% if item.external %}{{ item.href }}{% else %}{{ site.baseurl }}{{ item.href }}{% endif %}" class="work-title-link" {% if item.external %}target="_blank" rel="noopener"{% endif %}>{{ item.title }}</a>
-              </h3>
-              <p class="work-item-desc">{{ item.desc }}</p>
-              <div class="work-item-footer">
-                {% if item.links.size > 0 %}
-                  <span class="work-item-links">
-                    {% for link in item.links %}
-                      <a href="{% if link.external %}{{ link.url }}{% else %}{{ site.baseurl }}{{ link.url }}{% endif %}" class="work-link" {% if link.external %}target="_blank" rel="noopener"{% endif %}>{{ link.label }}</a>{% unless forloop.last %} · {% endunless %}
-                    {% endfor %}
-                  </span>
-                {% endif %}
-                {% if item.links.size > 0 and item.meta %}<span class="work-item-sep">|</span>{% endif %}
-                {% if item.meta %}<span class="work-item-date">{{ item.meta }}</span>{% endif %}
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-      </section>
-
-      <section class="card" id="beyond">
-        <h2>Beyond Code</h2>
-        <p class="card-sub">Philosophy, language, music.</p>
-        <div class="work-grid beyond-grid">
-          {% for item in site.data.work_beyond.beyond %}
-            <div class="work-item beyond-item">
-              <h3 class="work-item-title">
-                <a href="{{ site.baseurl }}{{ item.href }}" class="work-title-link">{{ item.title }}</a>
-              </h3>
-              <p class="work-item-desc">{{ item.desc }}</p>
-              <div class="work-item-footer">
-                {% if item.links.size > 0 %}
-                  <span class="work-item-links">
-                    {% for link in item.links %}
-                      <a href="{% if link.external %}{{ link.url }}{% else %}{{ site.baseurl }}{{ link.url }}{% endif %}" class="work-link" {% if link.external %}target="_blank" rel="noopener"{% endif %}>{{ link.label }}</a>{% unless forloop.last %} · {% endunless %}
-                    {% endfor %}
-                  </span>
-                {% endif %}
-                {% if item.links.size > 0 and item.meta %}<span class="work-item-sep">|</span>{% endif %}
-                {% if item.meta %}<span class="work-item-date">{{ item.meta }}</span>{% endif %}
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-      </section>
-    </div>
+      </details>
+      {% endif %}
+    </section>
   </main>
 
-  <footer class="resume-footer">
-    <span class="footer-tagline">
-      <span class="footer-phrase">Stay curious</span>
-      <span class="footer-sep">✦</span>
-      <span class="footer-phrase">Stay alive</span>
-    </span>
+  <footer class="footer wrap">
+    <p class="footer-tag">Stay curious <span class="accent">✦</span> Stay alive</p>
+    <p class="footer-keys mono muted"><kbd>/</kbd> search · <kbd>t</kbd> theme · <kbd>b</kbd> background</p>
   </footer>
 
-  {% include analytics.html %}
-  <script>
-  (function () {
-    var canvas = document.getElementById('sidebar-epic');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-    var dpr = window.devicePixelRatio || 1;
-    var N = 128;
-
-    function resize() {
-      var w = canvas.clientWidth, h = canvas.clientHeight;
-      if (!w || !h) return;
-      canvas.width  = w * dpr;
-      canvas.height = h * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-
-    function lemniscate() {
-      var pts = [], a;
-      resize();
-      a = (canvas.width / dpr) * 0.39;
-      for (var i = 0; i < N; i++) {
-        var θ = 2 * Math.PI * i / N;
-        var d = 1 + Math.sin(θ) * Math.sin(θ);
-        pts.push({ re: a * Math.cos(θ) / d, im: a * Math.sin(θ) * Math.cos(θ) / d });
-      }
-      return pts;
-    }
-
-    function dft(pts) {
-      var n = pts.length, out = [];
-      for (var k = 0; k < n; k++) {
-        var re = 0, im = 0;
-        for (var j = 0; j < n; j++) {
-          var phi = 2 * Math.PI * k * j / n;
-          var c = Math.cos(phi), s = Math.sin(phi);
-          re += pts[j].re * c + pts[j].im * s;
-          im += pts[j].im * c - pts[j].re * s;
-        }
-        out.push({ freq: k <= n/2 ? k : k-n, amp: Math.hypot(re/n, im/n), phase: Math.atan2(im, re) });
-      }
-      return out.sort(function(a,b){ return b.amp - a.amp; });
-    }
-
-    var coeffs = dft(lemniscate());
-    var NEPI = 20, t = 0, path = [];
-
-    function draw() {
-      var w = canvas.width / dpr, h = canvas.height / dpr;
-      var cx = w / 2, cy = h / 2;
-      ctx.fillStyle = '#0f172a';
-      ctx.fillRect(0, 0, w, h);
-
-      var x = cx, y = cy;
-      for (var i = 0; i < NEPI; i++) {
-        var c = coeffs[i];
-        var px = x, py = y;
-        var angle = c.freq * t + c.phase;
-        x += c.amp * Math.cos(angle);
-        y += c.amp * Math.sin(angle);
-
-        ctx.beginPath();
-        ctx.arc(px, py, c.amp, 0, Math.PI * 2);
-        ctx.strokeStyle = 'rgba(14,165,233,0.12)';
-        ctx.lineWidth = 0.8;
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(px, py);
-        ctx.lineTo(x, y);
-        ctx.strokeStyle = 'rgba(14,165,233,0.55)';
-        ctx.lineWidth = 1.2;
-        ctx.stroke();
-      }
-
-      path.push({ x: x, y: y });
-      if (path.length > N) path.shift();
-
-      if (path.length > 1) {
-        ctx.beginPath();
-        ctx.moveTo(path[0].x, path[0].y);
-        for (var p = 1; p < path.length; p++) ctx.lineTo(path[p].x, path[p].y);
-        ctx.strokeStyle = '#f59e0b';
-        ctx.lineWidth = 1.8;
-        ctx.lineJoin = 'round';
-        ctx.stroke();
-      }
-
-      t += (2 * Math.PI / N) * 0.75;
-      if (t >= 2 * Math.PI) { t = 0; path = []; }
-      requestAnimationFrame(draw);
-    }
-
-    requestAnimationFrame(function() { resize(); draw(); });
-  }());
+  {% comment %} Documents for the in-page search engine (BM25 over title, tags and description). {% endcomment %}
+  <script type="application/json" id="search-docs">
+  [
+    {"t": "What I work on: search pipeline", "k": "section", "d": "Product search at Samsung in 55+ markets. Query understanding, retrieval, BM25, HNSW, vector search, ranking, reranking, LLM, GenAI, OpenSearch, Elasticsearch, microservices, AWS, Redis.", "u": "#pipeline"},
+    {"t": "Chief Software Engineer, Samsung R&D Bangalore", "k": "experience", "d": "Lead engineering of the global AI-powered product search platform. Team lead, microservices, APIs, relevance, NLP, machine learning, generative AI. 2018 to present.", "u": "#path"},
+    {"t": "BITS Pilani: CS and Mathematics dual degree", "k": "education", "d": "B.E. Computer Science and M.Sc. Mathematics, 2013 to 2018. Thesis on energy-efficient scheduling algorithms and numerical PDEs for option pricing.", "u": "#path"},
+    {"t": "ACM-ICPC and competitive programming", "k": "algorithms", "d": "ICPC profile, competitive programming, segment tree, DSU, FFT, 300+ hours teaching data structures and algorithms.", "u": "https://icpc.global/ICPCID/TY7NYK0ENIEA"},
+    {% for item in site.data.work_beyond.work %}{"t": {{ item.title | jsonify }}, "k": {{ item.kind | jsonify }}, "d": {{ item.desc | jsonify }}, "u": {% if item.external %}{{ item.href | jsonify }}{% else %}{{ item.href | prepend: site.baseurl | jsonify }}{% endif %}},
+    {% endfor %}{% for item in site.data.work_beyond.beyond %}{"t": {{ item.title | jsonify }}, "k": "beyond", "d": {{ item.desc | append: " philosophy music korean language life" | jsonify }}, "u": {{ item.href | prepend: site.baseurl | jsonify }}},
+    {% endfor %}{"t": "Why do we do what we do?", "k": "beyond", "d": "A philosophical journey across the ages: motivation, meaning, consciousness, human behaviour, psychology.", "u": "{{ site.baseurl }}/blog_posts/whatwedowhywedo.html"},
+    {"t": "Say hello", "k": "contact", "d": "Email, GitHub, LinkedIn. Contact me.", "u": "#contact"}
+  ]
   </script>
+  {% include analytics.html %}
+  <script src="{{ site.baseurl }}/js/bg.js" defer></script>
+  <script src="{{ site.baseurl }}/js/site.js" defer></script>
 </body>
 </html>
