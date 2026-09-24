@@ -405,11 +405,21 @@ main, .footer, .topbar { position: relative; z-index: 1; }
 }
 .contact a:hover { border-color: var(--accent); text-decoration: none; }
 .contact .k { color: var(--accent); font-size: 11.5px; }
-.footnotes { margin-top: 28px; }
-.footnotes summary { cursor: pointer; color: var(--muted); font-size: 13px; }
-.footnotes summary:hover { color: var(--text); }
-.footnotes ul { margin: 12px 0 0; padding-left: 20px; font-size: 14px; }
-.footnotes li { margin: 4px 0; }
+/* awards */
+.awards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+.award {
+  display: grid; grid-template-columns: 36px 1fr; gap: 12px; align-items: start;
+  padding: 14px 16px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border);
+  transition: border-color .25s, transform .25s;
+}
+.award:hover { border-color: var(--accent); transform: translateY(-2px); }
+.award-mark { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: var(--surface-2); color: var(--accent-2); font-size: 16px; }
+.award h3 { font-family: var(--font-head); font-size: 16px; margin: 0 0 4px; line-height: 1.3; }
+.award-meta { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: 12px; }
+.award-years { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.award-years a, .award-years span { padding: 1px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--accent); }
+.award-years a:hover { border-color: var(--accent); text-decoration: none; }
+@media (max-width: 400px) { .awards { grid-template-columns: 1fr; } }
 
 /* footer */
 .footer { padding-top: 56px; padding-bottom: 40px; text-align: center; }

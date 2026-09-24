@@ -42,6 +42,7 @@
         <a href="#path">path</a>
         <a href="#work">work</a>
         <a href="#beyond">beyond</a>
+        <a href="#awards">awards</a>
         <a href="#contact">contact</a>
       </nav>
       <div class="topbar-tools">
@@ -260,10 +261,35 @@
       </div>
     </section>
 
-    <!-- ============ CONTACT + footnotes ============ -->
-    <section class="section wrap" id="contact">
+    <!-- ============ AWARDS ============ -->
+    {% if site.data.awards.awards and site.data.awards.awards.size > 0 %}
+    <section class="section wrap" id="awards">
       <header class="section-head">
         <span class="section-idx mono">05</span>
+        <h2>Awards &amp; recognition</h2>
+        <p class="section-sub">From Samsung and elsewhere. Click a year to see the certificate.</p>
+      </header>
+      <ul class="awards">
+        {% for a in site.data.awards.awards %}
+        <li class="award">
+          <span class="award-mark" aria-hidden="true">★</span>
+          <div>
+            <h3>{{ a.name }}</h3>
+            <div class="award-meta mono">
+              <span class="muted">{{ a.issuer }}</span>
+              {% if a.years %}<span class="award-years">{% for y in a.years %}{% if y.photo %}<a href="{{ site.baseurl }}{{ y.photo }}" target="_blank" rel="noopener">{{ y.year }}</a>{% else %}<span>{{ y.year }}</span>{% endif %}{% endfor %}</span>{% endif %}
+            </div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section wrap" id="contact">
+      <header class="section-head">
+        <span class="section-idx mono">06</span>
         <h2>Say hello</h2>
       </header>
       <div class="contact mono">
@@ -273,16 +299,6 @@
         <a href="https://icpc.global/ICPCID/TY7NYK0ENIEA" target="_blank" rel="noopener"><span class="k">icpc</span> profile</a>
       </div>
 
-      {% if site.data.awards.awards and site.data.awards.awards.size > 0 %}
-      <details class="footnotes">
-        <summary class="mono">† footnotes: a few kind recognitions from colleagues</summary>
-        <ul>
-          {% for a in site.data.awards.awards %}
-          <li><span>{{ a.name }}</span> <span class="muted">{{ a.issuer }}{% if a.years %} · {% for y in a.years %}{% if y.photo %}<a href="{{ site.baseurl }}{{ y.photo }}" target="_blank" rel="noopener">{{ y.year }}</a>{% else %}{{ y.year }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}{% endif %}</span></li>
-          {% endfor %}
-        </ul>
-      </details>
-      {% endif %}
     </section>
   </main>
 
@@ -301,7 +317,8 @@
     {% for item in site.data.work_beyond.work %}{"t": {{ item.title | jsonify }}, "k": {{ item.kind | jsonify }}, "d": {{ item.desc | jsonify }}, "u": {% if item.external %}{{ item.href | jsonify }}{% else %}{{ item.href | prepend: site.baseurl | jsonify }}{% endif %}},
     {% endfor %}{% for item in site.data.work_beyond.beyond %}{"t": {{ item.title | jsonify }}, "k": "beyond", "d": {{ item.desc | append: " philosophy music korean language life" | jsonify }}, "u": {{ item.href | prepend: site.baseurl | jsonify }}},
     {% endfor %}{"t": "Why do we do what we do?", "k": "beyond", "d": "A philosophical journey across the ages: motivation, meaning, consciousness, human behaviour, psychology.", "u": "{{ site.baseurl }}/blog_posts/whatwedowhywedo.html"},
-    {"t": "Say hello", "k": "contact", "d": "Email, GitHub, LinkedIn. Contact me.", "u": "#contact"}
+    {% for a in site.data.awards.awards %}{"t": {{ a.name | jsonify }}, "k": "award", "d": {{ a.issuer | append: " award recognition" | jsonify }}, "u": "#awards"},
+    {% endfor %}{"t": "Say hello", "k": "contact", "d": "Email, GitHub, LinkedIn. Contact me.", "u": "#contact"}
   ]
   </script>
   {% include analytics.html %}
