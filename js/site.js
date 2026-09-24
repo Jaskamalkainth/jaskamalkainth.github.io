@@ -288,7 +288,7 @@
 
   /* ================= reveal + active nav ================= */
   if ('IntersectionObserver' in window) {
-    var revealEls = $$('.section-head, .stage, .commit, .card, .beyond-card, .contact, .about-grid');
+    var revealEls = $$('.section-head, .stage, .commit, .card, .beyond-card, .award, .contact, .about-grid');
     revealEls.forEach(function (el) { el.classList.add('reveal'); });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
