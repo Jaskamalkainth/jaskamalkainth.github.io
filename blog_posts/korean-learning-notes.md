@@ -1,4 +1,5 @@
 ---
+post_theme: light
 title: "Korean Language Learning Journey"
 bg: themeTertiary
 color: black

@@ -1,8 +1,7 @@
 ---
+post_theme: light
 title: "Music is my only drug"
 ---
-
-<link rel="stylesheet" href="/css/blog_post.css">
 
 <div class="music-container">
   <div class="hero-section">

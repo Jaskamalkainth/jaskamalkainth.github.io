@@ -3,10 +3,6 @@ title: "Elasticsearch Notes"
 date: 2019-06-08
 ---
 
-<div style="text-align: center;" markdown="1">
-
-<div style="display: inline-block; text-align: left;"  markdown="1">
-
 # Elasticsearch Notes
 ___
 Elasticsearch is a real time, search and analytics engine.
@@ -279,5 +275,3 @@ Till now, we've learned the basics of what Elasticsearch is and how to work with
 
 ___
 
-</div>
-</div>

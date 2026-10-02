@@ -5,8 +5,6 @@ date: 2025-03-15
 categories: algorithms data-structures
 ---
 
-<link rel="stylesheet" href="/css/blog_post.css">
-
 # Bloom Filters: The Art of Probably Knowing
 
 Imagine you're a bouncer at a club. You have a list of people who are banned. For every person who walks up, you need to decide: are they on the ban list?
