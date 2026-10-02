@@ -1,6 +1,10 @@
 ---
 post_theme: light
-title: "Korean Language Learning Journey"
+title: "Korean Learning Notes: Hangul, Grammar, Numbers and Verb Conjugation"
+description: "My Korean (한국어) study notes from Sejong Korean levels 1–2: Hangul, pronunciation rules, numbers, time, grammar and formality, vocabulary, and a 해요체 verb table."
+date: 2025-06-01
+last_modified_at: 2026-10-02
+keywords: [learn Korean, Korean learning notes, Hangul, Korean grammar, Korean numbers, Korean verb conjugation, 해요체, Sejong Korean]
 bg: themeTertiary
 color: black
 fa-icon: language
@@ -12,6 +16,7 @@ fa-icon: language
   <div class="korean-notes-header">
     <h1>한국어 학습 노트 (Korean Learning Notes)</h1>
     <p class="subtitle">My journey of learning Korean language and culture</p>
+    <p class="subtitle">Class notes and a quick reference from my Sejong Korean courses: Hangul and pronunciation, native and Sino-Korean numbers, telling time, polite (해요체) verb conjugation, and everyday vocabulary.</p>
   </div>
 
   <div class="levels-section">

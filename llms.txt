@@ -1,0 +1,37 @@
+---
+layout: null
+sitemap: false
+---
+{%- assign author = site.data.authors["Jaskamal Kainth"] -%}
+# {{ site.title }}
+
+> {{ author.bio }}
+
+Personal site and blog of {{ author.name }}. Articles cover algorithms and data structures (Bloom filters, segment trees, disjoint set union), search engineering (Elasticsearch, HNSW), modern C++, philosophy, music and learning Korean. Content may be quoted and cited with a link to the source page.
+
+- Author: {{ author.name }}, {{ author.job_title }}, {{ author.works_for }}
+- Profiles: {{ author.same_as | join: ", " }}
+- Sitemap: {{ site.url }}/sitemap.xml
+
+## Articles
+{% assign posts = site.pages | where: "layout", "post" | sort: "title" %}
+{%- for p in posts %}{% if p.path contains 'CppNotesDb/' or p.path contains 'experiments/' %}{% continue %}{% endif %}
+- [{{ p.title }}]({{ p.url | absolute_url }}){% if p.description %}: {{ p.description }}{% endif %}
+{%- endfor %}
+
+## C++ notes
+{% assign notes = site.pages | where: "layout", "post" | sort: "path" %}
+{%- for p in notes %}{% unless p.path contains 'CppNotesDb/' %}{% continue %}{% endunless %}
+- [{{ p.title }}]({{ p.url | absolute_url }}){% if p.description %}: {{ p.description }}{% endif %}
+{%- endfor %}
+
+## Interactive demos
+- [Bloom filter visualization]({{ '/blog_posts/experiments/bloom-filter/' | absolute_url }}): insert and query strings and watch bits flip in a live Bloom filter.
+- [HNSW visualization]({{ '/blog_posts/experiments/hnsw-simul/' | absolute_url }}): step through how Hierarchical Navigable Small World graphs answer approximate nearest neighbour queries.
+- [Fourier epicycles]({{ '/blog_posts/experiments/fourier-epicycles/' | absolute_url }}): rotating circles that redraw a shape from its discrete Fourier transform.
+- [Image pixelator]({{ '/blog_posts/experiments/Pixelate/' | absolute_url }}): turn an uploaded image into pixel art in the browser.
+
+## Talks and papers
+- [FFT for large number multiplication (slides)]({{ '/blog_posts/FFT_LargeNumberMultiplication.pdf' | absolute_url }})
+- [Good triplets: 7 solutions to 1 problem (slides)]({{ '/blog_posts/GoodTriplets.pdf' | absolute_url }})
+- [CS thesis]({{ '/projects/JaskamalKainthCS_Thesis.pdf' | absolute_url }}) and [Mathematics thesis]({{ '/projects/JaskamalKainthMATH_Thesis.pdf' | absolute_url }})

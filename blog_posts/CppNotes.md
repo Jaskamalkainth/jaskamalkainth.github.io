@@ -1,10 +1,12 @@
 ---
-title: "Cpp Notes"
-description: "Short notes on modern C++: templates and metaprogramming, lambdas, constexpr, variadic templates, tuples and unordered_map."
+title: "C++ Notes: Templates, Lambdas, constexpr and the STL"
+description: "Short, example-first notes on modern C++: template specialization and metaprogramming, overloading, lambdas, constexpr, variadic templates, tuples and unordered_map."
 date: 2021-05-07 02:20
+last_modified_at: 2026-10-02
+keywords: [C++, modern C++, templates, template metaprogramming, lambdas, constexpr, STL]
 notes:
   - { n: 1, title: "Template explicit vs implicit specialization", date: 2023-03-24 }
-  - { n: 2, title: "Ill-formed function call due to ambiguous function overloading", date: 2023-03-24 }
+  - { n: 2, title: "Why foo(0) is ambiguous: ill-formed overloaded calls", date: 2023-03-24 }
   - { n: 3, title: "Template metaprogramming: Fibonacci", date: 2023-04-06 }
   - { n: 4, title: "Template metaprogramming: Factorial", date: 2023-04-06 }
   - { n: 5, title: "Lambda expressions in C++", date: 2023-04-06 }

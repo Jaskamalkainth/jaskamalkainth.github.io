@@ -1,10 +1,13 @@
 ---
 post_theme: light
 title: "Philosophy Timeline: Great Thinkers Through History"
+description: "A timeline of philosophy from Socrates to contemporary thinkers, with each philosopher's dates, school and one-line answer to why humans do what they do."
 date: 2025-01-27
+last_modified_at: 2026-10-02
 category: Philosophy
 tags: [philosophy, psychology, human-behavior, consciousness, research, timeline]
-layout: post
+keywords: [philosophy timeline, history of philosophy, great philosophers, ancient philosophy, medieval philosophy, existentialism, philosophy of mind]
+related: ["/blog_posts/whatwedowhywedo.html", "/blog_posts/music.html"]
 ---
 
 <div class="research-container">

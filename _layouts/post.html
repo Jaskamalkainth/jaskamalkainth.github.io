@@ -1,7 +1,10 @@
 ---
 ---
+{%- assign author = site.data.authors[page.author] -%}
+{%- assign modified = page.last_modified_at | default: page.date -%}
+{%- assign page_url = page.url | absolute_url -%}
 <!DOCTYPE html>
-<html lang="en" data-post-theme="{{ page.post_theme | default: 'dark' }}">
+<html lang="{{ page.lang | default: 'en' }}" data-post-theme="{{ page.post_theme | default: 'dark' }}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,13 +15,31 @@
   </script>
   {%- endunless %}
   {% seo %}
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  {%- if modified %}
+  <meta property="article:modified_time" content="{{ modified | date_to_xmlschema }}" />
+  {%- endif %}
+  {%- for tag in page.keywords %}
+  <meta property="article:tag" content="{{ tag | escape }}" />
+  {%- endfor %}
+  {%- if page.keywords %}
+  <meta name="keywords" content="{{ page.keywords | join: ', ' | escape }}" />
+  {%- endif %}
+  <link rel="alternate" type="text/plain" title="llms.txt" href="{{ '/llms.txt' | absolute_url }}" />
+  {% include post_schema.html %}
   {% include gtm-head.html %}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{{ site.baseurl }}/css/blog_post.css?v={{ site.time | date: '%s' }}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  {%- if page.math %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.querySelector('.post-content'), { throwOnError: false })"></script>
+  {%- endif %}
   {% if site.favicon %}<link rel="shortcut icon" href="{{ site.baseurl }}/{{ site.favicon }}" type="image/x-icon">{% endif %}
+  {% if site.touch_icon %}<link rel="apple-touch-icon" href="{{ site.baseurl }}/{{ site.touch_icon }}">{% endif %}
 </head>
 <body>
   {% include gtm-body.html %}
@@ -27,12 +48,49 @@
       <a class="home" href="{{ site.baseurl }}/">&larr; {{ site.title }}</a>
       {%- if page.parent_url %} <span aria-hidden="true">/</span> <a href="{{ site.baseurl }}{{ page.parent_url }}">{{ page.parent_title }}</a>{% endif %}
     </nav>
-    {%- if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>{% endif %}
+    <p class="post-byline">
+      {%- if author %}By <a rel="author" href="{{ author.url }}">{{ author.name }}</a>{% endif %}
+      {%- if page.date %} · <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>{% endif %}
+      {%- assign published_day = page.date | date: "%F" %}{% assign modified_day = page.last_modified_at | date: "%F" %}
+      {%- if page.last_modified_at and modified_day != published_day %} · Updated <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: "%b %-d, %Y" }}</time>{% endif %}
+    </p>
   </header>
   <main class="post-shell{% if page.wide %} wide{% endif %}">
     <article class="post-content">
       {{ content }}
+
+      {%- if page.faq %}
+      <section class="post-faq" aria-labelledby="faq-heading">
+        <h2 id="faq-heading">Frequently asked questions</h2>
+        {%- for item in page.faq %}
+        <h3>{{ item.q }}</h3>
+        {{ item.a | markdownify }}
+        {%- endfor %}
+      </section>
+      {%- endif %}
     </article>
+
+    {%- if author %}
+    <aside class="author-card" aria-label="About the author">
+      <p class="author-name">Written by <a rel="author" href="{{ author.url }}">{{ author.name }}</a></p>
+      <p>{{ author.bio | escape }}</p>
+      <p class="author-links">
+        {%- for link in author.same_as %}<a href="{{ link }}" rel="me noopener" target="_blank">{{ link | remove: 'https://' | remove: 'www.' | split: '/' | first }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}
+      </p>
+    </aside>
+    {%- endif %}
+
+    {%- if page.related %}
+    <nav class="related" aria-labelledby="related-heading">
+      <h2 id="related-heading">Keep reading</h2>
+      <ul>
+        {%- for url in page.related %}
+        {%- assign rp = site.pages | where: "url", url | first %}
+        {%- if rp %}<li><a href="{{ site.baseurl }}{{ rp.url }}">{{ rp.title }}</a>{% if rp.description %}<span>{{ rp.description }}</span>{% endif %}</li>{% endif %}
+        {%- endfor %}
+      </ul>
+    </nav>
+    {%- endif %}
   </main>
   {% include analytics.html %}
 </body>

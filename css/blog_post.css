@@ -274,3 +274,28 @@ body {
   .pl-bar > i, .btn { transition: none; }
 }
 .post-header nav span { color: var(--muted); margin: 0 4px; }
+
+/* ---------- byline, FAQ, author card, related posts (_layouts/post.html) ---------- */
+.post-byline { margin: 0; color: var(--muted); font-size: 13px; text-align: right; }
+.post-byline a { color: var(--muted); }
+@media (max-width: 520px) { .post-header { flex-direction: column; align-items: flex-start; gap: 4px; } .post-byline { text-align: left; } }
+
+.post-faq { margin-top: 2.5em; padding-top: 1.5em; border-top: 1px solid var(--border); }
+.post-faq h3 { font-size: 1.05em; margin: 1.4em 0 0.4em; }
+
+.author-card, .related {
+  margin-top: 2.5em;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: 15px;
+}
+.author-card p { margin: 0 0 0.6em; }
+.author-card p:last-child { margin-bottom: 0; }
+.author-card .author-name { font-weight: 600; }
+.author-card a, .related a { color: var(--accent); }
+.author-links { font-size: 13px; color: var(--muted); }
+.related h2 { font-size: 1.1em; margin: 0 0 0.6em; }
+.related ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.related li span { display: block; color: var(--muted); font-size: 14px; }

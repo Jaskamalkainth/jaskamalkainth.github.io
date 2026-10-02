@@ -1,0 +1,15 @@
+# Author profiles, looked up by name from a page's `author:` front matter.
+# jekyll-seo-tag reads name/url for the JSON-LD author; _layouts/post.html also reads
+# bio/same_as for the byline, the author card and the Person entity (E-E-A-T signals).
+"Jaskamal Kainth":
+  name: "Jaskamal Kainth"
+  url: "https://jaskamalkainth.github.io/"
+  job_title: "Chief Software Engineer"
+  works_for: "Samsung R&D Institute India, Bangalore"
+  alumni_of: "BITS Pilani"
+  bio: "Chief Software Engineer at Samsung R&D Institute India, leading engineering for Samsung's global product search platform (query understanding, retrieval, ranking). B.E. Computer Science and M.Sc. Mathematics from BITS Pilani; ACM-ICPC competitor and long-time competitive programmer."
+  knows_about: ["Search engines", "Information retrieval", "Elasticsearch", "Algorithms", "Data structures", "C++", "Competitive programming"]
+  same_as:
+    - "https://github.com/Jaskamalkainth"
+    - "https://www.linkedin.com/in/j1k77/"
+    - "https://icpc.global/ICPCID/TY7NYK0ENIEA"
