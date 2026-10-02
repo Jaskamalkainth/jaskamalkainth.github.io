@@ -57,6 +57,12 @@ touch_icon:  "img/apple-touch-icon.png"
 ##   username: ""      ## an empty value makes jekyll-seo-tag emit a broken "@" twitter:site tag
 logo:        "/img/apple-touch-icon.png" ## publisher logo in the BlogPosting JSON-LD
 locale:      "en_US" ## og:locale; pages default to <html lang="en">
+## Search Console ownership: paste the token from Search Console > Add property > URL prefix >
+## HTML tag (the content="..." value) to emit <meta name="google-site-verification"> on every page.
+## Not needed if the property is already verified through Google Tag Manager or Google Analytics.
+# webmaster_verifications:
+#   google: ""
+#   bing: ""
 google_analytics_key: UA-77340824-1 ## put YOUR key here to enable tracking! (blank to disable)
 
 
