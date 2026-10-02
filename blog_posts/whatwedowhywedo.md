@@ -1,4 +1,5 @@
 ---
+post_theme: light
 title: "Why Do We Do What We Do? A Philosophical Journey Across the Ages"
 date: 2025-01-27
 category: Philosophy

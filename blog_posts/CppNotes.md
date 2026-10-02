@@ -1,35 +1,30 @@
 ---
 title: "Cpp Notes"
+description: "Short notes on modern C++: templates and metaprogramming, lambdas, constexpr, variadic templates, tuples and unordered_map."
 date: 2021-05-07 02:20
+notes:
+  - { n: 1, title: "Template explicit vs implicit specialization", date: 2023-03-24 }
+  - { n: 2, title: "Ill-formed function call due to ambiguous function overloading", date: 2023-03-24 }
+  - { n: 3, title: "Template metaprogramming: Fibonacci", date: 2023-04-06 }
+  - { n: 4, title: "Template metaprogramming: Factorial", date: 2023-04-06 }
+  - { n: 5, title: "Lambda expressions in C++", date: 2023-04-06 }
+  - { n: 6, title: "constexpr in C++", date: 2023-04-06 }
+  - { n: 7, title: "Struct vs class in C++", date: 2023-04-06 }
+  - { n: 8, title: "Variadic templates in C++", date: 2023-04-06 }
+  - { n: 9, title: "Tuples in C++", date: 2023-04-06 }
+  - { n: 10, title: "Unordered map in C++", date: 2023-04-06 }
 ---
 
-<div style="text-align: left;" markdown="1">
-
-<div style="display: inline-block; text-align: left;"  markdown="1">
-
-# C++ Notes
-
-  <img src="/img/cpplogo.png">  
-
-[**1. Template explicit vs implicit specialization**](/blog_posts/CppNotesDb/1.html) - *March 24, 2023*
-
-[**2. Ill Formed function call due to Ambiguous function overloading**](/blog_posts/CppNotesDb/2.html) - *March 24, 2023*
-
-[**3. Template Metaprogramming - Fibonacci**](/blog_posts/CppNotesDb/3.html) - *April 6, 2023*
-
-[**4. Template Metaprogramming - Factorial**](/blog_posts/CppNotesDb/4.html) - *April 6, 2023*
-
-[**5. Lambda Expressions in C++**](/blog_posts/CppNotesDb/5.html) - *April 6, 2023*
-
-[**6. Constexpr in C++**](/blog_posts/CppNotesDb/6.html) - *April 6, 2023*
-
-[**7. Struct vs Class in C++**](/blog_posts/CppNotesDb/7.html) - *April 6, 2023*
-
-[**8. Variadic Templates in C++**](/blog_posts/CppNotesDb/8.html) - *April 6, 2023*
-
-[**9. Tuples in C++**](/blog_posts/CppNotesDb/9.html) - *April 6, 2023*
-
-[**10. Unordered Map in C++**](/blog_posts/CppNotesDb/10.html) - *April 6, 2023*
-
+<div class="pl-hero">
+  <div>
+    <h1>C++ Notes</h1>
+    <p class="pl-lede">Short, example-first notes on the corners of C++ I keep coming back to: templates, compile-time computation and the standard library.</p>
+  </div>
+  <img src="/img/cpplogo.png" alt="C++ logo" width="220" height="164" loading="lazy">
 </div>
-</div>
+
+<ol class="note-list">
+  {%- for note in page.notes %}
+  <li><a href="{{ site.baseurl }}/blog_posts/CppNotesDb/{{ note.n }}.html"><span><span class="n">{{ note.n }}</span>{{ note.title }}</span><time datetime="{{ note.date | date_to_xmlschema }}">{{ note.date | date: "%b %-d, %Y" }}</time></a></li>
+  {%- endfor %}
+</ol>

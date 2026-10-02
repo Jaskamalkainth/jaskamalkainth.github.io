@@ -1,4 +1,5 @@
 ---
+post_theme: light
 title: "Philosophy Timeline: Great Thinkers Through History"
 date: 2025-01-27
 category: Philosophy
@@ -986,7 +987,8 @@ layout: post
   }
   
   .timeline-content {
-    width: 100% !important;
+    width: calc(100% - 40px) !important;
+    box-sizing: border-box;
     margin: 0 0 0 40px !important;
   }
   

@@ -37,6 +37,11 @@ defaults:
       layout: post
       author: "Jaskamal Kainth"
       image: "/img/pixelate.jpg" ## default social-share image; override per-post with `image:` front matter
+  - scope:
+      path: "blog_posts/CppNotesDb"
+    values:
+      parent_title: "C++ Notes"
+      parent_url: "/blog_posts/CppNotes.html"
 
 ### content configuration ###
 title:       "Jaskamal Kainth"

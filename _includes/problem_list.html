@@ -1,0 +1,75 @@
+{%- comment -%}
+  Filterable problem list with saved "solved" progress.
+  Reads page.problems (name, url, judge, code, and optionally level, tags, desc, ops, solution)
+  and page.levels (difficulty order). Behaviour lives in /js/problem_list.js.
+{%- endcomment -%}
+{%- assign all_tags = "" | split: "" -%}
+{%- for p in page.problems -%}{%- if p.tags -%}{%- assign all_tags = all_tags | concat: p.tags -%}{%- endif -%}{%- endfor -%}
+{%- assign all_tags = all_tags | uniq | sort -%}
+{%- assign total = page.problems.size -%}
+<div class="pl" data-store="jk-solved-{{ page.slug | default: page.name | slugify }}">
+  <div class="pl-progress" aria-live="polite">
+    <div class="pl-bar" role="progressbar" aria-label="Problems solved" aria-valuemin="0" aria-valuemax="{{ total }}" aria-valuenow="0"><i></i></div>
+    <span><b class="pl-solved-n">0</b> / {{ total }} solved</span>
+    <button type="button" class="pl-reset" hidden>Reset</button>
+  </div>
+
+  <div class="pl-toolbar" role="search">
+    <div class="pl-row">
+      <input type="search" class="pl-q" placeholder="{{ page.search_hint | default: 'Search problems' }}" aria-label="Search problems">
+      {%- if all_tags.size > 0 %}
+      <select class="pl-tagsel" aria-label="Filter by technique">
+        <option value="">All techniques</option>
+        {%- for t in all_tags %}
+        <option value="{{ t }}">{{ t }}</option>
+        {%- endfor %}
+      </select>
+      {%- endif %}
+    </div>
+    <div class="pl-row" role="group" aria-label="Filter by difficulty">
+      {%- for l in page.levels -%}
+      {%- assign n = page.problems | where: "level", l | size -%}
+      {%- if n > 0 %}
+      <button type="button" class="pl-chip lvl-{{ l }}" data-level="{{ l }}" aria-pressed="false"><span class="dot"></span>{{ l }} <span class="n">{{ n }}</span></button>
+      {%- endif -%}
+      {%- endfor %}
+      <button type="button" class="pl-chip pl-hide" aria-pressed="false">Hide solved</button>
+      <span class="pl-count" aria-live="polite">{{ total }} problems</span>
+    </div>
+  </div>
+
+  <ol class="pl-list">
+    {%- for p in page.problems %}
+    {%- assign id = p.judge | append: "-" | append: p.code | slugify %}
+    <li class="pl-card{% if p.level %} lvl-{{ p.level }}{% endif %}" id="{{ id }}" data-id="{{ id }}" data-level="{{ p.level }}" data-tags="{{ p.tags | join: '|' }}">
+      <span class="pl-num">{{ forloop.index }}</span>
+      <div>
+        <h2><a href="{{ p.url }}" target="_blank" rel="noopener">{{ p.name }}</a></h2>
+        <div class="pl-meta">
+          {%- if p.level %}<span class="pl-lvl">{{ p.level }}</span>{% endif %}
+          <span class="pl-judge">{{ p.judge }} {{ p.code }}</span>
+          {%- for t in p.tags %}
+          <button type="button" class="pl-tag" data-tag="{{ t }}" title="Show only {{ t }} problems">{{ t }}</button>
+          {%- endfor %}
+        </div>
+      </div>
+      <div class="pl-body">
+        {%- if p.desc %}<p>{{ p.desc }}</p>{% endif %}
+        {%- if p.ops %}
+        <p>Support {{ p.ops.size }} operations:</p>
+        <ol>{% for o in p.ops %}<li>{{ o }}</li>{% endfor %}</ol>
+        {%- endif %}
+      </div>
+      <div class="pl-actions">
+        <a class="btn primary" href="{{ p.url }}" target="_blank" rel="noopener">Solve on {{ p.judge }} <span aria-hidden="true">↗</span></a>
+        {%- if p.solution %}
+        <a class="btn" href="{{ p.solution }}" target="_blank" rel="noopener">My solution <span aria-hidden="true">↗</span></a>
+        {%- endif %}
+        <label class="pl-solved"><input type="checkbox" data-solved> Solved</label>
+      </div>
+    </li>
+    {%- endfor %}
+  </ol>
+  <p class="pl-empty" hidden>No problems match. <a href="#" class="pl-clear">Clear filters</a></p>
+</div>
+<script src="{{ site.baseurl }}/js/problem_list.js" defer></script>
