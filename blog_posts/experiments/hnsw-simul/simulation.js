@@ -1,851 +1,888 @@
 // HNSW Algorithm Simulation — Interactive Visualization
+//
+// Implements the algorithms from Malkov & Yashunin, "Efficient and robust
+// approximate nearest neighbor search using Hierarchical Navigable Small World
+// graphs" (2016): random level assignment, SEARCH-LAYER with a dynamic
+// candidate list (ef), the neighbour-selection heuristic, and connection
+// pruning to Mmax / Mmax0.
 document.addEventListener('DOMContentLoaded', () => {
 
     // ── DOM references ────────────────────────────────────────────
-    const layersContainer = document.getElementById('layersContainer');
-    const explanationText = document.getElementById('explanationText');
+    const $ = (id) => document.getElementById(id);
+    const layersContainer = $('layersContainer');
+    const explanationText = $('explanationText');
 
-    const resetBtn          = document.getElementById('reset');
-    const addPointBtn       = document.getElementById('addPoint');
-    const addBulkPointsBtn  = document.getElementById('addBulkPoints');
-    const runQueryBtn       = document.getElementById('runQuery');
-    const maxLayersInput    = document.getElementById('maxLayers');
-    const mInput            = document.getElementById('m');
-    const efConstructionInput = document.getElementById('efConstruction');
-    const distanceMetricSelect = document.getElementById('distanceMetric');
-    const modeInsertBtn     = document.getElementById('modeInsert');
-    const modeSearchBtn     = document.getElementById('modeSearch');
+    const resetBtn            = $('reset');
+    const addPointBtn         = $('addPoint');
+    const addBulkPointsBtn    = $('addBulkPoints');
+    const runQueryBtn         = $('runQuery');
+    const maxLayersInput      = $('maxLayers');
+    const mInput              = $('m');
+    const efConstructionInput = $('efConstruction');
+    const efSearchInput       = $('efSearch');
+    const distanceMetricSelect = $('distanceMetric');
+    const modeInsertBtn       = $('modeInsert');
+    const modeSearchBtn       = $('modeSearch');
 
-    const floatingPrevStepBtn  = document.getElementById('floatingPrevStep');
-    const floatingNextStepBtn  = document.getElementById('floatingNextStep');
-    const floatingSkipToEndBtn = document.getElementById('floatingSkipToEnd');
-    const floatingStepCounter  = document.getElementById('floatingStepCounter');
-    const stepProgressFill     = document.getElementById('stepProgressFill');
+    const navBar          = $('floatingNavigationButtons');
+    const prevBtn         = $('floatingPrevStep');
+    const nextBtn         = $('floatingNextStep');
+    const playBtn         = $('floatingPlay');
+    const skipToEndBtn    = $('floatingSkipToEnd');
+    const clearSearchBtn  = $('floatingClearSearch');
+    const stepCounter     = $('floatingStepCounter');
+    const stepProgressFill = $('stepProgressFill');
+    const statsBar        = $('statsBar');
+
+    // ── Logical coordinate space (canvas is scaled uniformly to fit) ──
+    const SPACE_W = 600;
+    const SPACE_H = 200;
+    const NODE_R  = 8;
+    const PAD     = NODE_R + 6;
+
+    const COLORS = {
+        edge:      '#c8d0da',
+        accepted:  '#27ae60',
+        rejected:  '#e6a35c',
+        regular:   ['#3498db', '#2980b9'],
+        entry:     ['#9b59b6', '#7d3c98'],
+        visited:   ['#f1c40f', '#d68910'],
+        current:   ['#2ecc71', '#1e8449'],
+        candidate: '#16a085',
+        query:     ['#e74c3c', '#a93226'],
+        newNode:   '#e67e22',
+    };
 
     // ── Parameters ────────────────────────────────────────────────
-    let maxLayers     = parseInt(maxLayersInput.value);
-    let M             = parseInt(mInput.value);
-    let efConstruction = parseInt(efConstructionInput.value);
-    let visualizationMode = 'insertion';  // 'insertion' | 'search'
-    let distanceMetric    = distanceMetricSelect.value;
+    const readInt = (input, lo, hi) => {
+        const v = clamp(parseInt(input.value, 10) || lo, lo, hi);
+        input.value = v;
+        return v;
+    };
 
-    // ── State ──────────────────────────────────────────────────────
-    let graph     = [];   // graph[layer] = { nodes: [id,...], edges: {id: [id,...]} }
-    let points    = [];   // all points including query
-    let queryPoint = null;
-    let entryPointId = null;  // the global entry node for searches
+    let maxLayers, M, efConstruction, efSearch;
+    let distanceMetric = distanceMetricSelect.value;
+    let clickMode = 'insert';   // 'insert' | 'search'
 
+    function readParams() {
+        maxLayers      = readInt(maxLayersInput, 1, 6);
+        M              = readInt(mInput, 2, 16);
+        efConstruction = readInt(efConstructionInput, 1, 200);
+        efSearch       = readInt(efSearchInput, 1, 100);
+    }
+
+    const Mmax  = () => M;        // max degree on layers ≥ 1
+    const Mmax0 = () => 2 * M;    // max degree on layer 0 (paper's recommendation)
+    const mL    = () => 1 / Math.log(M);
+
+    // ── Index state ───────────────────────────────────────────────
+    // points[id] = { id, x, y, level }
+    // graph[layer] = Map<id, id[]>   (adjacency lists; a node is on layer l iff level ≥ l)
+    let points = [];
+    let graph  = [];
+    let entryPointId = null;
+    let lastInserted = null;      // { id, level } – highlighted until the next action
+
+    // ── Search state ──────────────────────────────────────────────
+    let queryPoint = null;        // { x, y } – kept separate from the indexed points
+    let steps = [];
     let currentStep = 0;
-    let maxStep     = 0;
-    let stepHistory = [];
-    let visitedNodes = [];
-    let selectedNode  = null;
-    let simulationInProgress = false;
+    let searchResult = null;      // { found, exact, foundDist, exactDist, distCount }
+    let playTimer = null;
 
-    // ── Coordinate space (logical, not CSS pixels) ────────────────
-    const SPACE_W  = 600;
-    const SPACE_H  = 150;
-    const NODE_R   = 8;
-
-    let contexts = [];  // canvas 2d contexts, indexed by layer
+    let contexts = [];
 
     // ─────────────────────────────────────────────────────────────
-    // Initialization
+    // Helpers
     // ─────────────────────────────────────────────────────────────
 
-    function initializeGraph() {
-        points   = [];
-        graph    = [];
-        visitedNodes = [];
-        queryPoint   = null;
-        entryPointId = null;
-        stepHistory  = [];
-        currentStep  = 0;
-        maxStep      = 0;
-        selectedNode  = null;
-        simulationInProgress = false;
-
-        for (let i = 0; i < maxLayers; i++) {
-            graph.push({ nodes: [], edges: {} });
-        }
-
-        initializeCanvases();
-
-        // Seed the graph with one entry point at the center of the top layer
-        const ep = createPoint(SPACE_W / 2, SPACE_H / 2);
-        addToLayer(ep, maxLayers - 1);
-        entryPointId = ep.id;
-
-        hideSkipList();
-        updateFormula();
-        updateVisualization();
-        showExplanation(
-            'Graph initialized with one <strong>entry point</strong> (purple ⭐) at the center of the top layer.<br><br>' +
-            'Click <em>+ Add 10 Points</em> to build the graph, then <em>🔍 Search Nearest</em> to run a search.',
-            null
-        );
-        updateNavigationButtons();
-    }
-
-    function initializeCanvases() {
-        layersContainer.innerHTML = '';
-        contexts = [];
-
-        for (let i = 0; i < maxLayers; i++) {
-            const layerDiv = document.createElement('div');
-            layerDiv.className = 'layer';
-            layerDiv.id = `layer-div-${i}`;
-            // CSS flex order: top layer renders first (lowest order = top)
-            layerDiv.style.order = maxLayers - i;
-
-            const layerTitle = document.createElement('div');
-            layerTitle.className = 'layer-title';
-            layerTitle.id = `layer-title-${i}`;
-            layerTitle.textContent = layerLabel(i, 0);
-
-            // Canvas always uses SPACE_W × SPACE_H as the pixel buffer.
-            // CSS width:100% scales it visually; click coords are scaled back.
-            const canvas = document.createElement('canvas');
-            canvas.className = 'layer-canvas';
-            canvas.width  = SPACE_W;
-            canvas.height = SPACE_H;
-            canvas.id = `layer${i}`;
-            canvas.addEventListener('click', (e) => handleCanvasClick(e, i));
-
-            layerDiv.appendChild(layerTitle);
-            layerDiv.appendChild(canvas);
-            layersContainer.appendChild(layerDiv);
-
-            contexts.push(canvas.getContext('2d'));
-        }
-    }
-
-    function layerLabel(i, nodeCount) {
-        let label = `Layer ${i}`;
-        if (i === maxLayers - 1 && maxLayers > 1) label += '  (top — sparse, fast)';
-        else if (i === 0)                          label += '  (bottom — all points, precise)';
-        const countStr = nodeCount === 1 ? '1 node' : `${nodeCount} nodes`;
-        return `${label}   ·   ${countStr}`;
-    }
-
-    function updateLayerTitles() {
-        for (let i = 0; i < maxLayers; i++) {
-            const el = document.getElementById(`layer-title-${i}`);
-            if (el) el.textContent = layerLabel(i, graph[i].nodes.length);
-        }
-    }
-
-    // ─────────────────────────────────────────────────────────────
-    // Canvas interaction
-    // ─────────────────────────────────────────────────────────────
-
-    function handleCanvasClick(event, layerId) {
-        if (simulationInProgress) return;
-
-        const canvas = event.target;
-        const rect   = canvas.getBoundingClientRect();
-
-        // Map CSS click coordinates → logical [0, SPACE_W] × [0, SPACE_H] space
-        const scaleX = SPACE_W / rect.width;
-        const scaleY = SPACE_H / rect.height;
-        const x = clamp((event.clientX - rect.left) * scaleX, NODE_R + 5, SPACE_W - NODE_R - 5);
-        const y = clamp((event.clientY - rect.top)  * scaleY, NODE_R + 5, SPACE_H - NODE_R - 5);
-
-        if (visualizationMode === 'insertion') {
-            insertPoint(createPoint(x, y));
-        } else {
-            startSearch(createPoint(x, y));
-        }
-    }
-
-    function clamp(val, lo, hi) {
-        return Math.min(Math.max(val, lo), hi);
-    }
-
-    // ─────────────────────────────────────────────────────────────
-    // Drawing
-    // ─────────────────────────────────────────────────────────────
-
-    function updateVisualization() {
-        updateLayerTitles();
-
-        for (let i = 0; i < maxLayers; i++) {
-            const ctx = contexts[i];
-            ctx.clearRect(0, 0, SPACE_W, SPACE_H);
-
-            const stepData = (simulationInProgress && currentStep < stepHistory.length)
-                ? stepHistory[currentStep] : null;
-
-            const isActiveLayer = stepData && stepData.layer === i;
-
-            // Highlight active layer
-            if (isActiveLayer) {
-                ctx.fillStyle = 'rgba(46, 204, 113, 0.08)';
-                ctx.fillRect(0, 0, SPACE_W, SPACE_H);
-                ctx.fillStyle = '#27ae60';
-                ctx.font = 'bold 10px Arial';
-                ctx.textAlign = 'right';
-                ctx.textBaseline = 'top';
-                ctx.fillText('▶ ACTIVE', SPACE_W - 8, 6);
-            }
-
-            // Mark layer div as active
-            const layerDiv = document.getElementById(`layer-div-${i}`);
-            if (layerDiv) {
-                layerDiv.classList.toggle('active-layer', !!isActiveLayer);
-            }
-
-            // Draw edges
-            const edges = graph[i].edges;
-            const traversedEdges = simulationInProgress
-                ? new Set(stepHistory.slice(0, currentStep + 1)
-                    .filter(s => s.layer === i && s.from !== undefined)
-                    .flatMap(s => [`${s.from}-${s.to}`, `${s.to}-${s.from}`]))
-                : new Set();
-
-            for (const fromId in edges) {
-                const fromNode = points.find(p => p.id === parseInt(fromId));
-                if (!fromNode) continue;
-
-                for (const toId of edges[fromId]) {
-                    const toNode = points.find(p => p.id === toId);
-                    if (!toNode) continue;
-
-                    const active = traversedEdges.has(`${fromId}-${toId}`);
-
-                    ctx.beginPath();
-                    ctx.moveTo(fromNode.x, fromNode.y);
-                    ctx.lineTo(toNode.x, toNode.y);
-                    ctx.strokeStyle = active ? '#2ecc71' : '#c8d0da';
-                    ctx.lineWidth   = active ? 2.5 : 1;
-                    ctx.stroke();
-                }
-            }
-
-            // Draw nodes
-            for (const pt of points) {
-                const visibleOnLayer = pt.layer >= i || (queryPoint && pt.id === queryPoint.id);
-                if (!visibleOnLayer) continue;
-
-                const isQuery   = queryPoint && pt.id === queryPoint.id;
-                const isEntry   = pt.id === entryPointId && !isQuery;
-                const isVisited = simulationInProgress &&
-                                  visitedNodes.slice(0, currentStep + 1).includes(pt.id);
-                const isCurrent = simulationInProgress && selectedNode && pt.id === selectedNode.id;
-
-                // Entry point halo (shown when not in search)
-                if (isEntry && !simulationInProgress) {
-                    ctx.beginPath();
-                    ctx.arc(pt.x, pt.y, NODE_R + 6, 0, Math.PI * 2);
-                    ctx.strokeStyle = 'rgba(155, 89, 182, 0.45)';
-                    ctx.lineWidth = 2;
-                    ctx.setLineDash([4, 3]);
-                    ctx.stroke();
-                    ctx.setLineDash([]);
-                }
-
-                // Node fill
-                ctx.beginPath();
-                ctx.arc(pt.x, pt.y, NODE_R, 0, Math.PI * 2);
-
-                if (isQuery) {
-                    ctx.fillStyle   = '#e74c3c';
-                    ctx.strokeStyle = '#c0392b';
-                    ctx.lineWidth   = 2.5;
-                } else if (isCurrent) {
-                    ctx.fillStyle   = '#2ecc71';
-                    ctx.strokeStyle = '#27ae60';
-                    ctx.lineWidth   = 2;
-                } else if (isVisited) {
-                    ctx.fillStyle   = '#f1c40f';
-                    ctx.strokeStyle = '#e67e22';
-                    ctx.lineWidth   = 1.5;
-                } else if (isEntry) {
-                    ctx.fillStyle   = '#9b59b6';
-                    ctx.strokeStyle = '#8e44ad';
-                    ctx.lineWidth   = 2;
-                } else {
-                    ctx.fillStyle   = '#3498db';
-                    ctx.strokeStyle = '#2980b9';
-                    ctx.lineWidth   = 1;
-                }
-
-                ctx.fill();
-                ctx.stroke();
-
-                // ID label (white, inside node)
-                ctx.fillStyle    = '#fff';
-                ctx.textAlign    = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.font = `bold 9px Arial`;
-                ctx.fillText(pt.id, pt.x, pt.y);
-
-                // Sub-label
-                if (isQuery) {
-                    ctx.fillStyle = '#c0392b';
-                    ctx.font = '8px Arial';
-                    ctx.fillText('QUERY', pt.x, pt.y + NODE_R + 9);
-                } else if (isEntry && !simulationInProgress) {
-                    ctx.fillStyle = '#8e44ad';
-                    ctx.font = '8px Arial';
-                    ctx.fillText('ENTRY', pt.x, pt.y + NODE_R + 9);
-                }
-            }
-        }
-    }
-
-    // ─────────────────────────────────────────────────────────────
-    // Point creation helpers
-    // ─────────────────────────────────────────────────────────────
-
-    function createPoint(x, y) {
-        return { id: points.length, x, y, layer: 0 };
-    }
-
-    function addToLayer(point, layer) {
-        point.layer = Math.max(point.layer, layer);
-        graph[layer].nodes.push(point.id);
-        if (!points.includes(point)) points.push(point);
-    }
-
-    function generateRandomPoint() {
-        const pad = NODE_R + 10;
-        return createPoint(
-            Math.random() * (SPACE_W - 2 * pad) + pad,
-            Math.random() * (SPACE_H - 2 * pad) + pad
-        );
-    }
-
-    // ─────────────────────────────────────────────────────────────
-    // Distance metrics
-    // ─────────────────────────────────────────────────────────────
+    function clamp(v, lo, hi) { return Math.min(Math.max(v, lo), hi); }
+    function fmt(d) { return d.toFixed(1); }
+    const searching = () => steps.length > 0;
 
     function distance(a, b) {
+        const dx = Math.abs(a.x - b.x), dy = Math.abs(a.y - b.y);
         switch (distanceMetric) {
-            case 'manhattan': return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
-            case 'chebyshev': return Math.max(Math.abs(a.x - b.x), Math.abs(a.y - b.y));
-            default:          return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
+            case 'manhattan': return dx + dy;
+            case 'chebyshev': return Math.max(dx, dy);
+            default:          return Math.hypot(dx, dy);
         }
     }
 
-    function metricName() {
-        return { manhattan: 'Manhattan', chebyshev: 'Chebyshev', euclidean: 'Euclidean' }[distanceMetric] || 'Euclidean';
-    }
-
-    function fmt(d) { return d.toFixed(1); }
+    const METRICS = {
+        euclidean: { name: 'Euclidean', expr: '√((x₁−x₂)² + (y₁−y₂)²)' },
+        manhattan: { name: 'Manhattan', expr: '|x₁−x₂| + |y₁−y₂|' },
+        chebyshev: { name: 'Chebyshev', expr: 'max(|x₁−x₂|, |y₁−y₂|)' },
+    };
 
     function updateFormula() {
-        const box = document.getElementById('formulaBox');
-        if (!box) return;
-        const formulas = {
-            euclidean: { name: 'Euclidean', expr: '√((x₁−x₂)² + (y₁−y₂)²)' },
-            manhattan: { name: 'Manhattan', expr: '|x₁−x₂| + |y₁−y₂|' },
-            chebyshev: { name: 'Chebyshev', expr: 'max(|x₁−x₂|, |y₁−y₂|)' },
+        const f = METRICS[distanceMetric] || METRICS.euclidean;
+        document.querySelector('#formulaBox .formula-title').textContent = `Distance: ${f.name}`;
+        document.querySelector('#formulaBox .formula-content').textContent = f.expr;
+    }
+
+    function topLevel() {
+        return entryPointId === null ? -1 : points[entryPointId].level;
+    }
+
+    function neighbours(id, layer) {
+        return graph[layer].get(id) || [];
+    }
+
+    function layerSize(layer) {
+        return graph[layer] ? graph[layer].size : 0;
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // HNSW core
+    // ─────────────────────────────────────────────────────────────
+
+    // Level ~ floor(-ln(U) · mL), capped so it fits on screen.
+    function randomLevel() {
+        const lvl = Math.floor(-Math.log(1 - Math.random()) * mL());
+        return Math.min(lvl, maxLayers - 1);
+    }
+
+    // SEARCH-LAYER (Algorithm 2). Returns up to `ef` nearest ids, sorted by
+    // distance. `trace`, if given, receives events for the step-by-step view.
+    function searchLayer(q, entryIds, ef, layer, trace) {
+        const d = (id) => distance(q, points[id]);
+
+        const visited = new Set(entryIds);
+        let C = entryIds.map(id => ({ id, d: d(id) }));   // candidates
+        let W = C.slice();                                 // dynamic result list
+        const byDist = (a, b) => a.d - b.d;
+        C.sort(byDist); W.sort(byDist);
+
+        while (C.length) {
+            const c = C.shift();                 // closest candidate
+            const f = W[W.length - 1];           // furthest result
+            if (c.d > f.d) {
+                trace && trace.emit('stop', { layer, cur: c.id, W, c, f });
+                break;
+            }
+            trace && trace.emit('expand', { layer, cur: c.id, W, c });
+
+            for (const e of neighbours(c.id, layer)) {
+                if (visited.has(e)) continue;
+                visited.add(e);
+                const de = d(e);
+                const worst = W[W.length - 1];
+                const full = W.length >= ef;
+                const accept = !full || de < worst.d;
+                if (accept) {
+                    const item = { id: e, d: de };
+                    C.push(item); C.sort(byDist);
+                    W.push(item); W.sort(byDist);
+                    if (W.length > ef) W.pop();
+                }
+                trace && trace.emit('examine', { layer, cur: c.id, from: c.id, to: e, d: de, accept, full, worst, W });
+            }
+        }
+        return W.map(w => w.id);
+    }
+
+    // SELECT-NEIGHBORS-HEURISTIC (Algorithm 4) with keepPrunedConnections.
+    // A candidate is kept only if it is closer to the base than to every
+    // neighbour already chosen, which favours links in diverse directions.
+    function selectNeighbours(base, candidateIds, m) {
+        const sorted = candidateIds
+            .filter(id => id !== base.id)
+            .map(id => ({ id, d: distance(base, points[id]) }))
+            .sort((a, b) => a.d - b.d);
+        const chosen = [], pruned = [];
+        for (const c of sorted) {
+            if (chosen.length >= m) break;
+            const good = chosen.every(r => c.d < distance(points[c.id], points[r.id]));
+            (good ? chosen : pruned).push(c);
+        }
+        for (const p of pruned) {
+            if (chosen.length >= m) break;
+            chosen.push(p);
+        }
+        return chosen.map(c => c.id);
+    }
+
+    // INSERT (Algorithm 1).
+    function insert(x, y) {
+        const q = { id: points.length, x, y, level: randomLevel() };
+        points.push(q);
+        for (let l = 0; l <= q.level; l++) graph[l].set(q.id, []);
+
+        if (entryPointId === null) {
+            entryPointId = q.id;
+            return q;
+        }
+
+        let ep = [entryPointId];
+        const L = topLevel();
+
+        // Phase 1: greedy descent (ef = 1) through layers above the new node.
+        for (let l = L; l > q.level; l--) ep = searchLayer(q, ep, 1, l).slice(0, 1);
+
+        // Phase 2: on each of the node's layers find efConstruction candidates
+        // and link to the best M (chosen by the heuristic).
+        for (let l = Math.min(L, q.level); l >= 0; l--) {
+            const W = searchLayer(q, ep, efConstruction, l);
+            const nbrs = selectNeighbours(q, W, M);
+            graph[l].set(q.id, nbrs.slice());
+
+            const cap = l === 0 ? Mmax0() : Mmax();
+            for (const n of nbrs) {
+                const list = graph[l].get(n);
+                list.push(q.id);
+                if (list.length > cap) {
+                    // Shrink connections of n; drop the reverse link too so the
+                    // drawn graph stays undirected and easy to read.
+                    const kept = selectNeighbours(points[n], list, cap);
+                    for (const dropped of list.filter(id => !kept.includes(id))) {
+                        const back = graph[l].get(dropped);
+                        if (back) graph[l].set(dropped, back.filter(id => id !== n));
+                    }
+                    graph[l].set(n, kept);
+                }
+            }
+            ep = W;
+        }
+
+        if (q.level > L) entryPointId = q.id;
+        return q;
+    }
+
+    function exactNearest(q) {
+        let best = null, bestD = Infinity;
+        for (const p of points) {
+            const d = distance(q, p);
+            if (d < bestD) { bestD = d; best = p.id; }
+        }
+        return { id: best, d: bestD };
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Graph lifecycle
+    // ─────────────────────────────────────────────────────────────
+
+    function emptyIndex() {
+        points = [];
+        graph = Array.from({ length: maxLayers }, () => new Map());
+        entryPointId = null;
+        lastInserted = null;
+    }
+
+    function resetAll() {
+        readParams();
+        clearSearch(false);
+        emptyIndex();
+        buildCanvases();
+        render();
+        showExplanation(
+            'The index is empty.<br><br>' +
+            'Click <em>+ Add 10 Points</em> (or click on a layer) to insert points, then <em>🔍 Search Nearest</em> to run a query.',
+            null
+        );
+    }
+
+    // Re-insert the same coordinates with the current parameters so that the
+    // effect of M / ef / layers / metric can be compared on the same data.
+    function rebuild(reason) {
+        const coords = points.map(p => ({ x: p.x, y: p.y }));
+        const q = queryPoint;
+        readParams();
+        clearSearch(false);
+        emptyIndex();
+        buildCanvases();
+        coords.forEach(c => insert(c.x, c.y));
+        render();
+        showExplanation(
+            `${reason}<br><br>Rebuilt the index from the same <strong>${coords.length}</strong> points. ` +
+            'Levels are re-drawn at random, so the upper layers will look different.',
+            null
+        );
+        if (q && points.length) startSearch(q.x, q.y);
+    }
+
+    function addPoint(x, y) {
+        clearSearch(false);
+        const p = insert(x, y);
+        lastInserted = p;
+        render();
+
+        const nbrs0 = neighbours(p.id, 0);
+        const range = p.level === 0 ? 'layer 0 only' : `layers 0–${p.level}`;
+        let html =
+            `Inserted <strong>node ${p.id}</strong> on ${range} ` +
+            `(P(level ≥ 1) = 1/M = ${(100 / M).toFixed(0)}%).<br>`;
+        if (points.length === 1) {
+            html += 'It is the first node, so it becomes the <strong>entry point</strong>.';
+        } else {
+            html += `Layer-0 links: ${nbrs0.length ? nbrs0.map(n => '#' + n).join(', ') : 'none'}.<br><br>` +
+                'To find them, HNSW searched the existing graph from the entry point with ' +
+                `ef = ${efConstruction} and kept up to M = ${M} diverse neighbours.`;
+            if (p.id === entryPointId) {
+                html += `<br><span class="hl-entry">⬆ Highest level so far — node ${p.id} is the new entry point.</span>`;
+            } else if (p.level > 0) {
+                html += `<br><span class="hl-entry">⬆ Promoted — acts as a long-range shortcut on upper layers.</span>`;
+            }
+        }
+        showExplanation(html, null);
+    }
+
+    function addRandomPoints(count) {
+        for (let i = 0; i < count; i++) addPoint(...randomCoords());
+        lastInserted = null;
+        render();
+
+        const counts = graph.map((_, l) => `L${l}: ${layerSize(l)}`).reverse().join(' · ');
+        showExplanation(
+            `Added <strong>${count} points</strong> (${points.length} total).<br>${counts}<br><br>` +
+            (layerSize(1) > 0
+                ? 'Each layer holds roughly 1/M of the layer below. These sparse upper layers are the ' +
+                  '"highways" a search uses to cover distance quickly.'
+                : 'No point has been promoted yet. Add more points to see the upper layers fill in.'),
+            null
+        );
+    }
+
+    function randomCoords() {
+        return [
+            PAD + Math.random() * (SPACE_W - 2 * PAD),
+            PAD + Math.random() * (SPACE_H - 2 * PAD),
+        ];
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Traced search (K-NN-SEARCH, Algorithm 5, with K = 1)
+    // ─────────────────────────────────────────────────────────────
+
+    function startSearch(x, y) {
+        stopPlaying();
+        if (!points.length) {
+            showExplanation('The index is empty. Add some points first, then run a search.', null);
+            return;
+        }
+
+        const q = { x, y };
+        queryPoint = q;
+        steps = [];
+        lastInserted = null;
+
+        const seen = new Set();   // every node whose distance was computed
+        const trace = {
+            emit(type, data) {
+                if (type === 'examine') seen.add(data.to);
+                steps.push(makeStep(type, data, seen));
+            },
         };
-        const f = formulas[distanceMetric] || formulas.euclidean;
-        box.querySelector('.formula-title').textContent   = `Distance: ${f.name}`;
-        box.querySelector('.formula-content').textContent = f.expr;
+
+        const L = topLevel();
+        seen.add(entryPointId);
+        steps.push(makeStep('start', { layer: L, cur: entryPointId, W: [{ id: entryPointId, d: distance(q, points[entryPointId]) }] }, seen));
+
+        let ep = [entryPointId];
+        for (let l = L; l >= 0; l--) {
+            if (l < L) {
+                steps.push(makeStep('descend', { layer: l, cur: ep[0], W: [{ id: ep[0], d: distance(q, points[ep[0]]) }], ef: l === 0 ? efSearch : 1 }, seen));
+            }
+            const ef = l === 0 ? Math.max(efSearch, 1) : 1;
+            const W = searchLayer(q, ep, ef, l, trace);
+            ep = l === 0 ? W : W.slice(0, 1);
+        }
+
+        const exact = exactNearest(q);
+        searchResult = {
+            found: ep[0],
+            foundDist: distance(q, points[ep[0]]),
+            exact: exact.id,
+            exactDist: exact.d,
+            distCount: seen.size,
+            resultList: ep,
+        };
+        steps.push(makeStep('result', { layer: 0, cur: ep[0], W: ep.map(id => ({ id, d: distance(q, points[id]) })) }, seen));
+
+        currentStep = 0;
+        applyStep();
+    }
+
+    function makeStep(type, data, seen) {
+        return {
+            type,
+            layer: data.layer,
+            cur: data.cur,
+            from: data.from,
+            to: data.to,
+            accept: data.accept,
+            W: (data.W || []).map(w => w.id),
+            seen: Array.from(seen),
+            description: describe(type, data),
+        };
+    }
+
+    function describe(type, s) {
+        const ef = s.layer === 0 ? efSearch : 1;
+        switch (type) {
+            case 'start':
+                return `Start at the <strong>entry point, node ${s.cur}</strong>, on the top layer (L${s.layer}).<br>` +
+                    `Distance to query: <strong>${fmt(s.W[0].d)}</strong>.<br><br>` +
+                    'Upper layers are searched greedily (ef = 1): keep hopping to whichever neighbour is closer to the query.';
+            case 'descend':
+                return `Drop down to <strong>layer ${s.layer}</strong>, starting from <strong>node ${s.cur}</strong> ` +
+                    `(dist ${fmt(s.W[0].d)}), the best node found above.<br><br>` +
+                    (s.layer === 0
+                        ? `Layer 0 contains every point. Here the search widens to a beam of <strong>ef = ${efSearch}</strong> ` +
+                          'candidates so it can route around local dead ends.'
+                        : `Layer ${s.layer} has ${layerSize(s.layer)} nodes, so the jumps are shorter and more precise.`);
+            case 'expand':
+                return `L${s.layer}: expand <strong>node ${s.cur}</strong> (dist ${fmt(s.c.d)}), the closest unexpanded candidate.<br>` +
+                    `Its ${neighbours(s.cur, s.layer).length} neighbours will be checked next.` +
+                    (ef > 1 ? `<br><br>Result list (${s.W.length}/${ef}): ${listIds(s.W)}` : '');
+            case 'examine': {
+                const verdict = s.accept
+                    ? (ef === 1
+                        ? `<span class="hl-yes">✓ Closer than ${fmt(s.worst.d)}. Node ${s.to} becomes the best so far.</span>`
+                        : `<span class="hl-yes">✓ ${s.full ? `Beats the worst result (${fmt(s.worst.d)})` : `Result list not full yet (&lt; ${ef})`}. Added to the result and candidate lists.</span>`)
+                    : `<span class="hl-no">✗ Not closer than ${fmt(s.worst.d)}. Discarded.</span>`;
+                return `L${s.layer}: check edge <strong>${s.from} → ${s.to}</strong>.<br>` +
+                    `Distance from node ${s.to} to query: <strong>${fmt(s.d)}</strong>.<br><br>${verdict}`;
+            }
+            case 'stop':
+                return `L${s.layer}: the closest remaining candidate (node ${s.c.id}, ${fmt(s.c.d)}) is farther than the ` +
+                    `worst result (node ${s.f.id}, ${fmt(s.f.d)}).<br><br>` +
+                    '<strong>Nothing left can improve the result, so this layer is done.</strong>';
+            case 'result':
+                return ''; // filled in by resultDescription() once totals are known
+        }
+        return '';
+    }
+
+    function listIds(W) {
+        return W.map(w => `#${w.id}`).join(', ');
+    }
+
+    function resultDescription() {
+        const r = searchResult;
+        const n = points.length;
+        const pct = Math.round((r.distCount / n) * 100);
+        const hit = r.found === r.exact || Math.abs(r.foundDist - r.exactDist) < 1e-9;
+        return `<strong>Search complete.</strong> Nearest neighbour: <strong>node ${r.found}</strong> (dist ${fmt(r.foundDist)}).<br>` +
+            `Final result list (ef = ${efSearch}): ${r.resultList.map(id => '#' + id).join(', ')}<br><br>` +
+            `Nodes compared: <strong>${r.distCount}</strong> (${pct}% of a brute-force scan of ${n}).<br>` +
+            (hit
+                ? '<span class="hl-yes">✓ Matches the exact nearest neighbour.</span>'
+                : `<span class="hl-no">✗ Approximate miss: the exact nearest is node ${r.exact} (dist ${fmt(r.exactDist)}). ` +
+                  'Try a larger ef or M.</span>') +
+            (pct >= 100 && n < 40
+                ? '<br><br><em>With so few points HNSW touches most of them; the savings appear as the index grows.</em>'
+                : '');
+    }
+
+    function clearSearch(redraw = true) {
+        stopPlaying();
+        steps = [];
+        currentStep = 0;
+        queryPoint = null;
+        searchResult = null;
+        hideSkipList();
+        updateNav();
+        if (redraw) {
+            render();
+            showExplanation('Search cleared. Add more points or run another search.', null);
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Step navigation
+    // ─────────────────────────────────────────────────────────────
+
+    function applyStep() {
+        const step = steps[currentStep];
+        showExplanation(step.type === 'result' ? resultDescription() : step.description, step.type);
+        updateSkipList(step);
+        render();
+        updateNav();
+    }
+
+    function goTo(i) {
+        if (!searching()) return;
+        const next = clamp(i, 0, steps.length - 1);
+        if (next === currentStep) return;
+        currentStep = next;
+        applyStep();
+    }
+
+    function togglePlay() {
+        if (playTimer) { stopPlaying(); return; }
+        if (currentStep >= steps.length - 1) goTo(0);
+        playTimer = setInterval(() => {
+            if (currentStep >= steps.length - 1) { stopPlaying(); return; }
+            goTo(currentStep + 1);
+        }, 650);
+        updateNav();
+    }
+
+    function stopPlaying() {
+        if (playTimer) clearInterval(playTimer);
+        playTimer = null;
+        updateNav();
+    }
+
+    function updateNav() {
+        const active = searching();
+        navBar.style.display = active ? 'flex' : 'none';
+        if (!active) return;
+        const last = steps.length - 1;
+        prevBtn.disabled = currentStep <= 0;
+        nextBtn.disabled = currentStep >= last;
+        skipToEndBtn.disabled = currentStep >= last;
+        playBtn.textContent = playTimer ? '⏸ Pause' : '▶ Play';
+        stepCounter.textContent = `Step ${currentStep + 1} / ${steps.length}`;
+        stepProgressFill.style.width = `${last > 0 ? (currentStep / last) * 100 : 100}%`;
     }
 
     // ─────────────────────────────────────────────────────────────
     // Explanation panel
     // ─────────────────────────────────────────────────────────────
 
+    const BADGES = {
+        start:   { label: 'START',      cls: 'badge-start'   },
+        expand:  { label: 'EXPAND',     cls: 'badge-move'    },
+        examine: { label: 'EXAMINE',    cls: 'badge-examine' },
+        stop:    { label: 'LAYER DONE', cls: 'badge-stop'    },
+        descend: { label: '↓ DESCEND',  cls: 'badge-descend' },
+        result:  { label: '✓ RESULT',   cls: 'badge-result'  },
+    };
+
     function showExplanation(html, stepType) {
-        const badge = document.getElementById('stepBadge');
-        if (badge) {
-            if (stepType) {
-                const cfg = {
-                    start:            { label: 'START',      cls: 'badge-start'   },
-                    examine:          { label: 'EXAMINE',    cls: 'badge-examine' },
-                    move:             { label: 'MOVE →',     cls: 'badge-move'    },
-                    layer_transition: { label: '↓ DESCEND',  cls: 'badge-descend' },
-                    result:           { label: '✓ RESULT',   cls: 'badge-result'  },
-                };
-                const b = cfg[stepType] || { label: stepType.toUpperCase(), cls: 'badge-start' };
-                badge.textContent = b.label;
-                badge.className   = `step-badge ${b.cls}`;
-                badge.style.display = 'inline-block';
-            } else {
-                badge.style.display = 'none';
-            }
+        const badge = $('stepBadge');
+        const b = stepType && BADGES[stepType];
+        if (b) {
+            badge.textContent = b.label;
+            badge.className = `step-badge ${b.cls}`;
+            badge.style.display = 'inline-block';
+        } else {
+            badge.style.display = 'none';
         }
         explanationText.innerHTML = html;
     }
 
-    // ─────────────────────────────────────────────────────────────
-    // Graph layer assignment (probabilistic)
-    // ─────────────────────────────────────────────────────────────
-
-    function assignLayer() {
-        let layer = 0;
-        while (Math.random() < 1 / M && layer < maxLayers - 1) layer++;
-        return layer;
+    function updateStats() {
+        if (!statsBar) return;
+        const edges = graph.reduce((sum, g) => {
+            let s = 0;
+            g.forEach(list => { s += list.length; });
+            return sum + s / 2;
+        }, 0);
+        statsBar.innerHTML =
+            `<span><strong>${points.length}</strong> points</span>` +
+            `<span><strong>${Math.round(edges)}</strong> edges</span>` +
+            `<span>entry point <strong>${entryPointId === null ? '—' : '#' + entryPointId}</strong></span>` +
+            `<span>Mmax = ${Mmax()}, Mmax₀ = ${Mmax0()}</span>`;
     }
 
     // ─────────────────────────────────────────────────────────────
-    // INSERTION
+    // Canvases
     // ─────────────────────────────────────────────────────────────
 
-    function insertPoint(point) {
-        resetSearch();
-
-        const pointMaxLayer = assignLayer();
-
-        // Find current entry into the graph
-        let currEntryId  = null;
-        let currEntryLayer = 0;
-        for (let l = maxLayers - 1; l >= 0; l--) {
-            if (graph[l].nodes.length > 0 && graph[l].nodes[0] !== point.id) {
-                currEntryId   = graph[l].nodes[0];
-                currEntryLayer = l;
-                break;
-            }
-        }
-
-        if (currEntryId === null) {
-            // First actual point after the entry point
-            addToLayer(point, pointMaxLayer);
-            if (entryPointId === null) entryPointId = point.id;
-            showExplanation(`Node ${point.id} inserted as the entry point at Layer ${pointMaxLayer}.`, null);
-            updateVisualization();
-            return;
-        }
-
-        let currObj = points.find(p => p.id === currEntryId);
-
-        // Phase 1: greedy descent from top to pointMaxLayer (no connections yet)
-        for (let l = maxLayers - 1; l > pointMaxLayer; l--) {
-            if (graph[l].nodes.length === 0) continue;
-            let changed = true;
-            while (changed) {
-                changed = false;
-                const nbrs = (graph[l].edges[currObj.id] || []).map(nId => ({
-                    id: nId,
-                    d: distance(point, points.find(p => p.id === nId))
-                }));
-                if (nbrs.length) {
-                    nbrs.sort((a, b) => a.d - b.d);
-                    const closest = points.find(p => p.id === nbrs[0].id);
-                    if (distance(point, closest) < distance(point, currObj)) {
-                        currObj = closest;
-                        changed = true;
-                    }
-                }
-            }
-        }
-
-        // Phase 2: insert and connect at each layer up to pointMaxLayer
-        for (let l = Math.min(pointMaxLayer, maxLayers - 1); l >= 0; l--) {
-            const candidates = new Set([currObj.id]);
-            let frontier = new Set([currObj.id]);
-
-            for (let iter = 0; iter < efConstruction && frontier.size > 0; iter++) {
-                const next = new Set();
-                for (const nId of frontier) {
-                    for (const nbr of (graph[l].edges[nId] || [])) {
-                        if (!candidates.has(nbr)) { candidates.add(nbr); next.add(nbr); }
-                    }
-                }
-                frontier = next;
-            }
-
-            const sorted = [...candidates]
-                .map(cId => ({ id: cId, d: distance(point, points.find(p => p.id === cId)) }))
-                .sort((a, b) => a.d - b.d)
-                .slice(0, M)
-                .map(n => n.id);
-
-            if (!graph[l].edges[point.id]) graph[l].edges[point.id] = [];
-            for (const nId of sorted) {
-                if (nId === point.id) continue;
-                graph[l].edges[point.id].push(nId);
-                if (!graph[l].edges[nId]) graph[l].edges[nId] = [];
-                graph[l].edges[nId].push(point.id);
-            }
-
-            addToLayer(point, l);
-            currObj = point;
-        }
-
-        const range = pointMaxLayer === 0 ? 'Layer 0 only' : `Layers 0–${pointMaxLayer}`;
-        const promoted = pointMaxLayer > 0
-            ? `<br><span style="color:#9b59b6">⬆ Promoted to higher layers — will act as a navigation shortcut!</span>`
-            : '';
-        showExplanation(
-            `Node <strong>${point.id}</strong> inserted (${range}).<br>` +
-            `Connected to up to <strong>${M}</strong> nearest neighbors at each layer.${promoted}`,
-            null
-        );
-        updateVisualization();
-    }
-
-    // ─────────────────────────────────────────────────────────────
-    // SEARCH
-    // ─────────────────────────────────────────────────────────────
-
-    function startSearch(point) {
-        // Clean up previous query point from the points array
-        if (queryPoint && points.includes(queryPoint)) {
-            points.splice(points.indexOf(queryPoint), 1);
-        }
-        queryPoint = point;
-        queryPoint.layer = maxLayers - 1;  // visible on all layers
-        if (!points.includes(queryPoint)) points.push(queryPoint);
-        searchNearest(queryPoint);
-    }
-
-    function searchNearest(point) {
-        resetSearch();
-        visitedNodes = [];
-        stepHistory  = [];
-        simulationInProgress = true;
-
-        const graphPoints = points.filter(p => !queryPoint || p.id !== queryPoint.id);
-        if (graphPoints.length === 0) {
-            showExplanation('Add some points first, then run a search.', null);
-            simulationInProgress = false;
-            return;
-        }
-
-        // Find entry node (highest non-empty layer, first node)
-        let epId    = null;
-        let epLayer = 0;
-        for (let l = maxLayers - 1; l >= 0; l--) {
-            if (graph[l].nodes.length > 0) { epId = graph[l].nodes[0]; epLayer = l; break; }
-        }
-        if (epId === null) {
-            showExplanation('No graph nodes found. Reset and add points.', null);
-            simulationInProgress = false;
-            return;
-        }
-
-        let currObj  = points.find(p => p.id === epId);
-        let currDist = distance(point, currObj);
-        visitedNodes.push(currObj.id);
-
-        stepHistory.push({
-            type: 'start',
-            layer: epLayer,
-            selectedNode: currObj.id,
-            description:
-                `Search begins at <strong>Layer ${epLayer}</strong> (the highest active layer).<br>` +
-                `Entry node: <strong>#${currObj.id}</strong> — distance to query: <strong>${fmt(currDist)}</strong><br><br>` +
-                `Strategy: greedily move closer at each layer, then descend for finer resolution.`
-        });
-
-        for (let layer = epLayer; layer >= 0; layer--) {
-            selectedNode = currObj;
-
-            if (layer < epLayer) {
-                stepHistory.push({
-                    type: 'layer_transition',
-                    layer,
-                    selectedNode: currObj.id,
-                    description:
-                        `Descending to <strong>Layer ${layer}</strong>.<br>` +
-                        `Entry point for this layer: <strong>Node ${currObj.id}</strong> (dist: ${fmt(currDist)})<br><br>` +
-                        `Layer ${layer} has <strong>${graph[layer].nodes.length} nodes</strong> — ` +
-                        (layer === 0 ? 'this is the densest layer; our final answer comes from here.' : 'more points than above, so more precision.')
-                });
-            }
-
-            let changed = true;
-            while (changed) {
-                changed = false;
-                const nbrs = graph[layer].edges[currObj.id] || [];
-
-                for (const nbrId of nbrs) {
-                    if (visitedNodes.includes(nbrId)) continue;
-
-                    const nbr  = points.find(p => p.id === nbrId);
-                    const d    = distance(point, nbr);
-                    const closer = d < currDist;
-                    visitedNodes.push(nbrId);
-
-                    stepHistory.push({
-                        type: 'examine',
-                        from: currObj.id,
-                        to: nbrId,
-                        layer,
-                        selectedNode: currObj.id,
-                        description:
-                            `At Layer ${layer}: checking edge <strong>#${currObj.id} → #${nbrId}</strong><br>` +
-                            `Node ${nbrId} distance to query: <strong>${fmt(d)}</strong><br>` +
-                            `Current best: <strong>${fmt(currDist)}</strong><br><br>` +
-                            (closer
-                                ? `<span style="color:#27ae60">✓ Closer! Moving to Node ${nbrId} next.</span>`
-                                : `<span style="color:#95a5a6">✗ Not closer. Staying at Node ${currObj.id}.</span>`)
-                    });
-
-                    if (closer) {
-                        currObj  = nbr;
-                        currDist = d;
-                        changed  = true;
-                        selectedNode = currObj;
-
-                        stepHistory.push({
-                            type: 'move',
-                            from: nbrId, to: nbrId,
-                            layer,
-                            selectedNode: nbrId,
-                            description:
-                                `Moved to <strong>Node ${nbrId}</strong> at Layer ${layer}.<br>` +
-                                `New best distance: <strong>${fmt(d)}</strong><br><br>` +
-                                `Now checking neighbors of Node ${nbrId}.`
-                        });
-                    }
-                }
-            }
-        }
-
-        const totalGraphNodes = graphPoints.length;
-        const stepsUsed = stepHistory.length;
-        stepHistory.push({
-            type: 'result',
-            layer: 0,
-            selectedNode: currObj.id,
-            description:
-                `<strong>Search complete!</strong><br>` +
-                `Nearest neighbor: <strong>Node ${currObj.id}</strong><br>` +
-                `Distance to query: <strong>${fmt(currDist)}</strong><br><br>` +
-                `HNSW found this in <strong>${stepsUsed} steps</strong> across ${totalGraphNodes} nodes ` +
-                `— far fewer than a brute-force scan of all nodes.`
-        });
-
-        currentStep = 0;
-        maxStep     = stepHistory.length - 1;
-        selectedNode = points.find(p => p.id === stepHistory[0].selectedNode);
-
-        const first = stepHistory[0];
-        showExplanation(first.description, first.type);
-        updateSkipList(first);
-        updateVisualization();
-        updateNavigationButtons();
-    }
-
-    // ─────────────────────────────────────────────────────────────
-    // Reset search state
-    // ─────────────────────────────────────────────────────────────
-
-    function resetSearch() {
-        visitedNodes = [];
-        stepHistory  = [];
-        selectedNode  = null;
-        currentStep  = 0;
-        maxStep      = 0;
-        simulationInProgress = false;
-        hideSkipList();
-        updateVisualization();
-        updateNavigationButtons();
-    }
-
-    function hideSkipList() {
-        const el = document.getElementById('skipListExplanation');
-        if (el) el.style.display = 'none';
-        const content = document.getElementById('skipListContent');
-        if (content) content.innerHTML = '';
-    }
-
-    // ─────────────────────────────────────────────────────────────
-    // Skip-list navigation view
-    // ─────────────────────────────────────────────────────────────
-
-    function updateSkipList(step) {
-        const container = document.getElementById('skipListExplanation');
-        const content   = document.getElementById('skipListContent');
-        if (!container || !content || !simulationInProgress) { hideSkipList(); return; }
-
-        container.style.display = 'block';
-
-        const currentLayer  = step.layer !== undefined ? step.layer : -1;
-        const currentNodeId = step.selectedNode;
-
-        const stepSummaries = {
-            start:            `Starting search at entry node #${currentNodeId} (Layer ${currentLayer})`,
-            layer_transition: `Descended to Layer ${currentLayer} — entry node #${currentNodeId}`,
-            examine:          `Layer ${currentLayer}: examining edge #${step.from} → #${step.to}`,
-            move:             `Layer ${currentLayer}: moved to node #${currentNodeId}`,
-            result:           `Search done — nearest neighbor is node #${currentNodeId}`,
-        };
-
-        let html = `<p class="skip-step-summary">${stepSummaries[step.type] || ''}</p>`;
+    function buildCanvases() {
+        layersContainer.innerHTML = '';
+        contexts = [];
 
         for (let i = maxLayers - 1; i >= 0; i--) {
-            const active = i === currentLayer;
-            html += `<div class="skip-layer${active ? ' active' : ''}">`;
-            html += `<span class="skip-layer-label">L${i}</span>`;
-            html += `<div class="skip-nodes-container">`;
+            const layerDiv = document.createElement('div');
+            layerDiv.className = 'layer';
+            layerDiv.id = `layer-div-${i}`;
 
-            const nodeIds = points
-                .filter(p => p.layer >= i && graph[i].nodes.includes(p.id))
-                .map(p => p.id)
-                .sort((a, b) => a - b);
+            const title = document.createElement('div');
+            title.className = 'layer-title';
+            title.id = `layer-title-${i}`;
 
-            if (queryPoint && !nodeIds.includes(queryPoint.id)) nodeIds.push(queryPoint.id);
-            nodeIds.sort((a, b) => a - b);
+            const canvas = document.createElement('canvas');
+            canvas.className = 'layer-canvas';
+            canvas.setAttribute('aria-label', `Layer ${i} of the HNSW graph`);
+            canvas.addEventListener('click', (e) => handleCanvasClick(e));
 
-            for (let j = 0; j < nodeIds.length; j++) {
-                const nId = nodeIds[j];
-                let cls = 'regular';
-                if (queryPoint && nId === queryPoint.id) cls = 'query';
-                else if (nId === currentNodeId) cls = 'current';
-                else if (visitedNodes.slice(0, currentStep + 1).includes(nId)) cls = 'visited';
+            layerDiv.append(title, canvas);
+            layersContainer.appendChild(layerDiv);
+            contexts[i] = canvas.getContext('2d');
+        }
+        sizeCanvases();
+    }
 
-                html += `<span class="skip-node ${cls}" title="Node ${nId}">${nId}</span>`;
-                if (j < nodeIds.length - 1) html += `<span class="skip-arrow">→</span>`;
+    // Size the backing store to the displayed size × devicePixelRatio and map
+    // the logical SPACE_W × SPACE_H space onto it with a uniform scale.
+    function sizeCanvases() {
+        const dpr = window.devicePixelRatio || 1;
+        contexts.forEach(ctx => {
+            const c = ctx.canvas;
+            const w = c.clientWidth || SPACE_W;
+            c.width  = Math.round(w * dpr);
+            c.height = Math.round(w * (SPACE_H / SPACE_W) * dpr);
+            const s = c.width / SPACE_W;
+            ctx.setTransform(s, 0, 0, s, 0, 0);
+        });
+    }
+
+    function handleCanvasClick(event) {
+        const rect = event.currentTarget.getBoundingClientRect();
+        const s = SPACE_W / rect.width;
+        const x = clamp((event.clientX - rect.left) * s, PAD, SPACE_W - PAD);
+        const y = clamp((event.clientY - rect.top) * s, PAD, SPACE_H - PAD);
+        if (clickMode === 'insert') addPoint(x, y);
+        else startSearch(x, y);
+    }
+
+    function layerLabel(i) {
+        let label = `Layer ${i}`;
+        if (i === 0) label += ' · all points';
+        else if (i === maxLayers - 1) label += ' · top (sparsest)';
+        const n = layerSize(i);
+        return `${label} · ${n} node${n === 1 ? '' : 's'}`;
+    }
+
+    function render() {
+        updateStats();
+        const step = searching() ? steps[currentStep] : null;
+        const seen = step ? new Set(step.seen) : new Set();
+
+        // Edges examined so far, per layer: key "a-b" → accepted?
+        const edgeState = Array.from({ length: maxLayers }, () => new Map());
+        if (step) {
+            for (let k = 0; k <= currentStep; k++) {
+                const s = steps[k];
+                if (s.type !== 'examine') continue;
+                edgeState[s.layer].set(edgeKey(s.from, s.to), s.accept);
+            }
+        }
+
+        for (let i = 0; i < maxLayers; i++) {
+            const ctx = contexts[i];
+            const layerDiv = $(`layer-div-${i}`);
+            $(`layer-title-${i}`).textContent = layerLabel(i);
+
+            const isActive = step && step.layer === i;
+            layerDiv.classList.toggle('active-layer', !!isActive);
+
+            ctx.clearRect(0, 0, SPACE_W, SPACE_H);
+            const W = isActive ? new Set(step.W) : new Set();
+
+            // Edges
+            const g = graph[i];
+            g.forEach((list, a) => {
+                for (const b of list) {
+                    if (b < a && g.get(b) && g.get(b).includes(a)) continue;   // draw each undirected edge once
+                    const state = edgeState[i].get(edgeKey(a, b));
+                    let color = COLORS.edge, width = 1, dash = [];
+                    if (state === true)  { color = COLORS.accepted; width = 2.5; }
+                    if (state === false) { color = COLORS.rejected; width = 1.5; dash = [4, 3]; }
+                    if (isActive && step.type === 'examine' && edgeKey(step.from, step.to) === edgeKey(a, b)) width += 2;
+                    line(ctx, points[a], points[b], color, width, dash);
+                }
+            });
+
+            // Line from the current node to the query
+            if (queryPoint && isActive && step.cur !== undefined) {
+                line(ctx, points[step.cur], queryPoint, 'rgba(231,76,60,0.45)', 1.5, [2, 4]);
             }
 
-            html += `</div></div>`;
-        }
+            // Nodes
+            g.forEach((_, id) => {
+                const p = points[id];
+                let fill = COLORS.regular, label = null;
 
-        content.innerHTML = html;
+                if (step) {
+                    if (seen.has(id)) fill = COLORS.visited;
+                    if (id === step.cur && isActive) fill = COLORS.current;
+                    if (step.type === 'result' && i === 0 && id === searchResult.found) { fill = COLORS.current; label = 'FOUND'; }
+                } else if (id === entryPointId) {
+                    fill = COLORS.entry;
+                    label = 'ENTRY';
+                }
+
+                // Rings: current result list, newly inserted, exact NN
+                if (W.has(id) && step.type !== 'start') ring(ctx, p, NODE_R + 4, COLORS.candidate, 2);
+                if (isActive && step.type === 'examine' && id === step.to) ring(ctx, p, NODE_R + 4, step.accept ? COLORS.accepted : COLORS.rejected, 2.5);
+                if (lastInserted && id === lastInserted.id) { ring(ctx, p, NODE_R + 5, COLORS.newNode, 2.5); label = 'NEW'; }
+                if (!step && id === entryPointId && i === points[id].level) ring(ctx, p, NODE_R + 5, COLORS.entry[0], 1.5, [3, 3]);
+                if (step && step.type === 'result' && i === 0 && id === searchResult.exact && searchResult.exact !== searchResult.found) {
+                    ring(ctx, p, NODE_R + 5, COLORS.query[0], 2, [3, 2]);
+                    label = 'EXACT';
+                }
+
+                circle(ctx, p, NODE_R, fill);
+                text(ctx, String(id), p.x, p.y, fill === COLORS.visited ? '#333' : '#fff', 'bold 9px system-ui, sans-serif');
+                if (label) text(ctx, label, p.x, p.y + NODE_R + 10, '#2c3e50', 'bold 8px system-ui, sans-serif');
+            });
+
+            if (queryPoint) drawQuery(ctx, queryPoint);
+
+            if (!g.size) {
+                text(ctx, i === 0 ? 'Click to add a point' : 'No node promoted to this layer yet',
+                    SPACE_W / 2, SPACE_H / 2, '#aab4c0', '13px system-ui, sans-serif');
+            }
+        }
+    }
+
+    function edgeKey(a, b) { return a < b ? `${a}-${b}` : `${b}-${a}`; }
+
+    function line(ctx, a, b, color, width, dash = []) {
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = width;
+        ctx.setLineDash(dash);
+        ctx.stroke();
+        ctx.setLineDash([]);
+    }
+
+    function circle(ctx, p, r, [fill, stroke]) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+        ctx.fillStyle = fill;
+        ctx.fill();
+        ctx.strokeStyle = stroke;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+    }
+
+    function ring(ctx, p, r, color, width, dash = []) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = width;
+        ctx.setLineDash(dash);
+        ctx.stroke();
+        ctx.setLineDash([]);
+    }
+
+    function text(ctx, str, x, y, color, font) {
+        ctx.fillStyle = color;
+        ctx.font = font;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(str, x, y);
+    }
+
+    function drawQuery(ctx, q) {
+        const r = NODE_R + 1;
+        ctx.beginPath();
+        ctx.moveTo(q.x, q.y - r);
+        ctx.lineTo(q.x + r, q.y);
+        ctx.lineTo(q.x, q.y + r);
+        ctx.lineTo(q.x - r, q.y);
+        ctx.closePath();
+        ctx.fillStyle = COLORS.query[0];
+        ctx.fill();
+        ctx.strokeStyle = COLORS.query[1];
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+        text(ctx, 'QUERY', q.x, q.y + r + 9, COLORS.query[1], 'bold 8px system-ui, sans-serif');
     }
 
     // ─────────────────────────────────────────────────────────────
-    // Step navigation
+    // Layer-membership (skip-list) view
     // ─────────────────────────────────────────────────────────────
 
-    function applyStep(step) {
-        if (step.selectedNode !== undefined) {
-            selectedNode = points.find(p => p.id === step.selectedNode) || null;
+    function hideSkipList() {
+        $('skipListExplanation').style.display = 'none';
+        $('skipListContent').innerHTML = '';
+    }
+
+    function updateSkipList(step) {
+        $('skipListExplanation').style.display = 'block';
+        const seen = new Set(step.seen);
+        const W = new Set(step.W);
+
+        const summary = {
+            start:   `Entry point #${step.cur} on L${step.layer}`,
+            descend: `Descended to L${step.layer} at #${step.cur}`,
+            expand:  `L${step.layer}: expanding #${step.cur}`,
+            examine: `L${step.layer}: examining #${step.from} → #${step.to}`,
+            stop:    `L${step.layer}: no candidate can improve the result`,
+            result:  `Nearest neighbour: #${step.cur}`,
+        }[step.type];
+
+        let html = `<p class="skip-step-summary">${summary}</p>`;
+        for (let i = maxLayers - 1; i >= 0; i--) {
+            const active = i === step.layer;
+            const ids = Array.from(graph[i].keys()).sort((a, b) => points[a].x - points[b].x);
+            html += `<div class="skip-layer${active ? ' active' : ''}"><span class="skip-layer-label">L${i}</span><div class="skip-nodes-container">`;
+            for (const id of ids) {
+                let cls = 'regular';
+                if (seen.has(id)) cls = 'visited';
+                if (active && id === step.cur) cls = 'current';
+                const inW = active && W.has(id) ? ' in-result' : '';
+                html += `<span class="skip-node ${cls}${inW}" title="Node ${id}">${id}</span>`;
+            }
+            if (!ids.length) html += '<span class="skip-empty">empty</span>';
+            html += '</div></div>';
         }
-        showExplanation(step.description, step.type);
-        updateSkipList(step);
-        updateVisualization();
-        updateNavigationButtons();
-    }
-
-    function goToNextStep() {
-        if (currentStep < maxStep) { currentStep++; applyStep(stepHistory[currentStep]); }
-    }
-
-    function goToPrevStep() {
-        if (currentStep > 0) { currentStep--; applyStep(stepHistory[currentStep]); }
-    }
-
-    function skipToEnd() {
-        currentStep = maxStep;
-        if (maxStep >= 0) applyStep(stepHistory[currentStep]);
-    }
-
-    function updateNavigationButtons() {
-        const noSteps = maxStep <= 0;
-        floatingPrevStepBtn.disabled  = currentStep <= 0 || noSteps;
-        floatingNextStepBtn.disabled  = currentStep >= maxStep || noSteps;
-        floatingSkipToEndBtn.disabled = currentStep >= maxStep || noSteps;
-
-        const nav = document.getElementById('floatingNavigationButtons');
-        nav.style.display = (simulationInProgress && stepHistory.length > 0) ? 'flex' : 'none';
-
-        if (floatingStepCounter) {
-            floatingStepCounter.textContent = noSteps ? '' : `Step ${currentStep + 1} / ${maxStep + 1}`;
-        }
-
-        if (stepProgressFill && !noSteps) {
-            const pct = maxStep > 0 ? (currentStep / maxStep) * 100 : 0;
-            stepProgressFill.style.width = `${pct}%`;
-        }
-    }
-
-    // ─────────────────────────────────────────────────────────────
-    // Bulk add
-    // ─────────────────────────────────────────────────────────────
-
-    function addBulkPoints(count) {
-        if (simulationInProgress) return;
-        for (let i = 0; i < count; i++) {
-            insertPoint(generateRandomPoint());
-        }
-        const promoted = graph.slice(1).some(l => l.nodes.length > 0);
-        showExplanation(
-            `Added <strong>${count} points</strong> to the graph.<br><br>` +
-            (promoted
-                ? 'Notice the <strong>higher layers are sparse</strong> — only a few nodes get randomly promoted there. ' +
-                  'These are the "highway" nodes that make search fast.'
-                : 'The graph is still small — higher layers may be empty. Try adding more points!'),
-            null
-        );
+        $('skipListContent').innerHTML = html;
     }
 
     // ─────────────────────────────────────────────────────────────
     // Event listeners
     // ─────────────────────────────────────────────────────────────
 
-    resetBtn.addEventListener('click', () => {
-        maxLayers      = parseInt(maxLayersInput.value);
-        M              = parseInt(mInput.value);
-        efConstruction = parseInt(efConstructionInput.value);
-        queryPoint     = null;
-        initializeGraph();
-    });
+    resetBtn.addEventListener('click', resetAll);
+    addPointBtn.addEventListener('click', () => addPoint(...randomCoords()));
+    addBulkPointsBtn.addEventListener('click', () => addRandomPoints(10));
+    runQueryBtn.addEventListener('click', () => startSearch(...randomCoords()));
 
-    addPointBtn.addEventListener('click', () => {
-        if (!simulationInProgress) insertPoint(generateRandomPoint());
-    });
-
-    addBulkPointsBtn.addEventListener('click', () => addBulkPoints(10));
-
-    runQueryBtn.addEventListener('click', () => {
-        if (simulationInProgress) return;
-        startSearch(generateRandomPoint());
-    });
-
-    // Mode toggle
-    if (modeInsertBtn) {
-        modeInsertBtn.addEventListener('click', () => {
-            visualizationMode = 'insertion';
-            modeInsertBtn.classList.add('active');
-            modeSearchBtn.classList.remove('active');
-            if (!simulationInProgress) {
-                resetSearch();
-                showExplanation('Click on any layer canvas to add a new point there.', null);
-            }
-        });
+    function setMode(mode) {
+        clickMode = mode;
+        modeInsertBtn.classList.toggle('active', mode === 'insert');
+        modeSearchBtn.classList.toggle('active', mode === 'search');
+        modeInsertBtn.setAttribute('aria-pressed', mode === 'insert');
+        modeSearchBtn.setAttribute('aria-pressed', mode === 'search');
+        if (!searching()) {
+            showExplanation(mode === 'insert'
+                ? 'Click anywhere on a layer to insert a point there.'
+                : 'Click anywhere on a layer to place a query and search for its nearest neighbour.', null);
+        }
     }
+    modeInsertBtn.addEventListener('click', () => setMode('insert'));
+    modeSearchBtn.addEventListener('click', () => setMode('search'));
 
-    if (modeSearchBtn) {
-        modeSearchBtn.addEventListener('click', () => {
-            visualizationMode = 'search';
-            modeSearchBtn.classList.add('active');
-            modeInsertBtn.classList.remove('active');
-            if (!simulationInProgress) {
-                resetSearch();
-                showExplanation('Click on any layer canvas to place a query point and search for its nearest neighbor.', null);
-            }
-        });
-    }
+    prevBtn.addEventListener('click', () => { stopPlaying(); goTo(currentStep - 1); });
+    nextBtn.addEventListener('click', () => { stopPlaying(); goTo(currentStep + 1); });
+    skipToEndBtn.addEventListener('click', () => { stopPlaying(); goTo(steps.length - 1); });
+    playBtn.addEventListener('click', togglePlay);
+    clearSearchBtn.addEventListener('click', () => clearSearch());
 
-    // Step navigation
-    floatingNextStepBtn.addEventListener('click', goToNextStep);
-    floatingPrevStepBtn.addEventListener('click', goToPrevStep);
-    floatingSkipToEndBtn.addEventListener('click', skipToEnd);
-
-    // Keyboard: arrow keys for step navigation
     document.addEventListener('keydown', (e) => {
-        if (!simulationInProgress) return;
-        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); goToNextStep(); }
-        if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { e.preventDefault(); goToPrevStep(); }
-        if (e.key === 'End') { e.preventDefault(); skipToEnd(); }
+        if (!searching()) return;
+        if (e.target.closest('input, select, textarea, button')) return;
+        if (e.key === 'ArrowRight') { e.preventDefault(); stopPlaying(); goTo(currentStep + 1); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); stopPlaying(); goTo(currentStep - 1); }
+        else if (e.key === 'End') { e.preventDefault(); stopPlaying(); goTo(steps.length - 1); }
+        else if (e.key === 'Home') { e.preventDefault(); stopPlaying(); goTo(0); }
+        else if (e.key === ' ') { e.preventDefault(); togglePlay(); }
+        else if (e.key === 'Escape') { clearSearch(); }
     });
 
-    // Parameter changes
-    maxLayersInput.addEventListener('change', () => { maxLayers = parseInt(maxLayersInput.value); });
-    mInput.addEventListener('change', () => { M = parseInt(mInput.value); });
-    efConstructionInput.addEventListener('change', () => { efConstruction = parseInt(efConstructionInput.value); });
+    maxLayersInput.addEventListener('change', () => rebuild(`Layers set to <strong>${maxLayersInput.value}</strong>.`));
+    mInput.addEventListener('change', () => rebuild(`M set to <strong>${mInput.value}</strong>.`));
+    efConstructionInput.addEventListener('change', () => rebuild(`efConstruction set to <strong>${efConstructionInput.value}</strong>.`));
+    efSearchInput.addEventListener('change', () => {
+        efSearch = readInt(efSearchInput, 1, 100);
+        if (queryPoint) startSearch(queryPoint.x, queryPoint.y);
+        else showExplanation(`efSearch set to <strong>${efSearch}</strong>. It only affects queries, so the index is unchanged.`, null);
+    });
 
     distanceMetricSelect.addEventListener('change', () => {
         distanceMetric = distanceMetricSelect.value;
         updateFormula();
-        if (simulationInProgress) resetSearch();
-        showExplanation(`Distance metric changed to <strong>${metricName()}</strong>.`, null);
+        rebuild(`Distance metric changed to <strong>${METRICS[distanceMetric].name}</strong>. The graph's links depend on the metric.`);
     });
 
+    let resizeRaf = 0;
     window.addEventListener('resize', () => {
-        initializeCanvases();
-        updateVisualization();
+        cancelAnimationFrame(resizeRaf);
+        resizeRaf = requestAnimationFrame(() => { sizeCanvases(); render(); });
     });
 
     // ── Boot ──────────────────────────────────────────────────────
-    initializeGraph();
+    updateFormula();
+    resetAll();
+    addRandomPoints(30);
 });

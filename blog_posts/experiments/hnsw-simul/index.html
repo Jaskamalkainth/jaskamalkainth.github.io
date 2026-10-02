@@ -32,24 +32,24 @@ layout: null
                 <div class="concept-icon">🏗️</div>
                 <div class="concept-title">1. Build the Graph</div>
                 <div class="concept-desc">
-                    Click <strong>+ Add 10 Points</strong> to populate the graph.
-                    Each point is randomly promoted to higher layers — creating a natural hierarchy.
+                    The page starts with 30 points. Add more with <strong>+ Add 10 Points</strong> or by clicking a layer.
+                    Each point gets a random top level, so higher layers hold exponentially fewer points.
                 </div>
             </div>
             <div class="concept-card">
                 <div class="concept-icon">🔍</div>
                 <div class="concept-title">2. Run a Search</div>
                 <div class="concept-desc">
-                    Click <strong>Search Nearest</strong> to place a random query point.
-                    HNSW will find its nearest neighbor using the hierarchy.
+                    Click <strong>Search Nearest</strong> to drop a random query (◆), or switch the canvas to
+                    search mode and click where you want it.
                 </div>
             </div>
             <div class="concept-card">
                 <div class="concept-icon">👣</div>
                 <div class="concept-title">3. Step Through</div>
                 <div class="concept-desc">
-                    Use <strong>Prev / Next</strong> to walk through each decision.
-                    Watch how the search descends from sparse layers to dense ones.
+                    Use <strong>Prev / Next</strong>, <strong>▶ Play</strong> or the ← → keys.
+                    The result is checked against an exact brute-force search.
                 </div>
             </div>
         </div>
@@ -68,20 +68,26 @@ layout: null
                 <div class="param-item">
                     <label for="maxLayers">Layers</label>
                     <input type="number" id="maxLayers" min="1" max="6" value="3"
-                           title="Number of hierarchy levels. More layers = faster search for large datasets, but uses more memory.">
+                           title="Cap on the number of levels drawn. Real HNSW has no cap; levels grow with log(n).">
                     <span class="param-hint">highway levels</span>
                 </div>
                 <div class="param-item">
                     <label for="m">M</label>
-                    <input type="number" id="m" min="2" max="20" value="5"
-                           title="Max connections per node. Higher = denser graph, better recall, slower to build. Typical: 5–16.">
-                    <span class="param-hint">connections/node</span>
+                    <input type="number" id="m" min="2" max="16" value="4"
+                           title="Links per node on insert (layer 0 allows 2M). Also sets the level probability 1/M.">
+                    <span class="param-hint">links/node</span>
                 </div>
                 <div class="param-item">
-                    <label for="efConstruction">ef</label>
-                    <input type="number" id="efConstruction" min="1" max="200" value="50"
-                           title="Candidate list size during build. Higher = better graph quality, slower construction.">
-                    <span class="param-hint">build quality</span>
+                    <label for="efConstruction">efConstruction</label>
+                    <input type="number" id="efConstruction" min="1" max="200" value="20"
+                           title="Candidate list size while inserting. Higher = better links, slower build.">
+                    <span class="param-hint">build beam</span>
+                </div>
+                <div class="param-item">
+                    <label for="efSearch">efSearch</label>
+                    <input type="number" id="efSearch" min="1" max="100" value="4"
+                           title="Candidate list size on layer 0 at query time. Higher = better recall, more work.">
+                    <span class="param-hint">query beam</span>
                 </div>
             </div>
 
@@ -89,14 +95,9 @@ layout: null
             <div class="control-group mode-group">
                 <span class="mode-label">Canvas click:</span>
                 <div class="mode-toggle">
-                    <button id="modeInsert" class="mode-btn active" title="Clicking the canvas adds a new point">➕ Add Point</button>
-                    <button id="modeSearch" class="mode-btn" title="Clicking the canvas searches from that location">🔍 Search</button>
+                    <button id="modeInsert" class="mode-btn active" aria-pressed="true">➕ Add Point</button>
+                    <button id="modeSearch" class="mode-btn" aria-pressed="false">🔍 Search</button>
                 </div>
-                <!-- Hidden select kept for backwards compatibility -->
-                <select id="searchMode" style="display:none;">
-                    <option value="insertion">Click to Add Points</option>
-                    <option value="search">Click to Search</option>
-                </select>
 
                 <label for="distanceMetric" class="distance-label">Distance:</label>
                 <select id="distanceMetric" title="The metric used to measure how close two points are">
@@ -109,25 +110,30 @@ layout: null
 
         <!-- Color legend -->
         <div class="legend">
-            <span class="legend-title">Node Colors:</span>
-            <span class="legend-item"><span class="legend-dot entry-dot"></span> Entry Point (search starts here)</span>
-            <span class="legend-item"><span class="legend-dot regular-dot"></span> Regular Node</span>
-            <span class="legend-item"><span class="legend-dot visited-dot"></span> Visited</span>
-            <span class="legend-item"><span class="legend-dot current-dot"></span> Current Best</span>
-            <span class="legend-item"><span class="legend-dot query-dot"></span> Query Point</span>
+            <span class="legend-item"><span class="legend-dot entry-dot"></span> Entry point</span>
+            <span class="legend-item"><span class="legend-dot regular-dot"></span> Node</span>
+            <span class="legend-item"><span class="legend-dot visited-dot"></span> Distance computed</span>
+            <span class="legend-item"><span class="legend-dot current-dot"></span> Being expanded</span>
+            <span class="legend-item"><span class="legend-dot result-ring"></span> In result list (ef)</span>
+            <span class="legend-item"><span class="legend-dot query-dot"></span> Query</span>
+            <span class="legend-item"><span class="legend-line accepted-line"></span> Edge taken</span>
+            <span class="legend-item"><span class="legend-line rejected-line"></span> Edge checked, rejected</span>
         </div>
+        <div id="statsBar" class="stats-bar" aria-live="polite"></div>
 
         <!-- Floating step navigation -->
         <div class="floating-navigation-controls" id="floatingNavigationButtons" style="display: none;">
-            <button id="floatingPrevStep" title="Go to previous step">◀ Prev</button>
+            <button id="floatingPrevStep" aria-label="Previous step">◀ Prev</button>
+            <button id="floatingPlay" class="btn-play" aria-label="Play or pause">▶ Play</button>
             <div class="step-progress-wrapper">
                 <span id="floatingStepCounter">Step 0/0</span>
                 <div class="step-progress-bar">
                     <div id="stepProgressFill" class="step-progress-fill" style="width:0%"></div>
                 </div>
             </div>
-            <button id="floatingNextStep" title="Go to next step">Next ▶</button>
-            <button id="floatingSkipToEnd" class="btn-skip" title="Jump to final result">⏭ Skip to End</button>
+            <button id="floatingNextStep" aria-label="Next step">Next ▶</button>
+            <button id="floatingSkipToEnd" class="btn-skip" aria-label="Jump to result">⏭ Result</button>
+            <button id="floatingClearSearch" class="btn-clear" aria-label="Clear search">✕ Clear</button>
         </div>
 
         <!-- Main visualization area -->
@@ -139,12 +145,7 @@ layout: null
                         <h3>What's Happening</h3>
                         <span id="stepBadge" class="step-badge" style="display:none;"></span>
                     </div>
-                    <div id="explanationText">
-                        Welcome to the HNSW visualization.<br><br>
-                        <strong>Step 1:</strong> Click <em>+ Add 10 Points</em> to build a graph.<br>
-                        <strong>Step 2:</strong> Click <em>🔍 Search Nearest</em> to run a search.<br>
-                        <strong>Step 3:</strong> Use <em>Prev / Next</em> to walk through each step.
-                    </div>
+                    <div id="explanationText" aria-live="polite">Loading…</div>
                     <div id="formulaBox" class="formula-box">
                         <div class="formula-title">Distance: Euclidean</div>
                         <div class="formula-content">√((x₁−x₂)² + (y₁−y₂)²)</div>
@@ -155,9 +156,10 @@ layout: null
 
         <!-- Layer navigation (skip-list view) -->
         <div id="skipListExplanation" class="skip-list-explanation" style="display: none;">
-            <h3>Layer Navigation View</h3>
+            <h3>Layer Membership View</h3>
             <p class="skip-list-subtitle">
-                Like a skip list — the search jumps through sparse upper layers, then refines in the dense bottom layer.
+                Like a skip list: each layer is a subset of the one below (nodes sorted left to right by x).
+                The search covers ground on the sparse layers, then refines on the dense bottom one.
             </p>
             <div id="skipListContent" class="skip-list-content"></div>
         </div>
@@ -172,11 +174,12 @@ layout: null
                         highways (top layers) let you travel far quickly, then local roads (bottom layer) take you exactly where you need to go.
                     </p>
                     <ul>
-                        <li><strong>Layer 0 (bottom):</strong> Contains <em>all</em> points. Highest accuracy, but too slow to search exhaustively.</li>
-                        <li><strong>Higher layers:</strong> Contain a random subset of points. Sparser = faster to navigate.</li>
-                        <li><strong>Search strategy:</strong> Start at the top, greedily move toward the query, then descend. Each descent gives finer resolution.</li>
+                        <li><strong>Layer 0 (bottom):</strong> contains <em>all</em> points, each linked to up to 2M near neighbours.</li>
+                        <li><strong>Higher layers:</strong> each point's top level is drawn as ⌊−ln(U)·mL⌋ with mL = 1/ln(M), so every layer keeps about 1/M of the one below.</li>
+                        <li><strong>Insertion:</strong> greedily descend to the new point's top level, then on each lower layer run a beam search (efConstruction) and link to M neighbours picked by a diversity heuristic. Neighbours that exceed their degree cap are pruned.</li>
+                        <li><strong>Search:</strong> greedy (ef = 1) on upper layers to find a good starting point, then a beam search with efSearch on layer 0. The search stops once the closest unexplored candidate is farther than the worst result.</li>
                     </ul>
-                    <p>Result: logarithmic search time even for millions of points, with high recall.</p>
+                    <p>Result: roughly logarithmic search cost even for millions of points, with high recall.</p>
                 </div>
             </details>
 
@@ -185,20 +188,23 @@ layout: null
                 <div class="details-content">
                     <ul>
                         <li>
-                            <strong>Layers:</strong> Number of hierarchy levels. 3 is good for small graphs.
-                            More layers help very large datasets find shortcuts. Too many layers = wasted memory.
+                            <strong>Layers:</strong> a display cap on the number of levels. Real HNSW has no cap;
+                            the number of levels grows like log(n) on its own.
                         </li>
                         <li>
-                            <strong>M (connections):</strong> How many neighbors each node connects to.
-                            Higher M = denser graph = better accuracy, but slower inserts and more memory.
-                            Typical production values: 5–32.
+                            <strong>M:</strong> links per node (2M on layer 0). Higher M means a denser graph, better recall,
+                            more memory and slower inserts. Typical production values: 8–48.
                         </li>
                         <li>
-                            <strong>ef (build quality):</strong> How hard the algorithm searches for neighbors <em>during construction</em>.
-                            Higher ef = better quality connections = better recall later.
-                            Does not affect search speed, only build time.
+                            <strong>efConstruction:</strong> beam width used while inserting. Higher gives better links
+                            (and better recall later) at the cost of build time.
+                        </li>
+                        <li>
+                            <strong>efSearch:</strong> beam width on layer 0 at query time. This is the main
+                            speed/recall knob: try efSearch = 1 and watch the search get stuck in a local minimum.
                         </li>
                     </ul>
+                    <p>Changing Layers, M, efConstruction or the distance metric rebuilds the index from the same points, so you can compare settings on identical data.</p>
                 </div>
             </details>
 
@@ -210,9 +216,9 @@ layout: null
                         HNSW trades a tiny bit of accuracy for <em>massive</em> speed gains:
                     </p>
                     <ul>
-                        <li>Search time scales as O(log n) instead of O(n)</li>
-                        <li>Achieves 95–99% recall in practice</li>
-                        <li>Powers vector databases like Pinecone, Weaviate, Chroma, and FAISS</li>
+                        <li>Search cost grows roughly as O(log n) instead of O(n)</li>
+                        <li>Typically reaches 95–99% recall with well-chosen M and ef</li>
+                        <li>Used by FAISS, hnswlib, pgvector, Qdrant, Weaviate, Milvus and many other vector stores</li>
                     </ul>
                 </div>
             </details>
