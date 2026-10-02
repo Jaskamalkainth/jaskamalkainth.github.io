@@ -1,10 +1,20 @@
 ---
 post_theme: light
 title: "Why Do We Do What We Do? A Philosophical Journey Across the Ages"
+description: "What drives human action? How Plato, Aristotle, the Stoics, Augustine, Hume, Kant, Nietzsche, Sartre and cognitive science answer it, plus a personal reflection."
 date: 2025-01-27
+last_modified_at: 2026-10-02
 category: Philosophy
 tags: [philosophy, psychology, human-behavior, motivation, consciousness, research]
-layout: post
+keywords: [why do we do what we do, human motivation, philosophy of action, Plato, Aristotle, Hume, Kant, Nietzsche, Sartre, free will]
+related: ["/blog_posts/philosophy-notes.html", "/blog_posts/music.html"]
+faq:
+  - q: "Why do humans do what they do, according to philosophers?"
+    a: "There is no single answer. Ancient thinkers (Plato, Aristotle, the Stoics) said we act for a perceived good; medieval thinkers (Augustine, Aquinas) pointed to love and an ultimate end; Hume argued passions, not reason, drive action; Kant held that moral action should come from duty; Nietzsche proposed the will to power; existentialists like Sartre said we are free and responsible for every choice; and cognitive science adds unconscious processes that start actions before we are aware of deciding."
+  - q: "What did Hume mean by \"reason is the slave of the passions\"?"
+    a: "In A Treatise of Human Nature, Hume argued that reason alone can never motivate action. Reason tells us what is true and how to get what we want, but the wanting itself comes from passions (desires and emotions), so reason only serves them."
+  - q: "Did Aristotle say \"we are what we repeatedly do\"?"
+    a: "Not in those words. The line comes from Will Durant's 1926 book The Story of Philosophy, summarizing Aristotle's view in the Nicomachean Ethics that virtues are formed by habit: we become just by doing just acts."
 ---
 
 <div class="philosophy-research">
@@ -12,6 +22,7 @@ layout: post
     <h1>Why Do We Do What We Do?</h1>
     <h2>A Philosophical Journey Across the Ages</h2>
     <div class="research-intro">
+      <p><strong>In short:</strong> philosophers have explained human action as the pursuit of a perceived good (Plato, Aristotle, the Stoics), as love directed toward an ultimate end (Augustine, Aquinas), as passion served by reason (Hume), as duty (Kant), as will to power (Nietzsche), as material conditions (Marx), as radical freedom (Sartre), and, in today's cognitive science, as partly unconscious processes. This essay walks through each era and ends with what it means for my own choices.</p>
       <p><em>I often catch myself wondering what really drives my actions. Is it desire, duty, survival, love, or something deeper? This simple question—"Why do we do what we do?"—has followed humanity through the ages. Philosophers from ancient Athens to modern science have all taken turns trying to answer it. Each era's thinkers, in their own way, held up a mirror to human motives. In this journey through time, I reflect on how different schools of thought have grappled with the engines of human action, and what their insights mean for us today.</em></p>
     </div>
   </div>
@@ -60,13 +71,13 @@ layout: post
       </div>
 
       <div class="content-text">
-        <p>In ancient Greece, philosophers began our story by rooting human action in a search for the <strong>good</strong>. <strong>Plato</strong> suggested that <em>"Human behavior flows from three main sources: desire, emotion, and knowledge."</em> In works like the <em>Republic</em>, he portrayed the soul as tripartite: a charioteer of reason struggling to reign in the spirited horses of emotion and the wild horses of appetite.</p>
+        <p>In ancient Greece, philosophers began our story by rooting human action in a search for the <strong>good</strong>. <strong>Plato</strong> traced human behavior to three sources: desire, emotion (spirit) and knowledge (reason). In the <em>Republic</em> he described the soul as tripartite, and in the <em>Phaedrus</em> he pictured it as a charioteer of reason struggling to rein in two horses: a noble, spirited one and an unruly one of appetite. (The often-shared line "Human behavior flows from three main sources: desire, emotion, and knowledge" summarizes this view but does not appear in Plato's dialogues.)</p>
 
         <p>Why do we do what we do, according to Plato? Because our soul's parts push and pull us – our <strong>desires</strong> draw us toward what seems good, our <strong>emotions</strong> spur us or hold us back, and our <strong>reason</strong> seeks a higher understanding of the true Good. If reason rules, we act wisely; if appetite or anger takes over, we might stray. Plato believed no one <em>knowingly</em> does wrong – we err out of ignorance, mistaking what is truly good. This optimistic view implies that if we <em>know</em> the Good, we will do it. Knowledge, in this sense, is motivation.</p>
 
-        <p><strong>Aristotle</strong> took up a similar theme but added nuance. For Aristotle, every action aims at some <em>end</em> or <em>purpose</em>, and ultimately at <strong>happiness (eudaimonia)</strong>. <em>"All human actions must be for an end,"</em> he wrote, meaning we always act for the sake of something we perceive as good. If you go to work, maybe it's for money (a proximate end), which in turn is for security or pleasure, all leading toward the ultimate end of well-being or fulfillment.</p>
+        <p><strong>Aristotle</strong> took up a similar theme but added nuance. For Aristotle, every action aims at some <em>end</em> or <em>purpose</em>, and ultimately at <strong>happiness (eudaimonia)</strong>. <em>"Every art and every inquiry, and similarly every action and pursuit, is thought to aim at some good,"</em> he wrote at the opening of the <em>Nicomachean Ethics</em>, meaning we always act for the sake of something we perceive as good. If you go to work, maybe it's for money (a proximate end), which in turn is for security or pleasure, all leading toward the ultimate end of well-being or fulfillment.</p>
 
-        <p>Aristotle grounded this in a natural teleology: just as a seed acts to become a tree, a person acts to achieve flourishing. We do what we do <em>because</em> we seek our <em>"proper good,"</em> whether we realize it or not. He also famously observed that <strong>habits</strong> shape our character – <em>"we are what we repeatedly do"</em>, hinting that virtuous actions, repeated, spring from a trained motivation to be excellent.</p>
+        <p>Aristotle grounded this in a natural teleology: just as a seed acts to become a tree, a person acts to achieve flourishing. We do what we do <em>because</em> we seek our <em>"proper good,"</em> whether we realize it or not. He also argued that <strong>habits</strong> shape our character: we become just by doing just acts. (The famous line <em>"we are what we repeatedly do"</em> is Will Durant's 1926 summary of this idea, not Aristotle's own words.) This hints that virtuous actions, repeated, spring from a trained motivation to be excellent.</p>
 
         <p>Meanwhile, the <strong>Stoics</strong> offered a more stern answer to the question of action. They agreed that humans are rational beings and claimed that a <em>life according to nature</em> (i.e. aligned with reason and virtue) is the ultimate purpose of action. A Stoic might say that <em>why</em> a wise person acts is straightforward: to exercise virtue, the only true good.</p>
 
@@ -120,7 +131,7 @@ layout: post
 
         <p><strong>Descartes</strong>, a 17th-century rationalist, straddled old and new. Famously, he said <em>"I think, therefore I am,"</em> putting consciousness at the center of human identity. Descartes was intrigued by how the <strong>passions</strong> (emotions/desires) move us, yet he believed reason was meant to hold the reins.</p>
 
-        <p>Then comes <strong>David Hume</strong>, the great empiricist, who turned Descartes' view upside down. Hume boldly claimed that <em>reason alone is not the motive for any action</em>. Instead, <em>"Passions are the engine for all our deeds: without passions we would lack all motivation… 'reason is, and ought only to be the slave of the passions'."</em></p>
+        <p>Then comes <strong>David Hume</strong>, the great empiricist, who turned Descartes' view upside down. Hume boldly claimed that <em>reason alone is not the motive for any action</em>. Instead, passions are the engine of all our deeds; without them we would lack any motivation at all. In his <em>Treatise of Human Nature</em> (1739–40) he put it bluntly: <em>"Reason is, and ought only to be the slave of the passions."</em></p>
 
         <p><strong>Kant</strong>, coming in at the end of the 18th century, tried to rescue the power of reason at least in the moral realm. Immanuel Kant famously drew a line between <strong>inclinations</strong> (our desires and emotions) and <strong>duty</strong> (the moral law dictated by reason). He answered our question on two levels: for ordinary choices, yes, we often act from self-interest or desire; but for <em>moral</em> actions, Kant argued the only valid motive is <strong>good will</strong>.</p>
       </div>

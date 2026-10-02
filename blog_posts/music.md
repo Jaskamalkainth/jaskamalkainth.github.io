@@ -1,13 +1,18 @@
 ---
 post_theme: light
-title: "Music is my only drug"
+title: "Music Is My Only Drug: Piano Pieces I Keep Coming Back To"
+description: "The piano pieces I return to again and again: Beethoven's Für Elise, Mariage d'Amour, the Love Story theme and a virtuosic Harry Potter medley, with videos."
+date: 2022-01-01
+last_modified_at: 2026-10-02
+keywords: [piano music, classical music, Für Elise, Mariage d'Amour, Richard Clayderman, Beethoven, Harry Potter piano]
+related: ["/blog_posts/whatwedowhywedo.html", "/blog_posts/philosophy-notes.html"]
 ---
 
 <div class="music-container">
   <div class="hero-section">
     <h1>🎵 Music is my only drug!</h1>
     <p class="subtitle">There's nothing like music to relieve the soul and uplift it.</p>
-    <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/hqdefault.jpg" alt="Music inspiration" class="hero-image" />
+    <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/hqdefault.jpg" alt="Painting of a woman in a white dress playing the piano, in bright orange and yellow brushstrokes" class="hero-image" />
   </div>
 
   <div class="section">
@@ -19,19 +24,19 @@ title: "Music is my only drug"
     <div class="legends-grid">
       <div class="legend-card">
         <a href="https://raw.githubusercontent.com/Jaskamalkainth/images/master/96ed9b0919b25388599fd3e0dd926db4.jpg" target="_blank" class="image-link">
-          <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/96ed9b0919b25388599fd3e0dd926db4.jpg" alt="Classical composer" />
+          <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/96ed9b0919b25388599fd3e0dd926db4.jpg" alt="Portrait of Johann Sebastian Bach with his quote: The aim and final end of all music should be none other than the glory of God and the refreshment of the soul." loading="lazy" />
         </a>
       </div>
       
       <div class="legend-card">
         <a href="https://raw.githubusercontent.com/Jaskamalkainth/images/master/Ludwig-van-Beethoven-Quotes.jpg" target="_blank" class="image-link">
-          <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/Ludwig-van-Beethoven-Quotes.jpg" alt="Beethoven quote" />
+          <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/Ludwig-van-Beethoven-Quotes.jpg" alt="Portrait of Ludwig van Beethoven with the quote: Music is the mediator between the spiritual and the sensual life." loading="lazy" />
         </a>
       </div>
       
       <div class="legend-card">
         <a href="https://raw.githubusercontent.com/Jaskamalkainth/images/master/mozart_quote_4_new.jpg" target="_blank" class="image-link">
-          <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/mozart_quote_4_new.jpg" alt="Mozart quote" />
+          <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/mozart_quote_4_new.jpg" alt="Portrait of Wolfgang Amadeus Mozart with a quote attributed to him: All I insist on, and nothing else, is that you should show the whole world that you are not afraid. Be silent, if you choose; but when it is necessary, speak, and speak in such a way that people will remember it." loading="lazy" />
         </a>
       </div>
     </div>
@@ -45,10 +50,11 @@ title: "Music is my only drug"
     
     <div class="music-grid">
       <div class="music-card">
-        <div class="composer-tag">Chopin</div>
-        <h3><i class="fa fa-play-circle"></i>Spring Waltz (Mariage d'Amour)</h3>
+        <div class="composer-tag">Paul de Senneville</div>
+        <h3><i class="fa fa-play-circle"></i>Mariage d'Amour ("Spring Waltz")</h3>
+        <p class="card-note">Often mislabelled online as Chopin; it was written by Paul de Senneville in 1978 and made famous by Richard Clayderman.</p>
         <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/EFJ7kDva7JE" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/EFJ7kDva7JE" title="Mariage d'Amour (Spring Waltz), piano" loading="lazy" allowfullscreen></iframe>
         </div>
       </div>
 
@@ -56,23 +62,24 @@ title: "Music is my only drug"
         <div class="composer-tag">Beethoven</div>
         <h3><i class="fa fa-play-circle"></i>Für Elise</h3>
         <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/bP70gBZc564" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/bP70gBZc564" title="Beethoven: Für Elise, piano" loading="lazy" allowfullscreen></iframe>
         </div>
       </div>
 
       <div class="music-card">
-        <div class="composer-tag">Beethoven</div>
+        <div class="composer-tag">Francis Lai · Richard Clayderman</div>
         <h3><i class="fa fa-play-circle"></i>Love Story</h3>
+        <p class="card-note">Francis Lai's theme from the 1970 film <em>Love Story</em>, in Richard Clayderman's piano arrangement (the video credits Beethoven, but it isn't his).</p>
         <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/WPChw6DiIkw" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/WPChw6DiIkw" title="Love Story theme, piano (Richard Clayderman)" loading="lazy" allowfullscreen></iframe>
         </div>
       </div>
 
       <div class="music-card">
-        <div class="composer-tag">Harry Potter</div>
-        <h3><i class="fa fa-play-circle"></i>Virtuosic Piano Solo</h3>
+        <div class="composer-tag">John Williams · Harry Potter</div>
+        <h3><i class="fa fa-play-circle"></i>Harry Potter Piano Medley (Virtuosic Cover)</h3>
         <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/YI6hpzai-hU" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/YI6hpzai-hU" title="Harry Potter piano medley, virtuosic cover by Eshan Denipitiya" loading="lazy" allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -251,6 +258,12 @@ title: "Music is my only drug"
   height: 100%;
   border-radius: 8px;
   border: none;
+}
+
+.card-note {
+  font-size: 0.85rem;
+  color: #5b6582;
+  margin: 0 0 0.75rem;
 }
 
 .composer-tag {

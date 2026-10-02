@@ -1,7 +1,17 @@
 ---
-title: "Segment Tree Problems"
-description: "20 hand-picked segment tree problems from LightOJ, SPOJ and Codeforces, sorted by difficulty and tagged by technique, with solutions."
+title: "Segment Tree Problems: 20 Practice Problems from Easy to Hard"
+description: "20 hand-picked segment tree problems from LightOJ, SPOJ and Codeforces, sorted by difficulty, tagged by technique (lazy propagation, custom merges), with solutions."
 date: 2016-06-08
+last_modified_at: 2026-10-02
+keywords: [segment tree, segment tree problems, lazy propagation, range queries, competitive programming, SPOJ, LightOJ, Codeforces]
+related: ["/blog_posts/DSU_problems.html", "/blog_posts/bloom_filters.html"]
+faq:
+  - q: "What is a segment tree?"
+    a: "A segment tree is a binary tree built over an array where each node stores an aggregate (sum, minimum, GCD, and so on) of a contiguous range. It answers range queries and applies point updates in O(log n) time, using O(n) memory."
+  - q: "What is lazy propagation in a segment tree?"
+    a: "Lazy propagation defers range updates: instead of updating every element in [l, r], you tag the O(log n) nodes that cover the range and push the pending update down to children only when a later query or update visits them. This keeps range updates at O(log n)."
+  - q: "In what order should I solve these segment tree problems?"
+    a: "Top to bottom. The list starts with plain range-minimum and range-sum queries, moves to lazy propagation, then to nodes that store custom merged state (such as the GSS maximum-subarray series), and ends with harder combinations like inclusion–exclusion over 3D toggles."
 search_hint: "Search problems, e.g. GSS, lazy, brackets"
 levels: [Beginner, Easy, Medium, Hard]
 problems:
@@ -193,6 +203,7 @@ problems:
 <div class="pl-hero">
   <div>
     <h1>Segment Tree Problems</h1>
+    <p><strong>A segment tree</strong> is a binary tree over an array where each node stores the answer (sum, min, GCD…) for one range, so range queries and updates both run in O(log n).</p>
     <p class="pl-lede">{{ page.problems.size }} problems from LightOJ, SPOJ and Codeforces, ordered from first segment tree to hard. Each one is tagged with the technique it teaches and links to my solution. Tick off the ones you solve; your progress is saved in this browser.</p>
   </div>
   <img src="/img/segtree.png" alt="A segment tree built over an array, each node holding the answer for its range" width="220" height="220" loading="lazy">

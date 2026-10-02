@@ -1,11 +1,28 @@
 ---
-layout: post
-title: Understanding Bloom Filters
+title: "Bloom Filters Explained: How They Work, False Positives and C++ Code"
+description: "How a Bloom filter answers set membership with no false negatives and a tunable false-positive rate: the bit array, hash functions, formulas, real uses and C++ code."
 date: 2025-03-15
+last_modified_at: 2026-10-02
+keywords: [Bloom filter, probabilistic data structures, false positive rate, hash functions, C++, algorithms]
 categories: algorithms data-structures
+math: true
+related: ["/blog_posts/elasticsearchNotes.html", "/blog_posts/segment_tree_problems.html", "/blog_posts/CppNotesDb/10.html"]
+faq:
+  - q: "Can a Bloom filter have false negatives?"
+    a: "No. Every inserted element sets all of its k bits, and bits are never cleared, so a lookup for an inserted element always finds all k bits set. A standard Bloom filter can only be wrong in one direction: it may report \"probably present\" for an element that was never added."
+  - q: "How many hash functions should a Bloom filter use?"
+    a: "The false-positive rate is lowest when k = (m/n) · ln 2, where m is the number of bits and n the number of elements. At 10 bits per element that is about 7 hash functions, giving a false-positive rate of roughly 0.8%."
+  - q: "How much memory does a Bloom filter need?"
+    a: "For a target false-positive rate p, the optimal size is m = −n · ln p / (ln 2)² bits, about 9.6 bits per element for 1% and 14.4 bits per element for 0.1%, no matter how large the elements themselves are."
+  - q: "Can you delete elements from a Bloom filter?"
+    a: "Not from a standard one: clearing a bit could also remove other elements that share it and create false negatives. A counting Bloom filter replaces each bit with a small counter so deletions are possible, at the cost of several times more memory. Cuckoo filters are another option that supports deletion."
+  - q: "When should I use a Bloom filter instead of a hash set?"
+    a: "Use a Bloom filter when memory is tight, a small false-positive rate is acceptable, and a negative answer lets you skip expensive work such as a disk read or network call. Use a hash set when you need exact answers, deletion, or the stored values themselves."
 ---
 
 # Bloom Filters: The Art of Probably Knowing
+
+> **In short:** a Bloom filter is a bit array plus *k* hash functions that tells you whether an element is **definitely not** in a set or **probably** in it. It never gives false negatives, its false-positive rate is tunable (about 1% at ~10 bits per element), and it uses a few bits per element regardless of element size. Databases, browsers and caches use it to skip expensive lookups for things that aren't there.
 
 Imagine you're a bouncer at a club. You have a list of people who are banned. For every person who walks up, you need to decide: are they on the ban list?
 
@@ -54,7 +71,7 @@ This might sound abstract, so let's look at where this is actually used in produ
 
 Every time you visit a URL, Chrome checks whether it's a known phishing or malware site. Google maintains a list of hundreds of millions of dangerous URLs.
 
-Downloading that full list to your browser every time would be impractical. Instead, Chrome keeps a **Bloom filter** of dangerous URLs locally (a few MB). When you navigate to a site:
+Downloading that full list to your browser every time would be impractical. Early versions of Chrome instead kept a **Bloom filter** of dangerous URL prefixes locally (a few MB); it was later replaced by a more compact "prefix set", but the idea is the same. When you navigate to a site:
 
 - If the Bloom filter says **"definitely not in the list"** → proceed immediately, no network call needed.
 - If it says **"probably dangerous"** → Chrome makes a real network call to verify before loading the page.
@@ -69,7 +86,7 @@ Before reading from disk, they check the Bloom filter:
 - **"Definitely not here"** → skip this file entirely, saving a costly I/O operation.
 - **"Probably here"** → do the actual disk read.
 
-In write-heavy workloads, this can eliminate **up to 90% of unnecessary disk lookups**.
+In LSM-tree databases a single key can live in any of many on-disk files, so this lets a read skip almost every file that doesn't contain the key. Cassandra exposes the trade-off directly as a per-table `bloom_filter_fp_chance` setting.
 
 ### 3. Medium's "Already Read" Articles
 
@@ -85,7 +102,7 @@ The client sends a Bloom filter encoding its addresses. The full node filters tr
 
 ### 5. Weak Password Detection
 
-Services like HaveIBeenPwned track billions of compromised passwords. Checking "has this password ever been leaked?" against a massive database on every login would be slow. A Bloom filter over the leaked password set lets you do this check in microseconds: a "definitely not compromised" answer means skip the full lookup.
+Datasets like Have I Been Pwned's list hundreds of millions of compromised passwords. Checking "has this password ever been leaked?" against a database that size on every sign-up would be slow. A Bloom filter built over the leaked-password set answers in microseconds and fits in memory: a "definitely not compromised" answer means you can skip the full lookup.
 
 ## Implementation in C++
 
@@ -189,17 +206,25 @@ The one downside: false positives. As more elements are added, more bits get fli
 
 The false positive probability after inserting **n** elements into a filter of **m** bits with **k** hash functions is approximately:
 
-\[
+$$
 P_{fp} \approx \left(1 - e^{-kn/m}\right)^k
-\]
+$$
 
 And the optimal number of hash functions (minimizing false positives for given m and n) is:
 
-\[
+$$
 k_{opt} = \frac{m}{n} \ln 2
-\]
+$$
 
-**A concrete example:** With 1 million bits and 1,000 inserted elements using 7 hash functions, the false positive rate is roughly **0.8%**: one in 125 lookups will incorrectly say "probably present."
+**A concrete example:** With 1 million bits, 100,000 inserted elements (10 bits per element) and 7 hash functions (the optimum, since 10 · ln 2 ≈ 6.9), the false positive rate is roughly **0.8%**: about one in 120 lookups for absent elements will incorrectly say "probably present."
+
+Turning that around, the bits needed for a target false-positive rate *p* are:
+
+$$
+m = -\frac{n \ln p}{(\ln 2)^2}
+$$
+
+That is about **9.6 bits per element for 1%** and **14.4 bits per element for 0.1%**, whatever the size of the elements themselves.
 
 The key levers you control:
 - **Larger bit array** (m) → fewer false positives, more memory.
@@ -212,11 +237,11 @@ The key levers you control:
 |---|---|---|
 | Memory usage | Very low (bits) | High (stores full values) |
 | False negatives | Never | Never |
-| False positives | Possible (~1%) | Never |
+| False positives | Possible (tunable, e.g. ~1%) | Never |
 | Deletion | Not supported* | Supported |
 | Lookup speed | O(k) | O(1) amortized |
 
-\* Counting Bloom filters support deletion at the cost of extra space.
+\* Counting Bloom filters (and cuckoo filters) support deletion at the cost of extra space.
 
 Use a Bloom filter when you can tolerate a small false positive rate and need to minimize memory usage. Use a regular hash set when you need exact answers and memory isn't a constraint.
 

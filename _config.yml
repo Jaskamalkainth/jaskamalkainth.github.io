@@ -35,13 +35,14 @@ defaults:
       path: "blog_posts"
     values:
       layout: post
-      author: "Jaskamal Kainth"
+      author: "Jaskamal Kainth"  ## profile (bio, sameAs links) lives in _data/authors.yml
       image: "/img/pixelate.jpg" ## default social-share image; override per-post with `image:` front matter
   - scope:
       path: "blog_posts/CppNotesDb"
     values:
       parent_title: "C++ Notes"
       parent_url: "/blog_posts/CppNotes.html"
+      related: ["/blog_posts/CppNotes.html"]
 
 ### content configuration ###
 title:       "Jaskamal Kainth"
@@ -52,8 +53,10 @@ default_background: "graph"    ## graph | math | off
 source_link: "https://github.com/Jaskamalkainth/jaskamalkainth.github.io"
 favicon:     "img/favicon.ico"
 touch_icon:  "img/apple-touch-icon.png"
-twitter:
-  username: "" ## put YOUR twitter/x handle here (without @) to enable Twitter Card attribution
+## twitter:            ## uncomment and set your X handle (without @) for Twitter Card attribution;
+##   username: ""      ## an empty value makes jekyll-seo-tag emit a broken "@" twitter:site tag
+logo:        "/img/apple-touch-icon.png" ## publisher logo in the BlogPosting JSON-LD
+locale:      "en_US" ## og:locale; pages default to <html lang="en">
 google_analytics_key: UA-77340824-1 ## put YOUR key here to enable tracking! (blank to disable)
 
 

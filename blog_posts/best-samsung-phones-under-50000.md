@@ -1,13 +1,27 @@
 ---
 published: true
-title: "Best Samsung Phones Under ₹50,000 (2026 Guide)"
+title: "Best Samsung Phones Under ₹50,000 in India (2026 Guide)"
 date: 2026-01-15
-description: "A buyer's guide to the best Samsung phones under ₹50,000 in 2026 — camera, battery, and performance compared across the top picks."
+last_modified_at: 2026-01-15
+description: "The best Samsung phones under ₹50,000 in India for 2026: Galaxy A36 5G for display, M47 5G for battery, M17e 5G on a budget, with prices and key specs."
+keywords: [best Samsung phone under 50000, Samsung Galaxy A36 5G, Samsung Galaxy M47 5G, Samsung Galaxy M17e 5G, Samsung phones India, buying guide]
 categories: tech phones samsung buying-guide
 image: "/img/pixelate.jpg"
+related: ["/blog_posts/samsung-galaxy-book6-student-guide.html"]
+faq:
+  - q: "Which is the best Samsung phone under ₹50,000 in 2026?"
+    a: "The Galaxy A36 5G (from ₹33,999) is the best all-round pick: it is the only phone of the three with a 6.7-inch Super AMOLED 120Hz display, and it leaves more than ₹16,000 of headroom under a ₹50,000 budget."
+  - q: "Which Samsung phone under ₹50,000 has the best battery?"
+    a: "The Galaxy M47 5G, with a 6000mAh (typical) battery, at a ₹28,999 launch offer price."
+  - q: "What is the cheapest 5G Samsung phone in this list?"
+    a: "The Galaxy M17e 5G at ₹12,499 with 128GB of storage."
 ---
 
 # Best Samsung Phones Under ₹50,000 (2026)
+
+> **Quick answer:** buy the **Galaxy A36 5G** (from ₹33,999) for the best screen, the **Galaxy M47 5G** (₹28,999) for the biggest battery, or the **Galaxy M17e 5G** (₹12,499) if you want to spend as little as possible. Prices are Samsung India's listed prices as of January 2026.
+
+*Disclosure: I work at Samsung R&D Institute India. This is a personal post, not an official Samsung publication; it is based only on Samsung India's public product pages, linked throughout.*
 
 Samsung's ₹50,000-and-under lineup spans the Galaxy M and Galaxy A series — from ultra-budget picks under ₹15,000 to near-flagship Super AMOLED displays just under the ₹35,000 mark. Here's how the current lineup breaks down, pulled directly from [Samsung India's "Best Mobiles under ₹50,000" page](https://www.samsung.com/in/smartphones/mobiles-by-price/under-rs50000/) and each model's own buy page.
 

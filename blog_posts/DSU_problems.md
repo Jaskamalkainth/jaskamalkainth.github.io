@@ -1,7 +1,17 @@
 ---
-title: "Disjoint Set Union Problems"
-description: "Practice problems for Disjoint Set Union (union–find) from UVa, HackerEarth and Codeforces, ordered by difficulty."
+title: "Disjoint Set Union (Union-Find) Practice Problems"
+description: "Practice problems for Disjoint Set Union (union–find) from UVa, HackerEarth and Codeforces, ordered by difficulty: connected components, group leaders and merges."
 date: 2016-05-07 02:20
+last_modified_at: 2026-10-02
+keywords: [disjoint set union, DSU, union-find, connected components, competitive programming, Codeforces]
+related: ["/blog_posts/segment_tree_problems.html", "/blog_posts/bloom_filters.html"]
+faq:
+  - q: "What is a disjoint set union (union–find) data structure?"
+    a: "Disjoint set union keeps a collection of non-overlapping sets as a forest, where each tree's root is the set's representative. find(x) returns x's root and union(a, b) links two roots, so you can merge groups and ask whether two elements are in the same group."
+  - q: "What is the time complexity of union–find?"
+    a: "With both path compression and union by rank (or size), any sequence of m operations on n elements runs in O(m · α(n)) time, where α is the inverse Ackermann function. α(n) is at most 4 for any practical n, so each operation is effectively constant time."
+  - q: "When should I use DSU instead of BFS or DFS?"
+    a: "Use DSU when edges arrive over time and you repeatedly ask whether two nodes are connected, or when you need to merge groups (for example in Kruskal's minimum spanning tree). BFS/DFS is simpler when the graph is fixed and you only need to explore it once."
 search_hint: "Search problems, e.g. components, leader"
 levels: [Beginner, Easy, Medium, Hard]
 problems:
