@@ -97,16 +97,13 @@ body {
 :where(.post-content) :where(li > ul, li > ol) { margin: 0.25em 0; }
 :where(.post-content) :where(a) { color: var(--accent); text-underline-offset: 2px; }
 :where(.post-content) :where(a:hover) { text-decoration-thickness: 2px; }
-:where(.post-content) :where(img) { max-width: 100%; height: auto; border-radius: 8px; }
+:where(.post-content) :where(img) { max-width: 100%; height: auto; border-radius: 8px; box-sizing: border-box; }
 :where(.post-content) :where(hr) { border: 0; border-top: 1px solid var(--border); margin: 2em 0; }
 :where(.post-content) :where(strong, b) { font-weight: 600; }
 :where(.post-content) :where(blockquote) {
   margin-left: 0;
-  padding: 0.5em 1em;
-  border-left: 3px solid var(--accent);
-  background: var(--surface);
-  border-radius: 0 8px 8px 0;
-  color: var(--muted);
+  padding: 0 0 0 1em;
+  border-left: 3px solid var(--border);
 }
 :where(.post-content) :where(blockquote > :last-child) { margin-bottom: 0; }
 
@@ -129,7 +126,7 @@ body {
 :where(.post-content) :where(div.highlighter-rouge, figure.highlight) { margin: 0 0 1em; }
 :where(.post-content) :where(.highlight pre) { margin: 0; }
 
-:where(.post-content) :where(table) {
+:where(.post-content) :where(table:not([class])) {
   display: block;
   overflow-x: auto;
   border-collapse: collapse;
@@ -192,7 +189,7 @@ body {
 .pl, .pl *, .pl *::before, .pl *::after, .btn, .note-list a { box-sizing: border-box; }
 .pl-lede { color: var(--muted); max-width: 62ch; }
 .pl-hero { display: grid; grid-template-columns: 1fr 220px; gap: 24px; align-items: center; }
-.pl-hero img { width: 100%; height: auto; border-radius: var(--radius); background: #fff; padding: 8px; border: 1px solid var(--border); }
+.pl-hero img { box-sizing: border-box; width: 100%; height: auto; border-radius: var(--radius); background: #fff; padding: 8px; border: 1px solid var(--border); }
 @media (max-width: 640px) { .pl-hero { grid-template-columns: 1fr; } .pl-hero img { display: none; } }
 
 .pl-progress { display: flex; align-items: center; gap: 12px; margin: 8px 0 20px; font-size: 14px; color: var(--muted); }
