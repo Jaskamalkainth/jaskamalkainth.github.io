@@ -1,6 +1,6 @@
 /* ==========================================================================
    Shared stylesheet for every page under /blog_posts (loaded by _layouts/post.html).
-   Colors are tokens; the layout sets <html data-post-theme="dark|light"> from the
+   Colors are tokens; the layout sets <html data-post-theme="light|dark"> (light by default) from the
    theme picked on the homepage (jk-theme) or a post's `post_theme:` front matter.
    Element styles are wrapped in :where() so they have zero specificity: a post
    that ships its own <style> always wins without needing !important.
@@ -73,6 +73,18 @@ body {
 .post-header a { color: var(--muted); text-decoration: none; }
 .post-header a:hover { color: var(--accent); }
 .post-header .home { color: var(--accent); font-weight: 500; }
+.post-header .post-byline { margin-left: auto; }
+.mode-btn {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 32px; height: 32px; padding: 0; cursor: pointer;
+  background: var(--surface); color: var(--text);
+  border: 1px solid var(--border); border-radius: 8px;
+}
+.mode-btn:hover { border-color: var(--accent); }
+.mode-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* show the mode you would switch to */
+.mode-btn .ico-sun, [data-post-theme="dark"] .mode-btn .ico-moon { display: none; }
+[data-post-theme="dark"] .mode-btn .ico-sun { display: block; }
 
 .post-shell { max-width: var(--measure); margin: 0 auto; padding: 8px 16px 64px; }
 .post-shell.wide { --measure: 1200px; max-width: 1200px; }
@@ -278,7 +290,7 @@ body {
 /* ---------- byline, FAQ, author card, related posts (_layouts/post.html) ---------- */
 .post-byline { margin: 0; color: var(--muted); font-size: 13px; text-align: right; }
 .post-byline a { color: var(--muted); }
-@media (max-width: 520px) { .post-header { flex-direction: column; align-items: flex-start; gap: 4px; } .post-byline { text-align: left; } }
+@media (max-width: 520px) { .post-header { flex-direction: column; align-items: flex-start; gap: 4px; } .post-header .post-byline { text-align: left; margin-left: 0; } }
 
 .post-faq { margin-top: 2.5em; padding-top: 1.5em; border-top: 1px solid var(--border); }
 .post-faq h3 { font-size: 1.05em; margin: 1.4em 0 0.4em; }
