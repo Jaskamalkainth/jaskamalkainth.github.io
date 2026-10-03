@@ -9,16 +9,19 @@
 
   /* ================= themes ================= */
   // Keep in sync with css/site.css. [name, bg, text, accent, accent-2]
+  // LIGHT must match the inline lists in index.html and _layouts/post.html.
   var THEMES = [
+    ['daylight', '#f6f7fb', '#1b2236', '#0f766e', '#b45309'],
+    ['paper', '#f5efe2', '#221c14', '#9b2c2c', '#1d4e89'],
     ['midnight', '#0a0f1e', '#e6ebf5', '#5eead4', '#fbbf24'],
     ['terminal', '#030703', '#b9f7b1', '#39ff14', '#ffe14d'],
-    ['paper', '#f5efe2', '#221c14', '#9b2c2c', '#1d4e89'],
     ['synthwave', '#12071f', '#f7ecff', '#ff4fd8', '#22d3ee'],
     ['nord', '#2b303b', '#eceff4', '#88c0d0', '#ebcb8b'],
     ['ember', '#140e0a', '#f4e7d9', '#ff8a3d', '#e9c46a']
   ];
   var BGS = ['graph', 'math', 'off'];
-  var defaultTheme = root.getAttribute('data-default-theme') || 'midnight';
+  var LIGHT = ['daylight', 'paper'];
+  var defaultTheme = root.getAttribute('data-default-theme') || 'daylight';
   var themeNames = THEMES.map(function (t) { return t[0]; });
   if (themeNames.indexOf(root.getAttribute('data-theme')) < 0) root.setAttribute('data-theme', defaultTheme);
 
@@ -35,8 +38,11 @@
 
   function setTheme(name) {
     if (themeNames.indexOf(name) < 0) return false;
+    var mode = LIGHT.indexOf(name) < 0 ? 'dark' : 'light';
     root.setAttribute('data-theme', name);
+    root.setAttribute('data-mode', mode);
     store('jk-theme', name);
+    store('jk-' + mode, name); // last theme used in each mode, for the light/dark toggle
     syncPanel();
     if (window.JKBackground) window.JKBackground.refresh();
     return true;
@@ -57,6 +63,14 @@
   $$('#bg-seg button').forEach(function (b) { b.addEventListener('click', function () { setBg(b.dataset.bg); }); });
   syncPanel();
 
+  // one-click light/dark: flip to the last theme used in the other mode
+  function toggleMode() {
+    var dark = root.getAttribute('data-mode') === 'dark', saved = null;
+    try { saved = localStorage.getItem(dark ? 'jk-light' : 'jk-dark'); } catch (e) {}
+    setTheme(saved || (dark ? 'daylight' : 'midnight'));
+  }
+  $('#mode-toggle').addEventListener('click', toggleMode);
+
   var panel = $('#theme-panel'), toggle = $('#theme-toggle');
   function openPanel(open) {
     panel.hidden = !open;
@@ -76,6 +90,7 @@
     if (typing || e.metaKey || e.ctrlKey || e.altKey) return;
     if (e.key === '/') { e.preventDefault(); focusSearch(); }
     else if (e.key === 't') setTheme(cycle(themeNames, root.getAttribute('data-theme'), e.shiftKey ? -1 : 1));
+    else if (e.key === 'd') toggleMode();
     else if (e.key === 'b') setBg(cycle(BGS, root.getAttribute('data-bg'), 1));
   });
   function focusSearch() {

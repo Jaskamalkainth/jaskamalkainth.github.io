@@ -25,6 +25,25 @@
   color-scheme: dark;
 }
 
+[data-theme="daylight"] {
+  --bg: #f6f7fb;
+  --surface: rgba(255, 255, 255, 0.86);
+  --surface-2: rgba(238, 241, 248, 0.92);
+  --border: #d6dbe8;
+  --text: #1b2236;
+  --muted: #5b6582;
+  --accent: #0f766e;
+  --accent-2: #b45309;
+  --accent-ink: #ffffff;
+  --node: #0f766e;
+  --edge: 15, 118, 110;
+  --glow: rgba(15, 118, 110, 0.12);
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-head: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --radius: 14px;
+  color-scheme: light;
+}
+
 [data-theme="terminal"] {
   --bg: #030703;
   --surface: rgba(6, 16, 6, 0.82);
@@ -190,6 +209,9 @@ main, .footer, .topbar { position: relative; z-index: 1; }
   color: var(--text); cursor: pointer; font-family: var(--font-mono); font-size: 13px;
 }
 .tool-btn:hover { border-color: var(--accent); }
+/* light/dark toggle: show the mode you would switch to */
+.mode-btn .ico-sun, [data-mode="dark"] .mode-btn .ico-moon { display: none; }
+[data-mode="dark"] .mode-btn .ico-sun { display: block; }
 @media (max-width: 760px) {
   .nav { display: none; }
   .topbar-tools { margin-left: auto; }
