@@ -113,8 +113,10 @@ targets.sort.each do |path|
   warn.("no related: links (add 2-3 posts on nearby topics)") if Array(data["related"]).empty? && !path.include?("CppNotesDb/")
 
   url = "/" + path.sub(/\.md$/, ".html")
-  unless path.include?("CppNotesDb/") || homepage.include?(url)
-    warn.("not linked from the homepage; add an entry to _data/work_beyond.yml")
+  if data["homepage"] == false
+    err.("has `homepage: false` but is listed in _data/work_beyond.yml; remove one") if homepage.include?(url)
+  elsif !path.include?("CppNotesDb/") && !homepage.include?(url)
+    warn.("not linked from the homepage; add an entry to _data/work_beyond.yml (or set `homepage: false` to keep it unlisted)")
   end
 
   # --- answer-engine structure ---

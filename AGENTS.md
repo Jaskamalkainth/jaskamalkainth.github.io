@@ -31,7 +31,7 @@ and wiring the post into the site.
 | `_layouts/post.html` | Post layout. **Already emits** all meta/OG tags, JSON-LD, byline, FAQ, author card, related links. |
 | `_includes/post_schema.html` | Person, BreadcrumbList and FAQPage JSON-LD. |
 | `_data/authors.yml` | Author bio, job, `sameAs` profiles (E-E-A-T). Update here, never per post. |
-| `_data/work_beyond.yml` | **Homepage cards and homepage search.** A post not listed here is an orphan page. |
+| `_data/work_beyond.yml` | **Homepage cards and homepage search.** Every post goes here unless it has `homepage: false`. |
 | `_config.yml` | `defaults:` give every post `layout: post`, `author`, default `image`. |
 | `llms.txt`, `sitemap.xml`, `robots.txt` | Generated or static; new posts appear in the first two **automatically**. |
 | `scripts/check_posts.rb` | Linter for the rules in this file. |
@@ -69,6 +69,7 @@ versions, statistics), find primary sources yourself and cite them. Ask only if 
 | `last_modified_at` | Same as `date` for a new post. See section 4 for updates. |
 | `keywords` | YAML list of 4-8 phrases people actually type: main phrase, synonyms, sub-topics, named entities. No stuffing. |
 | `related` | 2-3 URLs of existing posts on nearby topics (`/blog_posts/x.html`). Also add the new post to **their** `related:`. |
+| `homepage: false` | Optional. Makes the post **unlisted**: see "Unlisted posts" below. Only when the owner asks for it. |
 | `faq` | 3-5 items of `q:`/`a:`. See step 5. Optional for very short notes, expected for guides and explainers. |
 | `image` | Optional (defaults to `/img/pixelate.jpg`). Prefer a post-specific 1200×630 image in `/img/`. |
 | `math: true` | Optional; required if the post has LaTeX. |
@@ -117,8 +118,9 @@ AI engines repeat mistakes, so a wrong fact does more harm than a missing one.
 - Content assisted by AI is fine; content not checked by the steps above is not.
 
 ### Step 7: Wire it into the site
-1. **Homepage**: add an entry to `_data/work_beyond.yml`. Without it the post is an orphan page
-   that only the sitemap points to. Technical posts go under `work:` with
+1. **Homepage**: add an entry to `_data/work_beyond.yml`, **unless the post has `homepage: false`**
+   (see "Unlisted posts" below). Without an entry, a listed post is an orphan page that only the
+   sitemap points to. Technical posts go under `work:` with
    `kind:` one of `search | algorithms | math | experiments | notes`; personal essays go under `beyond:`.
    ```yaml
    - title: "Bloom Filters"
@@ -159,6 +161,18 @@ Check that the summary, headings, code, tables, images, FAQ and author card rend
   3. After 2-3 days, check Search Console → Performance → filter by page for queries and clicks.
 
 ---
+
+### Unlisted posts (`homepage: false`)
+Some posts should have a public URL and be fully readable by search engines and AI agents, but
+**not** appear on the homepage (cards or homepage search). The Samsung buying guides are like this.
+- Set `homepage: false` in the front matter and **don't** add the post to `_data/work_beyond.yml`.
+  The checker treats a post that has the flag *and* a homepage entry as an error.
+- Everything else still applies: full front matter, summary, FAQ, accuracy, verification.
+- The post is still indexed: it stays in `sitemap.xml` and `llms.txt`, keeps its JSON-LD, and is
+  not `noindex`. This flag only hides it from the homepage, nothing else.
+- `related:` links from other posts are optional; add them only between posts on the same topic,
+  and only if the owner is happy for the post to be reachable from those pages.
+- Only use it when the owner asks for a post to stay off the homepage. If it's unclear, ask.
 
 ## 3. Don'ts
 - Don't rename, move or delete a published post, or change its `date`.

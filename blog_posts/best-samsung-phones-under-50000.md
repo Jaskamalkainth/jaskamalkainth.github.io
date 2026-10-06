@@ -1,5 +1,6 @@
 ---
 published: true
+homepage: false   ## unlisted: public URL, in sitemap and llms.txt, but no homepage card
 title: "Best Samsung Phones Under ₹50,000 in India (2026 Guide)"
 date: 2026-01-15
 last_modified_at: 2026-01-15

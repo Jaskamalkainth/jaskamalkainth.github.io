@@ -14,6 +14,7 @@ faq:                                             ## 3-5 real questions; each ans
     a: "A direct, factual answer that would still be correct if quoted alone."
   - q: "How does ... compare to ...?"
     a: "..."
+# homepage: false    ## unlisted: keeps the URL, sitemap and llms.txt entry, but no homepage card (don't add it to _data/work_beyond.yml)
 # math: true         ## only if the post has LaTeX ($$ ... $$ on its own lines); loads KaTeX
 # post_theme: light  ## only for posts that ship their own light-only CSS; default follows the site's light/dark toggle
 # wide: true         ## 1200px content width instead of 900px

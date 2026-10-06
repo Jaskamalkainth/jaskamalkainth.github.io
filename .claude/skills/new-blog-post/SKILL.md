@@ -23,7 +23,9 @@ steps because the post is short.
    attribution, add "as of <Month YYYY>" to prices/specs/versions. Add the Samsung disclosure line
    if the post recommends or compares Samsung or competing products. Never invent facts or sources.
 6. **Wiring**: add the post to `_data/work_beyond.yml` (homepage + search) and to the `related:` list of
-   1-3 existing posts. C++ notes also go in the `notes:` list of `blog_posts/CppNotes.md`.
+   1-3 existing posts. **Exception:** if the owner wants the post off the homepage, set
+   `homepage: false` and skip `_data/work_beyond.yml`. The post keeps its URL, sitemap and
+   `llms.txt` entry. C++ notes also go in the `notes:` list of `blog_posts/CppNotes.md`.
 7. **Verify**:
    ```sh
    jekyll build -d /tmp/site
