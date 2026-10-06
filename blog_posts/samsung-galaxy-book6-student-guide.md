@@ -1,5 +1,6 @@
 ---
 published: true
+homepage: false   ## unlisted: public URL, in sitemap and llms.txt, but no homepage card
 title: "Galaxy Book6 vs Book6 Pro vs Ultra: Which Should Students Buy?"
 date: 2026-01-20
 last_modified_at: 2026-01-20
