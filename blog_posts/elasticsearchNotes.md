@@ -4,7 +4,7 @@ description: "Elasticsearch from the bottom up: inverted indexes, Lucene shards 
 date: 2019-06-08
 last_modified_at: 2026-10-02
 keywords: [Elasticsearch, Lucene, inverted index, shards, segments, Query DSL, search engine]
-related: ["/blog_posts/bloom_filters.html", "/blog_posts/segment_tree_problems.html"]
+related: ["/blog_posts/bloom_filters.html", "/blog_posts/segment_tree_problems.html", "/blog_posts/textgrain-watermark-explained.html"]
 faq:
   - q: "What is an inverted index in Elasticsearch?"
     a: "An inverted index maps each term to the list of documents that contain it, stored as a sorted term dictionary with postings (document IDs and frequencies). Because the dictionary is sorted, Lucene can find terms and term prefixes quickly instead of scanning every document."
