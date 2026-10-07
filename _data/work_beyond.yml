@@ -121,18 +121,6 @@ work:
     href: "/blog_posts/elasticsearchNotes.html"
 
   # —— Experiments ——
-  - title: "textGrain Watermark Simulator"
-    kind: "experiments"
-    date: "2026-10"
-    desc: "Tilt next-token odds with a secret key, then detect the watermark in a passage."
-    meta: "Oct 2026"
-    links:
-      - label: "Demo"
-        url: "/blog_posts/experiments/textgrain-watermark/"
-      - label: "Article"
-        url: "/blog_posts/textgrain-watermark-explained.html"
-    href: "/blog_posts/experiments/textgrain-watermark/"
-
   - title: "Fourier Epicycles"
     kind: "experiments"
     date: "2025-05"
