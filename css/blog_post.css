@@ -145,6 +145,7 @@ body {
   font-size: 0.94em;
   max-width: 100%;
 }
+:where(.post-content) :where(.katex-display) { overflow-x: auto; overflow-y: hidden; padding: 2px 0; }
 :where(.post-content) :where(th, td) { border: 1px solid var(--border); padding: 8px 12px; text-align: left; vertical-align: top; }
 :where(.post-content) :where(th) { background: var(--surface-2); font-weight: 600; }
 :where(.post-content) :where(tbody tr:nth-child(even) td) { background: var(--surface); }

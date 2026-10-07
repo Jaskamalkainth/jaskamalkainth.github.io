@@ -6,7 +6,7 @@ last_modified_at: 2026-10-02
 keywords: [Bloom filter, probabilistic data structures, false positive rate, hash functions, C++, algorithms]
 categories: algorithms data-structures
 math: true
-related: ["/blog_posts/elasticsearchNotes.html", "/blog_posts/segment_tree_problems.html", "/blog_posts/CppNotesDb/10.html"]
+related: ["/blog_posts/elasticsearchNotes.html", "/blog_posts/segment_tree_problems.html", "/blog_posts/CppNotesDb/10.html", "/blog_posts/textgrain-watermark-explained.html"]
 faq:
   - q: "Can a Bloom filter have false negatives?"
     a: "No. Every inserted element sets all of its k bits, and bits are never cleared, so a lookup for an inserted element always finds all k bits set. A standard Bloom filter can only be wrong in one direction: it may report \"probably present\" for an element that was never added."
