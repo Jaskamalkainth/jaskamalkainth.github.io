@@ -9,8 +9,9 @@ work:
     links:
       - label: "Article"
         url: "/blog_posts/textgrain-watermark-explained.html"
-      - label: "Demo"
+      - label: "Simulator"
         url: "/blog_posts/experiments/textgrain-watermark/"
+        demo: true
     href: "/blog_posts/textgrain-watermark-explained.html"
 
   - title: "Bloom Filters"
@@ -26,6 +27,7 @@ work:
         external: true
       - label: "Demo"
         url: "/blog_posts/experiments/bloom-filter/index.html"
+        demo: true
     href: "/blog_posts/bloom_filters.html"
 
   - title: "Fast Fourier Transformation (FFT)"

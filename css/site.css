@@ -391,6 +391,11 @@ main, .footer, .topbar { position: relative; z-index: 1; }
 .card p { margin: 0 0 12px; font-size: 14px; color: var(--muted); flex: 1; }
 .card-links { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12.5px; }
 .card-links a::before { content: '→ '; opacity: .6; }
+.card-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.demo-badge { padding: 1px 8px; border-radius: 999px; border: 1px solid var(--accent); color: var(--accent); font-size: 11px; white-space: nowrap; }
+.card-links a.is-demo { padding: 2px 10px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); }
+.card-links a.is-demo::before { content: none; }
+.card-links a.is-demo:hover { text-decoration: none; filter: brightness(1.08); }
 
 /* beyond */
 .beyond { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
