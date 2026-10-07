@@ -297,7 +297,7 @@
   $$('.filters button').forEach(function (b) {
     b.addEventListener('click', function () {
       $$('.filters button').forEach(function (x) { x.classList.toggle('is-on', x === b); });
-      $$('#work-cards .card').forEach(function (c) { c.hidden = b.dataset.kind !== 'all' && c.dataset.kind !== b.dataset.kind; });
+      $$('#work-cards .card').forEach(function (c) { c.hidden = b.dataset.kind !== 'all' && c.dataset.kind.split(' ').indexOf(b.dataset.kind) < 0; });
     });
   });
 

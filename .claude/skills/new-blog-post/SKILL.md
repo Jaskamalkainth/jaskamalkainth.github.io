@@ -26,6 +26,8 @@ steps because the post is short.
    1-3 existing posts. **Exception:** if the owner wants the post off the homepage, set
    `homepage: false` and skip `_data/work_beyond.yml`. The post keeps its URL, sitemap and
    `llms.txt` entry. C++ notes also go in the `notes:` list of `blog_posts/CppNotes.md`.
+   If the post has an interactive demo, put it on the **same** card as a link with `demo: true`;
+   never add a second card for it.
 7. **Verify**:
    ```sh
    jekyll build -d /tmp/site

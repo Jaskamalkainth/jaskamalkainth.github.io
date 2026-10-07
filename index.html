@@ -216,13 +216,14 @@
       <div class="cards" id="work-cards">
         {% assign sorted_work = site.data.work_beyond.work | sort: "date" | reverse %}
         {% for item in sorted_work %}
-        <article class="card" data-kind="{{ item.kind }}">
-          <div class="card-top mono"><span class="tag">{{ item.kind }}</span><span class="muted">{{ item.meta }}</span></div>
+        {% assign demo = item.links | where: "demo", true | first %}
+        <article class="card{% if demo %} has-demo{% endif %}" data-kind="{{ item.kind }}{% if demo and item.kind != 'experiments' %} experiments{% endif %}">
+          <div class="card-top mono"><span class="card-tags"><span class="tag">{{ item.kind }}</span>{% if demo %}<span class="demo-badge">▶ interactive demo</span>{% endif %}</span><span class="muted">{{ item.meta }}</span></div>
           <h3><a href="{% if item.external %}{{ item.href }}{% else %}{{ site.baseurl }}{{ item.href }}{% endif %}" {% if item.external %}target="_blank" rel="noopener"{% endif %}>{{ item.title }}</a></h3>
           <p>{{ item.desc }}</p>
           {% if item.links.size > 0 %}
           <div class="card-links mono">
-            {% for link in item.links %}<a href="{% if link.external %}{{ link.url }}{% else %}{{ site.baseurl }}{{ link.url }}{% endif %}" {% if link.external %}target="_blank" rel="noopener"{% endif %}>{{ link.label | downcase }}</a>{% endfor %}
+            {% for link in item.links %}<a href="{% if link.external %}{{ link.url }}{% else %}{{ site.baseurl }}{{ link.url }}{% endif %}" {% if link.external %}target="_blank" rel="noopener"{% endif %}{% if link.demo %} class="is-demo"{% endif %}>{% if link.demo %}▶ {% endif %}{{ link.label | downcase }}</a>{% endfor %}
           </div>
           {% endif %}
         </article>
@@ -319,7 +320,7 @@
     {"t": "Chief Software Engineer, Samsung R&D Bangalore", "k": "experience", "d": "Lead engineering of the global AI-powered product search platform. Team lead, microservices, APIs, relevance, NLP, machine learning, generative AI. 2018 to present.", "u": "#path"},
     {"t": "BITS Pilani: CS and Mathematics dual degree", "k": "education", "d": "B.E. Computer Science and M.Sc. Mathematics, 2013 to 2018. Thesis on energy-efficient scheduling algorithms and numerical PDEs for option pricing.", "u": "#path"},
     {"t": "ACM-ICPC and competitive programming", "k": "algorithms", "d": "ICPC profile, competitive programming, segment tree, DSU, FFT, 300+ hours teaching data structures and algorithms.", "u": "https://icpc.global/ICPCID/TY7NYK0ENIEA"},
-    {% for item in site.data.work_beyond.work %}{"t": {{ item.title | jsonify }}, "k": {{ item.kind | jsonify }}, "d": {{ item.desc | jsonify }}, "u": {% if item.external %}{{ item.href | jsonify }}{% else %}{{ item.href | prepend: site.baseurl | jsonify }}{% endif %}},
+    {% for item in site.data.work_beyond.work %}{% assign demo = item.links | where: "demo", true | first %}{"t": {{ item.title | jsonify }}, "k": {{ item.kind | jsonify }}, "d": {% if demo %}{{ item.desc | append: " Includes an interactive demo / simulation." | jsonify }}{% else %}{{ item.desc | jsonify }}{% endif %}, "u": {% if item.external %}{{ item.href | jsonify }}{% else %}{{ item.href | prepend: site.baseurl | jsonify }}{% endif %}},
     {% endfor %}{% for item in site.data.work_beyond.beyond %}{"t": {{ item.title | jsonify }}, "k": "beyond", "d": {{ item.desc | append: " philosophy music korean language life" | jsonify }}, "u": {{ item.href | prepend: site.baseurl | jsonify }}},
     {% endfor %}{"t": "Why do we do what we do?", "k": "beyond", "d": "A philosophical journey across the ages: motivation, meaning, consciousness, human behaviour, psychology.", "u": "{{ site.baseurl }}/blog_posts/whatwedowhywedo.html"},
     {% for a in site.data.awards.awards %}{"t": {{ a.name | jsonify }}, "k": "award", "d": {{ a.issuer | append: " award recognition" | jsonify }}, "u": "#awards"},

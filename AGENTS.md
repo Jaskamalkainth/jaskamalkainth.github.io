@@ -131,8 +131,15 @@ AI engines repeat mistakes, so a wrong fact does more harm than a missing one.
      links:
        - label: "Article"
          url: "/blog_posts/bloom_filters.html"
+       - label: "Demo"            # only if the topic has an interactive demo (section 5)
+         url: "/blog_posts/experiments/bloom-filter/index.html"
+         demo: true
      href: "/blog_posts/bloom_filters.html"
    ```
+   **One topic, one card.** A post and its interactive demo share a single entry; never add a
+   second card for the demo. Mark the demo link with `demo: true`: the card then shows an
+   "▶ interactive demo" badge and a highlighted demo button, appears under the *experiments*
+   filter as well as its own `kind`, and homepage search mentions the demo.
 2. **Related posts**: add the new URL to the `related:` list of 1-3 existing posts it relates to.
 3. **C++ notes only**: add `{ n: N, title: "...", date: YYYY-MM-DD }` to `notes:` in `blog_posts/CppNotes.md`.
 4. Sitemap, `llms.txt` and analytics need **no** changes; they pick the post up automatically.
@@ -197,4 +204,7 @@ Standalone HTML pages don't get the post layout, so each one needs by hand, in `
 `og:title` / `og:description` / `og:url` / `og:image`, `lang="en"` on `<html>`, and the Google Tag
 Manager snippet (copy from `_includes/gtm-head.html` and `_includes/gtm-body.html`, or
 `{% include gtm-head.html %}` if the file has `layout: null` front matter). Link the demo from
-its article and add it to `_data/work_beyond.yml` with `kind: "experiments"`.
+its article near the top (e.g. a "**Try it first:**" line), and link back to the article from the demo.
+On the homepage, a demo that has an article goes on **the article's card** as a link with `demo: true`
+(see step 7), not as a separate card. Only a demo with no article gets its own entry, with
+`kind: "experiments"`.
