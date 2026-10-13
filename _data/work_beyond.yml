@@ -14,6 +14,16 @@ work:
         demo: true
     href: "/blog_posts/textgrain-watermark-explained.html"
 
+  - title: "Lakehouse vs Data Lake"
+    kind: "notes"
+    date: "2026-10"
+    desc: "What a table format adds to a data lake, when each one fits, with runnable Delta Lake code."
+    meta: "Oct 2026"
+    links:
+      - label: "Article"
+        url: "/blog_posts/lakehouse-vs-data-lake.html"
+    href: "/blog_posts/lakehouse-vs-data-lake.html"
+
   - title: "Bloom Filters"
     kind: "algorithms"
     date: "2023-03"
