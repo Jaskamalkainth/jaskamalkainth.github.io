@@ -15,7 +15,7 @@ Personal site and blog of {{ author.name }}. Articles cover algorithms and data 
 
 ## Articles
 {% assign posts = site.pages | where: "layout", "post" | sort: "title" %}
-{%- for p in posts %}{% if p.path contains 'CppNotesDb/' or p.path contains 'experiments/' %}{% continue %}{% endif %}
+{%- for p in posts %}{% if p.path contains 'CppNotesDb/' or p.path contains 'experiments/' or p.sitemap == false %}{% continue %}{% endif %}
 - [{{ p.title }}]({{ p.url | absolute_url }}){% if p.description %}: {{ p.description }}{% endif %}
 {%- endfor %}
 
