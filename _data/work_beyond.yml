@@ -123,6 +123,19 @@ work:
     href: "/blog_posts/elasticsearchNotes.html"
 
   # —— Experiments ——
+  - title: "Multi-Agent Patterns"
+    kind: "experiments"
+    date: "2026-10"
+    desc: "Eight agent coordination patterns animated, with LangGraph and CrewAI code side by side."
+    meta: "Oct 2026"
+    links:
+      - label: "Demo"
+        url: "/blog_posts/experiments/multi-agent-patterns/"
+      - label: "Code"
+        url: "https://github.com/Jaskamalkainth/Multi-Agent-Patterns"
+        external: true
+    href: "/blog_posts/experiments/multi-agent-patterns/"
+
   - title: "Fourier Epicycles"
     kind: "experiments"
     date: "2025-05"
