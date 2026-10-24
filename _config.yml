@@ -43,6 +43,10 @@ defaults:
       parent_title: "C++ Notes"
       parent_url: "/blog_posts/CppNotes.html"
       related: ["/blog_posts/CppNotes.html"]
+  - scope:
+      path: "blog_posts/experiments/multi-agent-patterns/live.html"
+    values:
+      sitemap: false  ## the demo's replay frame, embedded in index.html; canonical points there
 
 ### content configuration ###
 title:       "Jaskamal Kainth"
