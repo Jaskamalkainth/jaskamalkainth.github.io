@@ -1,0 +1,40 @@
+---
+layout: null
+sitemap: false
+---
+{%- assign author = site.data.authors["Jaskamal Kainth"] -%}
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ site.title | xml_escape }}</title>
+  <subtitle>{{ site.description | xml_escape }}</subtitle>
+  <link href="{{ '/feed.xml' | absolute_url }}" rel="self" type="application/atom+xml" />
+  <link href="{{ '/' | absolute_url }}" rel="alternate" type="text/html" />
+  <id>{{ '/' | absolute_url }}</id>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <author><name>{{ author.name | xml_escape }}</name><uri>{{ author.url }}</uri></author>
+  {%- comment %} Listed posts only: unlisted ones (homepage: false) stay off feeds as they stay off the homepage. {% endcomment %}
+  {%- comment %} Front matter mixes dates and date-times, which Liquid's sort can't compare, so sort on "epoch|path" keys. {% endcomment %}
+  {%- assign keys = "" | split: "" %}
+  {%- for p in site.pages %}{% if p.layout != "post" or p.date == nil or p.homepage == false or p.path contains 'experiments/' %}{% continue %}{% endif %}
+  {%- assign key = p.date | date: "%s" | append: "|" | append: p.path %}
+  {%- assign keys = keys | push: key %}
+  {%- endfor %}
+  {%- assign keys = keys | sort | reverse %}
+  {%- for key in keys %}
+  {%- assign path = key | split: "|" | last %}
+  {%- assign p = site.pages | where: "path", path | first %}
+  <entry>
+    <title>{{ p.title | xml_escape }}</title>
+    <link href="{{ p.url | absolute_url }}" rel="alternate" type="text/html" />
+    <id>{{ p.url | absolute_url }}</id>
+    <published>{{ p.date | date_to_xmlschema }}</published>
+    <updated>{{ p.last_modified_at | default: p.date | date_to_xmlschema }}</updated>
+    {%- if p.description %}
+    <summary>{{ p.description | xml_escape }}</summary>
+    {%- endif %}
+    {%- for k in p.keywords %}
+    <category term="{{ k | xml_escape }}" />
+    {%- endfor %}
+  </entry>
+  {%- endfor %}
+</feed>

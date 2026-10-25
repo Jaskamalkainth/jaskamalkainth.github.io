@@ -27,6 +27,8 @@
   <meta name="keywords" content="{{ page.keywords | join: ', ' | escape }}" />
   {%- endif %}
   <link rel="alternate" type="text/plain" title="llms.txt" href="{{ '/llms.txt' | absolute_url }}" />
+  <link rel="alternate" type="text/markdown" title="Markdown source" href="{{ site.source_link | replace: 'https://github.com/', 'https://raw.githubusercontent.com/' }}/master/{{ page.path }}" />
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}" />
   {% include post_schema.html %}
   {% include gtm-head.html %}
   <link rel="preconnect" href="https://fonts.googleapis.com" />

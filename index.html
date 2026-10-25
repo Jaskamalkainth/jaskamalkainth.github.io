@@ -1,13 +1,34 @@
 ---
+title: "Jaskamal Kainth: Search Engineer at Samsung · Algorithms & AI"
+description: "Jaskamal Kainth, Chief Software Engineer at Samsung R&D, leads product search in 55+ markets. Notes on search, algorithms, C++ and AI, plus interactive demos."
+author: "Jaskamal Kainth"
+image:
+  path: "/img/og-home.png"
+  width: 1200
+  height: 630
+  alt: "Jaskamal Kainth, Chief Software Engineer at Samsung R&D: search engineering, algorithms and AI notes with interactive demos"
 ---
+{%- assign author = site.data.authors[page.author] -%}
 <!DOCTYPE html>
 <html dir="ltr" lang="en" data-theme="{{ site.default_theme | default: 'daylight' }}" data-bg="{{ site.default_background | default: 'graph' }}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{ site.title }}</title>
-  <meta name="keywords" content="{{ site.keywords }}">
+  <title>{{ page.title }}</title>
   {% seo title=false %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": {{ '/' | absolute_url | append: '#profile' | jsonify }},
+    "url": {{ '/' | absolute_url | jsonify }},
+    "name": {{ page.title | jsonify }},
+    "description": {{ page.description | jsonify }},
+    "mainEntity": {% include person_jsonld.html author=author %}
+  }
+  </script>
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}" />
+  <link rel="alternate" type="text/plain" title="llms.txt" href="{{ '/llms.txt' | absolute_url }}" />
   <script>
     /* apply the saved theme before first paint so there is no flash */
     (function () {
@@ -79,7 +100,8 @@
     <section class="hero wrap">
       <p class="hero-kicker mono"><span class="prompt">$</span> whoami</p>
       <h1 class="hero-name">Jaskamal Kainth</h1>
-      <p class="hero-line">I build <span class="hl">search engines</span>: query understanding, retrieval, ranking. Off the clock I read <span class="hl">philosophy</span>, listen to a lot of <span class="hl">music</span>, and play with <span class="hl">algorithms</span>.</p>
+      <p class="hero-cred mono">{{ author.job_title }}, Samsung R&amp;D · product search in 55+ markets · ACM-ICPC</p>
+      <p class="hero-line">I build <span class="hl">search engines</span>: query understanding, retrieval, ranking, and LLM reranking on top. Off the clock I read <span class="hl">philosophy</span>, listen to a lot of <span class="hl">music</span>, and play with <span class="hl">algorithms</span>.</p>
 
       <div class="search" id="search" role="search">
         <div class="search-box">
@@ -310,6 +332,7 @@
 
   <footer class="footer wrap">
     <p class="footer-tag">Stay curious <span class="accent">✦</span> Stay alive</p>
+    <p class="footer-agents mono"><span class="muted">for AI agents:</span> <a href="{{ site.baseurl }}/agents.html">agents</a> · <a href="{{ site.baseurl }}/llms.txt">llms.txt</a> · <a href="{{ site.baseurl }}/llms-full.txt">llms-full.txt</a> · <a href="{{ site.baseurl }}/feed.xml">feed</a> · <a href="{{ site.baseurl }}/sitemap.xml">sitemap</a></p>
     <p class="footer-keys mono muted"><kbd>/</kbd> search · <kbd>d</kbd> light/dark · <kbd>t</kbd> theme · <kbd>b</kbd> background</p>
   </footer>
 
