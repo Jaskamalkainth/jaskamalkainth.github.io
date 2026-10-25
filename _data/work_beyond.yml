@@ -1,6 +1,16 @@
 # Work & Writing - full titles, descriptions, dates, and links
 work:
   # —— Technical ——
+  - title: "Monte Carlo Simulation"
+    kind: "math"
+    date: "2026-10"
+    desc: "Monte Carlo simulation in plain words: estimate π, the birthday problem and project deadlines in Python."
+    meta: "Oct 2026"
+    links:
+      - label: "Article"
+        url: "/blog_posts/monte-carlo-simulation-explained.html"
+    href: "/blog_posts/monte-carlo-simulation-explained.html"
+
   - title: "textGrain: OpenAI's Text Watermark"
     kind: "math"
     date: "2026-10"
