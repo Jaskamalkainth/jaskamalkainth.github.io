@@ -1,0 +1,75 @@
+/* Monte Carlo simulation widgets. Used by /blog_posts/monte-carlo-simulation-explained.html
+   and the standalone demo in this folder. Builds on the tokens in /css/blog_post.css. */
+
+.mc {
+  --mc-a: #2a78d6;        /* "hit": inside / on time / unique */
+  --mc-b: #eb6834;        /* "miss": outside / late / shared */
+  --mc-band: rgba(42, 120, 214, 0.14);
+  margin: 1.2em 0 1.6em;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius, 12px);
+  font-size: 15px;
+  line-height: 1.5;
+}
+[data-post-theme="dark"] .mc {
+  --mc-a: #3987e5;
+  --mc-b: #d95926;
+  --mc-band: rgba(57, 135, 229, 0.18);
+}
+.mc-title { margin: 0 0 4px; font-weight: 600; font-size: 1.02em; }
+.mc-sub { margin: 0 0 12px; color: var(--muted); font-size: 0.92em; }
+
+.mc-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+.mc-row > .mc-col { flex: 1 1 280px; min-width: 0; }
+
+.mc canvas { display: block; width: 100%; height: auto; border-radius: 8px; touch-action: manipulation; }
+
+.mc-controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 12px 0 0; }
+.mc button {
+  font: inherit; font-size: 0.9em; font-weight: 500;
+  min-height: 34px; padding: 6px 12px; cursor: pointer;
+  color: var(--text); background: var(--surface-2);
+  border: 1px solid var(--border); border-radius: 8px;
+}
+.mc button:hover { border-color: var(--accent); }
+.mc button:focus-visible, .mc input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mc button.mc-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.mc button[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+
+.mc-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; margin: 12px 0 0; }
+.mc-stat { background: var(--surface-2); border-radius: 8px; padding: 8px 10px; }
+.mc-stat b { display: block; font-size: 1.25em; font-weight: 600; font-variant-numeric: tabular-nums; }
+.mc-stat span { color: var(--muted); font-size: 0.82em; }
+
+.mc-legend { display: flex; flex-wrap: wrap; gap: 14px; margin: 8px 0 0; color: var(--muted); font-size: 0.85em; }
+.mc-key { display: inline-flex; align-items: center; gap: 6px; }
+.mc-key i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.mc-key i.a { background: var(--mc-a); }
+.mc-key i.b { background: var(--mc-b); }
+.mc-key i.line { width: 16px; height: 2px; border-radius: 1px; background: var(--text); }
+.mc-key i.band { width: 16px; height: 10px; border-radius: 2px; background: var(--mc-band); }
+
+.mc-field { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 8px 0 0; font-size: 0.92em; }
+.mc-field label { min-width: 70px; }
+.mc-field input[type="range"] { flex: 1 1 160px; accent-color: var(--accent); }
+.mc-field output { font-variant-numeric: tabular-nums; font-weight: 600; min-width: 64px; }
+.mc-note { margin: 10px 0 0; font-size: 0.9em; color: var(--muted); min-height: 1.5em; }
+.mc-note strong { color: var(--text); }
+
+.mc-chart { position: relative; }
+.mc-tip {
+  position: absolute; pointer-events: none; z-index: 2;
+  padding: 6px 9px; border-radius: 6px; font-size: 12.5px; line-height: 1.35; white-space: nowrap;
+  background: var(--text); color: var(--bg); opacity: 0; transition: opacity 0.1s;
+  font-variant-numeric: tabular-nums;
+}
+.mc-tip.on { opacity: 0.95; }
+
+.mc-tasks { display: grid; grid-template-columns: auto 1fr 1fr; max-width: 420px; gap: 6px 10px; align-items: center; font-size: 0.9em; margin: 8px 0 0; }
+.mc-tasks .h { color: var(--muted); font-size: 0.85em; }
+.mc-tasks input[type="number"] {
+  width: 100%; box-sizing: border-box; font: inherit; padding: 4px 8px; min-height: 32px;
+  color: var(--text); background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px;
+}
