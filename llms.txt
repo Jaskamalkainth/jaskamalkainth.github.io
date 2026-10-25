@@ -11,11 +11,14 @@ Personal site and blog of {{ author.name }}. Articles cover algorithms and data 
 
 - Author: {{ author.name }}, {{ author.job_title }}, {{ author.works_for }}
 - Profiles: {{ author.same_as | join: ", " }}
+- Full text of every article in one Markdown file: {{ '/llms-full.txt' | absolute_url }}
+- Atom feed: {{ '/feed.xml' | absolute_url }}
 - Sitemap: {{ site.url }}/sitemap.xml
+- Guide for AI agents (what's here, how to cite it): {{ '/agents.html' | absolute_url }}
 
 ## Articles
 {% assign posts = site.pages | where: "layout", "post" | sort: "title" %}
-{%- for p in posts %}{% if p.path contains 'CppNotesDb/' or p.path contains 'experiments/' %}{% continue %}{% endif %}
+{%- for p in posts %}{% unless p.path contains 'blog_posts/' %}{% continue %}{% endunless %}{% if p.path contains 'CppNotesDb/' or p.path contains 'experiments/' %}{% continue %}{% endif %}
 - [{{ p.title }}]({{ p.url | absolute_url }}){% if p.description %}: {{ p.description }}{% endif %}
 {%- endfor %}
 
@@ -26,10 +29,14 @@ Personal site and blog of {{ author.name }}. Articles cover algorithms and data 
 {%- endfor %}
 
 ## Interactive demos
-- [Bloom filter visualization]({{ '/blog_posts/experiments/bloom-filter/' | absolute_url }}): insert and query strings and watch bits flip in a live Bloom filter.
-- [HNSW visualization]({{ '/blog_posts/experiments/hnsw-simul/' | absolute_url }}): step through how Hierarchical Navigable Small World graphs answer approximate nearest neighbour queries.
-- [Fourier epicycles]({{ '/blog_posts/experiments/fourier-epicycles/' | absolute_url }}): rotating circles that redraw a shape from its discrete Fourier transform.
-- [Image pixelator]({{ '/blog_posts/experiments/Pixelate/' | absolute_url }}): turn an uploaded image into pixel art in the browser.
+{%- comment %} Generated from the homepage cards so new demos are listed automatically. {% endcomment %}
+{%- for item in site.data.work_beyond.work %}
+{%- for link in item.links %}{% if link.external %}{% continue %}{% endif %}
+{%- if link.demo or link.url contains '/experiments/' %}
+- [{{ item.title }}]({{ link.url | remove: 'index.html' | absolute_url }}): {{ item.desc }}
+{%- endif %}
+{%- endfor %}
+{%- endfor %}
 
 ## Talks and papers
 - [FFT for large number multiplication (slides)]({{ '/blog_posts/FFT_LargeNumberMultiplication.pdf' | absolute_url }})

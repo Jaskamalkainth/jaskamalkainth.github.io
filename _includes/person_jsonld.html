@@ -1,0 +1,16 @@
+{%- comment -%}
+  The site author as a schema.org Person (E-E-A-T). Pass `author` from _data/authors.yml.
+  Shared by the homepage ProfilePage and every post's @graph so both describe the same entity.
+{%- endcomment -%}
+{
+      "@type": "Person",
+      "@id": {{ include.author.url | append: '#person' | jsonify }},
+      "name": {{ include.author.name | jsonify }},
+      "url": {{ include.author.url | jsonify }},
+      "jobTitle": {{ include.author.job_title | jsonify }},
+      "worksFor": { "@type": "Organization", "name": {{ include.author.works_for | jsonify }} },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": {{ include.author.alumni_of | jsonify }} },
+      "knowsAbout": {{ include.author.knows_about | jsonify }},
+      "description": {{ include.author.bio | jsonify }},
+      "sameAs": {{ include.author.same_as | jsonify }}
+    }

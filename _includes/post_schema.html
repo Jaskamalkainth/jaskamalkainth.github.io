@@ -10,18 +10,7 @@
   "@context": "https://schema.org",
   "@graph": [
     {%- if author %}
-    {
-      "@type": "Person",
-      "@id": {{ author.url | append: '#person' | jsonify }},
-      "name": {{ author.name | jsonify }},
-      "url": {{ author.url | jsonify }},
-      "jobTitle": {{ author.job_title | jsonify }},
-      "worksFor": { "@type": "Organization", "name": {{ author.works_for | jsonify }} },
-      "alumniOf": { "@type": "CollegeOrUniversity", "name": {{ author.alumni_of | jsonify }} },
-      "knowsAbout": {{ author.knows_about | jsonify }},
-      "description": {{ author.bio | jsonify }},
-      "sameAs": {{ author.same_as | jsonify }}
-    },
+    {% include person_jsonld.html author=author %},
     {%- endif %}
     {%- if page.faq %}
     {

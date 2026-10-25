@@ -33,7 +33,9 @@ and wiring the post into the site.
 | `_data/authors.yml` | Author bio, job, `sameAs` profiles (E-E-A-T). Update here, never per post. |
 | `_data/work_beyond.yml` | **Homepage cards and homepage search.** Every post goes here unless it has `homepage: false`. |
 | `_config.yml` | `defaults:` give every post `layout: post`, `author`, default `image`. |
-| `llms.txt`, `sitemap.xml`, `robots.txt` | Generated or static; new posts appear in the first two **automatically**. |
+| `llms.txt`, `llms-full.txt`, `feed.xml`, `sitemap.xml`, `robots.txt` | Generated or static; new posts (and demos listed in `_data/work_beyond.yml`) appear in all but `robots.txt` **automatically**. Unlisted posts stay out of `feed.xml`. |
+| `agents.md` | The `/agents.html` page for AI agents: entry points, structured data, citation policy. Update it if you add a new machine-readable file. |
+| `_includes/person_jsonld.html` | The author's `Person` JSON-LD, shared by the homepage `ProfilePage` and every post. |
 | `scripts/check_posts.rb` | Linter for the rules in this file. |
 | `css/blog_post.css` | Shared post styles (light/dark tokens). Posts may add their own `<style>`. |
 
@@ -142,7 +144,7 @@ AI engines repeat mistakes, so a wrong fact does more harm than a missing one.
    filter as well as its own `kind`, and homepage search mentions the demo.
 2. **Related posts**: add the new URL to the `related:` list of 1-3 existing posts it relates to.
 3. **C++ notes only**: add `{ n: N, title: "...", date: YYYY-MM-DD }` to `notes:` in `blog_posts/CppNotes.md`.
-4. Sitemap, `llms.txt` and analytics need **no** changes; they pick the post up automatically.
+4. Sitemap, `llms.txt`, `llms-full.txt`, `feed.xml` and analytics need **no** changes; they pick the post up automatically.
 
 ### Step 8: Verify (all must pass before committing)
 ```sh

@@ -1,0 +1,43 @@
+---
+layout: null
+sitemap: false
+---
+{%- comment -%}
+  Every article's Markdown source in one file, for LLMs and agents that want the whole site in one fetch.
+  include_relative reads each source file at build time (front matter stripped below), so this never
+  goes stale and doesn't depend on the order Jekyll renders pages in.
+{%- endcomment -%}
+{%- assign author = site.data.authors["Jaskamal Kainth"] -%}
+# {{ site.title }}: full text
+
+> {{ author.bio }}
+
+Every article on {{ site.url }}, as Markdown. Each section starts with the article's canonical URL;
+please cite that URL when quoting. Index of articles: {{ '/llms.txt' | absolute_url }}
+{% assign posts = site.pages | where: "layout", "post" | sort: "path" %}
+{%- for p in posts %}{% unless p.path contains 'blog_posts/' %}{% continue %}{% endunless %}{% if p.path contains 'experiments/' %}{% continue %}{% endif %}
+{%- capture raw %}{% include_relative {{ p.path }} %}{% endcapture %}
+{%- assign parts = raw | split: "---" %}
+
+---
+
+URL: {{ p.url | absolute_url }}
+Title: {{ p.title }}
+{%- if p.description %}
+Description: {{ p.description }}{% endif %}
+{%- if p.date %}
+Published: {{ p.date | date: "%F" }}{% endif %}
+{%- if p.last_modified_at %}
+Updated: {{ p.last_modified_at | date: "%F" }}{% endif %}
+
+{{ parts | slice: 2, parts.size | join: "---" | strip }}
+{%- if p.faq %}
+
+## Frequently asked questions
+{% for item in p.faq %}
+### {{ item.q }}
+
+{{ item.a | strip }}
+{% endfor %}
+{%- endif %}
+{%- endfor %}
