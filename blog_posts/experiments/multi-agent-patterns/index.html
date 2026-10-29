@@ -278,6 +278,10 @@ table.cmp{width:100%;border-collapse:collapse;font-size:13.5px}
 .loop .ar.d{stroke-dasharray:5 4}
 #lgx .loop .ar{marker-end:url(#lga)}   /* each diagram has its own arrowhead: the other section is hidden */
 .loop .anat .ar{marker-end:url(#cxw)}  /* and each tab: a hidden pane's marker doesn't draw */
+#lgx .loop .anat .ar{marker-end:url(#lgw)}
+.loop .bx.dt{stroke:var(--data);fill:color-mix(in srgb,var(--data) 8%,var(--panel))}
+.loop .chip2{fill:var(--panel2);stroke:var(--data);stroke-width:1}
+.loop .band.ck{fill:color-mix(in srgb,var(--ok) 5%,transparent);stroke:var(--ok)}
 .loop text.st{text-anchor:start}
 .loop .gl{fill:color-mix(in srgb,var(--agent) 28%,var(--panel));stroke:var(--agent);stroke-width:1.4}
 .loop .ic{fill:var(--agent)}
@@ -292,6 +296,8 @@ table.cmp{width:100%;border-collapse:collapse;font-size:13.5px}
 .loop .steps li{counter-increment:st;padding-left:28px;position:relative}
 .loop .steps li::before{content:counter(st);position:absolute;left:0;top:1px;width:20px;height:20px;border-radius:50%;background:color-mix(in srgb,var(--c) 20%,var(--panel));color:var(--c);font:600 11px/20px var(--f-mono);text-align:center}
 .cx table.cmp td{color:var(--muted)}
+/* phones: the big diagrams keep a readable size and scroll sideways */
+@media (max-width:640px){.cx .pane.loop{overflow-x:auto} .loop svg{min-width:640px}}
 .cx a.doclink{color:var(--c);font:600 12px var(--f-mono);text-decoration:none;white-space:nowrap}
 .cx a.doclink:hover{text-decoration:underline}
 .card .docs{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:8px}
@@ -338,7 +344,7 @@ pre.term .c{color:var(--code-c)} pre.term .p{color:var(--ok)}
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div class="topbar"><div class="in">
-  <span class="brand"><b>Multi-Agent Patterns in LangGraph &amp; CrewAI</b> · <a href="/">Jaskamal Kainth</a></span>
+  <span class="brand"><b>Multi-Agent Patterns in CrewAI &amp; LangGraph</b> · <a href="/">Jaskamal Kainth</a></span>
   <div class="ctrl" style="align-items:center"><nav class="secnav" id="secnav" aria-label="Sections"></nav>
   <button class="btn ghost" id="theme" title="Dark · Light · System">Theme: Dark</button></div>
 </div></div>
@@ -542,23 +548,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <div class="cx" id="lgx" style="--c:var(--lg)">
     <nav role="tablist" aria-label="LangGraph explained">
-      <button role="tab" data-p="what"><b>A</b>What it is</button>
-      <button role="tab" data-p="how"><b>B</b>How a run works</button>
-      <button role="tab" data-p="good"><b>C</b>Strengths</button>
-      <button role="tab" data-p="weak"><b>D</b>Weaknesses</button>
+      <button role="tab" data-p="what"><b>A</b>Building blocks</button>
+      <button role="tab" data-p="map"><b>B</b>Patterns → LangGraph</button>
+      <button role="tab" data-p="how"><b>C</b>How a run works</button>
+      <button role="tab" data-p="trade"><b>D</b>Trade-offs</button>
       <button role="tab" data-p="tips"><b>E</b>Gotchas and fixes</button>
     </nav>
 
-    <div class="pane" data-p="what" role="tabpanel">
+    <div class="pane loop" data-p="what" role="tabpanel">
       <h3>A library for agents as state machines</h3>
-      <p><b>LangGraph</b> is an open-source, low-level orchestration library from the LangChain team, for Python and JavaScript. You describe your system as a <b>graph</b>: one shared <b>state</b>, <b>nodes</b> that read it and return updates, and <b>edges</b> that decide what runs next. It doesn’t write prompts or define agents for you, and it doesn’t need LangChain. This demo uses <code>langgraph 1.x</code>.</p>
+      <p><b>LangGraph</b> is an open-source orchestration library from the LangChain team, for Python and JavaScript. You draw your system as a <b>graph</b>; it doesn’t write prompts or define agents for you, and it doesn’t need LangChain. This demo uses <code>langgraph 1.x</code>. Official docs: <a class="doclink" href="https://docs.langchain.com/oss/python/langgraph/overview" target="_blank" rel="noopener">docs.langchain.com ↗</a></p>
+      <svg class="anat" viewBox="0 0 960 330" role="img" aria-label="LangGraph building blocks: one shared state that every node reads and updates; nodes are functions joined by edges from START to END; a conditional edge runs a route function that picks the next node or loops back; a checkpointer saves the state after every step so a run can resume, rewind or pause for a human">
+  <defs><marker id="lgw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker></defs>
+  <text class="l st" x="14" y="26" style="fill:var(--data)">STATE · what every node shares</text>
+  <rect class="bx dt" x="14" y="36" width="932" height="58" rx="12"/><text class="st" x="34" y="60">State</text><text class="s st" x="34" y="80">one object · nodes read it, return updates</text>
+  <rect class="chip2" x="470" y="51" width="150" height="28" rx="8"/><text class="s" x="545" y="70">notes: list (+ add)</text>
+  <rect class="chip2" x="634" y="51" width="140" height="28" rx="8"/><text class="s" x="704" y="70">draft: str</text>
+  <rect class="chip2" x="788" y="51" width="142" height="28" rx="8"/><text class="s" x="859" y="70">approved: bool</text>
+  <rect class="bx" x="14" y="148" width="78" height="54" rx="27"/><text x="53" y="180">START</text>
+  <rect class="bx lg" x="118" y="148" width="150" height="54" rx="10"/><text x="193" y="171">Node 1</text><text class="s" x="193" y="190">fn(state) → update</text>
+  <rect class="bx lg" x="298" y="148" width="150" height="54" rx="10"/><text x="373" y="171">Node 2</text><text class="s" x="373" y="190">fn(state) → update</text>
+  <polygon class="bx ev" points="530,141 590,175 530,209 470,175"/><text x="530" y="179" style="font-size:12px">route()</text>
+  <rect class="bx lg" x="620" y="148" width="150" height="54" rx="10"/><text x="695" y="171">Node 3</text><text class="s" x="695" y="190">fn(state) → update</text>
+  <rect class="bx" x="800" y="148" width="78" height="54" rx="27"/><text x="839" y="180">END</text>
+  <path class="ar" d="M92 175 H114"/><path class="ar" d="M268 175 H294"/><path class="ar" d="M448 175 H466"/><path class="ar e" d="M590 175 H616"/><text class="l" x="603" y="166" style="fill:var(--event)">ok</text><path class="ar" d="M770 175 H796"/>
+  <path class="ar r" d="M530 209 V228 H373 V206"/><text class="l" x="452" y="224" style="fill:var(--critic)">retry: a cycle</text>
+  <path class="ar g d" style="marker-start:url(#lgw)" d="M193 144 V98"/><path class="ar g d" style="marker-start:url(#lgw)" d="M373 144 V98"/><path class="ar g d" style="marker-start:url(#lgw)" d="M695 144 V98"/><text class="l st" x="381" y="124" style="fill:var(--lg)">read · update</text>
+  <text class="l st" x="30" y="254">→ add_edge: always next</text><text class="l st" x="232" y="254" style="fill:var(--event)">◇ add_conditional_edges: a function picks</text><text class="l st" x="582" y="254">Send(): N copies in parallel</text>
+  <rect class="band ck" x="6" y="266" width="948" height="58" rx="12"/><text class="l st" x="22" y="290" style="fill:var(--ok)">CHECKPOINTER · saves the whole state after every step, per thread_id</text><text class="s st" x="22" y="310">resume after a crash · rewind to any step · interrupt() pauses for a human</text>
+</svg>
       <div class="cards four">
-        <div class="card"><b class="t"><i>MEMORY</i>State</b>A <code>TypedDict</code> (or pydantic model). Each key can have a <b>reducer</b>: <code>Annotated[list, operator.add]</code> appends, a plain key is overwritten.</div>
-        <div class="card"><b class="t"><i>WORK</i>Node</b>Any Python function: <code>state → update</code>. It can call a model, a tool, an API, or just do arithmetic. Only the keys it returns change.</div>
-        <div class="card"><b class="t"><i>FLOW</i>Edges</b><code>add_edge</code> (always next), <code>add_conditional_edges</code> (a function picks), <code>Send</code> (start N copies with their own payload). Cycles are allowed.</div>
-        <div class="card"><b class="t"><i>DURABILITY</i>Checkpointer</b>Saves the state after every step, per <code>thread_id</code>: resume after a crash, pause for a human with <code>interrupt()</code>, browse history and rewind.</div>
+        <div class="card"><b class="t"><i>MEMORY</i>State</b>A <code>TypedDict</code> or pydantic model. A <b>reducer</b> like <code>Annotated[list, operator.add]</code> appends; a plain key is overwritten.<span class="docs"><a class="doclink" href="https://docs.langchain.com/oss/python/langgraph/graph-api" target="_blank" rel="noopener">Graph API docs ↗</a></span></div>
+        <div class="card"><b class="t"><i>WORK</i>Node</b>Any Python function, <code>state → update</code>: a model call, a tool, an API, or plain code. Only the keys it returns change.<span class="docs"><a class="doclink" href="https://docs.langchain.com/oss/python/langgraph/graph-api" target="_blank" rel="noopener">Graph API docs ↗</a></span></div>
+        <div class="card"><b class="t"><i>FLOW</i>Edges</b><code>add_edge</code> (always next), <code>add_conditional_edges</code> (a function picks), <code>Send</code> (N copies in parallel). Cycles are allowed.<span class="docs"><a class="doclink" href="https://docs.langchain.com/oss/python/langgraph/graph-api" target="_blank" rel="noopener">Graph API docs ↗</a></span></div>
+        <div class="card"><b class="t"><i>DURABILITY</i>Checkpointer</b>Saves the state per <code>thread_id</code>: resume after a crash, pause with <code>interrupt()</code>, rewind.<span class="docs"><a class="doclink" href="https://docs.langchain.com/oss/python/langgraph/persistence" target="_blank" rel="noopener">Persistence docs ↗</a><a class="doclink" href="https://docs.langchain.com/oss/python/langgraph/interrupts" target="_blank" rel="noopener">Interrupts docs ↗</a></span></div>
       </div>
-      <p>Around those four: <b>subgraphs</b> (a compiled graph is a node), <b>streaming</b> of updates, values and tokens, <b>Command</b> (update state and jump in one return), a long-term <b>store</b>, and prebuilt agent loops when you don’t want to draw one. LangChain also sells a hosted platform and LangSmith tracing around it; neither is required.</p>
+      <p>Also built in: <b>subgraphs</b>, <b>streaming</b>, <b>Command</b> (update and jump in one return), a long-term <b>store</b>, and prebuilt agent loops. LangSmith tracing and a hosted platform are optional extras.</p>
+    </div>
+
+    <div class="pane" data-p="map" role="tabpanel" hidden>
+      <h3>Every pattern from section 1, in LangGraph</h3>
+      <p>Most patterns are <b>an edge you draw</b>: <b>4</b> are edges, <b>1</b> is what a node passes on, <b>1</b> is the state, <b>1</b> is the checkpointer, and <b>1</b> is your own code calling <code>invoke()</code>. Click a card to see its code below.</p>
+      <div class="pmap" id="lpmap"></div>
     </div>
 
     <div class="pane loop" data-p="how" role="tabpanel" hidden>
@@ -588,29 +619,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>The idea to keep: <b>you own the loop</b>. Nothing runs that isn’t an edge, and a node is just a function, so the model is called only where you put a call.</p>
     </div>
 
-    <div class="pane" data-p="good" role="tabpanel" hidden>
-      <h3>Strengths: what the control buys you</h3>
-      <div class="cards">
-        <div class="card good"><b class="t"><i>01</i>Exact control flow</b>Every branch, loop and join is an edge you drew, and the shape can be decided at run time with <code>Send</code>. <div class="ev"><b>Here:</b> the L1 planner reads the query and decides at run time which workers to start.</div></div>
-        <div class="card good"><b class="t"><i>02</i>Plain code where code is enough</b>Filtering by price doesn’t need a model. Only the judgment calls cost tokens and seconds. <div class="ev"><b>Here:</b> L0 makes one model call: search, filter and pick are plain Python, the model only writes the confirmation.</div></div>
-        <div class="card good"><b class="t"><i>03</i>Durable execution</b>A checkpoint after every step: survive a crash, resume a thread tomorrow, browse the history, rewind and fork. <div class="ev"><b>Here:</b> the guardrails lab crashes, resumes and rewinds from <code>SqliteSaver</code> with <code>get_state_history</code>.</div></div>
-        <div class="card good"><b class="t"><i>04</i>Human in the loop, anywhere</b><code>interrupt()</code> inside any node pauses and persists; the answer can come hours later, from another process. <div class="ev"><b>Here:</b> the approval guardrail in <code>lab/guards.py</code> is one line.</div></div>
-        <div class="card good"><b class="t"><i>05</i>Safe parallelism</b>Reducers say how parallel updates merge, so fan-out and fan-in are deterministic, not a race. <div class="ev"><b>Here:</b> L2’s three scouts append to <code>offers</code> through <code>operator.add</code>.</div></div>
-        <div class="card good"><b class="t"><i>06</i>No hidden prompts</b>Every prompt is one you wrote; stream updates, state or tokens as they happen. <div class="ev"><b>Here:</b> the Run log shows each LangGraph call’s context: exactly the dict the node built.</div></div>
+    <div class="pane" data-p="trade" role="tabpanel" hidden>
+      <h3>Trade-offs: control, paid for in code</h3>
+      <div class="trade">
+        <div class="tcol tget"><h4>What you get</h4><ul>
+          <li><b>Exact control flow.</b> Every branch, loop and join is an edge you drew, and <code>Send</code> can shape the graph at run time.</li>
+          <li><b>Plain code where code is enough.</b> Only the judgment calls hit the model. Measured here: L0 makes 1 model call (CrewAI: 3).</li>
+          <li><b>Durable execution.</b> A checkpoint after every step: resume after a crash, browse the history, rewind and fork.</li>
+          <li><b>Human in the loop, anywhere.</b> <code>interrupt()</code> pauses and saves; the answer can come hours later, from another process.</li>
+          <li><b>Safe parallelism.</b> Reducers say how parallel updates merge, so fan-in is deterministic, not a race.</li>
+          <li><b>No hidden prompts.</b> Every prompt is one you wrote; stream updates, state or tokens as they happen.</li>
+        </ul></div>
+        <div class="tcol tpay"><h4>What you pay</h4><ul>
+          <li><b>More code, more decisions.</b> State, nodes, edges and reducers before anything runs: the L2 graph is 154 lines.</li>
+          <li><b>Steep concepts.</b> Supersteps, reducers, <code>Send</code> vs <code>Command</code>, threads vs store: it’s easy to misread when a node runs.</li>
+          <li><b>Batteries not included.</b> No roles, typed retries or delegation: the critic loop is two edges and a counter you maintain.</li>
+          <li><b>Wiring bugs show at run time.</b> A missing edge, two parallel writers to a plain key, a loop with no exit.</li>
+          <li><b>Resume reruns the node.</b> After <code>interrupt()</code> the node starts again from its first line, so keep side effects idempotent.</li>
+          <li><b>Checkpoints cost.</b> Every step writes the full state: the demo’s checkpoint database grew to 27 MB.</li>
+        </ul></div>
       </div>
-    </div>
-
-    <div class="pane" data-p="weak" role="tabpanel" hidden>
-      <h3>Weaknesses: what you pay for the control</h3>
-      <div class="cards">
-        <div class="card weak"><b class="t"><i>01</i>More code, more decisions</b>A state schema, nodes, edges and reducers before anything runs, and you decide every one of them. <div class="ev"><b>Here:</b> the L2 graph is 154 lines: state, nodes, routers and edges all spelled out.</div></div>
-        <div class="card weak"><b class="t"><i>02</i>Steep concepts</b>Supersteps, channels, reducers, <code>Send</code> vs <code>Command</code>, threads vs store. It’s easy to misread when, and how often, a node runs.</div>
-        <div class="card weak"><b class="t"><i>03</i>Batteries not included</b>No roles, typed retries, memory or delegation out of the box. Validation, retry with feedback and critics are yours to build. <div class="ev"><b>Here:</b> the critic loop is two conditional edges plus a <code>rejected</code> list in state that you maintain.</div></div>
-        <div class="card weak"><b class="t"><i>04</i>Wiring bugs show up at run time</b>A missing edge means a node never runs; two parallel writers to a plain key raise an error; a loop without an exit hits <code>recursion_limit</code>. <div class="ev"><b>Here:</b> <code>lab/runner.py</code> sets <code>recursion_limit=24</code> as the last line of defence.</div></div>
-        <div class="card weak"><b class="t"><i>05</i>Resume reruns the node</b>After <code>interrupt()</code>, resuming runs the whole node again from its first line, so anything before the interrupt happens twice unless it’s idempotent.</div>
-        <div class="card weak"><b class="t"><i>06</i>Checkpoints have a cost</b>Every step writes the full state: storage grows, everything in state must serialize, and changing the schema can break old threads. <div class="ev"><b>Here:</b> the demo runs grew their checkpoint database to 27 MB.</div></div>
-      </div>
-      <p>Debugging is smoothest with LangSmith, LangChain’s paid tracing; without it you add your own (this project writes its own run log). The trade: you get <b>control and durability</b>, and you pay in <b>code and concepts</b>.</p>
     </div>
 
     <div class="pane" data-p="tips" role="tabpanel" hidden>
@@ -1084,39 +1112,49 @@ const D2={pipe:{n:{START:[20,60,'u'],search:[80,60],filter:[140,60],pick:[200,60
 const hotflow=(d,hot,f)=>({...D2[d],hot,f});
 const TOURS={
  langgraph:[
-  {id:'lg_state',t:'State: one shared memory',s:'TypedDict + reducers',d:hotflow('state',['state','scout A>state','scout B>state'],[['scout A','state',0,.35],['scout B','state',.05,.4],['state','evaluator',.55,.85]]),
-   x:`<p>A LangGraph run carries <b>one state object</b>, here a <code>TypedDict</code>. Nodes read it and return the keys they change.</p>
-      <ul><li><b>Reducers</b> say how parallel writes merge: <code>Annotated[list, operator.add]</code> appends, so three scouts writing <code>offers</code> at once lose nothing.</li>
-      <li>Keys without a reducer are simply overwritten: keep one writer for those.</li></ul>`},
   {id:'lg_node',t:'Nodes are plain functions',s:'state in, update out',d:hotflow('loop',['evaluator']),
    x:`<p>A node is a Python function: it gets the state, does its work and <b>returns only what it changes</b>.</p>
       <ul><li>Some nodes call a model (<code>c.think(…)</code>); others are plain code. That choice is yours per step, which is why a LangGraph pipeline can be cheap and deterministic.</li>
       <li>Here the evaluator filters out rejected picks in code and asks the model to choose.</li></ul>`},
-  {id:'lg_edges',t:'Edges: sequential handoff',s:'add_node · add_edge · compile',d:hotflow('pipe',['START>search','search>filter','filter>pick','pick>END'],[['START','search',0,.18],['search','filter',.22,.42],['filter','pick',.46,.66],['pick','END',.7,.9]]),
+
+  {id:'lg_edges',t:'Edges: sequential handoff',s:'pattern 1 · add_edge · compile',d:hotflow('pipe',['START>search','search>filter','filter>pick','pick>END'],[['START','search',0,.18],['search','filter',.22,.42],['filter','pick',.46,.66],['pick','END',.7,.9]]),
    x:`<p><b>Pattern 1 in code.</b> Register nodes, wire them with <code>add_edge</code>, <code>compile()</code>. The order is fixed at build time.</p>
       <ul><li><code>START</code> and <code>END</code> are the graph’s entry and exit.</li><li>Each node sees the whole state, but only the keys earlier nodes wrote: what nobody wrote doesn’t exist.</li></ul>`},
-  {id:'lg_route',t:'Conditional edges: the router',s:'hub and spoke, decided at run time',d:hotflow('hub',['planner>worker','worker>planner'],[['planner','worker',0,.3],['worker','planner',.4,.7]]),
+
+  {id:'lg_route',t:'Conditional edges: the router',s:'pattern 2 · a supervisor routes',d:hotflow('hub',['planner>worker','worker>planner'],[['planner','worker',0,.3],['worker','planner',.4,.7]]),
    x:`<p><code>add_conditional_edges(source, route, targets)</code>: after <code>source</code>, call <code>route(state)</code> and go wherever it says.</p>
       <ul><li>The planner loops through the plan it wrote: worker → planner → worker… until <code>route</code> returns <code>"checkout"</code>.</li>
       <li>This is the <b>hierarchical</b> shape in LangGraph: a supervisor node plus a router. The planner’s context sees every report.</li></ul>`},
-  {id:'lg_send',t:'Send: fan out at run time',s:'parallel + selective context',d:hotflow('fan',['lead>scout A','lead>scout B','lead>scout C'],[['lead','scout A',0,.3],['lead','scout B',0,.3],['lead','scout C',0,.3],['scout A','evaluator',.45,.75],['scout B','evaluator',.5,.8],['scout C','evaluator',.55,.85]]),
+
+  {id:'lg_send',t:'Send: fan out at run time',s:'pattern 3 · parallel fan-out',d:hotflow('fan',['lead>scout A','lead>scout B','lead>scout C'],[['lead','scout A',0,.3],['lead','scout B',0,.3],['lead','scout C',0,.3],['scout A','evaluator',.45,.75],['scout B','evaluator',.5,.8],['scout C','evaluator',.55,.85]]),
    x:`<p>Return a list of <code>Send("scout", payload)</code> from a router and LangGraph runs <b>one scout per item, in parallel</b>. One plain edge, <code>scout → evaluator</code>, joins them: the evaluator runs once all scouts finish.</p>
       <ul><li><b>Selective context:</b> each scout gets only its payload, <code>{"store", "query"}</code>, not the whole state.</li><li>The number of scouts is decided at run time: add a store and you get another scout.</li></ul>`},
-  {id:'lg_cycle',t:'Cycles: the critic loop',s:'conditional edges back',d:hotflow('loop',['critic>evaluator'],[['evaluator','critic',0,.3],['critic','evaluator',.4,.7]]),
+
+  {id:'lg_cycle',t:'Cycles: the critic loop',s:'pattern 4 · conditional edges back',d:hotflow('loop',['critic>evaluator'],[['evaluator','critic',0,.3],['critic','evaluator',.4,.7]]),
    x:`<p>Graphs can loop. After the critic, <code>after_critic</code> sends a rejected pick <b>back to the evaluator</b>; an approved one goes to checkout.</p>
       <ul><li>The loop ends because the evaluator excludes rejected picks, and LangGraph’s recursion limit stops a runaway.</li></ul>`},
-  {id:'lg_critic',t:'A critic with a clean context',s:'what the reviewer sees',d:hotflow('loop',['critic']),
+
+  {id:'lg_critic',t:'A critic with a clean context',s:'pattern 5 · only what it needs',d:hotflow('loop',['critic']),
    x:`<p>The critic is <b>given only the pick and the seller register</b>, not how the team got there. That’s what made it catch the fake in the simulation.</p>
       <ul><li>The rule (a verified seller) is code; the model can only add caution, never overrule it.</li></ul>`},
-  {id:'lg_hitl',t:'Human approval: interrupt + checkpoints',s:'pause, save, resume',d:hotflow('hitl',['interrupt'],[['buyer','interrupt',0,.25],['interrupt','you',.35,.55],['you','interrupt',.65,.85]]),
+
+  {id:'lg_state',t:'State: one shared memory',s:'pattern 6 · TypedDict + reducers',d:hotflow('state',['state','scout A>state','scout B>state'],[['scout A','state',0,.35],['scout B','state',.05,.4],['state','evaluator',.55,.85]]),
+   x:`<p>A LangGraph run carries <b>one state object</b>, here a <code>TypedDict</code>. Nodes read it and return the keys they change.</p>
+      <ul><li><b>Reducers</b> say how parallel writes merge: <code>Annotated[list, operator.add]</code> appends, so three scouts writing <code>offers</code> at once lose nothing.</li>
+      <li>Keys without a reducer are simply overwritten: keep one writer for those.</li></ul>`},
+
+  {id:'lg_event',t:'Event-driven: who calls invoke()',s:'pattern 7 · the trigger is outside',d:hotflow('event',['feed>watcher'],[['feed','watcher',0,.3],['watcher','L2 graph',.4,.7],['L2 graph','you',.75,.95]]),
+   x:`<p>A graph doesn’t listen by itself: <b>something calls it</b>. Here a watcher waits on the price feed, asks the model whether the change matters, then runs the Level 2 graph unchanged.</p>`},
+
+  {id:'lg_hitl',t:'Human approval: interrupt + checkpoints',s:'pattern 8 · pause, save, resume',d:hotflow('hitl',['interrupt'],[['buyer','interrupt',0,.25],['interrupt','you',.35,.55],['you','interrupt',.65,.85]]),
    x:`<p><code>interrupt(proposal)</code> <b>pauses the graph</b> and returns control to your code. With a checkpointer the state is on disk, so the process can even stop and come back.</p>
       <ul><li>Resume with <code>graph.stream(Command(resume="approve"), config)</code>: the node continues where it paused.</li>
       <li>The same checkpoints give you <b>resume after a crash</b> and <b>rewind</b> to any earlier step.</li></ul>`},
-  {id:'lg_event',t:'Event-driven: who calls invoke()',s:'the trigger is outside the graph',d:hotflow('event',['feed>watcher'],[['feed','watcher',0,.3],['watcher','L2 graph',.4,.7],['L2 graph','you',.75,.95]]),
-   x:`<p>A graph doesn’t listen by itself: <b>something calls it</b>. Here a watcher waits on the price feed, asks the model whether the change matters, then runs the Level 2 graph unchanged.</p>`},
+
   {id:'lg_llm',t:'One model call, any model',s:'think() → the Claude bridge',d:hotflow('llm',['think()>llm.ask','llm.ask>claude'],[['node','think()',0,.25],['think()','llm.ask',.3,.55],['llm.ask','claude',.6,.85]]),
    x:`<p>Every node calls the model through <code>think()</code>: one place to count tokens, switch models per run, and fall back to a scripted answer if the model fails.</p>
       <ul><li>With <code>LAB_LLM=claude</code>, <code>claude_cli.infer</code> runs <code>claude -p</code> with a <b>JSON schema</b>, no tools and your saved login.</li></ul>`},
+
   {id:'cmp',t:'Side by side',s:'CrewAI and LangGraph, measured',d:null,x:''}],
  crewai:[
   {id:'cr_agent',t:'Agent: role, goal, backstory',s:'who does the work',d:hotflow('crew',['agent']),
@@ -1189,30 +1227,38 @@ function tour(root,name){const steps=TOURS[name];
   show2(0)}
 document.querySelectorAll('.tour').forEach(t=>tour(t,t.dataset.tour));
 
-// CrewAI tab B: each pattern from section 1 as a card (picture, the CrewAI line); a click opens its step in the code tour
+// Tab B of CrewAI and LangGraph: each pattern from section 1 as a card (picture, the framework's line); a click opens its step in the code tour
 const PM={seq:{n:{research:[40,56,'a','Researcher'],write:[130,56,'a','Writer'],edit:[220,56,'a','Editor']},e:[['research','write'],['write','edit']],f:[['research','write',0,.4],['write','edit',.5,.9]]},
   hier:{n:{manager:[130,26,'s'],A:[50,96],B:[130,96],C:[210,96]},e:[['manager','A'],['manager','B'],['manager','C']],f:[['manager','A',0,.3],['manager','B',.35,.65],['manager','C',.7,1]]},
   par:{n:{lead:[34,62,'s'],A:[130,18],B:[130,62],C:[130,106],join:[226,62,'s']},e:[['lead','A'],['lead','B'],['lead','C'],['A','join'],['B','join'],['C','join']],f:[['lead','A',0,.35],['lead','B',0,.35],['lead','C',0,.35],['A','join',.5,.85],['B','join',.5,.85],['C','join',.5,.85]]},
   crit:{n:{worker:[70,60],critic:[190,60,'c']},e:[['worker','critic'],['critic','worker']],f:[['worker','critic',0,.4],['critic','worker',.5,.9]]},
   ctx:{n:{plan:[40,62,'s'],research:[130,22],draft:[130,102],edit:[220,62]},e:[['plan','research'],['plan','draft'],['research','draft'],['draft','edit']],hot:['draft>edit','edit'],f:[['research','draft',0,.4],['draft','edit',.5,.9]]},
   board:{n:{State:[130,62,'i'],A:[40,22],B:[220,22],C:[40,102],critic:[220,102,'c']},e:[['A','State'],['B','State'],['State','C'],['State','critic']],f:[['A','State',0,.35],['B','State',.05,.4],['State','C',.55,.9],['State','critic',.55,.9]]},
-  event:{n:{event:[30,60,'e'],'@router':[105,60,'s'],crew:[180,60],you:[240,60,'u']},e:[['event','@router'],['@router','crew'],['crew','you']],f:[['event','@router',0,.3],['@router','crew',.35,.65],['crew','you',.7,1]]},
-  hitl:{n:{crew:[40,60],pause:[130,60,'s'],you:[130,108,'u'],done:[220,60,'i']},e:[['crew','pause'],['pause','you',1],['you','pause',1],['pause','done']],f:[['crew','pause',0,.25],['pause','you',.3,.5],['you','pause',.55,.75],['pause','done',.8,1]]}};
+  event:{n:{event:[30,60,'e'],router:[105,60,'s'],team:[180,60],you:[240,60,'u']},e:[['event','router'],['router','team'],['team','you']],f:[['event','router',0,.3],['router','team',.35,.65],['team','you',.7,1]]},
+  hitl:{n:{team:[40,60],pause:[130,60,'s'],you:[130,108,'u'],done:[220,60,'i']},e:[['team','pause'],['pause','you',1],['you','pause',1],['pause','done']],f:[['team','pause',0,.25],['pause','you',.3,.5],['you','pause',.55,.75],['pause','done',.8,1]]}};
 // [sim key, building block, tour step, the CrewAI line: short enough for a card]
-const PMAP=[['seq','Crew','cr_seq','Crew(tasks=[research, write, edit],\n     process=Process.sequential)'],
+const PMAP={crewai:[['seq','Crew','cr_seq','Crew(tasks=[research, write, edit],\n     process=Process.sequential)'],
   ['hier','Crew','cr_hier','Crew(...,\n  process=Process.hierarchical,\n  manager_llm=llm)'],
   ['par','Task','cr_async','Task(..., async_execution=True)\nTask(..., context=[a, b, c])'],
   ['crit','Task','cr_guard','Task(..., guardrail=check,\n  guardrail_max_retries=2)'],
   ['ctx','Task','cr_ctx','Task(..., context=[draft])\n# sees the draft, nothing else'],
   ['board','Flow','cr_board','class Team(Flow[State]):\n  # every step: self.state'],
   ['event','Flow','cr_flow','@start() → @router()\n  → @listen("go")'],
-  ['hitl','Task','cr_hitl','Task(..., human_input=True)']];
-const BLK={Crew:'var(--cr)',Task:'var(--data)',Flow:'var(--event)'};
-PMAP.forEach(([k,blk,step,code],i)=>{const sim=SIMS.find(s=>s.key===k),c=document.createElement('button');c.className='pm';c.style.setProperty('--k',BLK[blk]);
+  ['hitl','Task','cr_hitl','Task(..., human_input=True)']],
+ langgraph:[['seq','Edge','lg_edges','g.add_edge("research", "write")\ng.add_edge("write", "edit")'],
+  ['hier','Edge','lg_route','g.add_conditional_edges(\n  "manager", route)'],
+  ['par','Edge','lg_send','[Send("worker", {"part": p})\n  for p in parts]'],
+  ['crit','Edge','lg_cycle','g.add_conditional_edges(\n  "review", verdict)  # loops'],
+  ['ctx','Node','lg_critic','# pass a brief, not the state\nchecker.invoke({"draft": d})'],
+  ['board','State','lg_state','findings: Annotated[\n  list, operator.add]'],
+  ['event','invoke()','lg_event','# your handler calls it\ngraph.invoke({"event": alert})'],
+  ['hitl','Checkpointer','lg_hitl','answer = interrupt(proposal)\n# resume: Command(resume=…)']]};
+const BLK={Crew:'var(--cr)',Task:'var(--data)',Flow:'var(--event)',Edge:'var(--lg)',Node:'var(--accent)',State:'var(--data)','invoke()':'var(--event)',Checkpointer:'var(--ok)'};
+[['crewai','#pmap'],['langgraph','#lpmap']].forEach(([fw,box])=>PMAP[fw].forEach(([k,blk,step,code],i)=>{const sim=SIMS.find(s=>s.key===k),c=document.createElement('button');c.className='pm';c.style.setProperty('--k',BLK[blk]);
   c.innerHTML=`<span class="hd"><b>${String(i+1).padStart(2,'0')}</b>${esc(sim.name)}<i class="blk">${blk}</i></span>`;
   c.append(mini(PM[k]));c.insertAdjacentHTML('beforeend',`<pre>${esc(code)}</pre><small>See the code →</small>`);
-  c.onclick=()=>{const b=document.querySelector(`.tour[data-tour="crewai"] .tstep[data-id="${step}"]`);b.click();b.closest('.tour').scrollIntoView({behavior:'smooth'})};
-  $('#pmap').append(c)});
+  c.onclick=()=>{const b=document.querySelector(`.tour[data-tour="${fw}"] .tstep[data-id="${step}"]`);b.click();b.closest('.tour').scrollIntoView({behavior:'smooth'})};
+  $(box).append(c)}));
 
 // LangGraph and CrewAI explained: five tabs above each code tour. ←/→ move between tabs when one has focus.
 document.querySelectorAll('.cx').forEach(cx=>{
