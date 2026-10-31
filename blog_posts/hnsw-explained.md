@@ -24,27 +24,51 @@ faq:
 
 > **In short:** HNSW (Hierarchical Navigable Small World) is a graph index for finding the vectors closest to a query without comparing it to every vector. It stacks graph layers: sparse upper layers make long jumps, the bottom layer holds every vector. On 1 million SIFT vectors, it found 97.5% of the true top 10 in 0.23 ms, versus 9 ms for brute force.
 
-This post is for two kinds of readers. If you're new, read top to bottom: every term is defined as it comes. If you already use a vector database, skip to [the parameters](#parameters), [the benchmark](#benchmark) and [the trade-offs](#downsides).
+<link rel="stylesheet" href="/blog_posts/experiments/hnsw-simul/hnsw-post.css">
 
-**Try it first:** the demo below builds a small HNSW graph from 30 points. Click **🔍 Search Nearest** and step through a query with **Next ▶**: watch it take big jumps on the top layer, then refine on the bottom one. It also has its [own full-screen page](/blog_posts/experiments/hnsw-simul/).
-
-<div class="hnsw-embed">
-<iframe id="hnsw-demo" src="/blog_posts/experiments/hnsw-simul/?embed=1" title="Interactive HNSW demo: build a layered graph and step through a nearest neighbor search" loading="lazy" height="1150"></iframe>
-</div>
+Every section starts with a picture or a small simulation; the full explanation sits under **Read more** if you want it. To play with a real HNSW graph straight away, jump to the [interactive demo](#demo).
 
 ## What problem does HNSW solve?
+
+<figure class="hv" data-hv="scale">
+<div class="hv-canvas"><p class="hv-fallback">Figure: brute force compares a query with all 1,000,000 vectors and takes 9.00 ms. HNSW at ef = 80 compares it with 1,526 vectors (0.15%), finds 97.5% of the true top 10, and takes 0.23 ms, 39 times faster.</p></div>
+<figcaption><strong>Same question, a sliver of the work.</strong> Measured on 1 million SIFT vectors, one CPU thread.</figcaption>
+</figure>
+
+<details class="hv-more" markdown="1">
+<summary>Read more: nearest neighbor search and why brute force is slow</summary>
 
 HNSW solves **nearest neighbor search**: given a query vector, find the stored vectors closest to it. Modern search and AI systems turn text, images and audio into **embeddings**, lists of a few hundred numbers where similar meaning means nearby points. "Find documents like this one" becomes "find the closest points to this one".
 
 The obvious method, **brute force**, measures the distance from the query to every stored vector. That is exact but slow: with 1 million vectors of 768 dimensions, one query is about 768 million multiply-adds. It grows linearly, so 100 million vectors is 100 times slower. That's fine for thousands of vectors and too slow for millions behind a search box.
 
+</details>
+
 ## What is approximate nearest neighbor (ANN) search?
+
+<figure class="hv" data-hv="recall">
+<div class="hv-canvas"><p class="hv-fallback">Figure: of the true 10 nearest neighbors, the index returned 9 and missed 1, so recall@10 = 0.9.</p></div>
+<figcaption><strong>ANN trades a few misses for speed.</strong> Recall@10 counts how many of the true top 10 came back.</figcaption>
+</figure>
+
+<details class="hv-more" markdown="1">
+<summary>Read more: recall, and why "approximate" is usually fine</summary>
 
 **Approximate nearest neighbor (ANN)** search gives up a guarantee to gain speed: it returns the true nearest neighbors *most* of the time, after looking at only a small fraction of the data. Its quality is measured by **recall@k**: of the true k nearest neighbors, the share the index actually returned. Recall@10 = 0.95 means 9.5 of the true top 10, on average.
 
 For search and RAG (retrieval-augmented generation, where an LLM answers using retrieved documents), that trade is usually right. Embeddings are already a fuzzy representation of meaning, so the 11th-best match is rarely worse in practice than the 10th. HNSW is the most widely used ANN index today.
 
-## How does HNSW work? The idea in two parts
+</details>
+
+## How does HNSW work? Layers, like roads
+
+<figure class="hv" data-hv="layers">
+<div class="hv-canvas"><p class="hv-fallback">Figure: three stacked graph layers. Layer 2 (motorways) has 2 of 25 points, layer 1 (main roads) 7, layer 0 (local streets) all 25. A search starts at the entry point on layer 2, hops greedily toward the query, drops to layer 1, hops again, drops to layer 0 and finishes at the nearest point.</p></div>
+<figcaption><strong>Long jumps on top, precise steps at the bottom.</strong> Every point lives on layer 0; a random few also live higher up. The search drops one layer at a time, starting each layer close to the answer. The graph and path are computed with HNSW's own rules.</figcaption>
+</figure>
+
+<details class="hv-more" markdown="1">
+<summary>Read more: the two ideas HNSW combines</summary>
 
 HNSW combines two older ideas, described in the 2016 paper by [Yury Malkov and Dmitry Yashunin](https://arxiv.org/abs/1603.09320).
 
@@ -58,7 +82,17 @@ HNSW combines two older ideas, described in the 2016 paper by [Yury Malkov and D
 
 Think of driving across a country: motorways (top layers) get you to the right region in a few long hops, main roads get you to the right town, and local streets (layer 0) find the exact house.
 
+</details>
+
 ## How does an HNSW search work, step by step?
+
+<figure class="hv" data-hv="greedy">
+<div class="hv-canvas"><p class="hv-fallback">Figure: two copies of the same small graph. With ef = 1 (pure greedy) the search moves to the closest neighbor each step and gets stuck at a local minimum. With ef = 4 (beam search) it keeps four candidates open, explores the other branch and reaches the true nearest point.</p></div>
+<figcaption><strong>Why ef matters.</strong> Greedy search can get stuck; keeping ef candidates open lets it route around dead ends. That's the bottom-layer step of every HNSW query.</figcaption>
+</figure>
+
+<details class="hv-more" markdown="1">
+<summary>Read more: the search algorithm in five steps</summary>
 
 1. **Start at the entry point**, a fixed node on the top layer.
 2. **Greedy walk on the current layer:** look at the current node's neighbors, move to the one closest to the query, repeat until none is closer.
@@ -66,9 +100,28 @@ Think of driving across a country: motorways (top layers) get you to the right r
 4. **On layer 0, widen the search:** instead of following one path, keep a list of the best **ef** candidates found so far (a "beam"), and expand the closest unexplored one each step. Stop when the closest unexplored candidate is farther than the worst of the ef results.
 5. **Return the best k** of those ef results.
 
-Step 4 is what keeps recall high. With ef = 1 the search is purely greedy and can get stuck; with ef = 100 it keeps 100 promising leads open and explores around the local minimum. In the demo above, set **efSearch** to 1, then to 10, and run the same search to see the difference.
+Step 4 is what keeps recall high. With ef = 1 the search is purely greedy and can get stuck; with ef = 100 it keeps 100 promising leads open and explores around the local minimum.
+
+</details>
+
+### Try it yourself: the interactive HNSW demo
+{: #demo}
+
+Click **🔍 Search Nearest**, then step through with **Next ▶**. Set **efSearch** to 1 and then 10 on the same query to see the beam at work. It also has its [own full-screen page](/blog_posts/experiments/hnsw-simul/).
+
+<div class="hnsw-embed">
+<iframe id="hnsw-demo" src="/blog_posts/experiments/hnsw-simul/?embed=1" title="Interactive HNSW demo: build a layered graph and step through a nearest neighbor search" loading="lazy" height="1150"></iframe>
+</div>
 
 ## How are vectors inserted into HNSW?
+
+<figure class="hv" data-hv="insert">
+<div class="hv-canvas"><p class="hv-fallback">Figure, four steps: 1. roll the new vector's level (with M = 16, 93.75% stay on layer 0 only, 5.86% reach layer 1, 0.39% go higher); 2. search down greedily to that level; 3. on each of its layers, find candidates with a beam of width efConstruction and link to the best M (2M on layer 0); 4. prune neighbors that now have too many links.</p></div>
+<figcaption><strong>An insert is a search plus some linking.</strong> No training step: you can keep adding vectors to a live index.</figcaption>
+</figure>
+
+<details class="hv-more" markdown="1">
+<summary>Read more: insertion in detail</summary>
 
 Inserting a vector reuses the search:
 
@@ -79,7 +132,17 @@ Inserting a vector reuses the search:
 
 The graph is built incrementally: there is no training step, and you can keep adding vectors to a live index.
 
-### How is the layer chosen? (for the curious)
+</details>
+
+### How big is each layer?
+
+<figure class="hv" data-hv="levels">
+<div class="hv-canvas"><p class="hv-fallback">Figure: expected vectors per layer for 1,000,000 vectors with M = 16: 1,000,000 on layer 0, 62,500 on layer 1, 3,906 on layer 2, 244 on layer 3, 15 on layer 4, about 1 on layer 5. The FAISS index I built had 62,403, 3,903, 210, 16 and 1.</p></div>
+<figcaption><strong>Each layer keeps about 1/M of the one below.</strong> Drag M: a bigger M means fewer, wider layers. At M = 16 the bars show what the formula predicts next to what FAISS actually built.</figcaption>
+</figure>
+
+<details class="hv-more" markdown="1">
+<summary>Read more: the level formula</summary>
 
 Each vector's top layer is drawn as
 
@@ -106,16 +169,34 @@ So each layer keeps about 1/M of the layer below, and the number of layers grows
 
 When I built that index with FAISS (for the benchmark below), it had 62,403 vectors on layer 1, 3,903 on layer 2, 210 on layer 3, 16 on layer 4 and 1 on layer 5: close to the formula. Because each layer is a few hops wide, the total number of hops grows roughly with log N: the reason HNSW scales to billions of vectors.
 
-### Why does HNSW choose diverse neighbors? (for practitioners)
+</details>
+
+### Why does HNSW choose diverse neighbors?
+
+<figure class="hv" data-hv="heuristic">
+<div class="hv-canvas"><p class="hv-fallback">Figure: a new point at the edge of cluster A. Linking to its 3 closest points keeps every link inside cluster A. HNSW's neighbor-selection heuristic skips candidates hidden behind an already-kept neighbor, so one of its links reaches cluster B.</p></div>
+<figcaption><strong>Diverse links keep the graph connected.</strong> Both panels are computed: plain "closest M" on the left, the paper's heuristic (Algorithm 4) on the right.</figcaption>
+</figure>
+
+<details class="hv-more" markdown="1">
+<summary>Read more: how the heuristic works</summary>
 
 HNSW doesn't simply link a new vector to its M closest candidates. Its **neighbor-selection heuristic** (Algorithm 4 in the paper) walks the candidates from nearest to farthest and keeps one only if it is closer to the new vector than to every neighbor already kept. A candidate sitting "behind" an existing neighbor is skipped, since it's reachable through that neighbor anyway.
 
 The effect is links that point in **different directions** rather than all into one dense cluster. That matters most for clustered data: without it, two clusters can end up connected by no edges at all, and a search that starts in the wrong one never leaves. The paper reports the effect is largest for low-dimensional data, for mid-dimensional data at high recall, and for highly clustered data; for uniform, very high-dimensional data it makes little difference.
 
+</details>
+
 ## How do M, efConstruction and efSearch affect HNSW?
 {: #parameters}
 
-HNSW has three knobs. Two are fixed when you build the index; one you can change on every query.
+<figure class="hv" data-hv="knobs">
+<div class="hv-canvas"><p class="hv-fallback">Figure, three knobs: M (links per node, set at build) raises recall but costs memory and build and query time; efConstruction (beam width while building) raises graph quality and recall and costs build time only; efSearch (beam width per query) raises recall and costs query time, and can be changed without rebuilding.</p></div>
+<figcaption><strong>Set M and efConstruction once, tune efSearch.</strong> efSearch is the only knob you can turn without rebuilding the index.</figcaption>
+</figure>
+
+<details class="hv-more" markdown="1">
+<summary>Read more: typical values and each library's defaults</summary>
 
 | Parameter | What it is | Raise it for | Cost of raising it | Typical values |
 |---|---|---|---|---|
@@ -136,8 +217,18 @@ Defaults differ between libraries, so the same "HNSW" can behave differently out
 
 FAISS's efSearch of 16 and pgvector's 40 favor speed. If your recall is lower than expected, ef is the first thing to check.
 
+</details>
+
 ## How fast is HNSW? A benchmark on 1 million vectors
 {: #benchmark}
+
+<figure class="hv" data-hv="bench">
+<div class="hv-canvas"><p class="hv-fallback">Figure: recall@10 against milliseconds per query on SIFT1M for efSearch 10, 20, 40, 80, 160 and 320: recall 0.710, 0.839, 0.927, 0.975, 0.993, 0.998 at 0.048, 0.078, 0.123, 0.230, 0.400 and 0.729 ms per query. Brute force takes 9.00 ms.</p></div>
+<figcaption><strong>Pick an efSearch and see what it buys.</strong> Real measurements: hnswlib, M = 16, efConstruction = 200, 1,000,000 SIFT vectors, one CPU thread.</figcaption>
+</figure>
+
+<details class="hv-more" markdown="1">
+<summary>Read more: setup, full results table and what they show</summary>
 
 I ran hnswlib on [SIFT1M](http://corpus-texmex.irisa.fr/), a standard ANN benchmark: 1,000,000 image descriptor vectors of 128 dimensions, 10,000 test queries, and the true nearest neighbors precomputed (I used the [ann-benchmarks](https://github.com/erikbern/ann-benchmarks) copy). The index used M = 16 and efConstruction = 200. Queries ran on **one CPU thread**, on a 4-core cloud VM, in Python 3.13 with hnswlib 0.8.0 and FAISS 1.15.1. Brute force used FAISS's exact `IndexFlatL2`, also on one thread.
 
@@ -161,9 +252,11 @@ What the numbers show:
 
 Your numbers will differ with hardware, data and dimensions; the shape of the curve is what carries over. On harder data, such as uniform random vectors with no structure, recall at the same ef is much lower, as the code below shows.
 
+</details>
+
 ## How do you use HNSW in Python?
 
-The [hnswlib](https://github.com/nmslib/hnswlib) library (by the paper's first author) is the shortest path from zero to a working index:
+Build an index with [hnswlib](https://github.com/nmslib/hnswlib) (by the paper's first author), then compare it with brute force at three ef values:
 
 ```python
 import hnswlib
@@ -198,10 +291,23 @@ ef= 50  recall@10 = 0.71
 ef=200  recall@10 = 0.96
 ```
 
+<details class="hv-more" markdown="1">
+<summary>Read more: why recall is lower here than on SIFT</summary>
+
 Uniform random vectors are close to the worst case for any ANN index: every point is about equally far from every other, so there is no structure to exploit. That's why recall at ef = 10 is only 0.31 here, against 0.71 on the real SIFT data, and why ef = 200 is needed to pass 0.95. Real embeddings are much more forgiving. Use `space="cosine"` or `space="ip"` for cosine similarity or inner product, which is what most text embedding models expect.
+
+</details>
 
 ## What are the downsides of HNSW?
 {: #downsides}
+
+<figure class="hv" data-hv="memory">
+<div class="hv-canvas"><p class="hv-fallback">Figure, memory calculator: for 1 million 768-dimension float32 vectors with M = 16, the raw vectors take about 3.07 GB and the graph links and IDs about 0.14 GB, about 3.22 GB in RAM in total.</p></div>
+<figcaption><strong>Memory is mostly the vectors, not the graph.</strong> Change the sizes to estimate your own index (hnswlib's memory layout). That's why engines compress vectors with int8 or 1-bit quantization.</figcaption>
+</figure>
+
+<details class="hv-more" markdown="1">
+<summary>Read more: memory, build time, deletes, filters and exactness</summary>
 
 - **Memory.** The vectors and graph normally live in RAM. Each vector costs its raw size (dimensions × 4 bytes as float32) plus roughly M × 8-10 bytes of links ([hnswlib](https://github.com/nmslib/hnswlib/blob/master/ALGO_PARAMS.md)). For 1 million 768-dimension vectors with M = 16: about 3.1 GB of vectors and 0.14 GB of links. This is why engines pair HNSW with **quantization** (storing int8 or 1-bit versions of the vectors).
 - **Slow builds.** Every insert is a search plus link updates. Building is far slower than a k-means-based IVF index.
@@ -209,7 +315,17 @@ Uniform random vectors are close to the worst case for any ANN index: every poin
 - **Filtered search is hard.** "Nearest vectors where `category = shoes`" can break the graph walk if most nodes fail the filter. Engines handle this in different ways (filtering during the walk, or falling back to brute force for very selective filters), and it's worth testing on your own data.
 - **No exactness guarantee.** Some true neighbors are missed. For legal, deduplication or audit use cases needing exact answers, use brute force or re-check candidates.
 
+</details>
+
 ## HNSW vs IVF vs brute force: which should you use?
+
+<figure class="hv" data-hv="compare">
+<div class="hv-canvas"><p class="hv-fallback">Figure, three indexes: brute force computes the distance to every vector (best under about 100k vectors or for exact answers; time grows with every vector). IVF scans only the clusters nearest the query (best for huge collections on little memory, with product quantization; needs training and gives lower recall at the same speed). HNSW walks a neighbor graph (best for fast, high-recall search on changing data; costs memory and build time).</p></div>
+<figcaption><strong>HNSW is the sensible default</strong> for most vector search, and it's what pgvector, Elasticsearch, OpenSearch, Qdrant, Weaviate, Milvus, Redis and FAISS offer.</figcaption>
+</figure>
+
+<details class="hv-more" markdown="1">
+<summary>Read more: comparison table and where HNSW is used</summary>
 
 | Index | How it works | Best for | Weak spot |
 |---|---|---|---|
@@ -221,6 +337,8 @@ Uniform random vectors are close to the worst case for any ANN index: every poin
 If you're starting out with a vector database, HNSW is the sensible default, and it's what most of them use under the hood: [pgvector](https://github.com/pgvector/pgvector), [Elasticsearch and OpenSearch](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/dense-vector) (via Lucene), Qdrant, Weaviate, Milvus, Redis and [FAISS](https://github.com/facebookresearch/faiss) all offer it. In Elasticsearch, the HNSW graphs are built per Lucene segment, so the shard and segment ideas in my [Elasticsearch notes](/blog_posts/elasticsearchNotes.html) apply to vector search too.
 
 HNSW sits in the same family as my post on [Bloom filters](/blog_posts/bloom_filters.html): data structures that accept a small, measurable chance of being wrong in exchange for large savings in time or space. The difference is the error. A Bloom filter can say "yes" when the answer is "no"; HNSW can miss a true neighbor, and you trade that against speed with ef.
+
+</details>
 
 ## Sources
 
@@ -237,6 +355,7 @@ HNSW sits in the same family as my post on [Bloom filters](/blog_posts/bloom_fil
 .hnsw-embed iframe { display: block; width: 100%; border: 0; }
 </style>
 
+<script defer src="/blog_posts/experiments/hnsw-simul/hnsw-post.js"></script>
 <script>
 // The demo reports its height (see experiments/hnsw-simul/index.html) so the iframe fits without an inner scrollbar.
 window.addEventListener('message', function (e) {

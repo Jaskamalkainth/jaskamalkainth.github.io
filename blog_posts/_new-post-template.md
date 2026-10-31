@@ -26,11 +26,24 @@ faq:                                             ## 3-5 real questions; each ans
 
 > **In short:** a 40-60 word direct answer to the question this post exists for. Lead with the answer, include the key number or definition, and make it quotable on its own.
 
-One or two paragraphs of context: why this matters, and what the reader will be able to do after reading.
+<link rel="stylesheet" href="/blog_posts/experiments/<topic>/<topic>-post.css">
+
+One line of context: what the reader will see and be able to do. (Visual-first: graphics for humans, text for agents; AGENTS.md step 4b.)
 
 ## What is ...?
 
-Use question-style or clearly descriptive H2s. Keep paragraphs short (2-4 sentences). Use lists and tables for comparisons.
+<figure class="hv" data-hv="what">
+<div class="hv-canvas"><p class="hv-fallback">Figure: describe what the figure shows, with its numbers. This is what agents and no-JS readers get.</p></div>
+<figcaption><strong>The one-line takeaway.</strong> Whether it is measured or illustrative.</figcaption>
+</figure>
+
+<details class="hv-more" markdown="1">
+<summary>Read more: what this section explains</summary>
+
+The full text for agents and curious readers. Question-style H2s above; paragraphs of 2-4 sentences
+that make sense quoted alone; lists and tables for comparisons.
+
+</details>
 
 ## How ... works
 
@@ -41,3 +54,5 @@ Use question-style or clearly descriptive H2s. Keep paragraphs short (2-4 senten
 ## Sources
 
 - [Primary source or official documentation](https://example.com)
+
+<script defer src="/blog_posts/experiments/<topic>/<topic>-post.js"></script>
