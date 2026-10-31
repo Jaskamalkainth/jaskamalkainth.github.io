@@ -19,12 +19,14 @@ layout: null
     <meta property="og:site_name" content="Jaskamal Kainth">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="styles.css">
+    <script>if (/[?&]embed=1\b/.test(location.search)) document.documentElement.classList.add('embed');</script>
 </head>
 <body>
     {% include gtm-body.html %}
     <div class="container">
         <h1>HNSW Algorithm — Interactive Visualization</h1>
         <p class="subtitle">Hierarchical Navigable Small World graphs for Approximate Nearest Neighbor search</p>
+        <p class="article-link">New to HNSW? Read the article first: <a href="/blog_posts/hnsw-explained.html">HNSW explained: how vector search finds nearest neighbors fast</a></p>
 
         <!-- Quick-start concept cards -->
         <div class="quick-start">
@@ -226,5 +228,13 @@ layout: null
     </div>
 
     <script src="simulation.js"></script>
+    <script>
+        // When embedded in the article (?embed=1), report the page height so the iframe can grow to fit.
+        if (document.documentElement.classList.contains('embed') && window.parent !== window) {
+            const report = () => window.parent.postMessage({ hnswDemoHeight: Math.ceil(document.body.getBoundingClientRect().height) }, '*');
+            new ResizeObserver(report).observe(document.body);
+            window.addEventListener('load', report);
+        }
+    </script>
 </body>
 </html>
