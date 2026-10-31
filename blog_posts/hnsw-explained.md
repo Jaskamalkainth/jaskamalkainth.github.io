@@ -6,7 +6,7 @@ last_modified_at: 2026-10-31
 keywords: [HNSW, HNSW algorithm, hierarchical navigable small world, approximate nearest neighbor search, vector search, vector database index, HNSW parameters M ef_construction ef_search, hnswlib]
 categories: search algorithms vector-search
 math: true
-related: ["/blog_posts/elasticsearchNotes.html", "/blog_posts/bloom_filters.html", "/blog_posts/monte-carlo-simulation-explained.html"]
+related: ["/blog_posts/elasticsearchNotes.html", "/blog_posts/bloom_filters.html", "/blog_posts/monte-carlo-simulation-explained.html", "/blog_posts/taalas-hc1-chatjimmy-explained.html"]
 faq:
   - q: "Is HNSW exact or approximate?"
     a: "Approximate. HNSW returns the true nearest neighbors most of the time, but it can miss some, because the search only explores part of the graph. How often it finds them is measured as recall. With sensible settings, recall@10 of 0.95 to 0.99 is normal. Raising ef at query time raises recall at the cost of speed. If you need guaranteed exact results, use a brute-force (flat) index."
