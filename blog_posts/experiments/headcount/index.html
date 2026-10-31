@@ -159,8 +159,8 @@ button:disabled{opacity:.6;cursor:default}
   };
 
   document.getElementById("resetBtn").addEventListener("click", () => {
-    location.href = location.pathname + "#screen";
-    location.reload();
+    const fresh = "headcount-" + Math.random().toString(36).slice(2, 10);
+    location.replace(location.pathname + "?room=" + fresh + "#screen");
   });
 })();
 </script>
