@@ -1,6 +1,16 @@
 # Work & Writing - full titles, descriptions, dates, and links
 work:
   # —— Technical ——
+  - title: "Taalas HC1: An LLM Hardwired in Silicon"
+    kind: "notes"
+    date: "2026-10"
+    desc: "How chatjimmy.ai runs Llama 3.1 8B at ~15,600 tokens/s with the weights built into the chip."
+    meta: "Oct 2026"
+    links:
+      - label: "Article"
+        url: "/blog_posts/taalas-hc1-chatjimmy-explained.html"
+    href: "/blog_posts/taalas-hc1-chatjimmy-explained.html"
+
   - title: "HNSW: How Vector Search Works"
     kind: "search"
     date: "2026-10"

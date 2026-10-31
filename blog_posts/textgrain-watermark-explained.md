@@ -6,7 +6,7 @@ last_modified_at: 2026-10-07
 keywords: [textGrain, OpenAI text watermark, ChatGPT watermark, LLM watermarking, AI text detection, optimal transport watermark, Gumbel watermark]
 categories: machine-learning llm watermarking
 math: true
-related: ["/blog_posts/bloom_filters.html", "/blog_posts/elasticsearchNotes.html", "/blog_posts/monte-carlo-simulation-explained.html"]
+related: ["/blog_posts/bloom_filters.html", "/blog_posts/elasticsearchNotes.html", "/blog_posts/monte-carlo-simulation-explained.html", "/blog_posts/taalas-hc1-chatjimmy-explained.html"]
 faq:
   - q: "Does ChatGPT watermark its text?"
     a: "As of October 2026, OpenAI says it is adding textGrain watermarks to eligible ChatGPT and Codex text output in the European Union, rolled out in phases over the following weeks. API customers worldwide can opt in; it is off by default for them. Outside the EU, ChatGPT text is not covered by this first rollout."

@@ -1,0 +1,121 @@
+/* Figures for /blog_posts/taalas-hc1-chatjimmy-explained.html.
+   taalas-post.js draws into each <figure class="hv" data-hv="...">; the <p class="hv-fallback">
+   inside is the text version (what agents and no-JS readers get). Colors follow the post's
+   light/dark tokens from css/blog_post.css. */
+
+.hv {
+  --hv-gpu: #2a78d6;
+  --hv-chip: var(--accent);
+  --hv-net: #b9c2d6;
+  --hv-warn: #eb6834;
+  margin: 1.5rem 0 1.75rem;
+  padding: 1rem 1rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+[data-post-theme="dark"] .hv {
+  --hv-gpu: #3987e5;
+  --hv-net: #3a4670;
+  --hv-warn: #e0703f;
+}
+
+.hv svg { display: block; width: 100%; height: auto; overflow: visible; }
+.hv svg text { font-family: var(--font-body); fill: var(--text); font-size: 13px; }
+.hv svg .mut { fill: var(--muted); font-size: 12px; }
+.hv svg .lbl { font-weight: 600; }
+.hv figcaption { margin-top: 0.6rem; color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
+.hv figcaption strong { color: var(--text); }
+.hv-fallback { color: var(--muted); font-size: 0.92rem; }
+
+/* svg marks */
+.hv .box { fill: var(--bg); stroke: var(--border); stroke-width: 1.5; }
+.hv .box-gpu { fill: var(--hv-gpu); fill-opacity: 0.16; stroke: var(--hv-gpu); stroke-width: 1.5; }
+.hv .box-chip { fill: var(--hv-chip); fill-opacity: 0.16; stroke: var(--hv-chip); stroke-width: 1.5; }
+.hv .fill-gpu { fill: var(--hv-gpu); }
+.hv .fill-chip { fill: var(--hv-chip); }
+.hv .fill-warn { fill: var(--hv-warn); }
+.hv .fill-net { fill: var(--hv-net); }
+.hv .wire { stroke: var(--muted); stroke-width: 1.5; fill: none; }
+.hv .wire-chip { stroke: var(--hv-chip); stroke-width: 2.5; fill: none; }
+.hv .wire-gpu { stroke: var(--hv-gpu); stroke-width: 6; fill: none; stroke-linecap: round; }
+.hv .off { opacity: 0.18; }
+
+/* moving dots (arch figure), only after scroll-into-view, never with reduced motion */
+.hv .flow { opacity: 0; }
+.hv.play .flow { animation: hv-flow 1.8s linear 4; animation-delay: var(--delay, 0s); }
+@keyframes hv-flow { 0% { opacity: 0; transform: translateX(0); } 10% { opacity: 1; } 90% { opacity: 1; } 100% { opacity: 0; transform: translateX(var(--dx, 100px)); } }
+@media (prefers-reduced-motion: reduce) {
+  .hv.play .flow { animation: none; opacity: 0; }
+}
+
+/* panels side by side, stacked on phones */
+.hv-panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0.75rem; }
+.hv-panel { border: 1px solid var(--border); border-radius: 10px; padding: 0.6rem 0.7rem; background: var(--bg); }
+.hv-panel h4 { margin: 0 0 0.35rem; font-size: 0.95rem; }
+.hv-panel p { margin: 0.35rem 0 0; font-size: 0.85rem; color: var(--muted); line-height: 1.45; }
+.hv-panel p strong { color: var(--text); }
+.hv-panel ul { margin: 0.3rem 0 0; padding-left: 1.1rem; font-size: 0.9rem; line-height: 1.55; }
+
+/* controls */
+.hv-controls { display: flex; flex-wrap: wrap; gap: 0.6rem 1.25rem; align-items: center; margin: 0.25rem 0 0.75rem; font-size: 0.92rem; }
+.hv-controls label { display: flex; align-items: center; gap: 0.5rem; color: var(--muted); }
+.hv-controls output { color: var(--text); font-weight: 700; min-width: 4ch; }
+.hv-controls input[type="range"] { accent-color: var(--accent); width: 11rem; max-width: 50vw; }
+.hv-seg { display: inline-flex; flex-wrap: wrap; gap: 0.3rem; }
+.hv-btn { font: inherit; font-size: 0.85rem; padding: 0.3rem 0.75rem; border: 1px solid var(--border); border-radius: 999px; background: var(--surface-2); color: var(--text); cursor: pointer; }
+.hv-btn:hover { border-color: var(--accent); }
+.hv-btn[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+/* stat tiles */
+.hv-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.6rem; margin: 0.25rem 0; }
+.hv-tile { border: 1px solid var(--border); border-radius: 10px; padding: 0.55rem 0.7rem; background: var(--bg); }
+.hv-tile b { display: block; font-size: 1.35rem; line-height: 1.2; color: var(--text); }
+.hv-tile span { font-size: 0.8rem; color: var(--muted); }
+.hv-tile.em b { color: var(--accent); }
+
+/* HTML bar rows (readable at any width) */
+.hv-bars { display: grid; gap: 0.45rem; }
+.hv-row { display: grid; grid-template-columns: minmax(6.5rem, 9.5rem) 1fr; gap: 0.6rem; align-items: center; font-size: 0.86rem; }
+.hv-row .name { color: var(--text); line-height: 1.25; }
+.hv-row .name small { display: block; color: var(--muted); font-size: 0.75rem; }
+.hv-track { position: relative; display: flex; align-items: center; gap: 0.4rem; min-height: 1.2rem; }
+.hv-bar { height: 0.85rem; border-radius: 3px; min-width: 2px; background: var(--hv-gpu); transition: width 0.25s ease; }
+.hv-bar.chip { background: var(--hv-chip); }
+.hv-bar.net { background: var(--hv-net); }
+.hv-bar.warn { background: var(--hv-warn); }
+.hv-track .val { white-space: nowrap; color: var(--text); font-weight: 600; font-size: 0.82rem; }
+.hv-stack { display: flex; flex: 0 1 auto; height: 0.85rem; }
+.hv-stack .hv-bar { border-radius: 0; }
+.hv-stack .hv-bar:first-child { border-radius: 3px 0 0 3px; }
+.hv-stack .hv-bar:last-child { border-radius: 0 3px 3px 0; }
+@media (max-width: 480px) {
+  .hv-row { grid-template-columns: 1fr; gap: 0.15rem; }
+}
+
+/* constant multiplier rows */
+.hv-mul { font-family: var(--font-mono, ui-monospace, monospace); font-size: 0.88rem; display: grid; gap: 0.3rem; }
+.hv-mul .r { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+.hv-mul .bit { display: inline-grid; place-items: center; width: 1.5rem; height: 1.5rem; border-radius: 4px; border: 1px solid var(--border); font-weight: 700; }
+.hv-mul .bit.on { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.hv-mul .term { color: var(--text); }
+.hv-mul .r.drop .term { color: var(--muted); text-decoration: line-through; }
+.hv-mul .note { color: var(--muted); font-family: var(--font-body); font-size: 0.82rem; }
+
+/* timeline */
+.hv-tl { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.6rem; }
+.hv-tl li { border: 1px solid var(--border); border-top: 4px solid var(--accent); border-radius: 8px; padding: 0.5rem 0.65rem; background: var(--bg); font-size: 0.86rem; line-height: 1.4; }
+.hv-tl li.plan { border-top-style: dashed; border-top-color: var(--muted); }
+.hv-tl b { display: block; color: var(--text); font-size: 0.9rem; }
+.hv-tl span { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.03em; }
+
+/* legend */
+.hv-legend { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; font-size: 0.82rem; color: var(--muted); margin: 0.5rem 0 0; }
+.hv-legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
+.hv-legend i { width: 0.9rem; height: 0.7rem; border-radius: 2px; display: inline-block; }
+
+/* "read more" blocks: the full text, for readers who want it and for agents */
+details.hv-more { margin: 0.25rem 0 1.5rem; border-left: 3px solid var(--border); padding: 0.1rem 0 0.1rem 1rem; }
+details.hv-more > summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 0.95rem; }
+details.hv-more[open] > summary { margin-bottom: 0.5rem; }
+.hv-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
