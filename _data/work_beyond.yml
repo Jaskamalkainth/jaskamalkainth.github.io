@@ -1,6 +1,19 @@
 # Work & Writing - full titles, descriptions, dates, and links
 work:
   # —— Technical ——
+  - title: "HNSW: How Vector Search Works"
+    kind: "search"
+    date: "2026-10"
+    desc: "The layered graph behind vector databases: how search and inserts work, M and ef, a 1M-vector benchmark."
+    meta: "Oct 2026"
+    links:
+      - label: "Article"
+        url: "/blog_posts/hnsw-explained.html"
+      - label: "Demo"
+        url: "/blog_posts/experiments/hnsw-simul/"
+        demo: true
+    href: "/blog_posts/hnsw-explained.html"
+
   - title: "Monte Carlo Simulation"
     kind: "math"
     date: "2026-10"
@@ -166,15 +179,6 @@ work:
         url: "/blog_posts/experiments/Pixelate/index.html"
     href: "/blog_posts/experiments/Pixelate/index.html"
 
-  - title: "ANN HNSW Simulation"
-    kind: "search"
-    date: "2025-03"
-    desc: "Visualization of Hierarchical Navigable Small World for approximate nearest neighbor search."
-    meta: "Mar 2025"
-    links:
-      - label: "Demo"
-        url: "/blog_posts/experiments/hnsw-simul/index.html"
-    href: "/blog_posts/experiments/hnsw-simul/index.html"
 
   - title: "Random Bounce Pattern (Dots)"
     kind: "experiments"

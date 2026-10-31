@@ -718,3 +718,20 @@ summary:hover { background: #f0f2f5; }
     .layer { padding: 6px; }
     h1 { font-size: 1.4rem; }
 }
+
+/* ── Link back to the article ────────────────────────────────── */
+.article-link {
+    text-align: center;
+    font-size: 0.9rem;
+    margin: -12px 0 24px;
+}
+.article-link a { color: #2563eb; }
+
+/* ── Embedded in the article (?embed=1) ──────────────────────── */
+html.embed body { padding: 0; background: transparent; }
+html.embed .container { box-shadow: none; border-radius: 0; padding: 16px; max-width: none; }
+html.embed h1,
+html.embed .subtitle,
+html.embed .article-link,
+html.embed .info-panel { display: none; }
+html.embed .floating-navigation-controls { position: static; }
