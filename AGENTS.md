@@ -10,6 +10,11 @@ Perplexity, Claude, Gemini and similar tools (**GEO**, generative engine optimiz
 Most of the plumbing is already built into the layout; your job is the content, the front matter,
 and wiring the post into the site.
 
+Every post also follows one writing vision: **graphics for humans, text for agents.** A reader
+should understand the post by looking at its pictures and small simulations; the full prose stays
+in the page (folded under "Read more") so search engines and AI tools get the complete, citable
+text. See step 4b.
+
 ---
 
 ## 1. How the site works
@@ -97,6 +102,50 @@ versions, statistics), find primary sources yourself and cite them. Ask only if 
 11. **Math**: `$$ ... $$` on its own lines plus `math: true`. Never `\[ ... \]` in Markdown.
 12. Length follows the question: complete, not padded. No filler intros, no keyword stuffing,
     no generic AI-sounding paragraphs. The owner's voice is first person and direct.
+13. **Lay it out visual-first** (step 4b): every `##` section opens with a figure, and the prose
+    behind it goes in a "Read more" fold.
+
+### Step 4b: Visual-first: graphics for humans, text for agents
+People skim; agents read everything. So each post has two layers in the same page:
+
+**What a human sees** (visible by default):
+- The H1, the `> **In short:**` summary, the question-style `##`/`###` headings.
+- Under each heading, **a figure first**: a diagram for a mechanism, a small simulation with one
+  or two controls (slider, toggle, replay) for a cause and effect, a chart for measured data,
+  stat tiles for headline numbers, side-by-side panels for a comparison. Aim for one per `##`.
+- A **one-line takeaway caption** under the figure, starting with a bold sentence.
+- Code blocks with their real output, the interactive demo if there is one, and `## Sources`.
+
+**What an agent reads** (in the HTML, folded for humans):
+- The full explanation in `<details class="hv-more" markdown="1"><summary>Read more: …</summary> … </details>`
+  after each figure: the self-contained paragraphs, tables, lists, formulas and caveats from step 4.
+  Leave a blank line after `<summary>…</summary>` and before `</details>` so kramdown parses the Markdown.
+  Folded text is still in the HTML, the sitemap, `llms.txt` and `llms-full.txt`, so nothing is lost for SEO/AEO/GEO.
+- Each figure's **text fallback**: write figures as
+  `<figure class="hv" data-hv="name"><div class="hv-canvas"><p class="hv-fallback">Figure: what it shows, with the numbers.</p></div><figcaption>…</figcaption></figure>`
+  and draw them from a script that replaces `.hv-canvas`. The Markdown source stays clean prose,
+  and agents, no-JS readers and screen readers get a full description instead of SVG markup.
+
+**Rules for the graphics**
+- **Accurate before pretty.** Draw from the real algorithm or the measured data (run the
+  algorithm in the script on fixed inputs rather than hand-placing a "result"), and make every
+  number match the text. Say in the caption whether a figure is measured or illustrative.
+- **Readable in both themes**: color with the post tokens from `css/blog_post.css` (`--text`,
+  `--muted`, `--accent`, `--border`, `--surface`, `--surface-2`, `--bg`), with any extra colors defined
+  for `[data-post-theme="dark"]` too. Never color alone: label or add a legend.
+- **Phone width (390px)**: no page-level horizontal scroll. Side-by-side panels stack; a diagram
+  that must stay wide scrolls inside its own box with a `min-width`; numbers that must be read go
+  in HTML text or tiles, not small SVG text.
+- **Accessible and calm**: `role="img"` and an `aria-label` on each SVG, real `<button>`/`<input>`
+  controls, animation only on scroll-into-view or a click, and none under `prefers-reduced-motion`.
+- **Charts**: follow the data-viz rules (one axis, thin marks, labels, hover tooltips, a table of
+  the same numbers in the Read-more fold).
+- Put a post's figure CSS/JS next to its demo (`blog_posts/experiments/<topic>/<topic>-post.css|js`)
+  or, with no demo, in `blog_posts/experiments/<slug>/`. Load them from the post with
+  `<link rel="stylesheet" …>` near the top and `<script defer …>` at the end.
+- **Reference implementation:** `blog_posts/hnsw-explained.md` with
+  `blog_posts/experiments/hnsw-simul/hnsw-post.js` and `hnsw-post.css` (11 figures: diagrams,
+  a replayable layered search, sliders, a calculator, a measured benchmark chart).
 
 ### Step 5: FAQ (front matter `faq:`)
 - 3-5 questions real people search, phrased as they'd type them and ending with `?`.
@@ -159,6 +208,10 @@ Then look at the page: open `/tmp/site/blog_posts/<slug>.html`, or if Chromium i
 screenshot it at desktop and phone width in light and dark mode
 (`chromium --headless --screenshot=out.png --window-size=1200,2000 file:///tmp/site/blog_posts/<slug>.html`).
 Check that the summary, headings, code, tables, images, FAQ and author card render correctly.
+Screenshot **every figure** at 1200px and 390px in light and dark mode (the post's toggle is
+`#mode-toggle`; with Playwright, `element.screenshot()` on each `figure.hv`). Look for clipped
+labels, overlaps, unreadable text and console errors, and confirm `document.documentElement.scrollWidth`
+equals the viewport width on the phone.
 
 ### Step 9: Commit and hand off
 - One commit per post, message like `Add post: <title>` with a short body listing sources checked.
@@ -189,6 +242,8 @@ Some posts should have a public URL and be fully readable by search engines and 
 - Don't create a page outside `blog_posts/` for a blog post (it won't get the post layout or defaults).
 - Don't add tracking scripts per post; Google Tag Manager is already in the layout.
 - Don't stuff keywords, pad length, or add generic filler written to "sound SEO".
+- Don't ship a wall of text: if a section has no figure, it needs a reason (for example, a code walkthrough).
+- Don't delete prose to make room for graphics; fold it under "Read more" so agents still get it.
 - Don't publish facts, code output, numbers or quotes you haven't verified.
 - Don't block crawlers or add `noindex`, and don't remove AI crawlers from `robots.txt`.
 

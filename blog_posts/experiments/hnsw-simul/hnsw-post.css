@@ -1,0 +1,124 @@
+/* Figures and small simulations for /blog_posts/hnsw-explained.html.
+   hnsw-post.js draws into each <figure class="hv" data-hv="...">; the <p class="hv-fallback">
+   inside is the text version (what agents and no-JS readers get). Colors follow the post's
+   light/dark tokens from css/blog_post.css. */
+
+.hv {
+  --hv-node: #2a78d6;
+  --hv-query: #eb6834;
+  --hv-path: var(--accent);
+  --hv-bad: var(--hard);
+  --hv-edge: #b9c2d6;
+  --hv-plane: var(--surface-2);
+  margin: 1.5rem 0 1.75rem;
+  padding: 1rem 1rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+[data-post-theme="dark"] .hv {
+  --hv-node: #3987e5;
+  --hv-query: #d95926;
+  --hv-edge: #3a4670;
+}
+
+.hv svg { display: block; width: 100%; height: auto; overflow: visible; }
+.hv svg text { font-family: var(--font-body); fill: var(--text); font-size: 13px; }
+.hv svg .mut { fill: var(--muted); font-size: 12px; }
+.hv svg .big { font-size: 18px; font-weight: 700; }
+.hv svg .lbl { font-weight: 600; }
+.hv figcaption { margin-top: 0.6rem; color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
+.hv figcaption strong { color: var(--text); }
+.hv-fallback { color: var(--muted); font-size: 0.92rem; }
+
+/* graph marks */
+.hv .edge { stroke: var(--hv-edge); stroke-width: 1.5; fill: none; }
+.hv .node { fill: var(--hv-node); stroke: var(--surface); stroke-width: 2; }
+.hv .node.dim { fill: var(--hv-edge); }
+.hv .node.seen { fill: var(--medium); }
+.hv .node.hit { fill: var(--hv-path); }
+.hv .query { fill: var(--hv-query); stroke: var(--surface); stroke-width: 2; }
+.hv .plane { fill: var(--hv-plane); stroke: var(--border); stroke-width: 1; }
+.hv .drop { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 4; fill: none; opacity: 0.6; }
+.hv .path { stroke: var(--hv-path); stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.hv .path.bad { stroke: var(--hv-bad); }
+.hv .qline { stroke: var(--hv-query); stroke-width: 1; stroke-dasharray: 2 4; opacity: 0.7; }
+.hv .fill-node { fill: var(--hv-node); }
+.hv .fill-query { fill: var(--hv-query); }
+.hv .fill-path { fill: var(--hv-path); }
+.hv .fill-bad { fill: var(--hv-bad); }
+.hv .fill-plane { fill: var(--hv-plane); stroke: var(--border); }
+.hv .grid { stroke: var(--border); stroke-width: 1; }
+.hv .axis { stroke: var(--muted); stroke-width: 1; }
+
+/* animated search path (layers figure) */
+.hv .anim { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); }
+.hv.play .anim { animation: hv-draw 0.6s ease forwards; animation-delay: var(--delay); }
+.hv .pop { opacity: 0; }
+.hv.play .pop { animation: hv-pop 0.3s ease forwards; animation-delay: var(--delay); }
+@keyframes hv-draw { to { stroke-dashoffset: 0; } }
+@keyframes hv-pop { to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .hv .anim { stroke-dashoffset: 0; }
+  .hv .pop { opacity: 1; }
+  .hv.play .anim, .hv.play .pop { animation: none; }
+}
+
+/* two or three panels side by side, stacked on phones */
+.hv-panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.75rem; }
+.hv-panel { border: 1px solid var(--border); border-radius: 10px; padding: 0.6rem; background: var(--bg); }
+.hv-panel h4 { margin: 0 0 0.35rem; font-size: 0.95rem; }
+.hv-panel p { margin: 0.35rem 0 0; font-size: 0.85rem; color: var(--muted); line-height: 1.45; }
+.hv-panel p strong { color: var(--text); }
+
+/* controls */
+.hv-controls { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; margin: 0.25rem 0 0.75rem; font-size: 0.92rem; }
+.hv-controls label { display: flex; align-items: center; gap: 0.5rem; color: var(--muted); }
+.hv-controls output { color: var(--text); font-weight: 700; min-width: 3.5ch; }
+.hv-controls input[type="range"] { accent-color: var(--accent); width: 11rem; max-width: 50vw; }
+.hv-controls select { font: inherit; padding: 0.2rem 0.4rem; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); color: var(--text); }
+.hv-btn { font: inherit; font-size: 0.85rem; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 999px; background: var(--surface-2); color: var(--text); cursor: pointer; }
+.hv-btn:hover { border-color: var(--accent); }
+
+/* stat tiles */
+.hv-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.6rem; margin: 0.75rem 0 0.25rem; }
+.hv-tile { border: 1px solid var(--border); border-radius: 10px; padding: 0.55rem 0.7rem; background: var(--bg); }
+.hv-tile b { display: block; font-size: 1.35rem; line-height: 1.2; color: var(--text); }
+.hv-tile span { font-size: 0.8rem; color: var(--muted); }
+
+/* recall dots */
+.hv-recall { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; margin: 0.25rem 0; }
+.hv-recall i { width: 1.6rem; height: 1.6rem; border-radius: 50%; display: inline-grid; place-items: center; font-style: normal; font-size: 0.8rem; font-weight: 700; }
+.hv-recall i.ok { background: var(--hv-path); color: var(--accent-ink); }
+.hv-recall i.miss { border: 2px dashed var(--hv-bad); color: var(--hv-bad); }
+.hv-recall .eq { margin-left: 0.5rem; font-weight: 700; color: var(--text); }
+
+/* knob cards and step strip */
+.hv-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; }
+.hv-card { border: 1px solid var(--border); border-radius: 10px; padding: 0.75rem; background: var(--bg); }
+.hv-card h4 { margin: 0 0 0.15rem; font-size: 1rem; }
+.hv-card .sub { font-size: 0.82rem; color: var(--muted); margin: 0 0 0.4rem; }
+.hv-card svg { max-width: 220px; margin: 0.25rem auto 0.4rem; }
+.hv-chips { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.35rem; }
+.hv-chip { font-size: 0.78rem; padding: 0.15rem 0.5rem; border-radius: 999px; border: 1px solid var(--border); color: var(--text); background: var(--surface); }
+.hv-chip.up { border-color: var(--hv-path); }
+.hv-chip.cost { border-color: var(--hv-query); }
+.hv-step-n { display: inline-grid; place-items: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--hv-path); color: var(--accent-ink); font-size: 0.8rem; font-weight: 700; margin-right: 0.35rem; }
+
+/* legend */
+.hv-legend { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; font-size: 0.82rem; color: var(--muted); margin: 0.4rem 0 0; }
+.hv-legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
+.hv-legend i { width: 0.8rem; height: 0.8rem; border-radius: 50%; display: inline-block; }
+.hv-legend i.sq { border-radius: 3px; }
+.hv-legend i.ln { height: 3px; width: 1.1rem; border-radius: 2px; }
+
+/* "read more" blocks: the full text, for readers who want it and for agents */
+details.hv-more { margin: 0.25rem 0 1.5rem; border-left: 3px solid var(--border); padding: 0.1rem 0 0.1rem 1rem; }
+details.hv-more > summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 0.95rem; }
+details.hv-more[open] > summary { margin-bottom: 0.5rem; }
+
+/* hover tooltip for charts */
+.hv-tip { position: absolute; pointer-events: none; background: var(--text); color: var(--bg); font-size: 0.8rem; padding: 0.3rem 0.5rem; border-radius: 6px; white-space: nowrap; transform: translate(-50%, -120%); opacity: 0; transition: opacity 0.1s; z-index: 5; }
+.hv-chart { position: relative; }
+.hv-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.hv-wide { position: relative; }
