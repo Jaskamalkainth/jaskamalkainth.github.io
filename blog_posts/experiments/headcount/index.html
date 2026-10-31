@@ -1,0 +1,168 @@
+---
+layout: null
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Room Headcount: live QR check-in counter | Jaskamal Kainth</title>
+<meta name="description" content="Live room headcount: people scan a QR code, tap once, and the projector shows how many phones joined.">
+<link rel="canonical" href="https://jaskamalkainth.github.io/blog_posts/experiments/headcount/">
+<meta property="og:title" content="Room Headcount">
+<meta property="og:description" content="Live room headcount: people scan a QR code, tap once, and the projector shows how many phones joined.">
+<meta property="og:url" content="https://jaskamalkainth.github.io/blog_posts/experiments/headcount/">
+<meta property="og:image" content="https://jaskamalkainth.github.io/img/og-home.png">
+{% include gtm-head.html %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Instrument+Sans:wght@400;600&display=swap">
+<style>
+/* Layout: one screen, centred stack. Join view on phones, #screen view on the projector. */
+:root{
+  --bg:#f3f5f8; --surface:#ffffff; --fg:#14181f; --muted:#5b6474; --line:#d9dee7;
+  --accent:#1f5eff; --accent-fg:#ffffff; --ok:#1a8a4a;
+  --display:"Big Shoulders Display", Impact, "Arial Narrow", sans-serif;
+  --body:"Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#0d1117; --surface:#161b24; --fg:#eef1f6; --muted:#97a1b3; --line:#2a3240;
+         --accent:#5b8cff; --accent-fg:#0d1117; --ok:#4cc985; color-scheme:dark; }
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-bottom,0px));
+  display:grid;place-items:center}
+[hidden]{display:none!important}
+.label{font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* Join view (phones) */
+.join{width:100%;max-width:420px;display:grid;gap:20px;text-align:center}
+.join h1{font:900 3rem/1 var(--display);margin:0;text-transform:uppercase;text-wrap:balance}
+.join p{margin:0;color:var(--muted)}
+button{font:600 1.25rem var(--body);border:0;border-radius:14px;padding:22px;cursor:pointer;
+  background:var(--accent);color:var(--accent-fg);width:100%}
+button:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
+button:disabled{opacity:.6;cursor:default}
+.done{font:700 1.3rem var(--body);color:var(--ok)}
+.note{font-size:.9rem;color:var(--muted);min-height:1.4em}
+
+/* Screen view (projector) */
+.screen{width:100%;max-width:1200px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.count{font:900 clamp(8rem,28vw,22rem)/.85 var(--display);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.count.bump{animation:bump .35s ease-out}
+@keyframes bump{from{transform:scale(1.06)}to{transform:scale(1)}}
+.qrbox{background:#fff;padding:18px;border-radius:16px;display:grid;gap:10px;justify-items:center}
+.qrbox .label{color:#5b6474}
+#qr img,#qr canvas{display:block;width:min(34vw,320px);height:auto}
+.status{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:20px;color:var(--muted)}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--muted);display:inline-block;margin-right:6px}
+.dot.live{background:var(--ok)}
+.ghost{background:transparent;color:var(--muted);border:1px solid var(--line);font-size:.9rem;padding:8px 14px;width:auto;border-radius:10px}
+.url{font-size:.85rem;color:var(--muted);word-break:break-all}
+@media (max-width:760px){.screen{grid-template-columns:1fr;text-align:center}.status{justify-content:center}}
+@media (prefers-reduced-motion:reduce){.count.bump{animation:none}}
+</style>
+</head>
+<body>
+{% include gtm-body.html %}
+
+<section class="join" id="joinView" hidden>
+  <div class="label" id="roomLabel">Live headcount</div>
+  <h1>Tap to be counted</h1>
+  <p>One tap per phone. Nothing about you is collected.</p>
+  <button id="joinBtn" type="button">I'm here ✋</button>
+  <div class="done" id="doneMsg" hidden>You're counted. Thanks!</div>
+  <div class="note" id="joinNote" role="status"></div>
+</section>
+
+<section class="screen" id="screenView" hidden>
+  <div>
+    <div class="label">Phones in the room</div>
+    <div class="count" id="count" aria-live="polite">0</div>
+    <div class="status">
+      <span><span class="dot" id="dot"></span><span id="conn">Connecting…</span></span>
+      <button class="ghost" id="resetBtn" type="button">Start a new count</button>
+    </div>
+  </div>
+  <div class="qrbox">
+    <div id="qr"></div>
+    <div class="label">Scan to join</div>
+    <div class="url" id="joinUrl"></div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function(){
+  const params = new URLSearchParams(location.search);
+  const isScreen = location.hash === "#screen";
+  let room = params.get("room");
+  if (!room) {
+    room = "headcount-" + Math.random().toString(36).slice(2, 10);
+    params.set("room", room);
+    history.replaceState(null, "", location.pathname + "?" + params + location.hash);
+  }
+  const topicUrl = "https://ntfy.sh/" + encodeURIComponent(room);
+  const joinLink = location.origin + location.pathname + "?room=" + encodeURIComponent(room);
+
+  function store(k, v){ try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k,v);}catch(e){ return null; } }
+
+  if (!isScreen) {
+    // ---------- Phone: join view ----------
+    document.getElementById("joinView").hidden = false;
+    const btn = document.getElementById("joinBtn"), note = document.getElementById("joinNote"), done = document.getElementById("doneMsg");
+    const key = "hc:" + room;
+    let id = store(key + ":id");
+    if (!id) { id = (crypto.randomUUID ? crypto.randomUUID() : Date.now() + "-" + Math.random()); store(key + ":id", id); }
+    if (store(key + ":sent") === "1") { btn.hidden = true; done.hidden = false; }
+
+    let tries = 0;
+    async function send(){
+      btn.disabled = true; note.textContent = "Sending…";
+      try {
+        const r = await fetch(topicUrl, { method: "POST", body: id });
+        if (!r.ok) throw new Error(r.status);
+        store(key + ":sent", "1");
+        btn.hidden = true; done.hidden = false; note.textContent = "";
+      } catch (e) {
+        tries++;
+        const wait = Math.min(5 * tries, 30);
+        note.textContent = "Busy network. Retrying in " + wait + "s…";
+        setTimeout(send, wait * 1000);
+      }
+    }
+    btn.addEventListener("click", send);
+    return;
+  }
+
+  // ---------- Projector: screen view ----------
+  document.getElementById("screenView").hidden = false;
+  document.getElementById("joinUrl").textContent = joinLink;
+  new QRCode(document.getElementById("qr"), { text: joinLink, width: 320, height: 320, correctLevel: QRCode.CorrectLevel.M });
+
+  const seen = new Set();
+  const countEl = document.getElementById("count"), dot = document.getElementById("dot"), conn = document.getElementById("conn");
+  function render(){
+    countEl.textContent = seen.size;
+    countEl.classList.remove("bump"); void countEl.offsetWidth; countEl.classList.add("bump");
+  }
+  const es = new EventSource(topicUrl + "/sse?since=all");
+  es.onopen = () => { dot.classList.add("live"); conn.textContent = "Live"; };
+  es.onerror = () => { dot.classList.remove("live"); conn.textContent = "Reconnecting…"; };
+  es.onmessage = (ev) => {
+    try {
+      const m = JSON.parse(ev.data);
+      if (m.event === "message" && m.message && !seen.has(m.message)) { seen.add(m.message); render(); }
+    } catch (e) {}
+  };
+
+  document.getElementById("resetBtn").addEventListener("click", () => {
+    location.href = location.pathname + "#screen";
+    location.reload();
+  });
+})();
+</script>
+</body>
+</html>
