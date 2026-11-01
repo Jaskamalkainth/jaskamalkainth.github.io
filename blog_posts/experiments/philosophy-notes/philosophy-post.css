@@ -212,3 +212,85 @@
   .ph-faces a, .ph-body, .ph-opt, .ph-driver .who img { transition: none; }
   .ph-card.flash .ph-body { animation: none; }
 }
+
+/* ---------- philosophy series nav (both posts) ---------- */
+.ph-series { margin: 1.25rem 0 1.5rem; padding: 0.9rem 1rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+.ph-series-label { margin: 0 0 0.5rem; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.ph-series ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.6rem; }
+.ph-series li { margin: 0; }
+.ph-series a { display: flex; gap: 0.75rem; align-items: center; height: 100%; box-sizing: border-box; padding: 0.65rem 0.8rem; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); color: var(--text); text-decoration: none; transition: border-color 0.2s ease, transform 0.2s ease; }
+.ph-series a:hover { border-color: var(--accent); transform: translateY(-1px); }
+.ph-series a[aria-current="page"] { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--bg)); }
+.ph-series a[aria-current="page"] small::after { content: ' · you are here'; color: var(--accent); font-weight: 600; }
+.ph-series .n { flex: none; width: 2rem; height: 2rem; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink); font-weight: 700; }
+.ph-series strong { display: block; font-family: var(--ph-serif); font-size: 1.02rem; line-height: 1.3; }
+.ph-series small { display: block; color: var(--muted); font-size: 0.82rem; line-height: 1.35; }
+
+/* "Read more in the essay" link on timeline cards */
+.ph-essay { display: inline-block; margin-top: 0.6rem; font-size: 0.88rem; font-weight: 600; color: var(--era); text-decoration: none; }
+.ph-essay:hover { text-decoration: underline; }
+
+/* ---------- essay page (whatwedowhywedo) ---------- */
+.ess-faces { display: flex; flex-wrap: wrap; justify-content: center; padding-left: 10px; }
+.ess-faces a { display: block; margin-left: -10px; border-radius: 50%; transition: transform 0.2s ease; }
+.ess-faces a:hover, .ess-faces a:focus-visible { transform: translateY(-4px) scale(1.12); position: relative; z-index: 1; }
+.ess-faces img { display: block; width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 3px solid var(--surface); box-shadow: 0 0 0 2px var(--era); }
+
+.ess-era { margin: -0.25rem 0 0.9rem; font-size: 0.88rem; color: var(--muted); }
+.ess-era a { font-weight: 600; }
+
+.ess-who { display: flex; flex-wrap: wrap; gap: 0.6rem 0.9rem; margin: 0 0 1rem; }
+.ess-who > a, .ess-who > .ess-mono { display: flex; flex-direction: column; align-items: center; width: 74px; text-align: center; font-size: 0.8rem; line-height: 1.25; color: var(--text); text-decoration: none; }
+.ess-who img, .ess-who i, .mono { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px var(--era, var(--border)); margin-bottom: 0.35rem; transition: transform 0.2s ease; }
+.ess-who > a:hover img, .ess-who > a:focus-visible img { transform: scale(1.08); }
+.ess-who i, i.mono { display: grid; place-items: center; font-style: normal; font-weight: 700; font-family: var(--ph-serif); font-size: 1.1rem; color: var(--text); background: var(--surface-2); }
+
+.ess-quote { position: relative; margin: 0 0 1rem; padding: 1.1rem 1.25rem 1rem 3.2rem; border: 0; border-radius: var(--radius); background: var(--surface-2); }
+.ess-quote::before { content: '“'; position: absolute; left: 0.9rem; top: 0.1rem; font: 700 3.4rem/1 var(--ph-serif); color: var(--accent); }
+.ess-quote p { margin: 0 0 0.5rem; font-family: var(--ph-serif); font-size: clamp(1.1rem, 2.6vw, 1.35rem); line-height: 1.45; color: var(--text); font-style: normal; }
+.ess-quote cite { font-size: 0.85rem; color: var(--muted); font-style: normal; }
+
+.ess-keys { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.6rem; }
+.ess-keys li { margin: 0; padding: 0.8rem 0.9rem; border-radius: 10px; border: 1px solid var(--border); border-top: 3px solid var(--era); background: var(--surface); font-size: 0.92rem; line-height: 1.45; }
+.ess-keys li strong { display: block; margin-bottom: 0.2rem; font-family: var(--ph-serif); font-size: 1rem; }
+
+.ess-trio { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.6rem; margin: 0 0 1rem; }
+.ess-trio > div { padding: 0.8rem 0.9rem; border-radius: 10px; background: color-mix(in srgb, var(--era) 10%, var(--surface)); border-left: 4px solid var(--era); }
+.ess-trio b { display: block; font-family: var(--ph-serif); font-size: 1.05rem; }
+.ess-trio span { font-size: 0.9rem; color: var(--text); }
+
+.ess-layers { display: grid; gap: 0; margin: 0 0 1rem; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+.ess-layers > div { padding: 0.75rem 1rem; display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; align-items: baseline; }
+.ess-layers b { font-family: var(--ph-serif); font-size: 1.02rem; min-width: 12ch; }
+.ess-layers span { font-size: 0.9rem; color: var(--muted); }
+.ess-layers .l1 { background: var(--surface); }
+.ess-layers .l2 { background: color-mix(in srgb, var(--era) 12%, var(--surface)); }
+.ess-layers .l3 { background: color-mix(in srgb, var(--era) 24%, var(--surface)); }
+.ess-layers .l3::after { content: 'below awareness'; margin-left: auto; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+.ess-journey { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.6rem; counter-reset: s; }
+.ess-journey li { margin: 0; }
+.ess-journey a { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; height: 100%; box-sizing: border-box; padding: 0.75rem; border-radius: 10px; border: 1px solid var(--border); border-top: 4px solid var(--era, var(--accent)); background: var(--bg); color: var(--text); text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; }
+.ess-journey a:hover, .ess-journey a:focus-visible { transform: translateY(-2px); border-color: var(--era, var(--accent)); }
+.ess-journey .dot img, .ess-journey .dot i { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--era, var(--accent)); margin: 0; }
+.ess-journey .dot i { font-size: 1.3rem; }
+.ess-journey small { display: block; font-size: 0.75rem; color: var(--muted); font-weight: 600; letter-spacing: 0.03em; }
+.ess-journey b { display: block; font-family: var(--ph-serif); font-size: 1rem; line-height: 1.3; }
+
+.ess-actions { margin-bottom: 0.75rem; }
+.ess-act { margin: 0 0 0.75rem; font-family: var(--ph-serif); font-size: 1.15rem; }
+.ess-lens-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.6rem; }
+.ess-lens-card { padding: 0.8rem 0.9rem; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); animation: ess-in 0.35s ease both; }
+.ess-lens-card .h { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem; }
+.ess-lens-card .h img, .ess-lens-card .h i { width: 40px; height: 40px; margin: 0; box-shadow: 0 0 0 2px var(--accent); border-radius: 50%; object-fit: cover; font-size: 0.95rem; }
+.ess-lens-card b { font-family: var(--ph-serif); font-size: 1.02rem; }
+.ess-lens-card p { margin: 0; font-size: 0.93rem; line-height: 1.5; }
+@keyframes ess-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+.ess-next { margin: 1.5rem 0 0; }
+.ess-next a { display: inline-block; padding: 0.6rem 1rem; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-weight: 600; text-decoration: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ph-series a, .ess-faces a, .ess-journey a, .ess-who img { transition: none; }
+  .ess-lens-card { animation: none; }
+}
