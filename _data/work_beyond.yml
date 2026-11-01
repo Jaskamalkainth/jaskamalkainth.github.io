@@ -1,4 +1,9 @@
 # Work & Writing - full titles, descriptions, dates, and links
+# Homepage order is newest first, automatic:
+#  - Posts in this repo: the card date and sort order come from the post's own `date:` front matter,
+#    and an "updated" line appears when its `last_modified_at` is later. The `date:` here is only a fallback.
+#  - Demos and external links: use `date: "YYYY-MM-DD"` (or "YYYY-MM" if the day is unknown).
+#  - Same-day ties: the entry higher in this file shows first, so add new entries at the top.
 work:
   # —— Technical ——
   - title: "Taalas HC1: An LLM Hardwired in Silicon"
@@ -161,7 +166,7 @@ work:
   # —— Experiments ——
   - title: "Multi-Agent Patterns"
     kind: "experiments"
-    date: "2026-10"
+    date: "2026-10-24"
     desc: "Eight agent coordination patterns animated, plus replayable LangGraph and CrewAI runs."
     meta: "Oct 2026"
     links:

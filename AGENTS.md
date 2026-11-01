@@ -176,9 +176,8 @@ AI engines repeat mistakes, so a wrong fact does more harm than a missing one.
    ```yaml
    - title: "Bloom Filters"
      kind: "algorithms"
-     date: "2025-03"              # YYYY-MM, used for sorting
+     date: "2025-03-15"           # fallback only; posts use their own front matter `date`
      desc: "One line, under ~100 chars."
-     meta: "Mar 2025"
      links:
        - label: "Article"
          url: "/blog_posts/bloom_filters.html"
@@ -187,6 +186,10 @@ AI engines repeat mistakes, so a wrong fact does more harm than a missing one.
          demo: true
      href: "/blog_posts/bloom_filters.html"
    ```
+   **Order and dates are automatic.** Cards are sorted newest first by the post's front matter
+   `date`, and show the published date plus "updated <date>" when `last_modified_at` is later.
+   Add new entries at the **top** of `work:`: on a same-day tie, the higher entry shows first.
+   Demos and external links have no front matter, so give them `date: "YYYY-MM-DD"`.
    **One topic, one card.** A post and its interactive demo share a single entry; never add a
    second card for the demo. Mark the demo link with `demo: true`: the card then shows an
    "▶ interactive demo" badge and a highlighted demo button, appears under the *experiments*
