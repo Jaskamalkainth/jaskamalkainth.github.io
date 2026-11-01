@@ -1,5 +1,6 @@
 ---
-post_theme: light
+post_theme: dark
+wide: true
 title: "Music I Love: Rafi to Arijit Singh, The Beatles to Linkin Park"
 description: "What I keep on repeat: Mohammed Rafi, Arijit Singh, Jubin Nautiyal, The Beatles, Linkin Park, Imagine Dragons, Post Malone, favourite songs and piano pieces."
 date: 2022-01-01
@@ -8,566 +9,244 @@ keywords: [favourite songs, Arijit Singh, Mohammed Rafi, Jubin Nautiyal, The Bea
 related: ["/blog_posts/whatwedowhywedo.html", "/blog_posts/philosophy-notes.html"]
 ---
 
-<div class="music-container">
-  <div class="hero-section">
-    <h1>🎵 Music is my only drug!</h1>
-    <p class="subtitle">There's nothing like music to relieve the soul and uplift it.</p>
-    <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/hqdefault.jpg" alt="Painting of a woman in a white dress playing the piano, in bright orange and yellow brushstrokes" class="hero-image" />
-  </div>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@500;700&family=Monoton&family=Yatra+One&display=swap" />
+<link rel="stylesheet" href="{{ site.baseurl }}/blog_posts/experiments/music/music.css" />
 
-  <p class="in-short"><strong>In short:</strong> my playlist swings between Hindi film music (Mohammed Rafi and the old classics, Arijit Singh, Jubin Nautiyal) and Western rock and pop (The Beatles, Linkin Park, Imagine Dragons, Post Malone). The songs I return to most are <em>Blowin' in the Wind</em>, <em>Tu Hi Re</em>, <em>I Believe I Can Fly</em>, <em>Hey Jude</em> and <em>Imagine</em>.</p>
+<div class="mx" id="mx">
 
-  <div class="section">
-    <div class="section-header">
-      <i class="fa fa-headphones section-icon"></i>
-      <h2>Artists on repeat</h2>
-    </div>
+<header class="mx-hero">
+  <canvas class="mx-viz" id="mx-viz" aria-hidden="true"></canvas>
+  <h1 class="mx-title"><span>Music</span> is my only drug</h1>
+  <p class="mx-scrawl">there's nothing like music to relieve the soul and uplift it</p>
+</header>
 
-    <h3 class="group-title"><span class="group-dot hindi"></span>Hindi film music</h3>
-    <div class="artist-grid">
-      <a class="artist-card hindi" href="https://www.youtube.com/results?search_query=Mohammed+Rafi+old+hindi+songs" target="_blank" rel="noopener">
-        <span class="artist-initials" aria-hidden="true">MR</span>
-        <span class="artist-body">
-          <span class="artist-name">Mohammed Rafi &amp; the old classics</span>
-          <span class="artist-note">The voice of Hindi cinema's golden era (1924&ndash;1980). Old Hindi songs never get old.</span>
-        </span>
-      </a>
-      <a class="artist-card hindi" href="https://www.youtube.com/results?search_query=Arijit+Singh+songs" target="_blank" rel="noopener">
-        <span class="artist-initials" aria-hidden="true">AS</span>
-        <span class="artist-body">
-          <span class="artist-name">Arijit Singh</span>
-          <span class="artist-note">The defining playback voice of the last decade, since <em>Tum Hi Ho</em> (<em>Aashiqui 2</em>, 2013).</span>
-        </span>
-      </a>
-      <a class="artist-card hindi" href="https://www.youtube.com/results?search_query=Jubin+Nautiyal+songs" target="_blank" rel="noopener">
-        <span class="artist-initials" aria-hidden="true">JN</span>
-        <span class="artist-body">
-          <span class="artist-name">Jubin Nautiyal</span>
-          <span class="artist-note">Playback singer from Uttarakhand; <em>Raataan Lambiyan</em> (<em>Shershaah</em>, 2021) is a favourite.</span>
-        </span>
-      </a>
-    </div>
+<section class="mx-deck" aria-labelledby="mx-songs">
+  <h2 id="mx-songs" class="mx-sr">Songs I keep coming back to</h2>
 
-    <h3 class="group-title"><span class="group-dot west"></span>Rock &amp; pop</h3>
-    <div class="artist-grid">
-      <a class="artist-card west" href="https://www.youtube.com/results?search_query=The+Beatles+songs" target="_blank" rel="noopener">
-        <span class="artist-initials" aria-hidden="true">TB</span>
-        <span class="artist-body">
-          <span class="artist-name">The Beatles</span>
-          <span class="artist-note">Lennon, McCartney, Harrison and Starr: Liverpool, 1960&ndash;1970, and still unbeaten.</span>
-        </span>
-      </a>
-      <a class="artist-card west" href="https://www.youtube.com/results?search_query=Linkin+Park+songs" target="_blank" rel="noopener">
-        <span class="artist-initials" aria-hidden="true">LP</span>
-        <span class="artist-body">
-          <span class="artist-name">Linkin Park</span>
-          <span class="artist-note">From <em>Hybrid Theory</em> (2000) on: <em>In the End</em>, <em>Numb</em>, and everything in between.</span>
-        </span>
-      </a>
-      <a class="artist-card west" href="https://www.youtube.com/results?search_query=Imagine+Dragons+songs" target="_blank" rel="noopener">
-        <span class="artist-initials" aria-hidden="true">ID</span>
-        <span class="artist-body">
-          <span class="artist-name">Imagine Dragons</span>
-          <span class="artist-note">The Las Vegas band behind <em>Radioactive</em>, <em>Demons</em> and <em>Believer</em>.</span>
-        </span>
-      </a>
-      <a class="artist-card west" href="https://www.youtube.com/results?search_query=Post+Malone+songs" target="_blank" rel="noopener">
-        <span class="artist-initials" aria-hidden="true">PM</span>
-        <span class="artist-body">
-          <span class="artist-name">Post Malone</span>
-          <span class="artist-note">Genre-blurring pop: <em>Circles</em>, <em>Sunflower</em>, <em>Rockstar</em>.</span>
-        </span>
-      </a>
-    </div>
-  </div>
+  <div class="mx-table">
+    <svg class="mx-turntable" id="mx-turntable" viewBox="0 0 500 420" role="img" aria-label="A turntable. The selected record spins on the platter while the tonearm rests on it.">
+      <defs>
+        <radialGradient id="mxVinyl" cx="50%" cy="50%" r="50%">
+          <stop offset="0" stop-color="#2a2a33" />
+          <stop offset="1" stop-color="#0c0c10" />
+        </radialGradient>
+        <linearGradient id="mxSheen" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0.35" stop-color="#fff" stop-opacity="0" />
+          <stop offset="0.5" stop-color="#fff" stop-opacity="0.14" />
+          <stop offset="0.65" stop-color="#fff" stop-opacity="0" />
+        </linearGradient>
+        <linearGradient id="mxPlinth" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2b2140" />
+          <stop offset="1" stop-color="#160f24" />
+        </linearGradient>
+      </defs>
+      <rect x="4" y="4" width="492" height="412" rx="26" fill="url(#mxPlinth)" stroke="#3d2f5c" stroke-width="2" />
+      <circle cx="210" cy="210" r="186" fill="#0a0710" />
+      <g class="mx-record" id="mx-record">
+        <circle cx="210" cy="210" r="176" fill="url(#mxVinyl)" />
+        <g fill="none" stroke="#fff" stroke-opacity="0.06">
+          <circle cx="210" cy="210" r="164" /><circle cx="210" cy="210" r="152" /><circle cx="210" cy="210" r="140" />
+          <circle cx="210" cy="210" r="128" /><circle cx="210" cy="210" r="116" /><circle cx="210" cy="210" r="104" />
+          <circle cx="210" cy="210" r="92" /><circle cx="210" cy="210" r="80" />
+        </g>
+        <circle cx="210" cy="210" r="62" id="mx-label" fill="#e2557b" />
+        <path d="M210 160 a50 50 0 0 1 0 100" fill="#000" fill-opacity="0.12" />
+        <text x="210" y="204" text-anchor="middle" class="mx-label-t" id="mx-label-t">Hey Jude</text>
+        <text x="210" y="226" text-anchor="middle" class="mx-label-s" id="mx-label-s">THE BEATLES · 1968</text>
+        <circle cx="210" cy="210" r="5" fill="#0a0710" />
+      </g>
+      <circle cx="210" cy="210" r="176" fill="url(#mxSheen)" pointer-events="none" />
+      <circle cx="450" cy="62" r="30" fill="#3a2d57" stroke="#55437e" stroke-width="2" />
+      <g class="mx-arm" id="mx-arm">
+        <path d="M450 62 L452 250 L430 300" fill="none" stroke="#cfc8e6" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+        <rect x="416" y="292" width="26" height="38" rx="5" transform="rotate(25 429 311)" fill="#efeaff" />
+        <circle cx="450" cy="62" r="14" fill="#efeaff" />
+      </g>
+      <rect x="400" y="350" width="70" height="34" rx="10" fill="#0f0a1a" stroke="#3d2f5c" />
+      <text x="435" y="372" text-anchor="middle" class="mx-rpm">33⅓</text>
+    </svg>
 
-  <div class="section">
-    <div class="section-header">
-      <i class="fa fa-heart section-icon"></i>
-      <h2>Songs I keep coming back to</h2>
-    </div>
-
-    <ol class="tracklist">
-      <li class="track">
-        <span class="track-no" aria-hidden="true">01</span>
-        <span class="track-body">
-          <span class="track-title">Blowin' in the Wind</span>
-          <span class="track-meta">Bob Dylan &middot; 1963 &middot; <em>The Freewheelin' Bob Dylan</em></span>
-          <span class="track-line">&ldquo;The answer, my friend, is blowin' in the wind.&rdquo; Questions with no easy answers, in under three minutes.</span>
-        </span>
-        <a class="track-play" href="https://www.youtube.com/results?search_query=Bob+Dylan+Blowin+in+the+Wind" target="_blank" rel="noopener" aria-label="Listen to Blowin' in the Wind on YouTube"><i class="fa fa-play"></i></a>
-      </li>
-      <li class="track">
-        <span class="track-no" aria-hidden="true">02</span>
-        <span class="track-body">
-          <span class="track-title">Tu Hi Re</span>
-          <span class="track-meta">Hariharan &amp; Kavita Krishnamurthy &middot; music A. R. Rahman &middot; <em>Bombay</em> (1995)</span>
-          <span class="track-line">The Hindi version of Rahman's <em>Uyire Uyire</em>; pure longing.</span>
-        </span>
-        <a class="track-play" href="https://www.youtube.com/results?search_query=Tu+Hi+Re+Bombay+A+R+Rahman" target="_blank" rel="noopener" aria-label="Listen to Tu Hi Re on YouTube"><i class="fa fa-play"></i></a>
-      </li>
-      <li class="track">
-        <span class="track-no" aria-hidden="true">03</span>
-        <span class="track-body">
-          <span class="track-title">I Believe I Can Fly</span>
-          <span class="track-meta">R. Kelly &middot; 1996 &middot; <em>Space Jam</em> soundtrack</span>
-          <span class="track-line">A song about believing you can do it before you can.</span>
-        </span>
-        <a class="track-play" href="https://www.youtube.com/results?search_query=I+Believe+I+Can+Fly" target="_blank" rel="noopener" aria-label="Listen to I Believe I Can Fly on YouTube"><i class="fa fa-play"></i></a>
-      </li>
-      <li class="track">
-        <span class="track-no" aria-hidden="true">04</span>
-        <span class="track-body">
-          <span class="track-title">Hey Jude</span>
-          <span class="track-meta">The Beatles &middot; 1968 single &middot; written by Paul McCartney</span>
-          <span class="track-line">Over seven minutes long, and the &ldquo;na na na&rdquo; coda is the best part.</span>
-        </span>
-        <a class="track-play" href="https://www.youtube.com/results?search_query=The+Beatles+Hey+Jude" target="_blank" rel="noopener" aria-label="Listen to Hey Jude on YouTube"><i class="fa fa-play"></i></a>
-      </li>
-      <li class="track">
-        <span class="track-no" aria-hidden="true">05</span>
-        <span class="track-body">
-          <span class="track-title">Imagine</span>
-          <span class="track-meta">John Lennon &middot; 1971 &middot; <em>Imagine</em></span>
-          <span class="track-line">A piano, a simple melody, and a whole philosophy.</span>
-        </span>
-        <a class="track-play" href="https://www.youtube.com/results?search_query=John+Lennon+Imagine" target="_blank" rel="noopener" aria-label="Listen to Imagine on YouTube"><i class="fa fa-play"></i></a>
-      </li>
-    </ol>
-  </div>
-
-  <div class="section">
-    <div class="section-header">
-      <i class="fa fa-music section-icon"></i>
-      <h2>Piano pieces I love</h2>
-    </div>
-    
-    <div class="music-grid">
-      <div class="music-card">
-        <div class="composer-tag">Paul de Senneville</div>
-        <h3><i class="fa fa-play-circle"></i>Mariage d'Amour ("Spring Waltz")</h3>
-        <p class="card-note">Often mislabelled online as Chopin; it was written by Paul de Senneville in 1978 and made famous by Richard Clayderman.</p>
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/EFJ7kDva7JE" title="Mariage d'Amour (Spring Waltz), piano" loading="lazy" allowfullscreen></iframe>
-        </div>
-      </div>
-
-      <div class="music-card">
-        <div class="composer-tag">Beethoven</div>
-        <h3><i class="fa fa-play-circle"></i>Für Elise</h3>
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/bP70gBZc564" title="Beethoven: Für Elise, piano" loading="lazy" allowfullscreen></iframe>
-        </div>
-      </div>
-
-      <div class="music-card">
-        <div class="composer-tag">Francis Lai · Richard Clayderman</div>
-        <h3><i class="fa fa-play-circle"></i>Love Story</h3>
-        <p class="card-note">Francis Lai's theme from the 1970 film <em>Love Story</em>, in Richard Clayderman's piano arrangement (the video credits Beethoven, but it isn't his).</p>
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/WPChw6DiIkw" title="Love Story theme, piano (Richard Clayderman)" loading="lazy" allowfullscreen></iframe>
-        </div>
-      </div>
-
-      <div class="music-card">
-        <div class="composer-tag">John Williams · Harry Potter</div>
-        <h3><i class="fa fa-play-circle"></i>Harry Potter Piano Medley (Virtuosic Cover)</h3>
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/YI6hpzai-hU" title="Harry Potter piano medley, virtuosic cover by Eshan Denipitiya" loading="lazy" allowfullscreen></iframe>
-        </div>
+    <div class="mx-now" aria-live="polite">
+      <p class="mx-now-k">now spinning</p>
+      <p class="mx-now-t" id="mx-now-t">Hey Jude</p>
+      <p class="mx-now-a" id="mx-now-a">The Beatles · 1968</p>
+      <div class="mx-now-ctl">
+        <button type="button" class="mx-btn" id="mx-prev" aria-label="Previous record"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
+        <button type="button" class="mx-btn mx-btn-big" id="mx-toggle" aria-label="Stop the record"><i class="fa fa-pause" aria-hidden="true"></i></button>
+        <button type="button" class="mx-btn" id="mx-next" aria-label="Next record"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
+        <a class="mx-yt" id="mx-yt" href="https://www.youtube.com/results?search_query=The+Beatles+Hey+Jude" target="_blank" rel="noopener"><i class="fab fa-youtube" aria-hidden="true"></i> listen</a>
       </div>
     </div>
   </div>
 
-  <div class="section">
-    <div class="section-header">
-      <i class="fa fa-star section-icon"></i>
-      <h2>Classical legends</h2>
-    </div>
-    
-    <div class="legends-grid">
-      <div class="legend-card">
-        <a href="https://raw.githubusercontent.com/Jaskamalkainth/images/master/96ed9b0919b25388599fd3e0dd926db4.jpg" target="_blank" class="image-link">
-          <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/96ed9b0919b25388599fd3e0dd926db4.jpg" alt="Portrait of Johann Sebastian Bach with his quote: The aim and final end of all music should be none other than the glory of God and the refreshment of the soul." loading="lazy" />
-        </a>
-      </div>
-      
-      <div class="legend-card">
-        <a href="https://raw.githubusercontent.com/Jaskamalkainth/images/master/Ludwig-van-Beethoven-Quotes.jpg" target="_blank" class="image-link">
-          <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/Ludwig-van-Beethoven-Quotes.jpg" alt="Portrait of Ludwig van Beethoven with the quote: Music is the mediator between the spiritual and the sensual life." loading="lazy" />
-        </a>
-      </div>
-      
-      <div class="legend-card">
-        <a href="https://raw.githubusercontent.com/Jaskamalkainth/images/master/mozart_quote_4_new.jpg" target="_blank" class="image-link">
-          <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/mozart_quote_4_new.jpg" alt="Portrait of Wolfgang Amadeus Mozart with a quote attributed to him: All I insist on, and nothing else, is that you should show the whole world that you are not afraid. Be silent, if you choose; but when it is necessary, speak, and speak in such a way that people will remember it." loading="lazy" />
-        </a>
-      </div>
+  <p class="mx-hint">↓ pull a record from the crate</p>
+  <ul class="mx-crate" id="mx-crate">
+    <li><button type="button" class="mx-sleeve" data-i="0" data-t="Blowin' in the Wind" data-a="Bob Dylan · 1963" data-c="#4f8fd6" data-q="Bob+Dylan+Blowin+in+the+Wind" aria-label="Blowin' in the Wind, Bob Dylan, 1963">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <rect width="200" height="200" fill="#e9dcc0" />
+        <g fill="none" stroke="#2f5d8f" stroke-width="5" stroke-linecap="round" class="mx-wind">
+          <path d="M-10 60 C40 30 80 90 130 60 S190 40 220 55" />
+          <path d="M-10 92 C30 70 90 120 140 92 S200 80 220 88" opacity=".7" />
+          <path d="M-10 124 C50 104 90 150 150 122 S200 112 220 120" opacity=".45" />
+        </g>
+        <path d="M150 40 c6 -10 18 -8 16 4 c-2 10 -14 8 -16 -4z" fill="#c4572e" class="mx-leaf" />
+        <text x="14" y="168" class="mx-sl-t" fill="#1f3550">BLOWIN'</text>
+        <text x="14" y="190" class="mx-sl-s" fill="#1f3550">IN THE WIND</text>
+      </svg>
+    </button></li>
+    <li><button type="button" class="mx-sleeve" data-i="1" data-t="Tu Hi Re" data-a="A. R. Rahman · Hariharan · 1995" data-c="#f08a3c" data-q="Tu+Hi+Re+Bombay+A+R+Rahman" aria-label="Tu Hi Re, A. R. Rahman, Hariharan and Kavita Krishnamurthy, Bombay, 1995">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <defs><linearGradient id="mxDusk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b1055" /><stop offset=".55" stop-color="#d5426b" /><stop offset="1" stop-color="#f7a541" /></linearGradient></defs>
+        <rect width="200" height="200" fill="url(#mxDusk)" />
+        <circle cx="100" cy="128" r="40" fill="#ffd27a" />
+        <rect y="128" width="200" height="72" fill="#1b0b3a" opacity=".85" />
+        <g stroke="#ffd27a" stroke-width="3" stroke-linecap="round" opacity=".8">
+          <path d="M70 140 h60" /><path d="M80 152 h40" /><path d="M90 164 h20" />
+        </g>
+        <text x="100" y="62" text-anchor="middle" class="mx-sl-dev" fill="#fff4dc">तू ही रे</text>
+        <text x="100" y="190" text-anchor="middle" class="mx-sl-s" fill="#ffd27a">BOMBAY · 1995</text>
+      </svg>
+    </button></li>
+    <li><button type="button" class="mx-sleeve" data-i="2" data-t="I Believe I Can Fly" data-a="R. Kelly · 1996" data-c="#5ec7d6" data-q="I+Believe+I+Can+Fly" aria-label="I Believe I Can Fly, R. Kelly, 1996">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <defs><linearGradient id="mxSky" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#9be7f0" /><stop offset="1" stop-color="#1d4e89" /></linearGradient></defs>
+        <rect width="200" height="200" fill="url(#mxSky)" />
+        <g class="mx-wings" fill="#fff">
+          <path d="M100 92 C80 60 40 52 14 66 C40 70 56 82 66 96 C50 92 34 96 22 106 C48 106 70 108 100 100z" />
+          <path d="M100 92 C120 60 160 52 186 66 C160 70 144 82 134 96 C150 92 166 96 178 106 C152 106 130 108 100 100z" />
+        </g>
+        <text x="100" y="166" text-anchor="middle" class="mx-sl-t" fill="#fff">I BELIEVE</text>
+        <text x="100" y="188" text-anchor="middle" class="mx-sl-s" fill="#e9fbff">I CAN FLY</text>
+      </svg>
+    </button></li>
+    <li><button type="button" class="mx-sleeve is-on" data-i="3" data-t="Hey Jude" data-a="The Beatles · 1968" data-c="#e2557b" data-q="The+Beatles+Hey+Jude" aria-label="Hey Jude, The Beatles, 1968" aria-pressed="true">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <rect width="200" height="200" fill="#f6c445" />
+        <g class="mx-sl-na" fill="#e2557b">
+          <text x="-6" y="40">na na na</text><text x="-30" y="78">na na na na</text>
+          <text x="-14" y="116">na na na</text><text x="-40" y="154">na na na na</text>
+        </g>
+        <rect x="0" y="164" width="200" height="36" fill="#1d1230" />
+        <text x="100" y="190" text-anchor="middle" class="mx-sl-t" fill="#f6c445">HEY JUDE</text>
+      </svg>
+    </button></li>
+    <li><button type="button" class="mx-sleeve" data-i="4" data-t="Imagine" data-a="John Lennon · 1971" data-c="#f4f1ea" data-q="John+Lennon+Imagine" aria-label="Imagine, John Lennon, 1971">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <rect width="200" height="200" fill="#f4f1ea" />
+        <circle cx="100" cy="80" r="46" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-dasharray="3 6" class="mx-dream" />
+        <g fill="#1a1a1a">
+          <path d="M52 132 h96 v10 h-96z" /><path d="M58 142 h6 v22 h-6z M136 142 h6 v22 h-6z" />
+          <path d="M60 104 h80 a8 8 0 0 1 8 8 v20 h-96 v-20 a8 8 0 0 1 8 -8z" />
+        </g>
+        <g fill="#f4f1ea"><rect x="64" y="124" width="72" height="5" /></g>
+        <text x="100" y="190" text-anchor="middle" class="mx-sl-im" fill="#1a1a1a">imagine</text>
+      </svg>
+    </button></li>
+  </ul>
+</section>
+
+<section class="mx-poster" aria-labelledby="mx-lineup">
+  <p class="mx-p-pre">headphones on · all night · every night</p>
+  <h2 id="mx-lineup" class="mx-p-h">On Repeat</h2>
+  <div class="mx-stage">
+    <p class="mx-stage-n"><span class="mx-dev">हिंदी</span> stage</p>
+    <a class="mx-act mx-xl" href="https://www.youtube.com/results?search_query=Arijit+Singh+songs" target="_blank" rel="noopener">Arijit Singh</a>
+    <a class="mx-act mx-l" href="https://www.youtube.com/results?search_query=Mohammed+Rafi+old+hindi+songs" target="_blank" rel="noopener">Mohammed Rafi <small>&amp; the golden-era classics</small></a>
+    <a class="mx-act mx-l" href="https://www.youtube.com/results?search_query=Jubin+Nautiyal+songs" target="_blank" rel="noopener">Jubin Nautiyal</a>
+  </div>
+  <p class="mx-p-star" aria-hidden="true">✦ ✦ ✦</p>
+  <div class="mx-stage">
+    <p class="mx-stage-n">rock <span class="mx-amp">&amp;</span> pop stage</p>
+    <a class="mx-act mx-xl" href="https://www.youtube.com/results?search_query=The+Beatles+songs" target="_blank" rel="noopener">The Beatles</a>
+    <div class="mx-row">
+      <a class="mx-act mx-m" href="https://www.youtube.com/results?search_query=Linkin+Park+songs" target="_blank" rel="noopener">Linkin Park</a>
+      <a class="mx-act mx-m" href="https://www.youtube.com/results?search_query=Imagine+Dragons+songs" target="_blank" rel="noopener">Imagine Dragons</a>
+      <a class="mx-act mx-m" href="https://www.youtube.com/results?search_query=Post+Malone+songs" target="_blank" rel="noopener">Post Malone</a>
     </div>
   </div>
+  <p class="mx-p-foot">admit one · no skips</p>
+</section>
+
+<section class="mx-keys-wrap" aria-labelledby="mx-play">
+  <h2 id="mx-play" class="mx-neon-h">play something</h2>
+  <div class="mx-keys-stage">
+    <div class="mx-notes" id="mx-notes" aria-hidden="true"></div>
+    <div class="mx-keys" id="mx-keys" role="group" aria-label="Playable piano, C4 to B5. Click the keys or use your computer keyboard."></div>
+  </div>
+  <div class="mx-keys-ctl">
+    <button type="button" class="mx-pill" id="mx-elise"><i class="fa fa-play" aria-hidden="true"></i> Für Elise</button>
+    <span class="mx-scrawl mx-small">or tap the keys · A–L on a keyboard</span>
+  </div>
+</section>
+
+<section class="mx-piano" aria-labelledby="mx-pianos">
+  <h2 id="mx-pianos" class="mx-neon-h">piano pieces I love</h2>
+  <div class="mx-tapes">
+    <a class="mx-tape" href="https://www.youtube.com/watch?v=EFJ7kDva7JE" data-yt="EFJ7kDva7JE" data-title="Mariage d'Amour (Spring Waltz), piano" target="_blank" rel="noopener">
+      <span class="mx-thumb"><img src="https://i.ytimg.com/vi/EFJ7kDva7JE/hqdefault.jpg" alt="Video thumbnail: Mariage d'Amour piano performance" width="480" height="360" loading="lazy" /><i class="fa fa-play" aria-hidden="true"></i></span>
+      <span class="mx-tape-t">Mariage d'Amour</span>
+      <span class="mx-scrawl mx-small">Paul de Senneville, not Chopin!</span>
+    </a>
+    <a class="mx-tape" href="https://www.youtube.com/watch?v=bP70gBZc564" data-yt="bP70gBZc564" data-title="Beethoven: Für Elise, piano" target="_blank" rel="noopener">
+      <span class="mx-thumb"><img src="https://i.ytimg.com/vi/bP70gBZc564/hqdefault.jpg" alt="Video thumbnail: Für Elise piano performance" width="480" height="360" loading="lazy" /><i class="fa fa-play" aria-hidden="true"></i></span>
+      <span class="mx-tape-t">Für Elise</span>
+      <span class="mx-scrawl mx-small">Beethoven, the real one</span>
+    </a>
+    <a class="mx-tape" href="https://www.youtube.com/watch?v=WPChw6DiIkw" data-yt="WPChw6DiIkw" data-title="Love Story theme, piano (Richard Clayderman)" target="_blank" rel="noopener">
+      <span class="mx-thumb"><img src="https://i.ytimg.com/vi/WPChw6DiIkw/hqdefault.jpg" alt="Video thumbnail: Love Story theme on piano" width="480" height="360" loading="lazy" /><i class="fa fa-play" aria-hidden="true"></i></span>
+      <span class="mx-tape-t">Love Story</span>
+      <span class="mx-scrawl mx-small">Francis Lai, not Beethoven!</span>
+    </a>
+    <a class="mx-tape" href="https://www.youtube.com/watch?v=YI6hpzai-hU" data-yt="YI6hpzai-hU" data-title="Harry Potter piano medley, virtuosic cover by Eshan Denipitiya" target="_blank" rel="noopener">
+      <span class="mx-thumb"><img src="https://i.ytimg.com/vi/YI6hpzai-hU/hqdefault.jpg" alt="Video thumbnail: virtuosic Harry Potter piano medley" width="480" height="360" loading="lazy" /><i class="fa fa-play" aria-hidden="true"></i></span>
+      <span class="mx-tape-t">Harry Potter medley</span>
+      <span class="mx-scrawl mx-small">John Williams, ten fingers, pure magic</span>
+    </a>
+  </div>
+</section>
+
+<section class="mx-wall" aria-labelledby="mx-legends">
+  <h2 id="mx-legends" class="mx-neon-h">on my wall</h2>
+  <div class="mx-polaroids">
+    <a class="mx-pol" href="https://raw.githubusercontent.com/Jaskamalkainth/images/master/96ed9b0919b25388599fd3e0dd926db4.jpg" target="_blank" rel="noopener">
+      <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/96ed9b0919b25388599fd3e0dd926db4.jpg" alt="Portrait of Johann Sebastian Bach with his quote: The aim and final end of all music should be none other than the glory of God and the refreshment of the soul." loading="lazy" />
+      <span class="mx-scrawl">Bach</span>
+    </a>
+    <a class="mx-pol" href="https://raw.githubusercontent.com/Jaskamalkainth/images/master/Ludwig-van-Beethoven-Quotes.jpg" target="_blank" rel="noopener">
+      <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/Ludwig-van-Beethoven-Quotes.jpg" alt="Portrait of Ludwig van Beethoven with the quote: Music is the mediator between the spiritual and the sensual life." loading="lazy" />
+      <span class="mx-scrawl">Beethoven</span>
+    </a>
+    <a class="mx-pol" href="https://raw.githubusercontent.com/Jaskamalkainth/images/master/mozart_quote_4_new.jpg" target="_blank" rel="noopener">
+      <img src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/mozart_quote_4_new.jpg" alt="Portrait of Wolfgang Amadeus Mozart with a quote attributed to him: All I insist on, and nothing else, is that you should show the whole world that you are not afraid. Be silent, if you choose; but when it is necessary, speak, and speak in such a way that people will remember it." loading="lazy" />
+      <span class="mx-scrawl">Mozart</span>
+    </a>
+    <img class="mx-hero-img" src="https://raw.githubusercontent.com/Jaskamalkainth/images/master/hqdefault.jpg" alt="Painting of a woman in a white dress playing the piano, in bright orange and yellow brushstrokes" loading="lazy" />
+  </div>
+</section>
+
+<details class="mx-liner" markdown="1">
+<summary>liner notes</summary>
+
+**In short:** my playlist swings between Hindi film music (Mohammed Rafi and the golden-era classics, Arijit Singh, Jubin Nautiyal) and Western rock and pop (The Beatles, Linkin Park, Imagine Dragons, Post Malone). The songs I return to most are *Blowin' in the Wind*, *Tu Hi Re*, *I Believe I Can Fly*, *Hey Jude* and *Imagine*.
+
+**The five records in the crate**
+
+| Song | Artist | Year | From |
+|---|---|---|---|
+| Blowin' in the Wind | Bob Dylan | 1963 | *The Freewheelin' Bob Dylan* |
+| Tu Hi Re | Hariharan and Kavita Krishnamurthy; music by A. R. Rahman | 1995 | *Bombay* (Hindi version of *Uyire Uyire*) |
+| I Believe I Can Fly | R. Kelly | 1996 | *Space Jam* soundtrack |
+| Hey Jude | The Beatles (written by Paul McCartney) | 1968 | single, over seven minutes long |
+| Imagine | John Lennon | 1971 | *Imagine* |
+
+**The lineup.** Mohammed Rafi (1924–1980) was the voice of Hindi cinema's golden era. Arijit Singh became the defining playback voice of the last decade after *Tum Hi Ho* (*Aashiqui 2*, 2013). Jubin Nautiyal, from Uttarakhand, sang *Raataan Lambiyan* (*Shershaah*, 2021). The Beatles were John Lennon, Paul McCartney, George Harrison and Ringo Starr, from Liverpool, 1960–1970. Linkin Park broke through with *Hybrid Theory* (2000), home of *In the End*. Imagine Dragons are the Las Vegas band behind *Radioactive*, *Demons* and *Believer*. Post Malone's hits include *Circles*, *Sunflower* and *Rockstar*.
+
+**The piano pieces.** *Mariage d'Amour* is often mislabelled online as Chopin; Paul de Senneville wrote it in 1978 and Richard Clayderman made it famous. *Für Elise* is Beethoven's. The *Love Story* theme is Francis Lai's, from the 1970 film, in Richard Clayderman's arrangement (the video credits Beethoven, but it isn't his). The Harry Potter medley is a virtuosic cover of John Williams's themes by Eshan Denipitiya.
+
+**The playable piano** runs in your browser with the Web Audio API: two octaves from C4 to B5, and the Für Elise button plays the opening melody (public domain).
+
+</details>
+
 </div>
 
-<style>
-.music-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-.hero-section {
-  text-align: center;
-  margin-bottom: 3rem;
-  padding: 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 12px;
-  color: white;
-}
-
-.hero-section h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-.hero-section .subtitle {
-  font-size: 1.2rem;
-  font-style: italic;
-  opacity: 0.9;
-  margin-bottom: 1.5rem;
-}
-
-.hero-image {
-  width: 100%;
-  max-width: 600px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
-.section {
-  margin-bottom: 3rem;
-}
-
-.section-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid rgba(0,0,0,0.1);
-}
-
-.section-icon {
-  font-size: 1.8rem;
-  margin-right: 1rem;
-  color: #667eea;
-}
-
-.section-header h2 {
-  margin: 0;
-  font-size: 1.8rem;
-  color: #333;
-}
-
-.legends-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.legend-card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.legend-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-.image-link {
-  display: block;
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
-  position: relative;
-}
-
-.image-link::after {
-  content: '🔍';
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(0,0,0,0.7);
-  color: white;
-  padding: 5px 8px;
-  border-radius: 50%;
-  font-size: 12px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.legend-card:hover .image-link::after {
-  opacity: 1;
-}
-
-.legend-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: contain;
-  object-position: center;
-  background: #f8f9fa;
-  transition: transform 0.3s ease;
-}
-
-.legend-card:hover img {
-  transform: scale(1.05);
-}
-
-.music-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-}
-
-.music-card {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.music-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-.music-card h3 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  color: #2c3e50;
-  font-size: 1.3rem;
-  display: flex;
-  align-items: center;
-}
-
-.music-card h3 i {
-  margin-right: 0.5rem;
-  color: #667eea;
-}
-
-.video-container {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  margin-top: 1rem;
-}
-
-.video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  border: none;
-}
-
-.card-note {
-  font-size: 0.85rem;
-  color: #5b6582;
-  margin: 0 0 0.75rem;
-}
-
-.composer-tag {
-  display: inline-block;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-}
-
-@media (max-width: 768px) {
-  .music-container {
-    padding: 0.5rem;
-  }
-  
-  .hero-section {
-    padding: 1.5rem;
-  }
-  
-  .hero-section h1 {
-    font-size: 2rem;
-  }
-  
-  .hero-section .subtitle {
-    font-size: 1rem;
-  }
-  
-  .music-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .legends-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .music-card {
-    padding: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-section h1 {
-    font-size: 1.8rem;
-  }
-  
-  .section-header h2 {
-    font-size: 1.5rem;
-  }
-  
-  .music-card h3 {
-    font-size: 1.1rem;
-  }
-}
-.in-short {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: #333;
-  background: #f4f2fb;
-  border-left: 4px solid #667eea;
-  border-radius: 8px;
-  padding: 1rem 1.25rem;
-  margin: -1.5rem 0 3rem;
-}
-
-.group-title {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.1rem;
-  color: #2c3e50;
-  margin: 1.5rem 0 1rem;
-}
-
-.group-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-.group-dot.hindi, .artist-card.hindi .artist-initials { background: linear-gradient(135deg, #f7971e, #e2557b); }
-.group-dot.west, .artist-card.west .artist-initials { background: linear-gradient(135deg, #667eea, #764ba2); }
-
-.artist-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1rem;
-}
-
-.artist-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.9rem;
-  background: white;
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.artist-card:hover, .artist-card:focus-visible {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.14);
-  text-decoration: none;
-}
-
-.artist-initials {
-  flex: 0 0 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-}
-
-.artist-body { display: flex; flex-direction: column; min-width: 0; }
-.artist-name { font-weight: 700; color: #2c3e50; font-size: 1.05rem; }
-.artist-note { font-size: 0.88rem; color: #5b6582; line-height: 1.45; margin-top: 0.2rem; }
-
-.tracklist {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  overflow: hidden;
-}
-
-.track {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid rgba(0,0,0,0.07);
-  transition: background 0.2s ease;
-}
-.track:last-child { border-bottom: none; }
-.track:hover { background: #f7f6fd; }
-
-.track-no {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #667eea;
-  flex: 0 0 2rem;
-}
-
-.track-body { display: flex; flex-direction: column; flex: 1; min-width: 0; }
-.track-title { font-weight: 700; font-size: 1.1rem; color: #2c3e50; }
-.track-meta { font-size: 0.85rem; color: #5b6582; margin-top: 0.15rem; }
-.track-line { font-size: 0.92rem; color: #444; margin-top: 0.35rem; }
-
-.track-play {
-  flex: 0 0 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  text-decoration: none;
-  transition: transform 0.2s ease;
-}
-.track-play:hover, .track-play:focus-visible { transform: scale(1.1); color: white; text-decoration: none; }
-.track-play i { margin-left: 2px; }
-
-@media (prefers-reduced-motion: reduce) {
-  .artist-card, .track-play, .music-card, .legend-card, .legend-card img { transition: none; }
-  .artist-card:hover, .track-play:hover, .music-card:hover, .legend-card:hover, .legend-card:hover img { transform: none; }
-}
-
-@media (max-width: 480px) {
-  .track { gap: 0.75rem; padding: 0.9rem 1rem; }
-  .track-no { flex-basis: 1.5rem; font-size: 0.95rem; }
-  .artist-grid { grid-template-columns: 1fr; }
-}
-</style>
+<script defer src="{{ site.baseurl }}/blog_posts/experiments/music/music.js"></script>
