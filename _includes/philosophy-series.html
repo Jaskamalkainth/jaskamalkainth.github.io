@@ -1,0 +1,11 @@
+{%- comment -%}
+  Two-part philosophy series nav, shown at the top and bottom of both posts so each is one click
+  from the other. Usage: {% include philosophy-series.html current="timeline" %} or current="essay".
+{%- endcomment -%}
+<nav class="ph-series" aria-label="Philosophy series">
+  <p class="ph-series-label">Philosophy series · 2 parts</p>
+  <ol>
+    <li><a href="/blog_posts/philosophy-notes.html"{% if include.current == "timeline" %} aria-current="page"{% endif %}><span class="n">1</span><span><strong>Philosophy Timeline</strong><small>25 thinkers, portraits, a timeline and a quiz</small></span></a></li>
+    <li><a href="/blog_posts/whatwedowhywedo.html"{% if include.current == "essay" %} aria-current="page"{% endif %}><span class="n">2</span><span><strong>Why Do We Do What We Do?</strong><small>The essay: 2,500 years of answers, and mine</small></span></a></li>
+  </ol>
+</nav>

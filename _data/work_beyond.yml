@@ -213,9 +213,9 @@ beyond:
     meta: "Jan 2025"
     href: "/blog_posts/philosophy-notes.html"
     links:
-      - label: "Notes"
+      - label: "Timeline"
         url: "/blog_posts/philosophy-notes.html"
-      - label: "Related: Why I do what I do"
+      - label: "Essay: Why we do what we do"
         url: "/blog_posts/whatwedowhywedo.html"
 
   - title: "한국어 학습 여정"

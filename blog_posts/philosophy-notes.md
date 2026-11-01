@@ -31,8 +31,11 @@ faq:
     <a href="#what-drives-human-behavior-six-answers-from-2500-years">Six answers</a>
     <a href="#the-philosophers-one-by-one">All 25 thinkers</a>
     <a href="#quiz-who-thought-this">Quiz</a>
+    <a href="/blog_posts/whatwedowhywedo.html">Read the essay →</a>
   </nav>
 </div>
+
+{% include philosophy-series.html current="timeline" %}
 
 > **In short:** Many great philosophical traditions took shape between the 6th and 4th centuries BCE, with Confucius in China, the Buddha in India and Socrates, Plato and Aristotle in Greece. This timeline follows 25 thinkers through six eras to today, each with dates, school and a one-line answer to why humans do what they do.
 
@@ -102,6 +105,7 @@ Every thinker on this timeline answers the question "why do we do what we do?" d
     <p class="ph-meta"><span class="ph-dates">c. 470–399 BCE</span> <span class="ph-school">Classical Greek</span></p>
     <p class="ph-text">“The unexamined life is not worth living” (as reported in Plato’s <em>Apology</em>). Pioneered the method of questioning to understand human nature and ethics.</p>
     <div class="ph-insight"><strong>Why we do what we do:</strong> <span>People act wrongly due to ignorance; if we truly know what is good, we will do good.</span></div>
+    <a class="ph-essay" href="/blog_posts/whatwedowhywedo.html#ancient-philosophy">In the essay: why we do what we do →</a>
   </div>
 </article>
 <article class="ph-card" id="plato" data-name="Plato" data-born="-428" data-died="-348" data-era="ancient" data-driver="drives" data-school="Classical Greek">
@@ -111,6 +115,7 @@ Every thinker on this timeline answers the question "why do we do what we do?" d
     <p class="ph-meta"><span class="ph-dates">c. 428–348 BCE</span> <span class="ph-school">Classical Greek</span></p>
     <p class="ph-text">Explored the nature of reality, knowledge, and the ideal state. Created the theory of Forms and examined the soul’s structure.</p>
     <div class="ph-insight"><strong>Why we do what we do:</strong> <span>Human behavior stems from the conflict between reason, spirit, and appetite within the soul.</span></div>
+    <a class="ph-essay" href="/blog_posts/whatwedowhywedo.html#ancient-philosophy">In the essay: why we do what we do →</a>
   </div>
 </article>
 <article class="ph-card" id="aristotle" data-name="Aristotle" data-born="-384" data-died="-322" data-era="ancient" data-driver="habit" data-school="Classical Greek">
@@ -120,6 +125,7 @@ Every thinker on this timeline answers the question "why do we do what we do?" d
     <p class="ph-meta"><span class="ph-dates">384–322 BCE</span> <span class="ph-school">Classical Greek</span></p>
     <p class="ph-text">Systematized logic, ethics, and politics. Studied human flourishing (<em>eudaimonia</em>) and virtue ethics.</p>
     <div class="ph-insight"><strong>Why we do what we do:</strong> <span>We act to achieve happiness through virtue, which is developed through habit and practice.</span></div>
+    <a class="ph-essay" href="/blog_posts/whatwedowhywedo.html#ancient-philosophy">In the essay: why we do what we do →</a>
   </div>
 </article>
 <article class="ph-card" id="confucius" data-name="Confucius" data-born="-551" data-died="-479" data-era="ancient" data-driver="habit" data-school="Chinese Philosophy">
@@ -147,6 +153,7 @@ Every thinker on this timeline answers the question "why do we do what we do?" d
     <p class="ph-meta"><span class="ph-dates">354–430 CE</span> <span class="ph-school">Christian Philosophy</span></p>
     <p class="ph-text">Integrated Christian theology with philosophy, exploring free will, time, and human nature.</p>
     <div class="ph-insight"><strong>Why we do what we do:</strong> <span>Human actions are driven by love: either love of God (good) or love of self (sin).</span></div>
+    <a class="ph-essay" href="/blog_posts/whatwedowhywedo.html#medieval-insights">In the essay: why we do what we do →</a>
   </div>
 </article>
 </section>
@@ -168,6 +175,7 @@ Every thinker on this timeline answers the question "why do we do what we do?" d
     <p class="ph-meta"><span class="ph-dates">1225–1274</span> <span class="ph-school">Scholasticism</span></p>
     <p class="ph-text">Synthesized Aristotelian philosophy with Christian doctrine, exploring reason and faith.</p>
     <div class="ph-insight"><strong>Why we do what we do:</strong> <span>We act according to our nature, seeking the ultimate good (God) through reason and virtue.</span></div>
+    <a class="ph-essay" href="/blog_posts/whatwedowhywedo.html#medieval-insights">In the essay: why we do what we do →</a>
   </div>
 </article>
 </section>
@@ -180,6 +188,7 @@ Every thinker on this timeline answers the question "why do we do what we do?" d
     <p class="ph-meta"><span class="ph-dates">1596–1650</span> <span class="ph-school">Rationalism</span></p>
     <p class="ph-text">“I think, therefore I am.” Established the foundation of modern philosophy through methodical doubt.</p>
     <div class="ph-insight"><strong>Why we do what we do:</strong> <span>We act based on clear and distinct ideas; error comes from hasty judgment and unclear thinking.</span></div>
+    <a class="ph-essay" href="/blog_posts/whatwedowhywedo.html#enlightenment-reason">In the essay: why we do what we do →</a>
   </div>
 </article>
 <article class="ph-card" id="baruch-spinoza" data-name="Baruch Spinoza" data-born="1632" data-died="1677" data-era="early-modern" data-driver="emotion" data-school="Rationalism">
@@ -207,6 +216,7 @@ Every thinker on this timeline answers the question "why do we do what we do?" d
     <p class="ph-meta"><span class="ph-dates">1711–1776</span> <span class="ph-school">Empiricism</span></p>
     <p class="ph-text">Skeptical about reason’s power; emphasized the role of habit, custom, and sentiment in human nature.</p>
     <div class="ph-insight"><strong>Why we do what we do:</strong> <span>We act more from passion and habit than reason; moral judgments come from feelings, not logic.</span></div>
+    <a class="ph-essay" href="/blog_posts/whatwedowhywedo.html#enlightenment-reason">In the essay: why we do what we do →</a>
   </div>
 </article>
 <article class="ph-card" id="immanuel-kant" data-name="Immanuel Kant" data-born="1724" data-died="1804" data-era="early-modern" data-driver="reason" data-school="German Idealism">
@@ -216,6 +226,7 @@ Every thinker on this timeline answers the question "why do we do what we do?" d
     <p class="ph-meta"><span class="ph-dates">1724–1804</span> <span class="ph-school">German Idealism</span></p>
     <p class="ph-text">Synthesized rationalism and empiricism; developed the categorical imperative for moral action.</p>
     <div class="ph-insight"><strong>Why we do what we do:</strong> <span>We should act from duty and universal moral laws, not just desire or consequence.</span></div>
+    <a class="ph-essay" href="/blog_posts/whatwedowhywedo.html#enlightenment-reason">In the essay: why we do what we do →</a>
   </div>
 </article>
 </section>
@@ -237,6 +248,7 @@ Every thinker on this timeline answers the question "why do we do what we do?" d
     <p class="ph-meta"><span class="ph-dates">1813–1855</span> <span class="ph-school">Existentialism</span></p>
     <p class="ph-text">Emphasized individual existence, choice, and the leap of faith; critiqued systematic philosophy.</p>
     <div class="ph-insight"><strong>Why we do what we do:</strong> <span>We act from anxiety about our freedom; authentic existence requires passionate commitment.</span></div>
+    <a class="ph-essay" href="/blog_posts/whatwedowhywedo.html#19th-century">In the essay: why we do what we do →</a>
   </div>
 </article>
 <article class="ph-card" id="karl-marx" data-name="Karl Marx" data-born="1818" data-died="1883" data-era="19th-century" data-driver="society" data-school="Historical Materialism">
@@ -246,6 +258,7 @@ Every thinker on this timeline answers the question "why do we do what we do?" d
     <p class="ph-meta"><span class="ph-dates">1818–1883</span> <span class="ph-school">Historical Materialism</span></p>
     <p class="ph-text">Analyzed capitalism and class struggle; argued that material conditions shape consciousness.</p>
     <div class="ph-insight"><strong>Why we do what we do:</strong> <span>Our actions are determined by economic and social conditions; consciousness follows material reality.</span></div>
+    <a class="ph-essay" href="/blog_posts/whatwedowhywedo.html#19th-century">In the essay: why we do what we do →</a>
   </div>
 </article>
 <article class="ph-card" id="friedrich-nietzsche" data-name="Friedrich Nietzsche" data-born="1844" data-died="1900" data-era="19th-century" data-driver="drives" data-school="Existentialism">
@@ -255,6 +268,7 @@ Every thinker on this timeline answers the question "why do we do what we do?" d
     <p class="ph-meta"><span class="ph-dates">1844–1900</span> <span class="ph-school">Existentialism</span></p>
     <p class="ph-text">“God is dead.” Challenged traditional morality and advocated for creating one’s own values.</p>
     <div class="ph-insight"><strong>Why we do what we do:</strong> <span>We act from will to power; we must create our own meaning in a meaningless universe.</span></div>
+    <a class="ph-essay" href="/blog_posts/whatwedowhywedo.html#19th-century">In the essay: why we do what we do →</a>
   </div>
 </article>
 </section>
@@ -294,6 +308,7 @@ Every thinker on this timeline answers the question "why do we do what we do?" d
     <p class="ph-meta"><span class="ph-dates">1905–1980</span> <span class="ph-school">Existentialism</span></p>
     <p class="ph-text">“Existence precedes essence.” We are condemned to be free and must create our own meaning.</p>
     <div class="ph-insight"><strong>Why we do what we do:</strong> <span>We act to escape the overwhelming responsibility of absolute freedom, often in bad faith.</span></div>
+    <a class="ph-essay" href="/blog_posts/whatwedowhywedo.html#20th-century">In the essay: why we do what we do →</a>
   </div>
 </article>
 <article class="ph-card" id="simone-de-beauvoir" data-name="Simone de Beauvoir" data-born="1908" data-died="1986" data-era="20th-century" data-driver="society" data-school="Feminist Existentialism">
@@ -303,6 +318,7 @@ Every thinker on this timeline answers the question "why do we do what we do?" d
     <p class="ph-meta"><span class="ph-dates">1908–1986</span> <span class="ph-school">Feminist Existentialism</span></p>
     <p class="ph-text">“One is not born, but rather becomes, a woman.” Examined how social conditioning shapes identity.</p>
     <div class="ph-insight"><strong>Why we do what we do:</strong> <span>Our behavior is heavily influenced by social expectations and power structures we internalize.</span></div>
+    <a class="ph-essay" href="/blog_posts/whatwedowhywedo.html#20th-century">In the essay: why we do what we do →</a>
   </div>
 </article>
 <article class="ph-card" id="michel-foucault" data-name="Michel Foucault" data-born="1926" data-died="1984" data-era="20th-century" data-driver="society" data-school="Post-Structuralism">
@@ -374,6 +390,8 @@ Research connections I still want to explore:
 - Ancient debates about free will and neuroscience findings
 
 *AI credit: this exploration was developed with help from AI research assistants. They helped synthesize and phrase ideas; the perspectives and critical analysis are my own.*
+
+{% include philosophy-series.html current="timeline" %}
 
 ## Portrait credits
 
