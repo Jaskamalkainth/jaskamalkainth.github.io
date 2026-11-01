@@ -257,6 +257,11 @@ main, .footer, .topbar { position: relative; z-index: 1; }
 .hero-cred { max-width: 720px; color: var(--muted); font-size: clamp(12px, 1.5vw, 14px); margin: 0 0 16px; letter-spacing: .01em; }
 .hero-line { max-width: 640px; font-size: clamp(17px, 2.1vw, 20px); color: var(--muted); margin: 0 0 34px; }
 .hl { color: var(--text); background: linear-gradient(transparent 62%, var(--glow) 62%); }
+a.hl { text-decoration: none; transition: background-size .2s ease; }
+a.hl:hover, a.hl:focus-visible { background: linear-gradient(transparent 0%, var(--glow) 0%); }
+/* jumped to from the hero line (#beyond-philosophy, #beyond-music) */
+.beyond-card:target { animation: target-flash 1.6s ease 1; }
+@keyframes target-flash { 0%, 40% { box-shadow: 0 0 0 2px var(--accent); } 100% { box-shadow: 0 0 0 2px transparent; } }
 
 /* search engine */
 .search { max-width: 720px; }
