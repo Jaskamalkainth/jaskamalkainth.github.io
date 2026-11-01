@@ -18,7 +18,35 @@ related: ["/blog_posts/whatwedowhywedo.html", "/blog_posts/philosophy-notes.html
   <canvas class="mx-viz" id="mx-viz" aria-hidden="true"></canvas>
   <h1 class="mx-title"><span>Music</span> is my only drug</h1>
   <p class="mx-scrawl">there's nothing like music to relieve the soul and uplift it</p>
+  <button type="button" class="mx-radio-cta" data-radio-open><i class="fa fa-broadcast-tower" aria-hidden="true"></i> turn on the radio</button>
 </header>
+
+<div class="mx-radio" id="mx-radio">
+  <div class="mx-radio-panel" id="mx-radio-panel" role="dialog" aria-label="Background music radio" hidden>
+    <div class="mx-dial" aria-hidden="true">
+      <div class="mx-dial-ticks"></div>
+      <div class="mx-needle"></div>
+    </div>
+    <div class="mx-stations">
+      <button type="button" data-station="beethoven" aria-pressed="false"><b>Beethoven</b><span>moonlight</span></button>
+      <button type="button" data-station="mozart" aria-pressed="false"><b>Mozart</b><span>nachtmusik</span></button>
+      <button type="button" data-station="jazz" aria-pressed="false"><b>Jazz</b><span>late night</span></button>
+      <button type="button" data-station="blues" aria-pressed="false"><b>Blues</b><span>12-bar</span></button>
+    </div>
+    <div class="mx-radio-row">
+      <button type="button" class="mx-btn" id="mx-radio-play" aria-label="Play the radio"><i class="fa fa-play" aria-hidden="true"></i></button>
+      <p class="mx-radio-now" id="mx-radio-now" aria-live="polite">off · pick a station</p>
+    </div>
+    <label class="mx-radio-vol"><i class="fa fa-volume-down" aria-hidden="true"></i><span class="mx-sr">Volume</span>
+      <input type="range" id="mx-radio-vol" min="0" max="1.2" step="0.05" value="0.8" />
+      <i class="fa fa-volume-up" aria-hidden="true"></i></label>
+    <p class="mx-radio-fine">played live in your browser, note by note</p>
+  </div>
+  <button type="button" class="mx-radio-fab" id="mx-radio-fab" aria-expanded="false" aria-controls="mx-radio-panel">
+    <span class="mx-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="mx-fab-t">background music</span>
+  </button>
+</div>
 
 <section class="mx-deck" aria-labelledby="mx-songs">
   <h2 id="mx-songs" class="mx-sr">Songs I keep coming back to</h2>
@@ -242,6 +270,8 @@ related: ["/blog_posts/whatwedowhywedo.html", "/blog_posts/philosophy-notes.html
 **The lineup.** Mohammed Rafi (1924–1980) was the voice of Hindi cinema's golden era. Arijit Singh became the defining playback voice of the last decade after *Tum Hi Ho* (*Aashiqui 2*, 2013). Jubin Nautiyal, from Uttarakhand, sang *Raataan Lambiyan* (*Shershaah*, 2021). The Beatles were John Lennon, Paul McCartney, George Harrison and Ringo Starr, from Liverpool, 1960–1970. Linkin Park broke through with *Hybrid Theory* (2000), home of *In the End*. Imagine Dragons are the Las Vegas band behind *Radioactive*, *Demons* and *Believer*. Post Malone's hits include *Circles*, *Sunflower* and *Rockstar*.
 
 **The piano pieces.** *Mariage d'Amour* is often mislabelled online as Chopin; Paul de Senneville wrote it in 1978 and Richard Clayderman made it famous. *Für Elise* is Beethoven's. The *Love Story* theme is Francis Lai's, from the 1970 film, in Richard Clayderman's arrangement (the video credits Beethoven, but it isn't his). The Harry Potter medley is a virtuosic cover of John Williams's themes by Eshan Denipitiya.
+
+**The background radio** plays four stations, synthesized live with the Web Audio API rather than streamed. *Beethoven* loops the opening four bars of the Piano Sonata No. 14 "Moonlight" (Op. 27 No. 2), first movement. *Mozart* plays the opening of *Eine kleine Nachtmusik* (K. 525) and the first two bars of the Piano Sonata No. 16 in C (K. 545). Both pieces are public domain. *Jazz* improvises a vibraphone line over a ii–V–I–VI in C with walking bass, ride cymbal and rootless piano voicings; *Blues* improvises a guitar line over a 12-bar shuffle in A with boogie bass and a backbeat. The jazz and blues solos are random every time, so no two plays are the same.
 
 **The playable piano** runs in your browser with the Web Audio API: two octaves from C4 to B5, and the Für Elise button plays the opening melody (public domain).
 
