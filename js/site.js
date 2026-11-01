@@ -301,6 +301,14 @@
     });
   });
 
+  /* hero-line links like "algorithms" also pick that work filter */
+  $$('a[data-filter]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var f = $('.filters button[data-kind="' + a.dataset.filter + '"]');
+      if (f) f.click();
+    });
+  });
+
   /* ================= reveal + active nav ================= */
   if ('IntersectionObserver' in window) {
     var revealEls = $$('.section-head, .stage, .commit, .card, .beyond-card, .award, .contact, .about-grid');
