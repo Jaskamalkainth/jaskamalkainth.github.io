@@ -236,11 +236,35 @@ image:
         <button type="button" data-kind="notes">notes</button>
       </div>
       <div class="cards" id="work-cards">
-        {% assign sorted_work = site.data.work_beyond.work | sort: "date" | reverse %}
-        {% for item in sorted_work %}
+        {% comment %}
+          Newest first. A card's "published" date is its post's `date` front matter (falling back
+          to the entry's own `date:` for demos and external links), so publishing a post puts it on
+          top automatically. Same-day ties keep file order (higher in work_beyond.yml = first).
+          Sort key: "YYYY-MM-DD|<999 - index>|<index>".
+        {% endcomment %}
+        {% assign work_all = site.data.work_beyond.work %}
+        {% assign work_keys = "" | split: "" %}
+        {% for item in work_all %}
+          {% assign wp = site.pages | where: "url", item.href | first %}
+          {% if wp and wp.date %}{% assign wd = wp.date | date: "%Y-%m-%d" %}{% else %}{% assign wd = item.date | append: "" %}{% if wd.size == 7 %}{% assign wd = wd | append: "-00" %}{% endif %}{% endif %}
+          {% assign wtie = 999 | minus: forloop.index0 | prepend: "00" | slice: -3, 3 %}
+          {% capture wkey %}{{ wd }}|{{ wtie }}|{{ forloop.index0 }}{% endcapture %}
+          {% assign work_keys = work_keys | push: wkey %}
+        {% endfor %}
+        {% assign work_keys = work_keys | sort | reverse %}
+        {% for wkey in work_keys %}
+        {% assign widx = wkey | split: "|" | last | plus: 0 %}
+        {% assign item = work_all[widx] %}
+        {% assign wp = site.pages | where: "url", item.href | first %}
         {% assign demo = item.links | where: "demo", true | first %}
+        {% capture wdate %}{% if wp and wp.date %}{{ wp.date | date: "%b %-d, %Y" }}{% elsif item.date.size == 7 %}{{ item.date | append: "-01" | date: "%b %Y" }}{% else %}{{ item.date | date: "%b %-d, %Y" }}{% endif %}{% endcapture %}
+        {% assign wupd = "" %}
+        {% if wp and wp.date and wp.last_modified_at %}
+          {% assign wpub_day = wp.date | date: "%Y-%m-%d" %}{% assign wmod_day = wp.last_modified_at | date: "%Y-%m-%d" %}
+          {% if wmod_day > wpub_day %}{% assign wupd = wp.last_modified_at | date: "%b %-d, %Y" %}{% endif %}
+        {% endif %}
         <article class="card{% if demo %} has-demo{% endif %}" data-kind="{{ item.kind }}{% if demo and item.kind != 'experiments' %} experiments{% endif %}">
-          <div class="card-top mono"><span class="card-tags"><span class="tag">{{ item.kind }}</span>{% if demo %}<span class="demo-badge">▶ interactive demo</span>{% endif %}</span><span class="muted">{{ item.meta }}</span></div>
+          <div class="card-top mono"><span class="card-tags"><span class="tag">{{ item.kind }}</span>{% if demo %}<span class="demo-badge">▶ interactive demo</span>{% endif %}</span><span class="card-dates muted"><span title="Published">{{ wdate | strip }}</span>{% if wupd != "" %}<span class="card-updated" title="Last updated">updated {{ wupd }}</span>{% endif %}</span></div>
           <h3><a href="{% if item.external %}{{ item.href }}{% else %}{{ site.baseurl }}{{ item.href }}{% endif %}" {% if item.external %}target="_blank" rel="noopener"{% endif %}>{{ item.title }}</a></h3>
           <p>{{ item.desc }}</p>
           {% if item.links.size > 0 %}
