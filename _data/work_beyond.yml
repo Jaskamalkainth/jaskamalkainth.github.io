@@ -6,6 +6,16 @@
 #  - Same-day ties: the entry higher in this file shows first, so add new entries at the top.
 work:
   # —— Technical ——
+  - title: "Weight Space: Programming LLM Weights"
+    kind: "notes"
+    date: "2026-11-04"
+    desc: "LoRA, task arithmetic, TIES, evolution strategies and hypernetworks: editing small LLMs' weights directly."
+    meta: "Nov 2026"
+    links:
+      - label: "Article"
+        url: "/blog_posts/weight-space-learning-explained.html"
+    href: "/blog_posts/weight-space-learning-explained.html"
+
   - title: "Taalas HC1: An LLM Hardwired in Silicon"
     kind: "notes"
     date: "2026-10"
