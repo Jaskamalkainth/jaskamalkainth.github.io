@@ -6,7 +6,7 @@ last_modified_at: 2026-10-25
 keywords: [Monte Carlo simulation, Monte Carlo method, estimate pi Monte Carlo, Monte Carlo simulation Python, random sampling, probability simulation, Monte Carlo error]
 categories: math probability simulation
 math: true
-related: ["/blog_posts/bloom_filters.html", "/blog_posts/textgrain-watermark-explained.html", "/blog_posts/weight-space-learning-explained.html"]
+related: ["/blog_posts/bloom_filters.html", "/blog_posts/textgrain-watermark-explained.html", "/blog_posts/weight-space-programming-explained.html"]
 faq:
   - q: "Why is it called Monte Carlo simulation?"
     a: "Nicholas Metropolis suggested the name at Los Alamos around 1947, after the Monte Carlo casino in Monaco. In his 1987 account he says it was partly a joke about Stanislaw Ulam's uncle, who borrowed money from relatives because he \"just had to go to Monte Carlo\". The name fits: the method runs on chance, like a casino game."

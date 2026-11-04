@@ -178,3 +178,32 @@ details.hv-more[open] > summary { margin-bottom: 0.5rem; }
 .ws-fit { margin: 0 auto; }
 .ws-formula { text-align: center; margin: 0.4rem 0 0; font-size: 0.95rem; color: var(--muted); }
 .ws-formula strong { color: var(--text); }
+
+/* weight-space programming figures */
+.ws-flow { display: flex; flex-direction: column; align-items: flex-start; gap: 0.2rem; }
+.ws-down { color: var(--muted); font-size: 0.9rem; padding-left: 0.6rem; }
+.ws-writer.new { border-color: var(--accent); border-width: 2px; }
+.ws-given { font-size: 0.85rem; color: var(--muted); margin: 0 0 0.5rem; line-height: 1.45; }
+.ws-marks { display: grid; grid-template-columns: 1fr auto auto; gap: 0.5rem; align-items: center; font-size: 0.85rem; color: var(--muted); margin: 0.3rem 0; }
+.ws-marks b { color: var(--text); }
+.ws-dots { display: inline-flex; gap: 0.25rem; }
+.ws-dots i { width: 1.3rem; height: 1.3rem; border-radius: 50%; display: inline-grid; place-items: center; font-style: normal; font-size: 0.75rem; font-weight: 700; }
+.ws-dots i.ok { background: var(--accent); color: var(--accent-ink); }
+.ws-dots i.miss { border: 2px dashed var(--hard); color: var(--hard); }
+.hv .ws-udir { stroke: var(--ws-pick); stroke-width: 3; stroke-dasharray: 6 4; }
+.hv .ws-col { stroke: var(--ws-a); stroke-width: 2.5; }
+.ws-hbar { position: relative; display: flex; align-items: center; gap: 0.4rem; height: 1.35rem; margin: 0.2rem 0; }
+.ws-hbar i { display: block; height: 100%; border-radius: 4px; min-width: 2px; flex: none; transition: width 0.3s; }
+.ws-hbar i.b { background: var(--muted); opacity: 0.55; }
+.ws-hbar i.b2 { background: var(--muted); opacity: 0.85; }
+.ws-hbar i.e { background: var(--accent); }
+.ws-hbar span { font-size: 0.85rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+.ws-qwen .ws-hbar { max-width: calc(100% - 3.5rem); }
+.ws-qrow { display: grid; grid-template-columns: 8.5rem 1fr; gap: 0.75rem; align-items: center; padding: 0.4rem 0; border-bottom: 1px solid var(--border); }
+.ws-qlab { font-size: 0.9rem; font-weight: 600; }
+.ws-qlab small { display: block; font-weight: 400; color: var(--muted); }
+.ws-srow { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.5rem; align-items: center; font-size: 0.82rem; color: var(--muted); }
+.ws-srow .ws-hbar { padding-right: 3rem; }
+.hv-btn[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+@media (max-width: 480px) { .ws-qrow { grid-template-columns: 1fr; gap: 0.2rem; } }
+@media (prefers-reduced-motion: reduce) { .ws-hbar i { transition: none; } }

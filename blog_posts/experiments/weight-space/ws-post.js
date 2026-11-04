@@ -1,4 +1,4 @@
-// Figures and small simulations for /blog_posts/weight-space-learning-explained.html.
+// Figures and small simulations for /blog_posts/weight-space-programming-explained.html.
 // Each <figure class="hv" data-hv="name"> holds a text fallback; the matching builder below
 // replaces it with an SVG or widget. The toy figures run the real algorithms (gradient descent,
 // evolution strategies, TIES-merging, fast-weight outer-product writes) on fixed inputs, so what
@@ -133,13 +133,118 @@
     return vocab * d + L * layer + d; // tied embeddings
   })();
   const loraParams = (r) => QWEN.L * (r * (QWEN.d + QWEN.d) + r * (QWEN.d + QWEN.kv)); // q_proj and v_proj
-  builders.scale = (el) => {
-    const r8 = loraParams(8);
+  // Sparks of Weight-Space Programming (Takehi, Teoh, Zhang, Khattab; MIT CSAIL, Nov 2026)
+  const SPARKS = {
+    qwen: { // Qwen3.5-0.8B, thinking on, up to 32,768 tokens
+      metrics: ['MATH-500', 'GSM8K', 'IFEval', 'Hit token limit'],
+      base: [7.9, 13.8, 21.0, 93.0],
+      edited: { 10: [12.3, 25.7, 49.0, 87.2], 25: [14.1, 25.1, 39.9, 86.4], 50: [48.1, 67.1, 62.3, 33.1] }
+    },
+    games: [ // MinAtar, 1,000 episodes; network 600→32→32→6 written from zero weights
+      ['Breakout', 15.8, 25.3, 517.4], ['Seaquest', 5.6, 88.9, 53.1], ['Asterix', 25.8, 55.2, 53.2]
+    ]
+  };
+  const QWEN35 = { d: 1024, ff: 3584, L: 24, cols: 64, layers: [15, 19], total: 0.8e9 };
+  builders.summary = (el) => {
+    const edited = QWEN35.cols * QWEN35.d * QWEN35.layers.length;
     el.innerHTML = '<div class="hv-tiles">' +
-      `<div class="hv-tile"><b>${fmt(qwenTotal)}</b><span>weights in Qwen2.5-0.5B: one point in a space with that many dimensions</span></div>` +
-      `<div class="hv-tile"><b>${fmt(r8)}</b><span>weights a rank-8 LoRA on its q and v projections trains (${(100 * r8 / qwenTotal).toFixed(2)}%)</span></div>` +
-      '<div class="hv-tile"><b>200</b><span>trainable numbers that tuned RoBERTa to 90% of full fine-tuning on MRPC</span></div>' +
-      '<div class="hv-tile"><b>1</b><span>forward pass for a hypernetwork to write a new LoRA from a sentence</span></div>' +
+      `<div class="hv-tile"><b>${fmt(edited)}</b><span>weights an LLM changed in Qwen3.5-0.8B (${(100 * edited / QWEN35.total).toFixed(3)}%), with no training</span></div>` +
+      '<div class="hv-tile"><b>7.9% → 48.1%</b><span>Qwen3.5-0.8B on MATH-500 after that edit</span></div>' +
+      '<div class="hv-tile"><b>0 → 1,024</b><span>successful episodes of a stuck physics policy after a one-shot edit to 3.5% of its weights</span></div>' +
+      '<div class="hv-tile"><b>517 vs 25</b><span>Breakout score: network written by the LLM from zero vs PPO after 500M steps</span></div>' +
+      '</div>';
+  };
+
+  // ── Who writes weights: optimizer, compiler, or a reasoning LLM ─────────
+  builders.writers = (el) => {
+    const card = (t, inp, how, out, cls) => `<div class="hv-panel ws-writer ${cls}"><h4>${t}</h4><div class="ws-flow"><span class="hv-chip">${inp}</span><span class="ws-down">↓</span><span class="hv-chip ${cls === 'new' ? 'up' : ''}">${how}</span><span class="ws-down">↓</span><span class="hv-chip">${out}</span></div></div>`;
+    el.innerHTML = '<div class="hv-panels">' +
+      card('Optimizer', 'data + loss', 'millions of small gradient steps', 'weights nobody designed', '') +
+      card('Compiler', 'a formal program', 'fixed translation rules (e.g. Tracr)', 'weights that run that program', '') +
+      card('Weight-space programming', 'weights + a goal in English', 'an LLM reads, explains and edits them', 'a targeted edit, or a new network', 'new') +
+      '</div>';
+  };
+
+  // ── What an LLM read from raw weights (Experiments 1, 2, 3, 7) ──────────
+  builders.read = (el) => {
+    const marks = (ok, n) => Array.from({ length: n }, (_, i) => i < ok ? '<i class="ok">✓</i>' : '<i class="miss">✗</i>').join('');
+    const card = (t, given, res) => `<div class="hv-panel"><h4>${t}</h4><p class="ws-given">${given}</p>${res}</div>`;
+    const row = (label, ok, n) => `<div class="ws-marks"><span>${label}</span><span class="ws-dots">${marks(ok, n)}</span><b>${ok}/${n}</b></div>`;
+    el.innerHTML = '<div class="hv-panels">' +
+      card('Which game was it trained on?', 'Weights of 4 PPO game agents (17,253 weights each), plus an unnamed grid description', row('game named', 4, 4)) +
+      card('What does this diffusion model draw?', '3 tiny DDPMs (23,824 weights each), no forward passes', row('shape named', 3, 3)) +
+      card('Which language, which heads copy?', 'Middle 4 blocks of 3 character-level transformers (7.2M weights)', row('language named', 3, 3) + row('copying heads found', 5, 5)) +
+      card('Which model is the sycophant?', '3 pairs of Gemma 3 270M fine-tunes', row('weights only', 0, 4) + row('+ attention patterns', 3, 3)) +
+      '</div><div class="hv-legend"><span>✓ correct</span><span>✗ failed attempt</span><span>Results as reported by the authors</span></div>';
+  };
+
+  // ── Removing one direction from MLP output columns (Experiment 8 idea) ──
+  builders.ablate = (el) => {
+    // illustrative 2-D version: u = the "loop" direction; columns = what each MLP neuron writes
+    const U = [Math.cos(0.5), Math.sin(0.5)];
+    const COLS = [[0.9, 0.7], [0.5, 0.95], [-0.3, 0.8], [1.0, 0.2], [0.75, -0.35], [-0.6, 0.45], [0.2, -0.9], [0.95, 0.85]];
+    const dot2 = (a, b) => a[0] * b[0] + a[1] * b[1];
+    el.innerHTML = '<div class="hv-controls"><label>remove the direction <input type="range" min="0" max="100" value="0" aria-label="How much of the loop direction to remove"><output>0%</output></label></div><div class="ws-abl"></div>';
+    const inp = el.querySelector('input');
+    const draw = () => {
+      const t = inp.value / 100, S = 120, C = [150, 140];
+      const P = (v) => [C[0] + v[0] * S, C[1] - v[1] * S];
+      const cols = COLS.map((w) => { const k = dot2(w, U); return [w[0] - t * k * U[0], w[1] - t * k * U[1]]; });
+      let g = `<rect x="0" y="0" width="300" height="280" rx="8" class="ws-plane"/>`;
+      const a = P([-1.25 * U[0], -1.25 * U[1]]), b = P([1.25 * U[0], 1.25 * U[1]]);
+      g += `<line x1="${a[0].toFixed(1)}" y1="${a[1].toFixed(1)}" x2="${b[0].toFixed(1)}" y2="${b[1].toFixed(1)}" class="ws-udir"/>` + text(a[0] + 2, a[1] + 22, 'loop direction u', 'lbl');
+      cols.forEach((w) => { const q = P(w); g += `<line x1="${C[0]}" y1="${C[1]}" x2="${q[0].toFixed(1)}" y2="${q[1].toFixed(1)}" class="ws-col" marker-end="url(#ws-ah)"/>`; });
+      g += `<circle cx="${C[0]}" cy="${C[1]}" r="4" class="ws-pt"/>`;
+      const along = cols.reduce((sum, w) => sum + Math.abs(dot2(w, U)), 0), before = COLS.reduce((sum, w) => sum + Math.abs(dot2(w, U)), 0);
+      el.querySelector('.ws-abl').innerHTML = `<div class="hv-panels ws-two"><div class="hv-panel"><div class="ws-fit" style="max-width:340px">${svg(300, 280, 'Eight MLP output columns drawn as arrows; sliding removes their component along the loop direction', g)}</div></div>` +
+        `<div class="hv-panel"><div class="hv-tiles ws-tiles-sm"><div class="hv-tile"><b>${(100 * along / before).toFixed(0)}%</b><span>of the original push along u left in these 8 columns</span></div><div class="hv-tile"><b>${fmt(QWEN35.cols * QWEN35.d * 2)}</b><span>weights changed in the real edit</span></div><div class="hv-tile"><b>64 of ${fmt(QWEN35.ff)}</b><span>down_proj columns per layer, in layers 15 and 19</span></div><div class="hv-tile"><b>${fmt(QWEN35.d)}</b><span>numbers per column (the hidden size)</span></div></div>` +
+        '<p class="ws-note">Each column is what one MLP neuron adds to the model\'s running state. Removing the loop direction leaves everything else the neuron writes intact.</p></div></div>';
+      el.querySelector('output').textContent = `${Math.round(t * 100)}%`;
+    };
+    inp.addEventListener('input', draw); draw();
+  };
+
+  // ── Qwen3.5-0.8B results by forward-pass budget ─────────────────────────
+  builders.qwen = (el) => {
+    el.innerHTML = '<div class="hv-controls" role="group" aria-label="Forward passes Astra could use"><span class="mut-s">forward passes allowed:</span>' +
+      [10, 25, 50].map((n) => `<button type="button" class="hv-btn" data-n="${n}" aria-pressed="${n === 50}">${n}</button>`).join('') + '</div><div class="ws-qwen"></div>' +
+      '<div class="hv-legend"><span><i class="sq" style="background:var(--muted)"></i>base Qwen3.5-0.8B</span><span><i class="sq" style="background:var(--accent)"></i>after the edit</span><span>Hit token limit: lower is better</span></div>';
+    const draw = (n) => {
+      const Q = SPARKS.qwen, E = Q.edited[n];
+      let h = '';
+      Q.metrics.forEach((m, i) => {
+        const bar = (v, cls) => `<div class="ws-hbar"><i class="${cls}" style="width:${v}%"></i><span>${v.toFixed(1)}%</span></div>`;
+        h += `<div class="ws-qrow"><div class="ws-qlab">${m}${i === 3 ? ' <small>(lower is better)</small>' : ''}</div><div>${bar(Q.base[i], 'b')}${bar(E[i], 'e')}</div></div>`;
+      });
+      el.querySelector('.ws-qwen').innerHTML = h;
+      el.querySelectorAll('[data-n]').forEach((b) => b.setAttribute('aria-pressed', String(+b.dataset.n === n)));
+    };
+    el.querySelectorAll('[data-n]').forEach((b) => b.addEventListener('click', () => draw(+b.dataset.n)));
+    draw(50);
+  };
+
+  // ── Networks written from scratch vs PPO ────────────────────────────────
+  builders.scratch = (el) => {
+    let h = '<div class="hv-panels">';
+    SPARKS.games.forEach(([g, p1, p5, a]) => {
+      const mx = Math.max(p1, p5, a);
+      const bar = (lab, v, cls) => `<div class="ws-srow"><span>${lab}</span><div class="ws-hbar"><i class="${cls}" style="width:${(100 * v / mx).toFixed(1)}%"></i><span>${v.toFixed(1)}</span></div></div>`;
+      h += `<div class="hv-panel"><h4>${g}</h4>${bar('PPO, 100M steps', p1, 'b')}${bar('PPO, 500M steps', p5, 'b2')}${bar('LLM, one shot', a, 'e')}</div>`;
+    });
+    h += '</div><div class="hv-legend"><span><i class="sq" style="background:var(--accent)"></i>written by the LLM from zero weights, no data or gradients</span><span>Mean score over 1,000 episodes; each panel has its own scale</span></div>';
+    el.innerHTML = h;
+  };
+
+  // ── Limits ──────────────────────────────────────────────────────────────
+  builders.limits = (el) => {
+    const card = (t, p) => `<div class="hv-panel"><h4>${t}</h4><p>${p}</p></div>`;
+    el.innerHTML = '<div class="hv-panels ws-six">' +
+      card('Can\'t add what isn\'t there', 'On Gemma 3 270M, which had no single faulty part, MATH-500 moved only from 6.8% to 7.0-7.7%.') +
+      card('Feedback matters', 'Qwen gained little with 10 or 25 forward passes; the big jump came at 50.') +
+      card('Weights alone weren\'t enough', 'Spotting the sycophantic model failed 4 of 4 times from weights; it worked once attention patterns were allowed.') +
+      card('Small networks, big context', 'Many experiments needed the whole network in the LLM\'s context; the authors call context length a bottleneck.') +
+      card('Early and unreviewed', 'A blog post, not a paper; the model is an unreleased "GPT-6 Astra"; baselines used best-of-3 to 10 seeds.') +
+      card('But checkable', 'Full logs are public, and an independent re-run of the edited Qwen scored 51.0% on MATH-500.') +
       '</div>';
   };
 
@@ -155,7 +260,8 @@
       merge: base + dotp(110, 95) + dotp(45, 40) + dotp(175, 40) + arrow(110, 95, 50, 44, 'ws-arrow thin') + arrow(110, 95, 170, 44, 'ws-arrow thin') + arrow(110, 95, 110, 28) + dotp(110, 24, 'ws-pt hit'),
       search: base + [[-22, -10], [18, -16], [25, 12], [-14, 20], [2, -26], [-28, 10], [10, 24]].map((o) => `<circle cx="${80 + o[0]}" cy="${70 + o[1]}" r="3.5" class="ws-pop"/>`).join('') + dotp(80, 70) + arrow(80, 70, 140, 48) + dotp(146, 46, 'ws-pt hit'),
       generate: base + `<rect x="10" y="12" width="64" height="26" rx="6" class="ws-box"/>` + text(42, 30, '“text”', 'mut', 'middle') + arrow(74, 30, 140, 66) + dotp(146, 70, 'ws-pt hit'),
-      edit: base + dotp(110, 62) + `<circle cx="110" cy="62" r="18" class="ws-ring"/>` + arrow(110, 62, 126, 50) + dotp(129, 48, 'ws-pt hit')
+      edit: base + dotp(110, 62) + `<circle cx="110" cy="62" r="18" class="ws-ring"/>` + arrow(110, 62, 126, 50) + dotp(129, 48, 'ws-pt hit'),
+      reason: base + `<rect x="8" y="10" width="56" height="26" rx="6" class="ws-box hot"/>` + text(36, 28, 'LLM', 'lbl', 'middle') + dotp(70, 80) + `<path d="M64 30 Q 70 55 70 72" class="ws-arrow thin"/>` + arrow(70, 80, 150, 52) + dotp(156, 50, 'ws-pt hit')
     };
     const card = (k, t, how, ex) => `<div class="hv-panel"><h4>${t}</h4>${svg(W, H, t, pics[k])}<p><strong>How:</strong> ${how}</p><p><strong>Example:</strong> ${ex}</p></div>`;
     el.innerHTML = '<div class="hv-panels ws-six">' +
@@ -165,6 +271,7 @@
       card('search', '4. Search', 'try random nudges, keep what scores well; no gradients', 'evolution strategies') +
       card('generate', '5. Generate', 'a network writes the weights from a description', 'Text-to-LoRA, Drag-and-Drop LLMs') +
       card('edit', '6. Edit', 'change a few weights to rewrite one fact or behavior', 'ROME, MEMIT') +
+      card('reason', '7. Reason', 'an LLM reads the weights, explains them, and edits them by hand', 'weight-space programming') +
       '</div><div class="hv-legend"><span><i style="background:var(--ws-move)"></i>start model</span><span><i style="background:var(--accent)"></i>result</span><span><i class="sq" style="background:var(--surface-2);border:1px solid var(--border)"></i>region of good models</span></div>';
   };
 
@@ -385,7 +492,8 @@
       ['Merging (task arithmetic, TIES)', 'fine-tuned models', 'no', 'very low', 'one model with several skills'],
       ['Evolution strategies', 'a score (reward)', 'no', 'high, many forward passes', 'a new full model'],
       ['Hypernetwork (Text-to-LoRA, DnD)', 'a trained generator + a description', 'no, at use time', 'one forward pass', 'a small adapter file'],
-      ['Model editing (ROME, MEMIT)', 'the fact to change', 'some', 'very low', 'the same model, one fact changed']
+      ['Model editing (ROME, MEMIT)', 'the fact to change', 'some', 'very low', 'the same model, one fact changed'],
+      ['Weight-space programming', 'a frontier LLM + the weights + a goal', 'no', 'LLM tokens + a few forward passes', 'a targeted, explained edit, or a small new network']
     ];
     el.innerHTML = '<div class="hv-panels ws-six">' + rows.map((r) =>
       `<div class="hv-panel"><h4>${r[0]}</h4><div class="hv-chips"><span class="hv-chip">needs: ${r[1]}</span><span class="hv-chip">backprop: ${r[2]}</span><span class="hv-chip cost">cost: ${r[3]}</span></div><p><strong>You get:</strong> ${r[4]}</p></div>`).join('') + '</div>';

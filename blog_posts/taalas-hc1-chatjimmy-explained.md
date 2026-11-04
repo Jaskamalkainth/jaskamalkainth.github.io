@@ -6,7 +6,7 @@ last_modified_at: 2026-10-31
 keywords: [Taalas HC1, ChatJimmy, chatjimmy.ai, LLM weights in silicon, hardwired LLM chip, LLM inference memory bandwidth, mask ROM AI chip, Llama 3.1 8B tokens per second]
 categories: hardware llm inference
 math: true
-related: ["/blog_posts/textgrain-watermark-explained.html", "/blog_posts/hnsw-explained.html", "/blog_posts/weight-space-learning-explained.html"]
+related: ["/blog_posts/textgrain-watermark-explained.html", "/blog_posts/hnsw-explained.html", "/blog_posts/weight-space-programming-explained.html"]
 faq:
   - q: "What model does ChatJimmy use?"
     a: "ChatJimmy (chatjimmy.ai) runs Meta's Llama 3.1 8B. Its own model list returns a single model, llama3.1-8B, owned by Taalas Inc., and the backend reports hardware named talos003_llama3. Taalas says the weights are quantized to a mix of 3-bit and 6-bit values, so answers are somewhat worse than the same model on a GPU. This was the only model offered as of October 2026."
