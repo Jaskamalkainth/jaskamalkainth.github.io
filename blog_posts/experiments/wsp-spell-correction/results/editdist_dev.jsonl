@@ -1,0 +1,200 @@
+{"query": "bzackpack", "target": "backpack", "n_words": 1, "edits": ["ins"], "pred": "backpack", "ok": true}
+{"query": "andals", "target": "sandals", "n_words": 1, "edits": ["del"], "pred": "sandals", "ok": true}
+{"query": "trousers", "target": "trousers", "n_words": 1, "edits": [], "pred": "trousers", "ok": true}
+{"query": "blneder", "target": "blender", "n_words": 1, "edits": ["swap"], "pred": "blender", "ok": true}
+{"query": "xcurtains", "target": "curtains", "n_words": 1, "edits": ["ins"], "pred": "curtains", "ok": true}
+{"query": "sohes", "target": "shoes", "n_words": 1, "edits": ["swap"], "pred": "shoes", "ok": true}
+{"query": "chagrer", "target": "charger", "n_words": 1, "edits": ["swap"], "pred": "charger", "ok": true}
+{"query": "speake", "target": "speaker", "n_words": 1, "edits": ["del"], "pred": "speaker", "ok": true}
+{"query": "swndals", "target": "sandals", "n_words": 1, "edits": ["sub"], "pred": "sandals", "ok": true}
+{"query": "latop", "target": "laptop", "n_words": 1, "edits": ["del"], "pred": "laptop", "ok": true}
+{"query": "ekyboard", "target": "keyboard", "n_words": 1, "edits": ["swap"], "pred": "keyboard", "ok": true}
+{"query": "truosers", "target": "trousers", "n_words": 1, "edits": ["swap"], "pred": "trousers", "ok": true}
+{"query": "mattresd", "target": "mattress", "n_words": 1, "edits": ["sub"], "pred": "mattress", "ok": true}
+{"query": "watcch", "target": "watch", "n_words": 1, "edits": ["ins"], "pred": "watch", "ok": true}
+{"query": "watc", "target": "watch", "n_words": 1, "edits": ["del"], "pred": "watch", "ok": true}
+{"query": "spewaker", "target": "speaker", "n_words": 1, "edits": ["ins"], "pred": "speaker", "ok": true}
+{"query": "earrins", "target": "earrings", "n_words": 1, "edits": ["del"], "pred": "earrings", "ok": true}
+{"query": "headphons", "target": "headphones", "n_words": 1, "edits": ["del"], "pred": "headphones", "ok": true}
+{"query": "chrager", "target": "charger", "n_words": 1, "edits": ["swap"], "pred": "charger", "ok": true}
+{"query": "stoes", "target": "shoes", "n_words": 1, "edits": ["sub"], "pred": "shoes", "ok": true}
+{"query": "dspeaker", "target": "speaker", "n_words": 1, "edits": ["ins"], "pred": "speaker", "ok": true}
+{"query": "javket", "target": "jacket", "n_words": 1, "edits": ["sub"], "pred": "jacket", "ok": true}
+{"query": "sneakers", "target": "sneakers", "n_words": 1, "edits": [], "pred": "sneakers", "ok": true}
+{"query": "umnrella", "target": "umbrella", "n_words": 1, "edits": ["sub"], "pred": "umbrella", "ok": true}
+{"query": "sneaikers", "target": "sneakers", "n_words": 1, "edits": ["ins"], "pred": "sneakers", "ok": true}
+{"query": "foaster", "target": "toaster", "n_words": 1, "edits": ["sub"], "pred": "toaster", "ok": true}
+{"query": "fblender", "target": "blender", "n_words": 1, "edits": ["ins"], "pred": "blender", "ok": true}
+{"query": "ucrtains", "target": "curtains", "n_words": 1, "edits": ["swap"], "pred": "curtains", "ok": true}
+{"query": "kettle", "target": "kettle", "n_words": 1, "edits": [], "pred": "kettle", "ok": true}
+{"query": "backpack", "target": "backpack", "n_words": 1, "edits": [], "pred": "backpack", "ok": true}
+{"query": "sandasl", "target": "sandals", "n_words": 1, "edits": ["swap"], "pred": "sandals", "ok": true}
+{"query": "pilloa", "target": "pillow", "n_words": 1, "edits": ["sub"], "pred": "pillow", "ok": true}
+{"query": "bsackpack", "target": "backpack", "n_words": 1, "edits": ["ins"], "pred": "backpack", "ok": true}
+{"query": "keyboad", "target": "keyboard", "n_words": 1, "edits": ["del"], "pred": "keyboard", "ok": true}
+{"query": "pillpw", "target": "pillow", "n_words": 1, "edits": ["sub"], "pred": "pillow", "ok": true}
+{"query": "plilow", "target": "pillow", "n_words": 1, "edits": ["swap"], "pred": "pillow", "ok": true}
+{"query": "mattress", "target": "mattress", "n_words": 1, "edits": [], "pred": "mattress", "ok": true}
+{"query": "pilow", "target": "pillow", "n_words": 1, "edits": ["del"], "pred": "pillow", "ok": true}
+{"query": "laptlop", "target": "laptop", "n_words": 1, "edits": ["ins"], "pred": "laptop", "ok": true}
+{"query": "qshoes", "target": "shoes", "n_words": 1, "edits": ["ins"], "pred": "shoes", "ok": true}
+{"query": "greren bottle", "target": "green bottle", "n_words": 2, "edits": ["ins"], "pred": "green bottle", "ok": true}
+{"query": "steel sneakers", "target": "steel sneakers", "n_words": 2, "edits": [], "pred": "steel sneakers", "ok": true}
+{"query": "electric lender", "target": "electric blender", "n_words": 2, "edits": ["del"], "pred": "electric blender", "ok": true}
+{"query": "samsung curtains", "target": "samsung curtains", "n_words": 2, "edits": [], "pred": "samsung curtains", "ok": true}
+{"query": "millton watch", "target": "milton watch", "n_words": 2, "edits": ["ins"], "pred": "milton watch", "ok": true}
+{"query": "black swrater", "target": "black sweater", "n_words": 2, "edits": ["sub"], "pred": "black sweater", "ok": true}
+{"query": "rubber ubrella", "target": "rubber umbrella", "n_words": 2, "edits": ["del"], "pred": "rubber umbrella", "ok": true}
+{"query": "samsung wllet", "target": "samsung wallet", "n_words": 2, "edits": ["del"], "pred": "samsung wallet", "ok": true}
+{"query": "puma wallft", "target": "puma wallet", "n_words": 2, "edits": ["sub"], "pred": "puma wallet", "ok": true}
+{"query": "running kettle", "target": "running kettle", "n_words": 2, "edits": [], "pred": "running kettle", "ok": true}
+{"query": "brwon sneakers", "target": "brown sneakers", "n_words": 2, "edits": ["swap"], "pred": "brown sneakers", "ok": true}
+{"query": "ceramic laptop", "target": "ceramic laptop", "n_words": 2, "edits": [], "pred": "ceramic laptop", "ok": true}
+{"query": "nikw keyboard", "target": "nike keyboard", "n_words": 2, "edits": ["sub"], "pred": "nike keyboard", "ok": true}
+{"query": "canon hadphones", "target": "canon headphones", "n_words": 2, "edits": ["del"], "pred": "canon headphones", "ok": true}
+{"query": "milgon sandals", "target": "milton sandals", "n_words": 2, "edits": ["sub"], "pred": "milton sandals", "ok": true}
+{"query": "blue wspeaker", "target": "blue speaker", "n_words": 2, "edits": ["ins"], "pred": "blue speaker", "ok": true}
+{"query": "green printer", "target": "green printer", "n_words": 2, "edits": [], "pred": "green printer", "ok": true}
+{"query": "ceramic shodes", "target": "ceramic shoes", "n_words": 2, "edits": ["ins"], "pred": "ceramic shoes", "ok": true}
+{"query": "silver wallet", "target": "silver wallet", "n_words": 2, "edits": [], "pred": "silver wallet", "ok": true}
+{"query": "cxasual wallet", "target": "casual wallet", "n_words": 2, "edits": ["ins"], "pred": "casual wallet", "ok": true}
+{"query": "wooden sppeaker", "target": "wooden speaker", "n_words": 2, "edits": ["ins"], "pred": "wooden speaker", "ok": true}
+{"query": "red bortle", "target": "red bottle", "n_words": 2, "edits": ["sub"], "pred": "red bottle", "ok": true}
+{"query": "philips sanals", "target": "philips sandals", "n_words": 2, "edits": ["del"], "pred": "philips sandals", "ok": true}
+{"query": "samsung keyfboard", "target": "samsung keyboard", "n_words": 2, "edits": ["ins"], "pred": "samsung keyboard", "ok": true}
+{"query": "blutooth laptop", "target": "bluetooth laptop", "n_words": 2, "edits": ["del"], "pred": "bluetooth laptop", "ok": true}
+{"query": "fossil ahoes", "target": "fossil shoes", "n_words": 2, "edits": ["sub"], "pred": "fossil shoes", "ok": true}
+{"query": "nike pritner", "target": "nike printer", "n_words": 2, "edits": ["swap"], "pred": "nike printer", "ok": true}
+{"query": "lenovo bavkpack", "target": "lenovo backpack", "n_words": 2, "edits": ["sub"], "pred": "lenovo backpack", "ok": true}
+{"query": "prestige baackpack", "target": "prestige backpack", "n_words": 2, "edits": ["ins"], "pred": "prestige backpack", "ok": true}
+{"query": "casul sweater", "target": "casual sweater", "n_words": 2, "edits": ["del"], "pred": "casual sweater", "ok": true}
+{"query": "sasung curtains", "target": "samsung curtains", "n_words": 2, "edits": ["del"], "pred": "samsung curtains", "ok": true}
+{"query": "bpluetooth charger", "target": "bluetooth charger", "n_words": 2, "edits": ["ins"], "pred": "bluetooth charger", "ok": true}
+{"query": "electric hcarger", "target": "electric charger", "n_words": 2, "edits": ["swap"], "pred": "electric charger", "ok": true}
+{"query": "pink blendef", "target": "pink blender", "n_words": 2, "edits": ["sub"], "pred": "pink blender", "ok": true}
+{"query": "adidas pillow", "target": "adidas pillow", "n_words": 2, "edits": [], "pred": "adidas pillow", "ok": true}
+{"query": "formal mattress", "target": "formal mattress", "n_words": 2, "edits": [], "pred": "formal mattress", "ok": true}
+{"query": "boat backpakc", "target": "boat backpack", "n_words": 2, "edits": ["swap"], "pred": "boat backpack", "ok": true}
+{"query": "gaming watch", "target": "gaming watch", "n_words": 2, "edits": [], "pred": "gaming watch", "ok": true}
+{"query": "nike trosuers", "target": "nike trousers", "n_words": 2, "edits": ["swap"], "pred": "nike trousers", "ok": true}
+{"query": "green kettl", "target": "green kettle", "n_words": 2, "edits": ["del"], "pred": "green kettle", "ok": true}
+{"query": "milton bluetooth charger", "target": "milton bluetooth charger", "n_words": 3, "edits": [], "pred": "milton bluetooth charger", "ok": true}
+{"query": "jellow woodne jacket", "target": "yellow wooden jacket", "n_words": 3, "edits": ["swap", "sub"], "pred": "yellow wooden jacket", "ok": true}
+{"query": "caonn potrable sweater", "target": "canon portable sweater", "n_words": 3, "edits": ["swap", "swap"], "pred": "canon portable sweater", "ok": true}
+{"query": "adieas bluetooth speaker", "target": "adidas bluetooth speaker", "n_words": 3, "edits": ["sub"], "pred": "adidas bluetooth speaker", "ok": true}
+{"query": "bosfh foldable blender", "target": "bosch foldable blender", "n_words": 3, "edits": ["sub"], "pred": "bosch foldable blender", "ok": true}
+{"query": "hosch kids speake", "target": "bosch kids speaker", "n_words": 3, "edits": ["sub", "del"], "pred": "bosch kids speaker", "ok": true}
+{"query": "lenovo portale sneakesr", "target": "lenovo portable sneakers", "n_words": 3, "edits": ["del", "swap"], "pred": "lenovo portable sneakers", "ok": true}
+{"query": "lenodo electric laptop", "target": "lenovo electric laptop", "n_words": 3, "edits": ["sub"], "pred": "lenovo electric laptop", "ok": true}
+{"query": "yellow nlass earrigns", "target": "yellow glass earrings", "n_words": 3, "edits": ["sub", "swap"], "pred": "yellow glass earrings", "ok": true}
+{"query": "keybpard for men", "target": "keyboard for men", "n_words": 3, "edits": ["sub"], "pred": "keyboard for men", "ok": true}
+{"query": "sandals fof girls", "target": "sandals for girls", "n_words": 3, "edits": ["sub"], "pred": "sandals for girls", "ok": true}
+{"query": "pillo foer boys", "target": "pillow for boys", "n_words": 3, "edits": ["del", "ins"], "pred": "pillow for boys", "ok": true}
+{"query": "sonyy rjunning charger", "target": "sony running charger", "n_words": 3, "edits": ["ins", "ins"], "pred": "sony running charger", "ok": true}
+{"query": "brown urbber sneakwrs", "target": "brown rubber sneakers", "n_words": 3, "edits": ["sub", "swap"], "pred": "brown rubber sneakers", "ok": true}
+{"query": "wtch for babies", "target": "watch for babies", "n_words": 3, "edits": ["del"], "pred": "watch for babies", "ok": true}
+{"query": "whlite rubber walet", "target": "white rubber wallet", "n_words": 3, "edits": ["del", "ins"], "pred": "white rubber wallet", "ok": true}
+{"query": "yelllw siilk curtains", "target": "yellow silk curtains", "n_words": 3, "edits": ["ins", "sub"], "pred": "yellow silk curtains", "ok": true}
+{"query": "bosch kids wallte", "target": "bosch kids wallet", "n_words": 3, "edits": ["swap"], "pred": "bosch kids wallet", "ok": true}
+{"query": "sony electric curtains", "target": "sony electric curtains", "n_words": 3, "edits": [], "pred": "sony electric curtains", "ok": true}
+{"query": "titan oragnic bqckpack", "target": "titan organic backpack", "n_words": 3, "edits": ["sub", "swap"], "pred": "titan organic backpack", "ok": true}
+{"query": "apple portable trouserc", "target": "apple portable trousers", "n_words": 3, "edits": ["sub"], "pred": "apple portable trousers", "ok": true}
+{"query": "boat waetrproof wallet", "target": "boat waterproof wallet", "n_words": 3, "edits": ["swap"], "pred": "boat waterproof wallet", "ok": true}
+{"query": "kettle for bohys", "target": "kettle for boys", "n_words": 3, "edits": ["ins"], "pred": "kettle for boys", "ok": true}
+{"query": "apple kisd pillow", "target": "apple kids pillow", "n_words": 3, "edits": ["swap"], "pred": "apple kids pillow", "ok": true}
+{"query": "blue leather bottle", "target": "blue leather bottle", "n_words": 3, "edits": [], "pred": "blue leather bottle", "ok": true}
+{"query": "adidss electric earrings", "target": "adidas electric earrings", "n_words": 3, "edits": ["sub"], "pred": "adidas electric earrings", "ok": true}
+{"query": "sony wireless sweatr", "target": "sony wireless sweater", "n_words": 3, "edits": ["del"], "pred": "sony wireless sweater", "ok": true}
+{"query": "sneakers for kds", "target": "sneakers for kids", "n_words": 3, "edits": ["del"], "pred": "sneakers for kids", "ok": true}
+{"query": "headphones fo babies", "target": "headphones for babies", "n_words": 3, "edits": ["del"], "pred": "headphones for babies", "ok": true}
+{"query": "speaker or babies", "target": "speaker for babies", "n_words": 3, "edits": ["del"], "pred": "speaker for babies", "ok": true}
+{"query": "adidas kiss ackpack", "target": "adidas kids backpack", "n_words": 3, "edits": ["sub", "del"], "pred": "adidas kids backpack", "ok": true}
+{"query": "sandals tfor men", "target": "sandals for men", "n_words": 3, "edits": ["ins"], "pred": "sandals for men", "ok": true}
+{"query": "dcanon wireless headphones", "target": "canon wireless headphones", "n_words": 3, "edits": ["ins"], "pred": "canon wireless headphones", "ok": true}
+{"query": "kettle for gitls", "target": "kettle for girls", "n_words": 3, "edits": ["sub"], "pred": "kettle for girls", "ok": true}
+{"query": "yellodw glass botftle", "target": "yellow glass bottle", "n_words": 3, "edits": ["ins", "ins"], "pred": "yellow glass bottle", "ok": true}
+{"query": "dell stainlless wallet", "target": "dell stainless wallet", "n_words": 3, "edits": ["ins"], "pred": "dell stainless wallet", "ok": true}
+{"query": "jacket for kuds", "target": "jacket for kids", "n_words": 3, "edits": ["sub"], "pred": "jacket for kids", "ok": true}
+{"query": "sweater for babjies", "target": "sweater for babies", "n_words": 3, "edits": ["ins"], "pred": "sweater for babies", "ok": true}
+{"query": "milton bluetooth andals", "target": "milton bluetooth sandals", "n_words": 3, "edits": ["del"], "pred": "milton bluetooth sandals", "ok": true}
+{"query": "wwatch for hen", "target": "watch for men", "n_words": 3, "edits": ["ins", "sub"], "pred": "watch for men", "ok": true}
+{"query": "foldable printer or men", "target": "foldable printer for men", "n_words": 4, "edits": ["del"], "pred": "foldable printer for men", "ok": true}
+{"query": "rechargeable umbrella for bagies", "target": "rechargeable umbrella for babies", "n_words": 4, "edits": ["sub"], "pred": "rechargeable umbrella for babies", "ok": true}
+{"query": "foldable bottle for boys", "target": "foldable bottle for boys", "n_words": 4, "edits": [], "pred": "foldable bottle for boys", "ok": true}
+{"query": "bozch black organic umbrella", "target": "bosch black organic umbrella", "n_words": 4, "edits": ["sub"], "pred": "bosch black organic umbrella", "ok": true}
+{"query": "bluetooth speaekr ffor boys", "target": "bluetooth speaker for boys", "n_words": 4, "edits": ["ins", "swap"], "pred": "bluetooth speaker for boys", "ok": true}
+{"query": "philips green eunning backpack", "target": "philips green running backpack", "n_words": 4, "edits": ["sub"], "pred": "philips green running backpack", "ok": true}
+{"query": "stainless shoes for kidz", "target": "stainless shoes for kids", "n_words": 4, "edits": ["sub"], "pred": "stainless shoes for kids", "ok": true}
+{"query": "portable backapck fodr kids", "target": "portable backpack for kids", "n_words": 4, "edits": ["ins", "swap"], "pred": "portable backpack for kids", "ok": true}
+{"query": "frmal charger for girls", "target": "formal charger for girls", "n_words": 4, "edits": ["del"], "pred": "formal charger for girls", "ok": true}
+{"query": "stainless backpack for omen", "target": "stainless backpack for women", "n_words": 4, "edits": ["del"], "pred": "stainless backpack for men", "ok": false}
+{"query": "buletooth jacket fodr women", "target": "bluetooth jacket for women", "n_words": 4, "edits": ["swap", "ins"], "pred": "bluetooth jacket for women", "ok": true}
+{"query": "fossil black casual watcmh", "target": "fossil black casual watch", "n_words": 4, "edits": ["ins"], "pred": "fossil black casual watch", "ok": true}
+{"query": "applle silvver gaming blender", "target": "apple silver gaming blender", "n_words": 4, "edits": ["ins", "ins"], "pred": "apple silver gaming blender", "ok": true}
+{"query": "wirfless bottle fro babies", "target": "wireless bottle for babies", "n_words": 4, "edits": ["swap", "sub"], "pred": "wireless bottle for babies", "ok": true}
+{"query": "portabe sneakers flor women", "target": "portable sneakers for women", "n_words": 4, "edits": ["del", "ins"], "pred": "portable sneakers for women", "ok": true}
+{"query": "cordless toaster fo girls", "target": "cordless toaster for girls", "n_words": 4, "edits": ["del"], "pred": "cordless toaster for girls", "ok": true}
+{"query": "wireless watcmh for boys", "target": "wireless watch for boys", "n_words": 4, "edits": ["ins"], "pred": "wireless watch for boys", "ok": true}
+{"query": "ids trousers fo women", "target": "kids trousers for women", "n_words": 4, "edits": ["del", "del"], "pred": "kids trousers for women", "ok": true}
+{"query": "wireess bottle for men", "target": "wireless bottle for men", "n_words": 4, "edits": ["del"], "pred": "wireless bottle for men", "ok": true}
+{"query": "formal earrings for boys", "target": "formal earrings for boys", "n_words": 4, "edits": [], "pred": "formal earrings for boys", "ok": true}
+{"query": "deill blue waterproof wallet", "target": "dell blue waterproof wallet", "n_words": 4, "edits": ["ins"], "pred": "dell blue waterproof wallet", "ok": true}
+{"query": "wwaterproof sneajkers for women", "target": "waterproof sneakers for women", "n_words": 4, "edits": ["ins", "ins"], "pred": "waterproof sneakers for women", "ok": true}
+{"query": "gaming printer for kids", "target": "gaming printer for kids", "n_words": 4, "edits": [], "pred": "gaming printer for kids", "ok": true}
+{"query": "bluetooth pillow or gorls", "target": "bluetooth pillow for girls", "n_words": 4, "edits": ["del", "sub"], "pred": "bluetooth pillow for girls", "ok": true}
+{"query": "wireless bottle for kid", "target": "wireless bottle for kids", "n_words": 4, "edits": ["del"], "pred": "wireless bottle for kids", "ok": true}
+{"query": "runnning toaster or boys", "target": "running toaster for boys", "n_words": 4, "edits": ["ins", "del"], "pred": "running toaster for boys", "ok": true}
+{"query": "gaming jacekt for kids", "target": "gaming jacket for kids", "n_words": 4, "edits": ["swap"], "pred": "gaming jacket for kids", "ok": true}
+{"query": "apple silcer portable blender", "target": "apple silver portable blender", "n_words": 4, "edits": ["sub"], "pred": "apple silver portable blender", "ok": true}
+{"query": "organuc charger for girls", "target": "organic charger for girls", "n_words": 4, "edits": ["sub"], "pred": "organic charger for girls", "ok": true}
+{"query": "bluetooth hadphones fo boys", "target": "bluetooth headphones for boys", "n_words": 4, "edits": ["del", "del"], "pred": "bluetooth headphones for boys", "ok": true}
+{"query": "casual spekaer fof men", "target": "casual speaker for men", "n_words": 4, "edits": ["sub", "swap"], "pred": "casual speaker for men", "ok": true}
+{"query": "prestig ppink rechargeable mattress", "target": "prestige pink rechargeable mattress", "n_words": 4, "edits": ["ins", "del"], "pred": "prestige pink rechargeable mattress", "ok": true}
+{"query": "rechargeable wallet for omen", "target": "rechargeable wallet for women", "n_words": 4, "edits": ["del"], "pred": "rechargeable wallet for men", "ok": false}
+{"query": "cordless kettle for babes", "target": "cordless kettle for babies", "n_words": 4, "edits": ["del"], "pred": "cordless kettle for babies", "ok": true}
+{"query": "electrci sandals for girls", "target": "electric sandals for girls", "n_words": 4, "edits": ["swap"], "pred": "electric sandals for girls", "ok": true}
+{"query": "frechargeable laptop for girls", "target": "rechargeable laptop for girls", "n_words": 4, "edits": ["ins"], "pred": "rechargeable laptop for girls", "ok": true}
+{"query": "puma yelloew formal blender", "target": "puma yellow formal blender", "n_words": 4, "edits": ["ins"], "pred": "puma yellow formal blender", "ok": true}
+{"query": "philips bpue foldable jacket", "target": "philips blue foldable jacket", "n_words": 4, "edits": ["sub"], "pred": "philips blue foldable jacket", "ok": true}
+{"query": "wpple silver running sandal", "target": "apple silver running sandals", "n_words": 4, "edits": ["del", "sub"], "pred": "apple silver running sandals", "ok": true}
+{"query": "electric sandals ofr womn", "target": "electric sandals for women", "n_words": 4, "edits": ["del", "swap"], "pred": "electric sandals for women", "ok": true}
+{"query": "bkoat organic trouzsers for women", "target": "boat organic trousers for women", "n_words": 5, "edits": ["ins", "ins"], "pred": "boat organic trousers for women", "ok": true}
+{"query": "black steel blender for wome", "target": "black steel blender for women", "n_words": 5, "edits": ["del"], "pred": "black steel blender for women", "ok": true}
+{"query": "puma electric charger for women", "target": "puma electric charger for women", "n_words": 5, "edits": [], "pred": "puma electric charger for women", "ok": true}
+{"query": "black ldather jacket for baies", "target": "black leather jacket for babies", "n_words": 5, "edits": ["sub", "del"], "pred": "black leather jacket for babies", "ok": true}
+{"query": "cajon organic blottle for babies", "target": "canon organic bottle for babies", "n_words": 5, "edits": ["ins", "sub"], "pred": "canon organic bottle for babies", "ok": true}
+{"query": "apple electric pillow for kids", "target": "apple electric pillow for kids", "n_words": 5, "edits": [], "pred": "apple electric pillow for kids", "ok": true}
+{"query": "philips casual wallet fo wlmen", "target": "philips casual wallet for women", "n_words": 5, "edits": ["sub", "del"], "pred": "philips casual wallet for women", "ok": true}
+{"query": "white woode pillow for bboys", "target": "white wooden pillow for boys", "n_words": 5, "edits": ["ins", "del"], "pred": "white wooden pillow for boys", "ok": true}
+{"query": "green silj earrings for grils", "target": "green silk earrings for girls", "n_words": 5, "edits": ["sub", "swap"], "pred": "green silk earrings for girls", "ok": true}
+{"query": "milton kds blender for women", "target": "milton kids blender for women", "n_words": 5, "edits": ["del"], "pred": "milton kids blender for women", "ok": true}
+{"query": "canon bluetooth sweater fot kids", "target": "canon bluetooth sweater for kids", "n_words": 5, "edits": ["sub"], "pred": "canon bluetooth sweater for kids", "ok": true}
+{"query": "silver rubber backpack for men", "target": "silver rubber backpack for men", "n_words": 5, "edits": [], "pred": "silver rubber backpack for men", "ok": true}
+{"query": "pink denim blender for men", "target": "pink denim blender for men", "n_words": 5, "edits": [], "pred": "pink denim blender for men", "ok": true}
+{"query": "silver ceramic keyboard for boys", "target": "silver ceramic keyboard for boys", "n_words": 5, "edits": [], "pred": "silver ceramic keyboard for boys", "ok": true}
+{"query": "dell foldable umbrella for girls", "target": "dell foldable umbrella for girls", "n_words": 5, "edits": [], "pred": "dell foldable umbrella for girls", "ok": true}
+{"query": "niks waterproof sweater cor kids", "target": "nike waterproof sweater for kids", "n_words": 5, "edits": ["sub", "sub"], "pred": "nike waterproof sweater for kids", "ok": true}
+{"query": "blue ceramic nmattress foor men", "target": "blue ceramic mattress for men", "n_words": 5, "edits": ["ins", "ins"], "pred": "blue ceramic mattress for men", "ok": true}
+{"query": "puma gaming printer for kids", "target": "puma gaming printer for kids", "n_words": 5, "edits": [], "pred": "puma gaming printer for kids", "ok": true}
+{"query": "blue plastic awtch for boys", "target": "blue plastic watch for boys", "n_words": 5, "edits": ["swap"], "pred": "blue plastic watch for boys", "ok": true}
+{"query": "yellow cotton curtains for oys", "target": "yellow cotton curtains for boys", "n_words": 5, "edits": ["del"], "pred": "yellow cotton curtains for boys", "ok": true}
+{"query": "back leather sandals or kids", "target": "black leather sandals for kids", "n_words": 5, "edits": ["del", "del"], "pred": "black leather sandals for kids", "ok": true}
+{"query": "sony electric pillow forr boys", "target": "sony electric pillow for boys", "n_words": 5, "edits": ["ins"], "pred": "sony electric pillow for boys", "ok": true}
+{"query": "uma kids mattress for abies", "target": "puma kids mattress for babies", "n_words": 5, "edits": ["del", "del"], "pred": "puma kids mattress for babies", "ok": true}
+{"query": "geen woodden sweater for girls", "target": "green wooden sweater for girls", "n_words": 5, "edits": ["del", "ins"], "pred": "green wooden sweater for girls", "ok": true}
+{"query": "brown leather umbrelia for emn", "target": "brown leather umbrella for men", "n_words": 5, "edits": ["sub", "swap"], "pred": "brown leather umbrella for men", "ok": true}
+{"query": "sivler rubber sneakers fo kids", "target": "silver rubber sneakers for kids", "n_words": 5, "edits": ["swap", "del"], "pred": "silver rubber sneakers for kids", "ok": true}
+{"query": "pink steel sandals for girls", "target": "pink steel sandals for girls", "n_words": 5, "edits": [], "pred": "pink steel sandals for girls", "ok": true}
+{"query": "dell gaming lapptop for men", "target": "dell gaming laptop for men", "n_words": 5, "edits": ["ins"], "pred": "dell gaming laptop for men", "ok": true}
+{"query": "lenovo formal headphones for men", "target": "lenovo formal headphones for men", "n_words": 5, "edits": [], "pred": "lenovo formal headphones for men", "ok": true}
+{"query": "prestige foldable toasetr for bohys", "target": "prestige foldable toaster for boys", "n_words": 5, "edits": ["ins", "swap"], "pred": "prestige foldable toaster for boys", "ok": true}
+{"query": "samsung cordless sandals ofr girls", "target": "samsung cordless sandals for girls", "n_words": 5, "edits": ["swap"], "pred": "samsung cordless sandals for girls", "ok": true}
+{"query": "pink lezther umbrella for babies", "target": "pink leather umbrella for babies", "n_words": 5, "edits": ["sub"], "pred": "pink leather umbrella for babies", "ok": true}
+{"query": "milton gaming speaker for boyas", "target": "milton gaming speaker for boys", "n_words": 5, "edits": ["ins"], "pred": "milton gaming speaker for boys", "ok": true}
+{"query": "whitf rubber keyboard for women", "target": "white rubber keyboard for women", "n_words": 5, "edits": ["sub"], "pred": "white rubber keyboard for women", "ok": true}
+{"query": "ohilips portable sweater for kids", "target": "philips portable sweater for kids", "n_words": 5, "edits": ["sub"], "pred": "philips portable sweater for kids", "ok": true}
+{"query": "milton organic heawdphones for men", "target": "milton organic headphones for men", "n_words": 5, "edits": ["ins"], "pred": "milton organic headphones for men", "ok": true}
+{"query": "red rubber bottle for babies", "target": "red rubber bottle for babies", "n_words": 5, "edits": [], "pred": "red rubber bottle for babies", "ok": true}
+{"query": "bosch wateproof wallet for men", "target": "bosch waterproof wallet for men", "n_words": 5, "edits": ["del"], "pred": "bosch waterproof wallet for men", "ok": true}
+{"query": "adidas casual laptip for kdis", "target": "adidas casual laptop for kids", "n_words": 5, "edits": ["sub", "swap"], "pred": "adidas casual laptop for kids", "ok": true}
+{"query": "philips waterproof kettle for men", "target": "philips waterproof kettle for men", "n_words": 5, "edits": [], "pred": "philips waterproof kettle for men", "ok": true}

@@ -1,0 +1,215 @@
+{
+ "forward_passes": 45,
+ "attempts": [
+  {
+   "attempt": "steering vector, layer 8, alpha 1.0 (unwritable part 0.35)",
+   "weights_changed": 768,
+   "dev": {
+    "all": 2.0,
+    "typo": 0.0,
+    "clean": 12.9,
+    "1": 2.5,
+    "2": 5.0,
+    "3": 0.0,
+    "4": 0.0,
+    "5": 2.5
+   },
+   "passes_so_far": 12
+  },
+  {
+   "attempt": "steering vector, layer 12, alpha 1.0 (unwritable part 0.00)",
+   "weights_changed": 896,
+   "dev": {
+    "all": 0.0,
+    "typo": 0.0,
+    "clean": 0.0,
+    "1": 0.0,
+    "2": 0.0,
+    "3": 0.0,
+    "4": 0.0,
+    "5": 0.0
+   },
+   "passes_so_far": 16
+  },
+  {
+   "attempt": "steering vector, layer 8, alpha 0.25 (50-query subset)",
+   "weights_changed": 768,
+   "dev": {
+    "all": 14.0,
+    "typo": 14.3,
+    "clean": 12.5,
+    "1": 20.0,
+    "2": 16.7,
+    "3": 0.0,
+    "4": 12.5,
+    "5": 25.0
+   },
+   "passes_so_far": 17
+  },
+  {
+   "attempt": "steering vector, layer 12, alpha 0.15 (50-query subset)",
+   "weights_changed": 896,
+   "dev": {
+    "all": 0.0,
+    "typo": 0.0,
+    "clean": 0.0,
+    "1": 0.0,
+    "2": 0.0,
+    "3": 0.0,
+    "4": 0.0,
+    "5": 0.0
+   },
+   "passes_so_far": 18
+  },
+  {
+   "attempt": "diagnostic: chat-vs-copy direction (no edit)",
+   "weights_changed": 0,
+   "dev": null,
+   "passes_so_far": 22
+  },
+  {
+   "attempt": "scale top-6 copy heads x1.5 (50-query subset)",
+   "weights_changed": 344064,
+   "dev": {
+    "all": 14.0,
+    "typo": 14.3,
+    "clean": 12.5,
+    "1": 20.0,
+    "2": 33.3,
+    "3": 0.0,
+    "4": 12.5,
+    "5": 16.7
+   },
+   "passes_so_far": 27
+  },
+  {
+   "attempt": "scale top-6 copy heads x2.0 (50-query subset)",
+   "weights_changed": 344064,
+   "dev": {
+    "all": 22.0,
+    "typo": 21.4,
+    "clean": 25.0,
+    "1": 20.0,
+    "2": 50.0,
+    "3": 14.3,
+    "4": 12.5,
+    "5": 25.0
+   },
+   "passes_so_far": 28
+  },
+  {
+   "attempt": "scale top-12 copy heads x1.5 (50-query subset)",
+   "weights_changed": 688128,
+   "dev": {
+    "all": 22.0,
+    "typo": 16.7,
+    "clean": 50.0,
+    "1": 40.0,
+    "2": 33.3,
+    "3": 0.0,
+    "4": 12.5,
+    "5": 33.3
+   },
+   "passes_so_far": 29
+  },
+  {
+   "attempt": "scale top-6 copy heads x2.0",
+   "weights_changed": 344064,
+   "dev": {
+    "all": 21.0,
+    "typo": 17.8,
+    "clean": 38.7,
+    "1": 22.5,
+    "2": 25.0,
+    "3": 17.5,
+    "4": 17.5,
+    "5": 22.5
+   },
+   "passes_so_far": 33
+  },
+  {
+   "attempt": "scale top-12 copy heads x1.5",
+   "weights_changed": 688128,
+   "dev": {
+    "all": 23.5,
+    "typo": 18.3,
+    "clean": 51.6,
+    "1": 27.5,
+    "2": 27.5,
+    "3": 15.0,
+    "4": 17.5,
+    "5": 30.0
+   },
+   "passes_so_far": 37
+  },
+  {
+   "attempt": "scale top-12 copy heads x2.0",
+   "weights_changed": 688128,
+   "dev": {
+    "all": 22.0,
+    "typo": 17.8,
+    "clean": 45.2,
+    "1": 30.0,
+    "2": 22.5,
+    "3": 15.0,
+    "4": 15.0,
+    "5": 27.5
+   },
+   "passes_so_far": 41
+  },
+  {
+   "attempt": "copy edit + project chat-opening tokens out of layers 18-23",
+   "weights_changed": 31653888,
+   "dev": {
+    "all": 19.0,
+    "typo": 16.0,
+    "clean": 35.5,
+    "1": 25.0,
+    "2": 17.5,
+    "3": 12.5,
+    "4": 17.5,
+    "5": 22.5
+   },
+   "passes_so_far": 45
+  }
+ ],
+ "final": {
+  "edit": "o_proj blocks of the 12 heads with most attention on the query, x1.5",
+  "heads": [
+   "L18.H13",
+   "L17.H8",
+   "L20.H6",
+   "L16.H7",
+   "L15.H9",
+   "L9.H13",
+   "L16.H11",
+   "L13.H13",
+   "L11.H2",
+   "L18.H4",
+   "L7.H7",
+   "L15.H13"
+  ],
+  "weights_changed": 688128,
+  "fraction_of_model": 0.001392879267474015,
+  "dev": {
+   "all": 23.5,
+   "typo": 18.3,
+   "clean": 51.6,
+   "1": 27.5,
+   "2": 27.5,
+   "3": 15.0,
+   "4": 17.5,
+   "5": 30.0
+  },
+  "test": {
+   "all": 21.0,
+   "typo": 14.0,
+   "clean": 56.0,
+   "1": 15.0,
+   "2": 30.0,
+   "3": 23.3,
+   "4": 16.7,
+   "5": 20.0
+  }
+ }
+}

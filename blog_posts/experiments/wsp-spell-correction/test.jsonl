@@ -1,0 +1,300 @@
+{"query": "handbag", "target": "handbag", "n_words": 1, "edits": []}
+{"query": "smartwatcyh", "target": "smartwatch", "n_words": 1, "edits": ["ins"]}
+{"query": "necklace", "target": "necklace", "n_words": 1, "edits": []}
+{"query": "vacujum", "target": "vacuum", "n_words": 1, "edits": ["ins"]}
+{"query": "holdie", "target": "hoodie", "n_words": 1, "edits": ["sub"]}
+{"query": "besheet", "target": "bedsheet", "n_words": 1, "edits": ["del"]}
+{"query": "mponitor", "target": "monitor", "n_words": 1, "edits": ["ins"]}
+{"query": "hooide", "target": "hoodie", "n_words": 1, "edits": ["swap"]}
+{"query": "lipstkick", "target": "lipstick", "n_words": 1, "edits": ["ins"]}
+{"query": "camra", "target": "camera", "n_words": 1, "edits": ["del"]}
+{"query": "sunglasess", "target": "sunglasses", "n_words": 1, "edits": ["swap"]}
+{"query": "smatrwatch", "target": "smartwatch", "n_words": 1, "edits": ["swap"]}
+{"query": "bedsheeft", "target": "bedsheet", "n_words": 1, "edits": ["ins"]}
+{"query": "cooikware", "target": "cookware", "n_words": 1, "edits": ["ins"]}
+{"query": "hoodiwe", "target": "hoodie", "n_words": 1, "edits": ["ins"]}
+{"query": "jeana", "target": "jeans", "n_words": 1, "edits": ["sub"]}
+{"query": "sungasses", "target": "sunglasses", "n_words": 1, "edits": ["del"]}
+{"query": "monitro", "target": "monitor", "n_words": 1, "edits": ["swap"]}
+{"query": "snartwatch", "target": "smartwatch", "n_words": 1, "edits": ["sub"]}
+{"query": "earphones", "target": "earphones", "n_words": 1, "edits": []}
+{"query": "eaphones", "target": "earphones", "n_words": 1, "edits": ["del"]}
+{"query": "hpodie", "target": "hoodie", "n_words": 1, "edits": ["sub"]}
+{"query": "necklzace", "target": "necklace", "n_words": 1, "edits": ["ins"]}
+{"query": "earphojnes", "target": "earphones", "n_words": 1, "edits": ["ins"]}
+{"query": "blankst", "target": "blanket", "n_words": 1, "edits": ["sub"]}
+{"query": "refrigerator", "target": "refrigerator", "n_words": 1, "edits": []}
+{"query": "tshitr", "target": "tshirt", "n_words": 1, "edits": ["swap"]}
+{"query": "bedsheet", "target": "bedsheet", "n_words": 1, "edits": []}
+{"query": "bessheet", "target": "bedsheet", "n_words": 1, "edits": ["sub"]}
+{"query": "sunglasses", "target": "sunglasses", "n_words": 1, "edits": []}
+{"query": "camea", "target": "camera", "n_words": 1, "edits": ["del"]}
+{"query": "blankt", "target": "blanket", "n_words": 1, "edits": ["del"]}
+{"query": "perfume", "target": "perfume", "n_words": 1, "edits": []}
+{"query": "televiesion", "target": "television", "n_words": 1, "edits": ["ins"]}
+{"query": "hoocie", "target": "hoodie", "n_words": 1, "edits": ["sub"]}
+{"query": "camera", "target": "camera", "n_words": 1, "edits": []}
+{"query": "lipstick", "target": "lipstick", "n_words": 1, "edits": []}
+{"query": "amera", "target": "camera", "n_words": 1, "edits": ["del"]}
+{"query": "hoodiie", "target": "hoodie", "n_words": 1, "edits": ["ins"]}
+{"query": "microwvae", "target": "microwave", "n_words": 1, "edits": ["swap"]}
+{"query": "hoodie", "target": "hoodie", "n_words": 1, "edits": []}
+{"query": "tablet", "target": "tablet", "n_words": 1, "edits": []}
+{"query": "noteboou", "target": "notebook", "n_words": 1, "edits": ["sub"]}
+{"query": "earpbhones", "target": "earphones", "n_words": 1, "edits": ["ins"]}
+{"query": "cookware", "target": "cookware", "n_words": 1, "edits": []}
+{"query": "vaacuum", "target": "vacuum", "n_words": 1, "edits": ["ins"]}
+{"query": "earphonse", "target": "earphones", "n_words": 1, "edits": ["swap"]}
+{"query": "peefume", "target": "perfume", "n_words": 1, "edits": ["sub"]}
+{"query": "smartwach", "target": "smartwatch", "n_words": 1, "edits": ["del"]}
+{"query": "jeans", "target": "jeans", "n_words": 1, "edits": []}
+{"query": "smartatch", "target": "smartwatch", "n_words": 1, "edits": ["del"]}
+{"query": "mucrowave", "target": "microwave", "n_words": 1, "edits": ["sub"]}
+{"query": "ncklace", "target": "necklace", "n_words": 1, "edits": ["del"]}
+{"query": "earphonss", "target": "earphones", "n_words": 1, "edits": ["sub"]}
+{"query": "smargtwatch", "target": "smartwatch", "n_words": 1, "edits": ["ins"]}
+{"query": "hooedie", "target": "hoodie", "n_words": 1, "edits": ["ins"]}
+{"query": "camega", "target": "camera", "n_words": 1, "edits": ["sub"]}
+{"query": "acmera", "target": "camera", "n_words": 1, "edits": ["swap"]}
+{"query": "teleision", "target": "television", "n_words": 1, "edits": ["del"]}
+{"query": "mircowave", "target": "microwave", "n_words": 1, "edits": ["swap"]}
+{"query": "blue hoodie", "target": "blue hoodie", "n_words": 2, "edits": []}
+{"query": "denim slipers", "target": "denim slippers", "n_words": 2, "edits": ["del"]}
+{"query": "mitlon camera", "target": "milton camera", "n_words": 2, "edits": ["swap"]}
+{"query": "glass tablet", "target": "glass tablet", "n_words": 2, "edits": []}
+{"query": "glass perfume", "target": "glass perfume", "n_words": 2, "edits": []}
+{"query": "yellwo necklace", "target": "yellow necklace", "n_words": 2, "edits": ["swap"]}
+{"query": "stainless handbga", "target": "stainless handbag", "n_words": 2, "edits": ["swap"]}
+{"query": "stainless suihcase", "target": "stainless suitcase", "n_words": 2, "edits": ["sub"]}
+{"query": "canon necklzce", "target": "canon necklace", "n_words": 2, "edits": ["sub"]}
+{"query": "plastic oodie", "target": "plastic hoodie", "n_words": 2, "edits": ["del"]}
+{"query": "silver erphones", "target": "silver earphones", "n_words": 2, "edits": ["del"]}
+{"query": "eledctric microwave", "target": "electric microwave", "n_words": 2, "edits": ["ins"]}
+{"query": "boat necklace", "target": "boat necklace", "n_words": 2, "edits": []}
+{"query": "watreproof vacuum", "target": "waterproof vacuum", "n_words": 2, "edits": ["swap"]}
+{"query": "grey television", "target": "grey television", "n_words": 2, "edits": []}
+{"query": "blueototh trimmer", "target": "bluetooth trimmer", "n_words": 2, "edits": ["swap"]}
+{"query": "cordless hoodie", "target": "cordless hoodie", "n_words": 2, "edits": []}
+{"query": "gaimng television", "target": "gaming television", "n_words": 2, "edits": ["swap"]}
+{"query": "kkds vacuum", "target": "kids vacuum", "n_words": 2, "edits": ["sub"]}
+{"query": "cordpess microwave", "target": "cordless microwave", "n_words": 2, "edits": ["sub"]}
+{"query": "brown earphones", "target": "brown earphones", "n_words": 2, "edits": []}
+{"query": "running mircowave", "target": "running microwave", "n_words": 2, "edits": ["swap"]}
+{"query": "wooden trjmmer", "target": "wooden trimmer", "n_words": 2, "edits": ["sub"]}
+{"query": "pink cookwae", "target": "pink cookware", "n_words": 2, "edits": ["del"]}
+{"query": "rechsrgeable necklace", "target": "rechargeable necklace", "n_words": 2, "edits": ["sub"]}
+{"query": "cordless nonitor", "target": "cordless monitor", "n_words": 2, "edits": ["sub"]}
+{"query": "ceramic vauum", "target": "ceramic vacuum", "n_words": 2, "edits": ["del"]}
+{"query": "sony smartwach", "target": "sony smartwatch", "n_words": 2, "edits": ["del"]}
+{"query": "bule perfume", "target": "blue perfume", "n_words": 2, "edits": ["swap"]}
+{"query": "geren sunglasses", "target": "green sunglasses", "n_words": 2, "edits": ["swap"]}
+{"query": "bown vacuum", "target": "brown vacuum", "n_words": 2, "edits": ["del"]}
+{"query": "electric sungllasses", "target": "electric sunglasses", "n_words": 2, "edits": ["ins"]}
+{"query": "formal hoodlie", "target": "formal hoodie", "n_words": 2, "edits": ["ins"]}
+{"query": "cotton suitcase", "target": "cotton suitcase", "n_words": 2, "edits": []}
+{"query": "silver cookwarde", "target": "silver cookware", "n_words": 2, "edits": ["ins"]}
+{"query": "dell elevision", "target": "dell television", "n_words": 2, "edits": ["del"]}
+{"query": "rgey refrigerator", "target": "grey refrigerator", "n_words": 2, "edits": ["swap"]}
+{"query": "green slipperqs", "target": "green slippers", "n_words": 2, "edits": ["ins"]}
+{"query": "green smqrtwatch", "target": "green smartwatch", "n_words": 2, "edits": ["sub"]}
+{"query": "black bedsheet", "target": "black bedsheet", "n_words": 2, "edits": []}
+{"query": "black smartwatch", "target": "black smartwatch", "n_words": 2, "edits": []}
+{"query": "foassil jeans", "target": "fossil jeans", "n_words": 2, "edits": ["ins"]}
+{"query": "dell tsihrt", "target": "dell tshirt", "n_words": 2, "edits": ["swap"]}
+{"query": "greehn tshirt", "target": "green tshirt", "n_words": 2, "edits": ["ins"]}
+{"query": "apple moniotr", "target": "apple monitor", "n_words": 2, "edits": ["swap"]}
+{"query": "bluetotoh bedsheet", "target": "bluetooth bedsheet", "n_words": 2, "edits": ["swap"]}
+{"query": "cordless lbanket", "target": "cordless blanket", "n_words": 2, "edits": ["swap"]}
+{"query": "poetable refrigerator", "target": "portable refrigerator", "n_words": 2, "edits": ["sub"]}
+{"query": "rred microwave", "target": "red microwave", "n_words": 2, "edits": ["ins"]}
+{"query": "ittan smartwatch", "target": "titan smartwatch", "n_words": 2, "edits": ["swap"]}
+{"query": "leather bdsheet", "target": "leather bedsheet", "n_words": 2, "edits": ["del"]}
+{"query": "noat trimmer", "target": "boat trimmer", "n_words": 2, "edits": ["sub"]}
+{"query": "nike slppers", "target": "nike slippers", "n_words": 2, "edits": ["del"]}
+{"query": "organic smartwatch", "target": "organic smartwatch", "n_words": 2, "edits": []}
+{"query": "puma lippers", "target": "puma slippers", "n_words": 2, "edits": ["del"]}
+{"query": "bosch nekclace", "target": "bosch necklace", "n_words": 2, "edits": ["swap"]}
+{"query": "lnovo hoodie", "target": "lenovo hoodie", "n_words": 2, "edits": ["del"]}
+{"query": "canon microwve", "target": "canon microwave", "n_words": 2, "edits": ["del"]}
+{"query": "silver tshiet", "target": "silver tshirt", "n_words": 2, "edits": ["sub"]}
+{"query": "white tfrimmer", "target": "white trimmer", "n_words": 2, "edits": ["ins"]}
+{"query": "blaket for men", "target": "blanket for men", "n_words": 3, "edits": ["del"]}
+{"query": "blue leather tabley", "target": "blue leather tablet", "n_words": 3, "edits": ["sub"]}
+{"query": "tqshirt for women", "target": "tshirt for women", "n_words": 3, "edits": ["ins"]}
+{"query": "yelloa ceramic bedsehet", "target": "yellow ceramic bedsheet", "n_words": 3, "edits": ["swap", "sub"]}
+{"query": "earphons for byos", "target": "earphones for boys", "n_words": 3, "edits": ["swap", "del"]}
+{"query": "perfume fr kids", "target": "perfume for kids", "n_words": 3, "edits": ["del"]}
+{"query": "table for kids", "target": "tablet for kids", "n_words": 3, "edits": ["del"]}
+{"query": "lenodvo bluetooth cookware", "target": "lenovo bluetooth cookware", "n_words": 3, "edits": ["ins"]}
+{"query": "brown ctton lipstick", "target": "brown cotton lipstick", "n_words": 3, "edits": ["del"]}
+{"query": "tshirt for babkes", "target": "tshirt for babies", "n_words": 3, "edits": ["sub"]}
+{"query": "monitor for wmoen", "target": "monitor for women", "n_words": 3, "edits": ["swap"]}
+{"query": "lenovo bluetooth suitcase", "target": "lenovo bluetooth suitcase", "n_words": 3, "edits": []}
+{"query": "grey ctton necklace", "target": "grey cotton necklace", "n_words": 3, "edits": ["del"]}
+{"query": "monitor fro boys", "target": "monitor for boys", "n_words": 3, "edits": ["swap"]}
+{"query": "monitor for kidw", "target": "monitor for kids", "n_words": 3, "edits": ["sub"]}
+{"query": "sunglasses for women", "target": "sunglasses for women", "n_words": 3, "edits": []}
+{"query": "bedsheet for wlmen", "target": "bedsheet for women", "n_words": 3, "edits": ["sub"]}
+{"query": "green rubbsr blanuet", "target": "green rubber blanket", "n_words": 3, "edits": ["sub", "sub"]}
+{"query": "smartwaatch for boys", "target": "smartwatch for boys", "n_words": 3, "edits": ["ins"]}
+{"query": "dell runnin earphoens", "target": "dell running earphones", "n_words": 3, "edits": ["swap", "del"]}
+{"query": "vamera fr boys", "target": "camera for boys", "n_words": 3, "edits": ["sub", "del"]}
+{"query": "edll waterproof television", "target": "dell waterproof television", "n_words": 3, "edits": ["swap"]}
+{"query": "hoodie or boys", "target": "hoodie for boys", "n_words": 3, "edits": ["del"]}
+{"query": "sony rehcargeable notebook", "target": "sony rechargeable notebook", "n_words": 3, "edits": ["swap"]}
+{"query": "pink steel trimemr", "target": "pink steel trimmer", "n_words": 3, "edits": ["swap"]}
+{"query": "brown denlm suitcase", "target": "brown denim suitcase", "n_words": 3, "edits": ["sub"]}
+{"query": "earphonse for girls", "target": "earphones for girls", "n_words": 3, "edits": ["swap"]}
+{"query": "titan kkds smartwatch", "target": "titan kids smartwatch", "n_words": 3, "edits": ["sub"]}
+{"query": "brown ceramic refrigerator", "target": "brown ceramic refrigerator", "n_words": 3, "edits": []}
+{"query": "silver glass lipstik", "target": "silver glass lipstick", "n_words": 3, "edits": ["del"]}
+{"query": "blue siklk perfume", "target": "blue silk perfume", "n_words": 3, "edits": ["ins"]}
+{"query": "adidas cordleqss microwave", "target": "adidas cordless microwave", "n_words": 3, "edits": ["ins"]}
+{"query": "white rubbwr lipstick", "target": "white rubber lipstick", "n_words": 3, "edits": ["sub"]}
+{"query": "smartwatch for babies", "target": "smartwatch for babies", "n_words": 3, "edits": []}
+{"query": "bexdsheet for girls", "target": "bedsheet for girls", "n_words": 3, "edits": ["ins"]}
+{"query": "silver denim cookware", "target": "silver denim cookware", "n_words": 3, "edits": []}
+{"query": "dlel cordless jean", "target": "dell cordless jeans", "n_words": 3, "edits": ["del", "swap"]}
+{"query": "boat electric miccrowave", "target": "boat electric microwave", "n_words": 3, "edits": ["ins"]}
+{"query": "jeans for men", "target": "jeans for men", "n_words": 3, "edits": []}
+{"query": "jeans cor girls", "target": "jeans for girls", "n_words": 3, "edits": ["sub"]}
+{"query": "silver glass refrigerator", "target": "silver glass refrigerator", "n_words": 3, "edits": []}
+{"query": "pphilips prtable perfume", "target": "philips portable perfume", "n_words": 3, "edits": ["ins", "del"]}
+{"query": "sony pottable notebbook", "target": "sony portable notebook", "n_words": 3, "edits": ["sub", "ins"]}
+{"query": "xapple gaming suitcase", "target": "apple gaming suitcase", "n_words": 3, "edits": ["ins"]}
+{"query": "blankret for babiws", "target": "blanket for babies", "n_words": 3, "edits": ["ins", "sub"]}
+{"query": "oink denim tshiryt", "target": "pink denim tshirt", "n_words": 3, "edits": ["sub", "ins"]}
+{"query": "cookwae for babies", "target": "cookware for babies", "n_words": 3, "edits": ["del"]}
+{"query": "nlack glass jeans", "target": "black glass jeans", "n_words": 3, "edits": ["sub"]}
+{"query": "gey wooden vacuhm", "target": "grey wooden vacuum", "n_words": 3, "edits": ["del", "sub"]}
+{"query": "puma cordleas tshirt", "target": "puma cordless tshirt", "n_words": 3, "edits": ["sub"]}
+{"query": "aple formal tablet", "target": "apple formal tablet", "n_words": 3, "edits": ["del"]}
+{"query": "bluw cotton tshirt", "target": "blue cotton tshirt", "n_words": 3, "edits": ["sub"]}
+{"query": "apple gming blanket", "target": "apple gaming blanket", "n_words": 3, "edits": ["del"]}
+{"query": "sunglasses fro women", "target": "sunglasses for women", "n_words": 3, "edits": ["swap"]}
+{"query": "trimmer for womebn", "target": "trimmer for women", "n_words": 3, "edits": ["ins"]}
+{"query": "tablet for girls", "target": "tablet for girls", "n_words": 3, "edits": []}
+{"query": "geren steel hoode", "target": "green steel hoodie", "n_words": 3, "edits": ["swap", "del"]}
+{"query": "philips gaming mivcrowave", "target": "philips gaming microwave", "n_words": 3, "edits": ["ins"]}
+{"query": "slipers for girls", "target": "slippers for girls", "n_words": 3, "edits": ["del"]}
+{"query": "boat bluetooth hoodie", "target": "boat bluetooth hoodie", "n_words": 3, "edits": []}
+{"query": "canon yellow ikids necklace", "target": "canon yellow kids necklace", "n_words": 4, "edits": ["ins"]}
+{"query": "cordless bedsheet cfor kids", "target": "cordless bedsheet for kids", "n_words": 4, "edits": ["ins"]}
+{"query": "foldable earphones for babies", "target": "foldable earphones for babies", "n_words": 4, "edits": []}
+{"query": "portable flanket for men", "target": "portable blanket for men", "n_words": 4, "edits": ["sub"]}
+{"query": "kids jeans for boys", "target": "kids jeans for boys", "n_words": 4, "edits": []}
+{"query": "samsung red direless earphones", "target": "samsung red wireless earphones", "n_words": 4, "edits": ["sub"]}
+{"query": "dell gree waterproof earphones", "target": "dell green waterproof earphones", "n_words": 4, "edits": ["del"]}
+{"query": "wireless blanket for boys", "target": "wireless blanket for boys", "n_words": 4, "edits": []}
+{"query": "uma black cordless tablet", "target": "puma black cordless tablet", "n_words": 4, "edits": ["del"]}
+{"query": "lenovo ed stainless tablet", "target": "lenovo red stainless tablet", "n_words": 4, "edits": ["del"]}
+{"query": "cordless smartwatch for girls", "target": "cordless smartwatch for girls", "n_words": 4, "edits": []}
+{"query": "prestige pink stainless monior", "target": "prestige pink stainless monitor", "n_words": 4, "edits": ["del"]}
+{"query": "electric tablt for girls", "target": "electric tablet for girls", "n_words": 4, "edits": ["del"]}
+{"query": "sony white rechargeable suitcas", "target": "sony white rechargeable suitcase", "n_words": 4, "edits": ["del"]}
+{"query": "waterproof smartwaftch for kids", "target": "waterproof smartwatch for kids", "n_words": 4, "edits": ["ins"]}
+{"query": "sdidas lack waterproof earphones", "target": "adidas black waterproof earphones", "n_words": 4, "edits": ["del", "sub"]}
+{"query": "ids microwave for boys", "target": "kids microwave for boys", "n_words": 4, "edits": ["del"]}
+{"query": "formal jeans for kids", "target": "formal jeans for kids", "n_words": 4, "edits": []}
+{"query": "prestigd red formal camera", "target": "prestige red formal camera", "n_words": 4, "edits": ["sub"]}
+{"query": "niks red gming earphones", "target": "nike red gaming earphones", "n_words": 4, "edits": ["del", "sub"]}
+{"query": "delectric trikmer for women", "target": "electric trimmer for women", "n_words": 4, "edits": ["sub", "ins"]}
+{"query": "bocsh brown formal handbag", "target": "bosch brown formal handbag", "n_words": 4, "edits": ["swap"]}
+{"query": "titan yreen stainless refrigerator", "target": "titan green stainless refrigerator", "n_words": 4, "edits": ["sub"]}
+{"query": "siny grey kids slippers", "target": "sony grey kids slippers", "n_words": 4, "edits": ["sub"]}
+{"query": "baot yellow casual blanket", "target": "boat yellow casual blanket", "n_words": 4, "edits": ["swap"]}
+{"query": "bosch gren cordless refrigerator", "target": "bosch green cordless refrigerator", "n_words": 4, "edits": ["del"]}
+{"query": "wireless hoovie for me", "target": "wireless hoodie for men", "n_words": 4, "edits": ["sub", "del"]}
+{"query": "prestige silver portzble camera", "target": "prestige silver portable camera", "n_words": 4, "edits": ["sub"]}
+{"query": "cordless bedzheet for women", "target": "cordless bedsheet for women", "n_words": 4, "edits": ["sub"]}
+{"query": "nlike brown foldable handbag", "target": "nike brown foldable handbag", "n_words": 4, "edits": ["ins"]}
+{"query": "gaming hoodue fr kids", "target": "gaming hoodie for kids", "n_words": 4, "edits": ["del", "sub"]}
+{"query": "foldable lipstick for bots", "target": "foldable lipstick for boys", "n_words": 4, "edits": ["sub"]}
+{"query": "philips silver rubnning earphones", "target": "philips silver running earphones", "n_words": 4, "edits": ["ins"]}
+{"query": "running refrigreator fogr women", "target": "running refrigerator for women", "n_words": 4, "edits": ["ins", "swap"]}
+{"query": "samsung grey waterproof microwave", "target": "samsung grey waterproof microwave", "n_words": 4, "edits": []}
+{"query": "formal microwave for girlc", "target": "formal microwave for girls", "n_words": 4, "edits": ["sub"]}
+{"query": "dell grey kids slippers", "target": "dell grey kids slippers", "n_words": 4, "edits": []}
+{"query": "gaming vacumu for men", "target": "gaming vacuum for men", "n_words": 4, "edits": ["swap"]}
+{"query": "canon gtey stainless sunglasses", "target": "canon grey stainless sunglasses", "n_words": 4, "edits": ["sub"]}
+{"query": "cashal brdsheet for babies", "target": "casual bedsheet for babies", "n_words": 4, "edits": ["sub", "sub"]}
+{"query": "wireles tshirt for babies", "target": "wireless tshirt for babies", "n_words": 4, "edits": ["del"]}
+{"query": "titan grey rechargeable tcshirt", "target": "titan grey rechargeable tshirt", "n_words": 4, "edits": ["ins"]}
+{"query": "stainess microwave for lids", "target": "stainless microwave for kids", "n_words": 4, "edits": ["sub", "del"]}
+{"query": "puma ed casual cooware", "target": "puma red casual cookware", "n_words": 4, "edits": ["del", "del"]}
+{"query": "running cookware for abbies", "target": "running cookware for babies", "n_words": 4, "edits": ["swap"]}
+{"query": "kids notebook for woen", "target": "kids notebook for women", "n_words": 4, "edits": ["del"]}
+{"query": "bosch black portble smartwatch", "target": "bosch black portable smartwatch", "n_words": 4, "edits": ["del"]}
+{"query": "sony green electric vacuum", "target": "sony green electric vacuum", "n_words": 4, "edits": []}
+{"query": "fossil black gaming slippers", "target": "fossil black gaming slippers", "n_words": 4, "edits": []}
+{"query": "portable suitcasw for boys", "target": "portable suitcase for boys", "n_words": 4, "edits": ["sub"]}
+{"query": "erunning microwave for men", "target": "running microwave for men", "n_words": 4, "edits": ["ins"]}
+{"query": "waterproof snglasses for wome", "target": "waterproof sunglasses for women", "n_words": 4, "edits": ["del", "del"]}
+{"query": "organic televisino for babies", "target": "organic television for babies", "n_words": 4, "edits": ["swap"]}
+{"query": "bluetooth sunglases for women", "target": "bluetooth sunglasses for women", "n_words": 4, "edits": ["del"]}
+{"query": "blsch green portable blxanket", "target": "bosch green portable blanket", "n_words": 4, "edits": ["ins", "sub"]}
+{"query": "ofldable necklace for grls", "target": "foldable necklace for girls", "n_words": 4, "edits": ["swap", "del"]}
+{"query": "gaming lipstick fo babeis", "target": "gaming lipstick for babies", "n_words": 4, "edits": ["swap", "del"]}
+{"query": "sony red kids necklace", "target": "sony red kids necklace", "n_words": 4, "edits": []}
+{"query": "bosdh white foldable handbag", "target": "bosch white foldable handbag", "n_words": 4, "edits": ["sub"]}
+{"query": "sony blue casual necklace", "target": "sony blue casual necklace", "n_words": 4, "edits": []}
+{"query": "leovo cordless camera for babies", "target": "lenovo cordless camera for babies", "n_words": 5, "edits": ["del"]}
+{"query": "presitge cordless handbag for women", "target": "prestige cordless handbag for women", "n_words": 5, "edits": ["swap"]}
+{"query": "fossil bluetooth blanket for mwn", "target": "fossil bluetooth blanket for men", "n_words": 5, "edits": ["sub"]}
+{"query": "brown cototn monitor for omen", "target": "brown cotton monitor for women", "n_words": 5, "edits": ["del", "swap"]}
+{"query": "green steel bwdsheet for boys", "target": "green steel bedsheet for boys", "n_words": 5, "edits": ["sub"]}
+{"query": "apple organix notehook for men", "target": "apple organic notebook for men", "n_words": 5, "edits": ["sub", "sub"]}
+{"query": "puma wireless thsirt for kids", "target": "puma wireless tshirt for kids", "n_words": 5, "edits": ["swap"]}
+{"query": "grey plastic ablet fkr babies", "target": "grey plastic tablet for babies", "n_words": 5, "edits": ["sub", "del"]}
+{"query": "milton bluetooth televisino for girls", "target": "milton bluetooth television for girls", "n_words": 5, "edits": ["swap"]}
+{"query": "sony runninb earphones for boys", "target": "sony running earphones for boys", "n_words": 5, "edits": ["sub"]}
+{"query": "white rubber sthirt for babies", "target": "white rubber tshirt for babies", "n_words": 5, "edits": ["swap"]}
+{"query": "canon stainless cookware fofr men", "target": "canon stainless cookware for men", "n_words": 5, "edits": ["ins"]}
+{"query": "tita formal earphones for men", "target": "titan formal earphones for men", "n_words": 5, "edits": ["del"]}
+{"query": "puma runnning lipstick for boys", "target": "puma running lipstick for boys", "n_words": 5, "edits": ["ins"]}
+{"query": "sony rechargeable televisoin for mfn", "target": "sony rechargeable television for men", "n_words": 5, "edits": ["swap", "sub"]}
+{"query": "black leather vacuum for kids", "target": "black leather vacuum for kids", "n_words": 5, "edits": []}
+{"query": "brown leather hoodife for babies", "target": "brown leather hoodie for babies", "n_words": 5, "edits": ["ins"]}
+{"query": "yellow rubber bedsheet for girls", "target": "yellow rubber bedsheet for girls", "n_words": 5, "edits": []}
+{"query": "yellow siluk suitcase for boys", "target": "yellow silk suitcase for boys", "n_words": 5, "edits": ["ins"]}
+{"query": "fossil waterproof spippers for hoys", "target": "fossil waterproof slippers for boys", "n_words": 5, "edits": ["sub", "sub"]}
+{"query": "brown rubber notebook ffor kids", "target": "brown rubber notebook for kids", "n_words": 5, "edits": ["ins"]}
+{"query": "fossil cordless hoodie for girls", "target": "fossil cordless hoodie for girls", "n_words": 5, "edits": []}
+{"query": "grey steel microwave tfor boys", "target": "grey steel microwave for boys", "n_words": 5, "edits": ["ins"]}
+{"query": "puma bluetooth refrigeratorr for babies", "target": "puma bluetooth refrigerator for babies", "n_words": 5, "edits": ["ins"]}
+{"query": "silver leatehr microwave for babies", "target": "silver leather microwave for babies", "n_words": 5, "edits": ["swap"]}
+{"query": "white wilk slippers fof kids", "target": "white silk slippers for kids", "n_words": 5, "edits": ["sub", "sub"]}
+{"query": "bosch electric teleivsion fot women", "target": "bosch electric television for women", "n_words": 5, "edits": ["swap", "sub"]}
+{"query": "black steel earhones for boys", "target": "black steel earphones for boys", "n_words": 5, "edits": ["del"]}
+{"query": "grey sik cookware fir women", "target": "grey silk cookware for women", "n_words": 5, "edits": ["del", "sub"]}
+{"query": "blue denim refrigerator for ikids", "target": "blue denim refrigerator for kids", "n_words": 5, "edits": ["ins"]}
+{"query": "yellow woodeen tablet for women", "target": "yellow wooden tablet for women", "n_words": 5, "edits": ["ins"]}
+{"query": "black glass talet vfor kids", "target": "black glass tablet for kids", "n_words": 5, "edits": ["ins", "del"]}
+{"query": "fgrey steel perfume fo babies", "target": "grey steel perfume for babies", "n_words": 5, "edits": ["del", "ins"]}
+{"query": "dsamsung electric vacum for women", "target": "samsung electric vacuum for women", "n_words": 5, "edits": ["ins", "del"]}
+{"query": "grey leather lipstick ofr women", "target": "grey leather lipstick for women", "n_words": 5, "edits": ["swap"]}
+{"query": "green steel camera for girsl", "target": "green steel camera for girls", "n_words": 5, "edits": ["swap"]}
+{"query": "adidas waterproof refrigerator for women", "target": "adidas waterproof refrigerator for women", "n_words": 5, "edits": []}
+{"query": "adiddas organic smartwatch for men", "target": "adidas organic smartwatch for men", "n_words": 5, "edits": ["ins"]}
+{"query": "fiossil running tablet for women", "target": "fossil running tablet for women", "n_words": 5, "edits": ["ins"]}
+{"query": "prestige foldablle necklace ffor kids", "target": "prestige foldable necklace for kids", "n_words": 5, "edits": ["ins", "ins"]}
+{"query": "philips waterpoof television for babies", "target": "philips waterproof television for babies", "n_words": 5, "edits": ["del"]}
+{"query": "broown plastic suitcase for men", "target": "brown plastic suitcase for men", "n_words": 5, "edits": ["ins"]}
+{"query": "adidas kids trlmmer for boys", "target": "adidas kids trimmer for boys", "n_words": 5, "edits": ["sub"]}
+{"query": "apple orgnic smartwatch for kids", "target": "apple organic smartwatch for kids", "n_words": 5, "edits": ["del"]}
+{"query": "dell kdis trimmer for boys", "target": "dell kids trimmer for boys", "n_words": 5, "edits": ["swap"]}
+{"query": "milton kids blanket fpr girls", "target": "milton kids blanket for girls", "n_words": 5, "edits": ["sub"]}
+{"query": "green rubber handbag for women", "target": "green rubber handbag for women", "n_words": 5, "edits": []}
+{"query": "samsung organic cookware for girs", "target": "samsung organic cookware for girls", "n_words": 5, "edits": ["del"]}
+{"query": "black steel cookware fofr babies", "target": "black steel cookware for babies", "n_words": 5, "edits": ["ins"]}
+{"query": "pink wooen camera fodr babies", "target": "pink wooden camera for babies", "n_words": 5, "edits": ["del", "ins"]}
+{"query": "rey glass bedsheet for men", "target": "grey glass bedsheet for men", "n_words": 5, "edits": ["del"]}
+{"query": "pilips organic trimmer for girls", "target": "philips organic trimmer for girls", "n_words": 5, "edits": ["del"]}
+{"query": "puma casual monitor fog kids", "target": "puma casual monitor for kids", "n_words": 5, "edits": ["sub"]}
+{"query": "silver ceramic monitor foor en", "target": "silver ceramic monitor for men", "n_words": 5, "edits": ["del", "ins"]}
+{"query": "green wooden monitor vfor girls", "target": "green wooden monitor for girls", "n_words": 5, "edits": ["ins"]}
+{"query": "blue glass lipstick fr girls", "target": "blue glass lipstick for girls", "n_words": 5, "edits": ["del"]}
+{"query": "samsung folvdable notebook flor boys", "target": "samsung foldable notebook for boys", "n_words": 5, "edits": ["ins", "ins"]}
+{"query": "white denim notebook ofr men", "target": "white denim notebook for men", "n_words": 5, "edits": ["swap"]}
+{"query": "prestige cordless tshirt for girlxs", "target": "prestige cordless tshirt for girls", "n_words": 5, "edits": ["ins"]}
+{"query": "blue leather trimmer for women", "target": "blue leather trimmer for women", "n_words": 5, "edits": []}
