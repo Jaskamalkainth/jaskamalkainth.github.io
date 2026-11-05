@@ -6,7 +6,7 @@ last_modified_at: 2026-11-04
 keywords: [weight-space programming, LLM editing neural network weights, Sparks of Weight-Space Programming, Qwen3.5-0.8B weight edit, weight space learning, model merging task arithmetic, LoRA, hypernetwork LoRA generation]
 categories: llm machine-learning interpretability
 math: true
-related: ["/blog_posts/taalas-hc1-chatjimmy-explained.html", "/blog_posts/monte-carlo-simulation-explained.html", "/blog_posts/textgrain-watermark-explained.html"]
+related: ["/blog_posts/weight-space-programming-simple-example.html", "/blog_posts/taalas-hc1-chatjimmy-explained.html", "/blog_posts/monte-carlo-simulation-explained.html"]
 faq:
   - q: "What is weight-space programming?"
     a: "Weight-space programming is a general-purpose LLM reading a neural network's raw weights and writing new values by reasoning about what each part computes, instead of running an optimizer such as gradient descent. The term comes from a November 2026 MIT CSAIL blog post, Sparks of Weight-Space Programming, which used it to diagnose networks, fix failures with small targeted edits, and write small networks from scratch."
@@ -25,6 +25,8 @@ faq:
 > **In short:** Weight-space programming means a general-purpose LLM reads a neural network's raw weights and edits them by reasoning, with no gradient descent. In MIT CSAIL's November 2026 "Sparks" post, an LLM fixed Qwen3.5-0.8B's thinking loops by changing 131,072 weights (0.016%), lifting MATH-500 from 7.9% to 48.1%. The results are early and not peer-reviewed.
 
 <link rel="stylesheet" href="/blog_posts/experiments/weight-space/ws-post.css">
+
+**New to the idea?** Start with [weight-space programming in one simple example](/blog_posts/weight-space-programming-simple-example.html): one 10-weight network, one bug, one edited number.
 
 This is a research explainer. Every section opens with a picture or a small simulation, and the full explanation is under **Read more**. The main source is [*Sparks of Weight-Space Programming*](https://rikiyat.github.io/blog/weight-space-programming/) by Rikiya Takehi, Jayden Teoh, Alex Zhang and Omar Khattab (MIT CSAIL, 2 November 2026). The second half covers the older ways of "programming" weights it builds on. Toy figures run the real algorithms; numbers for real models come from the papers and configs in [Sources](#sources).
 

@@ -14,6 +14,8 @@ work:
     links:
       - label: "Article"
         url: "/blog_posts/weight-space-programming-explained.html"
+      - label: "Simple example"
+        url: "/blog_posts/weight-space-programming-simple-example.html"
     href: "/blog_posts/weight-space-programming-explained.html"
 
   - title: "Taalas HC1: An LLM Hardwired in Silicon"
