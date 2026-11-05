@@ -1,5 +1,5 @@
-/* Figures for /blog_posts/weight-space-programming-simple-example.html.
-   Builds on ws-post.css (shared .hv base styles); ws-simple.js draws into each figure.
+/* Figures for /blog_posts/weight-space-programming-explained.html.
+   Builds on ws-post.css (shared .hv base styles); ws-post.js draws into each figure.
    Colors use the post tokens from css/blog_post.css, with dark-mode values below. */
 
 .hv {
@@ -119,3 +119,15 @@
 .wss-cell em { font-style: normal; font-size: 0.72rem; color: var(--muted); }
 .wss-cell.ch { border-color: var(--wss-neg); border-width: 2px; background: var(--surface-2); }
 .wss-cell.ch em { color: var(--wss-neg); font-weight: 700; }
+
+/* read → find → edit → test loop */
+.wss-given { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 0 0 0.75rem; }
+.wss-plus { color: var(--muted); font-weight: 700; }
+.wss-loop { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.5rem; counter-reset: none; }
+.wss-loop li { display: flex; flex-direction: column; gap: 0.2rem; border: 1px solid var(--border); border-radius: 10px; padding: 0.6rem 0.7rem; background: var(--bg); margin: 0; }
+.wss-loop li b { font-size: 1rem; }
+.wss-loop li span:last-child { font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
+.wss-loop .hv-step-n { margin: 0 0 0.15rem; }
+.wss-back { font-size: 0.88rem; color: var(--muted); margin: 0.5rem 0 0.75rem; }
+.wss-back b { color: var(--text); }
+.hv-panel.wss-new { border-color: var(--accent); border-width: 2px; }
