@@ -1,0 +1,133 @@
+/* Figures for /blog_posts/weight-space-programming-explained.html.
+   Builds on ws-post.css (shared .hv base styles); ws-post.js draws into each figure.
+   Colors use the post tokens from css/blog_post.css, with dark-mode values below. */
+
+.hv {
+  --wss-pos: #2a78d6;
+  --wss-neg: #c2410c;
+  --wss-b: #0f766e;
+}
+[data-post-theme="dark"] .hv {
+  --wss-pos: #5b9cf0;
+  --wss-neg: #f08a5d;
+  --wss-b: #5eead4;
+}
+
+/* network diagram */
+.wss-net svg { max-width: 520px; margin: 0 auto; }
+.wss-net svg text { font-size: 15px; }
+.wss-net svg .mut { font-size: 13px; }
+.wss-net svg .big { font-size: 20px; }
+.hv .wss-edge { fill: none; stroke-linecap: round; }
+.hv .wss-edge.wss-pos { stroke: var(--wss-pos); }
+.hv .wss-edge.wss-neg { stroke: var(--wss-neg); }
+.hv .wss-tag { fill: var(--surface); stroke: var(--border); }
+.hv svg text.wss-w { font-weight: 700; font-size: 14px; }
+.hv svg text.wss-pos { fill: var(--wss-pos); }
+.hv svg text.wss-neg { fill: var(--wss-neg); }
+.hv .wss-neuron { fill: var(--surface-2); stroke: var(--text); stroke-width: 1.5; }
+.hv-legend i.wss-lg-pos { background: var(--wss-pos); }
+.hv-legend i.wss-lg-neg { background: var(--wss-neg); }
+@media (max-width: 560px) {
+  .wss-net svg text { font-size: 18px; }
+  .wss-net svg .mut { font-size: 16px; }
+  .wss-net svg .big { font-size: 22px; }
+  .hv .wss-net svg text.wss-w { font-size: 16px; }
+}
+
+/* run strip */
+.wss-runlab { margin: 0.75rem 0 0.35rem; font-size: 0.92rem; color: var(--muted); }
+.wss-runlab b { color: var(--text); }
+.wss-strip { display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0.35rem 0; min-height: 1.9rem; }
+.wss-box { font-style: normal; font-size: 0.78rem; line-height: 1; padding: 0.45rem 0.55rem; border-radius: 6px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); white-space: nowrap; opacity: 0; transform: translateY(4px); transition: opacity 0.25s ease, transform 0.25s ease; transition-delay: var(--d, 0ms); }
+.wss-strip.show .wss-box { opacity: 1; transform: none; }
+.wss-box.chk { border-style: dashed; }
+.wss-box.ans { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 700; }
+.wss-box.lim { border: 2px solid var(--hard); color: var(--hard); font-weight: 700; background: var(--surface); }
+@media (prefers-reduced-motion: reduce) { .wss-box { transition: none; opacity: 1; transform: none; } }
+
+/* neuron cards */
+.wss-three { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.wss-three svg { max-width: 240px; margin: 0.35rem auto 0.2rem; }
+.wss-three svg text { font-size: 11px; }
+.wss-three svg .mut { font-size: 11px; }
+.hv .wss-act { fill: none; stroke: var(--text); stroke-width: 2.5; stroke-linejoin: round; }
+.wss-eq { font-family: var(--font-mono, monospace); font-size: 0.85rem; color: var(--text); display: flex; flex-direction: column; gap: 0.15rem; }
+.wss-eq span { font-family: var(--font-body); font-size: 0.82rem; font-weight: 700; }
+.wss-tpos { color: var(--wss-pos); }
+.wss-tneg { color: var(--wss-neg); }
+.hv-panel.wss-suspect { border-color: var(--wss-neg); border-width: 2px; }
+.hv-panel p.wss-means { font-size: 0.95rem; font-weight: 700; color: var(--text); font-style: italic; }
+
+/* contributions chart */
+.hv .wss-zero { stroke: var(--text); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.hv .wss-line { fill: none; stroke-width: 2.25; stroke-linejoin: round; }
+.hv .wss-line.wss-st { stroke-width: 3.5; }
+.hv .wss-sa { stroke: var(--wss-pos); fill: var(--wss-pos); }
+.hv .wss-sb { stroke: var(--wss-b); fill: var(--wss-b); }
+.hv .wss-sc { stroke: var(--wss-neg); fill: var(--wss-neg); }
+.hv .wss-st { stroke: var(--text); fill: var(--text); }
+.hv path.wss-line { fill: none; }
+.hv .wss-dot { stroke: var(--surface); stroke-width: 1.5; }
+.hv svg text.wss-end { stroke: none; }
+.hv svg text.wss-small { font-size: 11.5px; }
+@media (max-width: 560px) {
+  .wss-chart svg text, .wss-chart svg .mut { font-size: 19px; }
+  .hv .wss-chart svg text.wss-small { font-size: 16px; }
+}
+.hv svg text.wss-sa { fill: var(--wss-pos); }
+.hv svg text.wss-sb { fill: var(--wss-b); }
+.hv svg text.wss-sc { fill: var(--wss-neg); }
+.hv svg text.wss-st { fill: var(--text); }
+.hv-legend i.wss-lg-a { background: var(--wss-pos); }
+.hv-legend i.wss-lg-b { background: var(--wss-b); }
+.hv-legend i.wss-lg-c { background: var(--wss-neg); }
+.hv-legend i.wss-lg-t { background: var(--text); height: 4px; }
+.hv .ws-tiles-sm { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); }
+
+/* edit-and-test widget */
+.wss-vers { gap: 0.4rem; }
+.wss-change { font-size: 0.88rem; color: var(--muted); margin: 0 0 0.25rem; }
+.wss-verdict { font-size: 0.95rem; margin: 0.35rem 0 0.75rem; }
+.wss-grid { display: grid; grid-template-columns: 4.5rem repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; font-size: 0.85rem; }
+.wss-grid span { background: var(--bg); padding: 0.35rem 0.45rem; }
+.wss-grid .wss-h { font-weight: 700; font-size: 0.78rem; color: var(--muted); }
+.wss-grid .wss-c0 { font-weight: 700; }
+.wss-grid .on { background: var(--surface-2); color: var(--text); font-weight: 700; }
+.wss-grid .wss-h.on { color: var(--accent); }
+.wss-grid .bad { color: var(--hard); }
+
+/* toy vs Qwen map */
+.wss-map { display: grid; grid-template-columns: 6rem 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; font-size: 0.86rem; line-height: 1.45; }
+.wss-map span { background: var(--bg); padding: 0.45rem 0.55rem; }
+.wss-map .wss-mh { font-weight: 700; color: var(--muted); font-size: 0.8rem; background: var(--surface-2); }
+.wss-map .wss-ml { font-weight: 700; }
+.wss-map em { display: none; font-style: normal; font-weight: 700; color: var(--muted); }
+@media (max-width: 560px) {
+  .wss-map { grid-template-columns: 1fr; }
+  .wss-map .wss-mh { display: none; }
+  .wss-map .wss-ml { background: var(--surface-2); }
+  .wss-map em { display: inline; }
+}
+
+/* weights before/after */
+.wss-rowh { margin: 0.5rem 0 0.35rem; font-size: 0.92rem; font-weight: 600; }
+.wss-cells { display: grid; grid-template-columns: repeat(auto-fit, minmax(72px, 1fr)); gap: 0.35rem; margin-bottom: 0.6rem; }
+.wss-cell { display: flex; flex-direction: column; align-items: center; padding: 0.35rem 0.2rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); text-align: center; }
+.wss-cell small { font-size: 0.7rem; color: var(--muted); white-space: nowrap; }
+.wss-cell b { font-size: 1rem; color: var(--text); }
+.wss-cell em { font-style: normal; font-size: 0.72rem; color: var(--muted); }
+.wss-cell.ch { border-color: var(--wss-neg); border-width: 2px; background: var(--surface-2); }
+.wss-cell.ch em { color: var(--wss-neg); font-weight: 700; }
+
+/* read → find → edit → test loop */
+.wss-given { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 0 0 0.75rem; }
+.wss-plus { color: var(--muted); font-weight: 700; }
+.wss-loop { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.5rem; counter-reset: none; }
+.wss-loop li { display: flex; flex-direction: column; gap: 0.2rem; border: 1px solid var(--border); border-radius: 10px; padding: 0.6rem 0.7rem; background: var(--bg); margin: 0; }
+.wss-loop li b { font-size: 1rem; }
+.wss-loop li span:last-child { font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
+.wss-loop .hv-step-n { margin: 0 0 0.15rem; }
+.wss-back { font-size: 0.88rem; color: var(--muted); margin: 0.5rem 0 0.75rem; }
+.wss-back b { color: var(--text); }
+.hv-panel.wss-new { border-color: var(--accent); border-width: 2px; }
