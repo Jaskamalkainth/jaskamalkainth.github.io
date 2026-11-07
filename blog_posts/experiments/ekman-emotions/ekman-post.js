@@ -35,7 +35,7 @@
         '<path class="ek-line" d="M36 86 Q50 74 64 86"/>',
       trigger: 'Loss of something or someone important.',
       face: 'Inner corners of the eyebrows pulled up and together; lip corners down.',
-      drive: 'In its extreme form, despair, it can overwhelm even the will to live (Ekman).'
+      drive: 'The body droops: Ekman notes a loss of overall muscle tone in sadness.'
     },
     {
       id: 'anger', name: 'Anger',
@@ -53,7 +53,7 @@
         '<path class="ek-mouth" d="M28 80 Q50 74 72 80 Q50 90 28 80 Z"/>',
       trigger: 'The threat of harm, physical or psychological.',
       face: 'Brows raised and drawn together; eyes opened very wide; lips stretched back toward the ears.',
-      drive: 'Stops the stomach (Cannon 1915) and can block the sex drive (Ekman 2003).'
+      drive: 'Shuts down digestion: Cannon saw any sign of fear stop a cat\u2019s stomach completely (1915).'
     },
     {
       id: 'surprise', name: 'Surprise',
@@ -87,7 +87,7 @@
     const show = (i) => {
       const f = FACES[i];
       el.querySelectorAll('.ek-face').forEach((b) => b.setAttribute('aria-pressed', String(+b.dataset.i === i)));
-      info.innerHTML = `<h4>${f.name}</h4><p><b>Trigger:</b> ${f.trigger}</p><p><b>Face:</b> ${f.face}</p><p><b>Against the drives:</b> ${f.drive}</p>`;
+      info.innerHTML = `<h4>${f.name}</h4><p><b>Trigger:</b> ${f.trigger}</p><p><b>Face:</b> ${f.face}</p><p><b>What it does:</b> ${f.drive}</p>`;
     };
     el.querySelectorAll('.ek-face').forEach((b) => b.addEventListener('click', () => show(+b.dataset.i)));
     show(5);
@@ -239,16 +239,15 @@
 
   // ── 5. Three overrides ───────────────────────────────────────────────────
   const DRIVES = [
-    { drive: 'Hunger', emo: 'Disgust', ex: 'People will not eat if the only food available is disgusting.' },
-    { drive: 'Sex', emo: 'Fear or disgust', ex: 'A person may never attempt sexual contact, or never complete it.' },
-    { drive: 'Will to live', emo: 'Despair', ex: 'Despair can overwhelm even the will to live.' }
+    { emo: 'Disgust', title: 'Disgust stops eating', ex: 'People will not eat if they think the only food available is disgusting.', who: 'Ekman, 2003' },
+    { emo: 'Fear / anger', title: 'Fear and anger stop digesting', ex: 'Stomach movements cease whenever pain, fear, rage, or other strong excitement is present.', who: 'Cannon, 1915' }
   ];
   builders.drives = (fig, el) => {
-    el.innerHTML = '<div class="hv-panels">' + DRIVES.map((d) => `<div class="hv-panel"><h4>${d.emo} &gt; ${d.drive.toLowerCase()}</h4>` +
-      `<div class="ek-drive-row"><span>${d.drive}</span><span class="ek-bar"><i class="d" data-w="80"></i></span></div>` +
+    el.innerHTML = '<div class="hv-panels">' + DRIVES.map((d) => `<div class="hv-panel"><h4>${d.title}</h4>` +
+      '<div class="ek-drive-row"><span>Hunger</span><span class="ek-bar"><i class="d" data-w="80"></i></span></div>' +
       `<div class="ek-drive-row"><span>${d.emo}</span><span class="ek-bar"><i class="e" data-w="95"></i></span></div>` +
-      `<p><strong>Ekman:</strong> ${d.ex}</p></div>`).join('') + '</div>' +
-      '<div class="hv-legend"><span><i class="sq" style="background:var(--ek-drive)"></i>fundamental drive</span><span><i class="sq" style="background:var(--ek-hot)"></i>emotion that can win</span><span>bar lengths are illustrative</span></div>';
+      `<p><strong>${d.who}:</strong> ${d.ex}</p></div>`).join('') + '</div>' +
+      '<div class="hv-legend"><span><i class="sq" style="background:var(--ek-drive)"></i>hunger drive</span><span><i class="sq" style="background:var(--ek-hot)"></i>emotion that wins</span><span>bar lengths are illustrative</span></div>';
     const bars = el.querySelectorAll('.ek-bar i');
     const fill = () => bars.forEach((b) => { b.style.width = b.dataset.w + '%'; });
     if (reduced()) fill(); else onVisible(fig, fill);

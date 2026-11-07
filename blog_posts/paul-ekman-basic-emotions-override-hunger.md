@@ -1,6 +1,6 @@
 ---
 title: "Paul Ekman's Basic Emotions: How Emotions Override Hunger"
-description: "Paul Ekman found six basic emotions shared across cultures and argued they can beat hunger, sex and survival: disgust can make a hungry person refuse food."
+description: "Paul Ekman found six basic emotions shared across cultures and argued they can beat even hunger: disgust makes hungry people refuse food; fear stops digestion."
 date: 2026-11-07
 last_modified_at: 2026-11-07
 keywords: [Paul Ekman six basic emotions, basic emotions psychology, can emotions override hunger, disgust and hunger, emotions runaway train, Ekman refractory period, Walter Cannon fear digestion, psychology of emotions quotes]
@@ -10,7 +10,7 @@ faq:
   - q: "What are Paul Ekman's six basic emotions?"
     a: "Anger, disgust, fear, happiness (enjoyment), sadness and surprise. Ekman and Wallace Friesen tested them with the Fore people of Papua New Guinea, who had little contact with Western media, and published the results in 1971. The Fore matched faces to emotional stories above chance. Ekman later added contempt as a seventh universal emotion, so his own group now lists seven."
   - q: "Did Paul Ekman say emotions can override hunger?"
-    a: "Yes. In Emotions Revealed (2003) he wrote that emotions can override hunger, sex and the will to survive, motives many psychologists had treated as more powerful. His example was food: people will not eat if they think the only food available is disgusting, and they may even die, although other people might consider that same food palatable."
+    a: "Yes. In Emotions Revealed (2003) he wrote that emotions can override fundamental drives that many psychologists had treated as more powerful, and hunger was his first example. His example was food: people will not eat if they think the only food available is disgusting, and they may even die, although other people might consider that same food palatable."
   - q: "Why does fear make you lose your appetite?"
     a: "Fear switches the body into emergency mode. In 1915 the physiologist Walter Cannon watched animals' stomachs with X-rays and found that any sign of fear or rage stopped stomach movements completely; saliva and digestive juices stopped too. He explained it as the body moving its resources from digestion to the muscles that may have to fight or run."
   - q: "What is the refractory period of an emotion?"
@@ -86,7 +86,7 @@ A short refractory period is useful. Ekman says one "lasting for only a second o
 <details class="hv-more" markdown="1">
 <summary>Read more: Ekman, Darwin and the cockroach in the juice</summary>
 
-Hunger, sex and the will to survive are usually called the **fundamental drives**. Ekman's surprising claim is that emotions can beat all three. In his words: "Emotions can override what most psychologists have rather simple-mindedly considered the more powerful fundamental motives that drive our lives: hunger, sex, and the will to survive. People will not eat if they think the only food available is disgusting. They may even die, although other people might consider that same food palatable. Emotion triumphs over the hunger drive!"
+Hunger is one of the **fundamental drives**, the motives psychologists long treated as the strongest we have. Ekman's surprising claim is that emotions can beat it. In his words: "Emotions can override what most psychologists have rather simple-mindedly considered the more powerful fundamental motives that drive our lives ... People will not eat if they think the only food available is disgusting. They may even die, although other people might consider that same food palatable. Emotion triumphs over the hunger drive!"
 
 **Disgust is built around food.** Charles Darwin wrote in 1872 that "The term 'disgust,' in its simplest sense, means something offensive to the taste." He described a man in Tierra del Fuego touching the cold preserved meat Darwin was eating: the man showed disgust at its softness, and Darwin felt disgust at his food being touched, "though his hands did not appear dirty."
 
@@ -123,21 +123,19 @@ Cannon's explanation is still the standard one: digestion is a peacetime job. In
 
 </details>
 
-## Which drives can emotions override?
+## Two ways emotions beat hunger
 
 <figure class="hv" data-hv="drives">
-<div class="hv-canvas"><p class="hv-fallback">Figure: three panels, one for each fundamental drive Ekman names. Hunger is overridden by disgust: people will not eat food they find disgusting, even if it is the only food. Sex is overridden by fear or disgust: a person may never attempt sexual contact, or may not complete it. The will to live can be overwhelmed by despair. Each panel shows a drive bar being pushed down by an emotion bar.</p></div>
-<figcaption><strong>Ekman's three overrides, in his own examples.</strong> Diagram of the claims in the Introduction of <em>Emotions Revealed</em> (2003).</figcaption>
+<div class="hv-canvas"><p class="hv-fallback">Figure: two panels. Left, disgust stops eating: people will not eat food they find disgusting, even if it is the only food available (Ekman, 2003). Right, fear and anger stop digesting: saliva, gastric juice and stomach movements stop whenever pain, fear or rage is present (Cannon, 1915). Each panel shows a hunger bar being outweighed by an emotion bar.</p></div>
+<figcaption><strong>Disgust stops you eating; fear and anger stop you digesting.</strong> Diagram of the claims in Ekman (2003) and Cannon (1915); bar lengths are illustrative.</figcaption>
 </figure>
 
 <details class="hv-more" markdown="1">
-<summary>Read more: hunger, sex and the will to live</summary>
+<summary>Read more: why emotions can sit above our drives</summary>
 
-Ekman made the same move for each drive. For **hunger**, disgust wins: "People will not eat if they think the only food available is disgusting." For **sex**, fear and disgust win: "A person may never attempt sexual contact because of the interference of fear or disgust, or may never be able to complete a sexual act." For the **will to live**, despair wins: "despair can overwhelm even the will to live."
+The two routes work at different stages. **Disgust acts before the first bite**: the food is judged contaminating, so it is refused no matter how hungry you are. **Fear and anger act after it**: the body switches to emergency mode, so even food already eaten is not digested until the emotion passes.
 
-He credited the idea's spirit to his mentor Silvan Tomkins, who claimed in 1962 that emotion motivates all the important choices we make. Ekman thought Tomkins overstated it, "for surely there can be other motives", but kept the core: emotions are not a side effect of our drives; they can sit above them. The philosopher David Hume had made a related point in 1739: "Reason is, and ought only to be the slave of the passions."
-
-If despair is something you are feeling right now, please talk to someone. In India you can call Tele-MANAS, the government's free mental health helpline, on 14416; elsewhere, your local emergency number or a crisis line can help.
+Ekman credited the idea's spirit to his mentor Silvan Tomkins, who claimed in 1962 that emotion motivates all the important choices we make. Ekman thought Tomkins overstated it, "for surely there can be other motives", but kept the core: emotions are not a side effect of our drives; they can sit above them. The philosopher David Hume had made a related point in 1739: "Reason is, and ought only to be the slave of the passions."
 
 </details>
 
