@@ -217,6 +217,15 @@ work:
 
 # Beyond Code
 beyond:
+  - title: "Paul Ekman: Emotions vs Hunger"
+    date: "2026-11-07"
+    desc: "Ekman's six basic emotions, and how disgust and fear can beat hunger. Four small simulations."
+    meta: "Nov 2026"
+    href: "/blog_posts/paul-ekman-basic-emotions-override-hunger.html"
+    links:
+      - label: "Article"
+        url: "/blog_posts/paul-ekman-basic-emotions-override-hunger.html"
+
   - title: "Philosophy Notes"
     date: "2025-01"
     desc: "25 great thinkers across 2,500 years: portraits, a timeline and a quiz on why we do what we do."
