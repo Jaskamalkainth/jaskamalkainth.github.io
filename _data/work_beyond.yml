@@ -6,16 +6,6 @@
 #  - Same-day ties: the entry higher in this file shows first, so add new entries at the top.
 work:
   # —— Technical ——
-  - title: "Paul Ekman: Emotions vs Hunger"
-    kind: "notes"
-    date: "2026-11-07"
-    desc: "Ekman's six basic emotions, and how disgust and fear can beat hunger. Four small simulations."
-    meta: "Nov 2026"
-    links:
-      - label: "Article"
-        url: "/blog_posts/paul-ekman-basic-emotions-override-hunger.html"
-    href: "/blog_posts/paul-ekman-basic-emotions-override-hunger.html"
-
   - title: "Weight-Space Programming"
     kind: "notes"
     date: "2026-11-04"
@@ -226,8 +216,25 @@ work:
     href: "/blog_posts/experiments/experiment1/dots.html"
 
 # Beyond Code
+# —— Beyond code ——
+# Rendered as cards in the homepage "Beyond code" section, and in homepage search.
+#  - `featured: true` entries (philosophy, music, Korean) have hand-built, animated cards in index.html;
+#    they are listed here for search only.
+#  - Every other entry becomes a card automatically, after the featured ones, newest first by the post's `date`.
+#    Optional `glyph:` is the large faint character in the card's corner (one character).
 beyond:
+  - title: "Paul Ekman: Emotions vs Hunger"
+    date: "2026-11-07"
+    glyph: "Ψ"
+    desc: "Ekman's six basic emotions, and how disgust and fear can beat hunger. Four small simulations."
+    meta: "Nov 2026"
+    href: "/blog_posts/paul-ekman-basic-emotions-override-hunger.html"
+    links:
+      - label: "Read"
+        url: "/blog_posts/paul-ekman-basic-emotions-override-hunger.html"
+
   - title: "Philosophy Notes"
+    featured: true
     date: "2025-01"
     desc: "25 great thinkers across 2,500 years: portraits, a timeline and a quiz on why we do what we do."
     meta: "Jan 2025"
@@ -239,6 +246,7 @@ beyond:
         url: "/blog_posts/whatwedowhywedo.html"
 
   - title: "한국어 학습 여정"
+    featured: true
     date: "2025-06"
     desc: "Korean learning journey - Hangul to grammar."
     meta: "Jun 2025"
@@ -248,6 +256,7 @@ beyond:
         url: "/blog_posts/korean-learning-notes.html"
 
   - title: "Music"
+    featured: true
     date: "2022-01"
     desc: "Rafi to Arijit Singh, The Beatles to Linkin Park: artists and songs on repeat."
     meta: "Jan 2022"
