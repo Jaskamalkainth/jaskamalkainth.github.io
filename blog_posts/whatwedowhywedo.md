@@ -6,7 +6,7 @@ last_modified_at: 2026-11-01
 category: Philosophy
 tags: [philosophy, psychology, human-behavior, motivation, consciousness, research]
 keywords: [why do we do what we do, human motivation, philosophy of action, Plato, Aristotle, Hume, Kant, Nietzsche, Sartre, free will]
-related: ["/blog_posts/philosophy-notes.html", "/blog_posts/music.html"]
+related: ["/blog_posts/philosophy-notes.html", "/blog_posts/paul-ekman-basic-emotions-override-hunger.html", "/blog_posts/music.html"]
 image: /img/philosophy-timeline-og.jpg
 faq:
   - q: "Why do humans do what they do, according to philosophers?"

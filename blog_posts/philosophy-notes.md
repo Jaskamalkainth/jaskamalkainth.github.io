@@ -6,7 +6,7 @@ last_modified_at: 2026-11-01
 category: Philosophy
 tags: [philosophy, psychology, human-behavior, consciousness, research, timeline]
 keywords: [philosophy timeline, history of philosophy, great philosophers, ancient philosophy, medieval philosophy, existentialism, philosophy of mind, why do humans do what they do]
-related: ["/blog_posts/whatwedowhywedo.html", "/blog_posts/music.html"]
+related: ["/blog_posts/whatwedowhywedo.html", "/blog_posts/paul-ekman-basic-emotions-override-hunger.html", "/blog_posts/music.html"]
 image: /img/philosophy-timeline-og.jpg
 wide: true
 faq:
