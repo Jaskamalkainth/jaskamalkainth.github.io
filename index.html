@@ -310,6 +310,47 @@ image:
           <p>Learning Korean, from Hangul to grammar. Hangul is an algorithm too: jamo compose into syllable blocks.</p>
           <span class="beyond-more mono">my notes →</span>
         </a>
+        {% comment %}
+          Every non-featured `beyond:` entry in _data/work_beyond.yml becomes a card here, newest first
+          by its post's `date` (same-day ties keep file order). Featured entries have the hand-built cards above.
+        {% endcomment %}
+        {% assign beyond_all = site.data.work_beyond.beyond %}
+        {% assign beyond_keys = "" | split: "" %}
+        {% for item in beyond_all %}
+          {% unless item.featured %}
+          {% assign bp = site.pages | where: "url", item.href | first %}
+          {% if bp and bp.date %}{% assign bd = bp.date | date: "%Y-%m-%d" %}{% else %}{% assign bd = item.date | append: "" %}{% if bd.size == 7 %}{% assign bd = bd | append: "-00" %}{% endif %}{% endif %}
+          {% assign btie = 999 | minus: forloop.index0 | prepend: "00" | slice: -3, 3 %}
+          {% capture bkey %}{{ bd }}|{{ btie }}|{{ forloop.index0 }}{% endcapture %}
+          {% assign beyond_keys = beyond_keys | push: bkey %}
+          {% endunless %}
+        {% endfor %}
+        {% assign beyond_keys = beyond_keys | sort | reverse %}
+        {% for bkey in beyond_keys %}
+        {% assign bidx = bkey | split: "|" | last | plus: 0 %}
+        {% assign item = beyond_all[bidx] %}
+        {% assign bp = site.pages | where: "url", item.href | first %}
+        {% capture bdate %}{% if bp and bp.date %}{{ bp.date | date: "%b %-d, %Y" }}{% elsif item.date.size == 7 %}{{ item.date | append: "-01" | date: "%b %Y" }}{% else %}{{ item.date | date: "%b %-d, %Y" }}{% endif %}{% endcapture %}
+        {% if item.links.size > 1 %}
+        <div class="beyond-card">
+          <span class="beyond-glyph" aria-hidden="true">{{ item.glyph | default: "∗" }}</span>
+          <span class="beyond-date mono">{{ bdate | strip }}</span>
+          <h3><a href="{{ site.baseurl }}{{ item.href }}">{{ item.title }}</a></h3>
+          <p>{{ item.desc }}</p>
+          <div class="beyond-links mono">
+            {% for link in item.links %}<a href="{{ site.baseurl }}{{ link.url }}">{{ link.label | downcase }} →</a>{% endfor %}
+          </div>
+        </div>
+        {% else %}
+        <a class="beyond-card" href="{{ site.baseurl }}{{ item.href }}">
+          <span class="beyond-glyph" aria-hidden="true">{{ item.glyph | default: "∗" }}</span>
+          <span class="beyond-date mono">{{ bdate | strip }}</span>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.desc }}</p>
+          <span class="beyond-more mono">{{ item.links[0].label | default: "read" | downcase }} →</span>
+        </a>
+        {% endif %}
+        {% endfor %}
       </div>
     </section>
 

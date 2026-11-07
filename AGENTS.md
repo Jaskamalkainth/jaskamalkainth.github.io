@@ -172,7 +172,10 @@ AI engines repeat mistakes, so a wrong fact does more harm than a missing one.
 1. **Homepage**: add an entry to `_data/work_beyond.yml`, **unless the post has `homepage: false`**
    (see "Unlisted posts" below). Without an entry, a listed post is an orphan page that only the
    sitemap points to. Technical posts go under `work:` with
-   `kind:` one of `search | algorithms | math | experiments | notes`; personal essays go under `beyond:`.
+   `kind:` one of `search | algorithms | math | experiments | notes`. Personal, non-technical posts
+   (psychology, philosophy, music, life) go under `beyond:`: each becomes a card in the homepage
+   "Beyond code" section automatically (newest first, after the three hand-built `featured: true` cards),
+   with an optional one-character `glyph:` for the card corner. `beyond:` entries take no `kind:`.
    ```yaml
    - title: "Bloom Filters"
      kind: "algorithms"
