@@ -1,6 +1,18 @@
 # Awards & Recognition — years link to certificate photos (img/awards/).
 # Combined images use one file for multiple years/awards (e.g. "and" in filename).
 awards:
+  - name: "Best Mentor Award"
+    issuer: "Samsung Excellence Award"
+    years:
+      - year: "2026"
+        photo: "/img/awards/best-mentor-2026.jpg"
+
+  - name: "Team Awesome Award (Galaxy AI OS Commercialization)"
+    issuer: "Samsung Excellence Award"
+    years:
+      - year: "2026"
+        photo: "/img/awards/team-awesome-galaxy-ai-os-2026.jpg"
+
   - name: "Ace Employee of the Year"
     issuer: "Samsung Annual Awards"
     years:
