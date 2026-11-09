@@ -1,6 +1,20 @@
 # Awards & Recognition — years link to certificate photos (img/awards/).
 # Combined images use one file for multiple years/awards (e.g. "and" in filename).
 awards:
+  - name: "Best Mentor Award"
+    issuer: "Samsung Excellence Award"
+    years:
+      - year: "2026"
+        photo: "/img/awards/best-mentor-2026.jpg"
+
+  - name: "Team Awesome Award"
+    issuer: "Samsung Excellence Award"
+    years:
+      - year: "2025"   # Enterprise Search
+        photo: "/img/awards/team-awesome-and-star-of-the-quarter-2024.jpg"
+      - year: "2026"   # Galaxy AI OS in B8Q8 & W9 Commercialization
+        photo: "/img/awards/team-awesome-galaxy-ai-os-2026.jpg"
+
   - name: "Ace Employee of the Year"
     issuer: "Samsung Annual Awards"
     years:
@@ -24,12 +38,6 @@ awards:
     years:
       - year: "2025"
         photo: "/img/awards/korean-mugunghwa-2025.jpg"
-
-  - name: "Team Awesome Award (Enterprise Search)"
-    issuer: "Samsung Excellence Award"
-    years:
-      - year: "2025"
-        photo: "/img/awards/team-awesome-and-star-of-the-quarter-2024.jpg"
 
   - name: "Star of the Quarter — Lead by Example"
     issuer: "Samsung Excellence Award"
