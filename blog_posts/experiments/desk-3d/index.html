@@ -1,0 +1,108 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include gtm-head.html %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Room in 3D: An Explorable Home Office That Maps the Site | Jaskamal Kainth</title>
+  <meta name="description" content="Orbit a 3D dollhouse of the home office where I write this site. Every object opens something: monitors, posters, dice and whiteboards link to posts and demos.">
+  <meta name="author" content="Jaskamal Kainth">
+  <link rel="canonical" href="https://jaskamalkainth.github.io/blog_posts/experiments/desk-3d/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="My Room in 3D: An Explorable Home Office That Maps the Site">
+  <meta property="og:description" content="Orbit a 3D dollhouse of the home office where I write this site. Every object opens something: monitors, posters, dice and whiteboards link to posts and demos.">
+  <meta property="og:url" content="https://jaskamalkainth.github.io/blog_posts/experiments/desk-3d/">
+  <meta property="og:image" content="https://jaskamalkainth.github.io/img/og-desk-3d.png">
+  <meta property="og:site_name" content="Jaskamal Kainth">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0f1419">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="desk.css">
+  <script type="importmap">
+  { "imports": { "three": "./vendor/three.module.min.js", "three/addons/": "./vendor/" } }
+  </script>
+</head>
+<body>
+{% include gtm-body.html %}
+  <div id="stage" aria-hidden="true"></div>
+
+  <header class="bar">
+    <a class="back" href="/">← jaskamalkainth</a>
+    <div class="title">
+      <h1>My room, in 3D</h1>
+      <p class="sub">Drag to orbit, walls fade as you pass. Click anything.</p>
+    </div>
+    <div class="views" role="group" aria-label="Camera views">
+      <button type="button" class="chip" data-view="room" aria-pressed="true">Room</button>
+      <button type="button" class="chip" data-view="main" aria-pressed="false">My desk</button>
+      <button type="button" class="chip" data-view="second" aria-pressed="false">2nd desk</button>
+      <button type="button" class="chip" data-view="top" aria-pressed="false">Top</button>
+    </div>
+    <div class="time" role="group" aria-label="Time of day">
+      <span class="time-label mono" id="time-label">--:--</span>
+      <input id="time-slider" type="range" min="0" max="24" step="0.25" aria-label="Hour of the day">
+      <button id="time-now" type="button" class="chip">Now</button>
+      <button id="lights" type="button" class="chip" aria-pressed="true" title="Ceiling lights">💡</button>
+    </div>
+  </header>
+
+  <div id="tip" class="tip" role="status" aria-live="polite"></div>
+
+  <aside id="card" class="card" aria-live="polite" hidden>
+    <button class="card-close" type="button" aria-label="Close">×</button>
+    <p class="card-kicker mono" id="card-kicker"></p>
+    <h2 id="card-title"></h2>
+    <p id="card-desc"></p>
+    <ul id="card-links" class="card-links"></ul>
+  </aside>
+
+  <nav class="index" aria-label="Things in the room">
+    <details id="index-details">
+      <summary>Things in the room</summary>
+      <p class="index-intro">This is a hand-built model of the home office where I write this site. My side
+      has an L-shaped desk with two curved monitors, a laptop and a third screen, a shelf of trinkets,
+      posters and a whiteboard. Across the room there's a second, standing desk, a cabinet of books by
+      the window and a family-tree clock. Orbit all the way round: the wall nearest you fades away like a
+      dollhouse. The room follows your local time of day, so the light through the window changes and the
+      clocks and laptop show your time. Each object opens something on the site.</p>
+      <ul id="index-list">
+        <li><a href="/#work">Left monitor: everything I've written</a></li>
+        <li><a href="/blog_posts/hnsw-explained.html">Right monitor: HNSW, how vector search works</a></li>
+        <li><a href="/blog_posts/experiments/multi-agent-patterns/">Side monitor: interactive experiments</a></li>
+        <li><a href="/">Laptop: about me and my day job in search</a></li>
+        <li><a href="/blog_posts/bloom_filters.html">Whiteboard by the window: Bloom filters</a></li>
+        <li><a href="/blog_posts/philosophy-notes.html">Books on the cabinet: philosophy notes</a></li>
+        <li><a href="/blog_posts/segment_tree_problems.html">Small whiteboard: segment trees and DSU problems</a></li>
+        <li><a href="/blog_posts/CppNotes.html">Keyboard: C++ notes</a></li>
+        <li><a href="/blog_posts/monte-carlo-simulation-explained.html">Dice: Monte Carlo simulation</a></li>
+        <li><a href="/blog_posts/experiments/fourier-epicycles/index.html">Toy bicycle: Fourier epicycles</a></li>
+        <li><a href="/blog_posts/music.html">Posters and headphones: music I love</a></li>
+        <li><a href="/blog_posts/philosophy-notes.html">Dead Poets Society poster: philosophy notes</a></li>
+        <li><a href="/blog_posts/whatwedowhywedo.html">Into the Wild poster: why we do what we do</a></li>
+        <li><a href="/blog_posts/korean-learning-notes.html">사랑 sign: Korean learning notes</a></li>
+        <li><a href="/blog_posts/paul-ekman-basic-emotions-override-hunger.html">Snack box: emotions vs hunger</a></li>
+        <li><a href="/blog_posts/experiments/Pixelate/index.html">Photo frames: pixelate your image</a></li>
+      </ul>
+    </details>
+  </nav>
+
+  <div id="loading" class="loading"><span class="mono">building the room…</span></div>
+  <noscript><p class="nojs">This page draws a 3D room with WebGL and JavaScript. Open “Things in the room” for the same links as a list.</p></noscript>
+
+  <script id="site-posts" type="application/json">[
+{%- assign shown = 0 -%}
+{%- for w in site.data.work_beyond.work -%}
+{%- if shown < 6 and w.href contains '/blog_posts/' and w.href contains '.html' and w.kind != 'experiments' -%}
+{%- if shown > 0 %},{% endif %}{"title": {{ w.title | jsonify }}, "href": {{ w.href | jsonify }}, "kind": {{ w.kind | jsonify }}}
+{%- assign shown = shown | plus: 1 -%}
+{%- endif -%}
+{%- endfor -%}
+]</script>
+  <script type="module" src="desk.js"></script>
+</body>
+</html>

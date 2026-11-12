@@ -6,6 +6,16 @@
 #  - Same-day ties: the entry higher in this file shows first, so add new entries at the top.
 work:
   # —— Technical ——
+  - title: "My Room in 3D"
+    kind: "experiments"
+    date: "2026-11-10"
+    desc: "A 3D dollhouse of my home office that follows your time of day. Every object opens a post or demo."
+    meta: "Nov 2026"
+    links:
+      - label: "Demo"
+        url: "/blog_posts/experiments/desk-3d/"
+    href: "/blog_posts/experiments/desk-3d/"
+
   - title: "Weight-Space Programming"
     kind: "notes"
     date: "2026-11-04"
