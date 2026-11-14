@@ -1,8 +1,8 @@
 ---
 title: "Assembly Language Explained Simply: Registers, Step by Step"
-description: "Assembly language is the list of tiny steps a CPU really runs: move a number, add two, jump back. A kid-friendly guide with a tiny CPU you can step through."
-date: 2026-11-13
-last_modified_at: 2026-11-13
+description: "Assembly language is the list of tiny steps a CPU really runs: move a number, add two, jump back. Meet Chip, a cartoon CPU you can watch, play and race."
+date: 2026-11-14
+last_modified_at: 2026-11-14
 keywords: [assembly language explained, what is assembly language, assembly language for beginners, CPU registers explained, fetch decode execute cycle, machine code vs assembly, x86-64 assembly, ARM64 assembly]
 categories: computers hardware assembly
 related: ["/blog_posts/taalas-hc1-chatjimmy-explained.html", "/blog_posts/CppNotes.html", "/blog_posts/weight-space-programming-explained.html"]
@@ -25,13 +25,27 @@ faq:
 
 <link rel="stylesheet" href="/blog_posts/experiments/assembly-language/asm-post.css">
 
-I've written this the way I'd explain it to a curious five-year-old: a cook, two hands, a shelf of boxes. Every section starts with a picture or a small simulation; the full explanation for grown-ups sits under **Read more**. **Try it first:** jump to the [tiny CPU simulator](#watch-a-tiny-cpu-run-assembly-step-by-step) and press *Step*.
+This post is meant to be played more than read. Meet **Chip**, a cartoon CPU: watch it work, take the tour, then be the CPU yourself. Every grown-up detail is still here, folded under **Read more**.
 
-## What is assembly language?
+<figure class="hv bleed hero" data-hv="hero">
+<div class="hv-canvas"><p class="hv-fallback">Figure: Chip, a cartoon CPU, adds two numbers. Its recipe card has five lines: LOAD A, [0]; LOAD B, [1]; ADD A, B; STORE A, [2]; HALT. For each line Chip fetches the instruction (a card flies from the recipe to its face), decodes it (says what it means in plain words) and executes it: number tokens fly from box 0 and box 1 into hands A and B, into the belly calculator, back to hand A, and into box 2. With 2 and 3 in the boxes, box 2 ends with 5. The animation repeats with new numbers.</p></div>
+<figcaption><strong>This is all a computer ever does: tiny steps, very fast.</strong> Chip really runs each instruction in your browser; nothing is a recording.</figcaption>
+</figure>
 
-<figure class="hv" data-hv="ladder">
-<div class="hv-canvas"><p class="hv-fallback">Figure: one line of code at four levels. C: a = a + b; becomes the x86-64 assembly instruction add eax, ebx, which the assembler turns into the two machine-code bytes 01 D8, which the chip sees as the bits 00000001 11011000.</p></div>
-<figcaption><strong>Assembly is the last level that still uses words.</strong> Below it there are only numbers. The bytes are real: GNU as encodes <code>add eax, ebx</code> as <code>01 D8</code>.</figcaption>
+## What is assembly language? Meet Chip, the CPU
+
+<figure class="hv bleed story" data-hv="story">
+<div class="hv-canvas"><p class="hv-fallback">Figure: a scroll-driven tour of Chip. 1, Chip is the CPU. 2, its three hands are registers. 3, the shelf of numbered boxes is memory. 4, the recipe of tiny steps is the program, written in assembly language. 5, the finger is the program counter. 6, the belly calculator is the ALU and the antenna is the zero flag. 7, Chip runs the add program from start to finish.</p></div>
+<ol class="story-steps">
+<li><div class="story-card"><h3>Meet Chip</h3><p>Every phone, laptop and game console has a chip like this inside: the <b>CPU</b>. Chip is incredibly fast, but it can only follow tiny, simple steps.</p><span class="real">Scroll down to take the tour.</span></div></li>
+<li><div class="story-card"><h3>Chip has three hands</h3><p>Anything Chip wants to work on has to be held in a hand first. It can't add numbers that are sitting somewhere else.</p><span class="real">Real name: <b>registers</b>. An x86-64 CPU has 16; ARM64 has 31.</span></div></li>
+<li><div class="story-card"><h3>A huge shelf of boxes</h3><p>Next to Chip is a shelf of numbered boxes. There is lots of room, but walking to the shelf is slow compared with using a hand.</p><span class="real">Real name: <b>memory</b> (RAM). Billions of boxes, each with a number called its address.</span></div></li>
+<li><div class="story-card"><h3>A recipe of tiny steps</h3><p>Chip follows a recipe, one short line at a time: "copy box 0 into hand A", "add hand B to hand A"…</p><span class="real">Real name: the <b>program</b>, written in <b>assembly language</b>.</span></div></li>
+<li><div class="story-card"><h3>A finger keeps its place</h3><p>After each step the finger moves down one line, unless a line says "jump", which sends it somewhere else.</p><span class="real">Real name: the <b>program counter</b> (rip on x86-64).</span></div></li>
+<li><div class="story-card"><h3>A belly calculator and an antenna</h3><p>Chip's belly adds and subtracts. Whenever an answer comes out as zero, its antenna lights up. Jumps can check that light, and that's how loops work.</p><span class="real">Real names: the <b>ALU</b> and the <b>zero flag</b>.</span></div></li>
+<li><div class="story-card"><h3>Now watch it all work together</h3><p>Chip runs the whole recipe: two loads, an add and a store. Then it's your turn to be the CPU.</p><span class="real">Every instruction is fetch → decode → execute.</span></div></li>
+</ol>
+<figcaption><strong>Five parts, each with a kid name and a real name.</strong> Scroll to move through the tour. Illustrative picture of a real CPU's parts.</figcaption>
 </figure>
 
 <details class="hv-more" markdown="1">
@@ -51,13 +65,6 @@ Languages like C, Python or Rust let you write one big step, such as `a = a + b;
 | Bits | `00000001 11011000` | The circuits |
 
 </details>
-
-## What is a register? The CPU's hands
-
-<figure class="hv" data-hv="kitchen">
-<div class="hv-canvas"><p class="hv-fallback">Figure: a kitchen picture of a computer. On the left, a recipe card (the program) with five lines: LOAD A, [0]; LOAD B, [1]; ADD A, B; STORE A, [2]; HALT, and a finger pointing at line 2 (the program counter). In the middle, the CPU as a cook with three hands named A, B and C (the registers) and a calculator (the ALU). On the right, a shelf of eight numbered boxes (memory) holding 2, 3, 5 and zeros. LOAD moves a number from a box to a hand; STORE moves it back.</p></div>
-<figcaption><strong>Hands are fast but few; boxes are many but far away.</strong> That one trade-off shapes almost every assembly program. Illustrative picture.</figcaption>
-</figure>
 
 <details class="hv-more" markdown="1">
 <summary>Read more: registers, memory, the program counter and the ALU</summary>
@@ -81,17 +88,41 @@ Two more parts complete the picture:
 
 </details>
 
-## Watch a tiny CPU run assembly, step by step
+## Can you be the CPU? Play it
 
-<figure class="hv" data-hv="sim">
-<div class="hv-canvas"><p class="hv-fallback">Figure: an interactive tiny CPU with three registers (A, B, C), a program counter, a zero flag and eight memory boxes. Program 1, "Add two numbers", with x = 2 and y = 3: LOAD A, [0] copies 2 from box 0 into A; LOAD B, [1] copies 3 into B; ADD A, B makes A = 5; STORE A, [2] writes 5 into box 2; HALT stops. It takes 5 instructions and 15 steps. Program 2, "Multiply by adding": MOV A, 0; MOV B, 3; MOV C, 4; then ADD A, B; DEC C; JNZ 3 loops four times until C reaches 0 and the zero flag turns on, then STORE A, [0] writes 12 and HALT stops after 17 instructions (51 steps).</p></div>
-<figcaption><strong>Every instruction is a fetch, a decode and an execute.</strong> Press <em>Step</em> for one phase, <em>Run</em> to let it go, and change x and y. This is a real (toy) CPU running in your browser: it executes each instruction on the registers and boxes you see.</figcaption>
+<figure class="hv bleed" data-hv="play">
+<div class="hv-canvas"><p class="hv-fallback">Figure: a game. The reader plays the CPU and carries out the add program by tapping: box 0 then hand A (LOAD A, [0]), box 1 then hand B (LOAD B, [1]), the belly calculator (ADD A, B), hand A then box 2 (STORE A, [2]), and Chip’s face (HALT). At the end the game compares the reader’s time with a 3 GHz chip, which needs about 1.7 nanoseconds for 5 instructions at one instruction per clock tick.</p></div>
+<figcaption><strong>You'll take a few seconds; a real chip takes about 1.7 billionths of one.</strong> Speed comparison assumes one instruction per tick at 3 GHz.</figcaption>
 </figure>
 
 <details class="hv-more" markdown="1">
-<summary>Read more: the toy instruction set and the two programs</summary>
+<summary>Read more: the fetch-decode-execute cycle, the clock, and the race against a real chip</summary>
 
-The simulator runs a **made-up teaching instruction set**, kept tiny so every instruction fits in one sentence. Real instruction sets have hundreds of instructions, but these seven show the important kinds: moving data, doing math and changing the order.
+Every CPU, from a washing-machine controller to a laptop, repeats the same **fetch-decode-execute cycle** (also called the instruction cycle):
+
+1. **Fetch:** read the instruction stored at the address in the program counter.
+2. **Decode:** work out which operation it is and which registers or memory it uses.
+3. **Execute:** do it (add, copy, compare) and update the program counter, either to the next instruction or, for a jump, to a new place.
+
+A **clock** keeps everything in step by ticking at a fixed rate. At 3 GHz (3 gigahertz) it ticks 3,000,000,000 times per second, so one tick lasts 1 ÷ 3,000,000,000 s ≈ 0.33 nanoseconds. In that time light travels only about 10 cm.
+
+Chip shows the three phases one after another, and the game above counts one instruction per tick to compare your time with a real chip. Both are simplifications. Real CPUs are cleverer. They **pipeline**, so while one instruction executes, the next is being decoded and the one after is being fetched, like a car assembly line. Modern cores also run several instructions per tick and sometimes out of order. The result looks exactly as if the instructions ran one at a time, in order, which is why the simple model is still the right way to read assembly.
+
+In the game, you carry out the five instructions of the add program yourself. A 3 GHz CPU at one instruction per tick would need 5 ÷ 3,000,000,000 s ≈ 1.7 nanoseconds for the same work. If you take 10 seconds, the chip is about 6 billion times faster. Real cores can be faster still, because they finish several instructions per tick.
+
+</details>
+
+## How do loops work in assembly? Multiply by adding
+
+<figure class="hv bleed" data-hv="turbo">
+<div class="hv-canvas"><p class="hv-fallback">Figure: Chip multiplies 3 × 4 with no multiply instruction. Program: MOV A, 0; MOV B, 3; MOV C, 4; then the loop ADD A, B; DEC C; JNZ 3 repeats 4 times. Each DEC C counts down; when C reaches 0 the antenna (zero flag) lights, JNZ stops jumping back, STORE A, [0] writes 12, and HALT. 17 instructions in total, with 3 jumps back. Speeds: snail, rabbit and lightning.</p></div>
+<figcaption><strong>A loop is just a jump back, plus a light that says when to stop.</strong> Change the numbers and try ⚡ Lightning. Toy instruction set, really executed.</figcaption>
+</figure>
+
+<details class="hv-more" markdown="1">
+<summary>Read more: Chip's seven instructions, and how the loop works</summary>
+
+Chip runs a **made-up teaching instruction set**, kept tiny so every instruction fits in one sentence. Real instruction sets have hundreds of instructions, but these seven show the important kinds: moving data, doing math and changing the order.
 
 | Instruction | Plain words | Real x86-64 cousin |
 |---|---|---|
@@ -105,37 +136,42 @@ The simulator runs a **made-up teaching instruction set**, kept tiny so every in
 
 **Program 1: add two numbers.** With 2 in box 0 and 3 in box 1, the CPU loads both into registers, because the calculator only works on hands, adds them, and stores the 5 in box 2. Five instructions, and at three phases each, 15 steps.
 
-**Program 2: multiply by adding.** This toy CPU has no multiply instruction, so it does 3 × 4 the way a child might: start with 0, add 3, and repeat 4 times. Register C counts down how many additions are left. `DEC C` takes one away and turns on the zero light when C reaches 0. `JNZ 3` ("jump if not zero") sends the finger back to line 3 while the light is off. That pair is a **loop**, and it's how every `for` and `while` loop in every language ends up on the CPU. With x = 3 and y = 4 it runs 3 setup instructions, 4 rounds of 3 loop instructions, then STORE and HALT: 17 instructions, 51 steps, and box 0 ends at 12.
+**Program 2: multiply by adding.** This toy CPU has no multiply instruction, so it does 3 × 4 the way a child might: start with 0, add 3, and repeat 4 times. Register C counts down how many additions are left. `DEC C` takes one away and turns on the zero light (Chip's antenna) when C reaches 0. `JNZ 3` ("jump if not zero") sends the finger back to line 3 while the light is off. That pair is a **loop**, and it's how every `for` and `while` loop in every language ends up on the CPU. With x = 3 and y = 4 it runs 3 setup instructions, 4 rounds of 3 loop instructions, then STORE and HALT: 17 instructions, 51 steps, and box 0 ends at 12.
 
-I limited x and y to 1-9 on purpose. If C started at 0, `DEC C` would make it −1, the zero light would never come on, and the loop would run (nearly) forever. That's a classic assembly bug, and a good reason compilers do this bookkeeping for us.
+The steppers only go from 1 to 9 on purpose. If C started at 0, `DEC C` would make it −1, the zero light would never come on, and the loop would run (nearly) forever. That's a classic assembly bug, and a good reason compilers do this bookkeeping for us.
 
 </details>
 
-## How does a CPU run each instruction? Fetch, decode, execute
+## What does a computer really see? Flip the switches
 
-<figure class="hv" data-hv="cycle">
-<div class="hv-canvas"><p class="hv-fallback">Figure: a loop of three circles, Fetch (read the next instruction at the program counter), Decode (work out what it means), Execute (do it and move the program counter), repeated forever. Tiles: a 3 GHz clock ticks 3,000,000,000 times per second; one tick lasts 0.33 nanoseconds, the time light takes to travel about 10 cm; real cores overlap the phases of many instructions (pipelining).</p></div>
-<figcaption><strong>A CPU does one thing, very fast, forever:</strong> fetch the next instruction, decode it, execute it. The tick numbers are simple arithmetic for a 3 GHz clock.</figcaption>
+<figure class="hv" data-hv="bits">
+<div class="hv-canvas"><p class="hv-fallback">Figure: 16 switches, two bytes. Starting state 00000001 11011000, which is hex 01 D8 and decodes to the real x86-64 instruction add eax, ebx (eax = eax + ebx). Presets: 29 D8 is sub eax, ebx; 89 D8 is mov eax, ebx; 31 C0 is xor eax, eax; 01 C3 is add ebx, eax. Flipping any switch decodes the new bytes live.</p></div>
+<figcaption><strong>Assembly is just names for on/off patterns.</strong> These are real x86-64 encodings, checked against GNU objdump.</figcaption>
 </figure>
 
 <details class="hv-more" markdown="1">
-<summary>Read more: the instruction cycle and the clock</summary>
+<summary>Read more: bits, bytes, and how the switches become an instruction</summary>
 
-Every CPU, from a washing-machine controller to a laptop, repeats the same **fetch-decode-execute cycle** (also called the instruction cycle):
+Inside a chip, every number is stored as **bits**: tiny switches that are either off (0) or on (1). Eight bits make a **byte**, which can hold any number from 0 to 255. Each switch is worth double the one to its right (128, 64, 32, 16, 8, 4, 2, 1), and the byte's value is the sum of the switches that are on. Programmers usually write bytes in **hexadecimal** (base 16), two digits per byte: 216 is `D8`.
 
-1. **Fetch:** read the instruction stored at the address in the program counter.
-2. **Decode:** work out which operation it is and which registers or memory it uses.
-3. **Execute:** do it (add, copy, compare) and update the program counter, either to the next instruction or, for a jump, to a new place.
+The figure decodes two bytes the way an x86-64 CPU does for six common instructions. The first byte is the **opcode**, which says what to do: `01` is add, `29` is sub, `89` is mov, `31` is xor, `21` is and, `09` is or. The second byte, called **ModRM**, names the registers. When its top two bits are both 1, the next three bits pick the source register and the last three pick the destination, from the list eax, ecx, edx, ebx, esp, ebp, esi, edi. So `D8` = `11 011 000` means "source ebx (3), destination eax (0)", and `01 D8` is `add eax, ebx`. I checked the decoder against GNU `objdump` for every combination of these six opcodes and register pairs.
 
-A **clock** keeps everything in step by ticking at a fixed rate. At 3 GHz (3 gigahertz) it ticks 3,000,000,000 times per second, so one tick lasts 1 ÷ 3,000,000,000 s ≈ 0.33 nanoseconds. In that time light travels only about 10 cm.
+| Bits | Hex | Assembly | What it does |
+|---|---|---|---|
+| `00000001 11011000` | `01 D8` | `add eax, ebx` | eax = eax + ebx |
+| `00101001 11011000` | `29 D8` | `sub eax, ebx` | eax = eax − ebx |
+| `10001001 11011000` | `89 D8` | `mov eax, ebx` | eax = ebx |
+| `00110001 11000000` | `31 C0` | `xor eax, eax` | eax = 0 |
+| `00000001 11000011` | `01 C3` | `add ebx, eax` | ebx = ebx + eax |
 
-The simulator above spends one tick on each phase, so each instruction costs exactly three. Real CPUs are cleverer. They **pipeline**, so while one instruction executes, the next is being decoded and the one after is being fetched, like a car assembly line. Modern cores also run several instructions per tick and sometimes out of order. The result looks exactly as if the instructions ran one at a time, in order, which is why the simple model is still the right way to read assembly.
+Real x86-64 has hundreds of opcodes, and instructions from 1 to 15 bytes long, so this is a small corner of it. But it's the real corner: these exact bytes run on any Intel or AMD PC.
 
 </details>
 
-## What does real assembly look like?
+<details class="hv-more" markdown="1">
+<summary>Read more: a complete real program you can run on Linux</summary>
 
-Here is the add program for a real x86-64 Linux computer. I assembled it with GNU `as` and `ld` (binutils 2.42), ran it, and printed its exit code:
+Here is the add program for a real x86-64 Linux computer, the same steps Chip does, written in real assembly. I assembled it with GNU `as` and `ld` (binutils 2.42), ran it, and printed its exit code:
 
 ```asm
     .intel_syntax noprefix
@@ -154,13 +190,17 @@ $ as -o five.o five.s && ld -o five five.o && ./five; echo "exit code: $?"
 exit code: 5
 ```
 
-<figure class="hv" data-hv="listing">
-<div class="hv-canvas"><p class="hv-fallback">Figure: the program above as objdump shows it. Address 401000, bytes b8 02 00 00 00, mov eax, 2. 401005, bb 03 00 00 00, mov ebx, 3. 40100a, 01 d8, add eax, ebx. 40100c, 89 c7, mov edi, eax. 40100e, b8 3c 00 00 00, mov eax, 60. 401013, 0f 05, syscall. 6 instructions, 21 bytes of machine code, exit code 5.</p></div>
-<figcaption><strong>Every line of assembly is a few bytes in memory.</strong> Real <code>objdump -d -M intel</code> output for the program above; the 5 came back as its exit code.</figcaption>
-</figure>
+Disassembled with `objdump -d -M intel`, each line turns out to be a few bytes in memory (6 instructions, 21 bytes in total):
 
-<details class="hv-more" markdown="1">
-<summary>Read more: reading the listing, and the loop version</summary>
+| Address | Bytes | Assembly | In plain words |
+|---|---|---|---|
+| 401000 | `b8 02 00 00 00` | `mov eax, 2` | Put 2 in register eax (a hand) |
+| 401005 | `bb 03 00 00 00` | `mov ebx, 3` | Put 3 in register ebx |
+| 40100a | `01 d8` | `add eax, ebx` | eax = eax + ebx, so eax holds 5 |
+| 40100c | `89 c7` | `mov edi, eax` | Copy the 5 into edi, where Linux reads the exit code |
+| 40100e | `b8 3c 00 00 00` | `mov eax, 60` | Linux system call 60 means "exit" |
+| 401013 | `0f 05` | `syscall` | Ask Linux to run it; the program ends with code 5 |
+
 
 Each row of the listing is one instruction. The **address** is where it sits in memory (the "box number" of the recipe line); the **bytes** are its machine code. Notice two things. First, the program itself lives in memory, just like data, which is what the program counter points into. Second, x86-64 instructions have different lengths: `add eax, ebx` is 2 bytes, but `mov eax, 2` is 5, because the number 2 is stored inside the instruction as 4 bytes (`02 00 00 00`, smallest byte first).
 
@@ -197,7 +237,7 @@ In machine code the jump `jnz again` is `75 fa`: "jump if not zero, back 6 bytes
 
 <figure class="hv" data-hv="isa">
 <div class="hv-canvas"><p class="hv-fallback">Figure: the C function int add(int a, int b) { return a + b; } compiled for two CPU families. x86-64 with GCC 13.3 at -O2: endbr64; lea eax, [rdi+rsi]; ret. It has 16 general-purpose registers and instructions 1 to 15 bytes long. ARM64 with Clang 18 at -O2: add w0, w1, w0; ret. It has 31 general-purpose registers and every instruction is 4 bytes.</p></div>
-<figcaption><strong>Same idea, different dialects.</strong> Real compiler output for <code>int add(int a, int b) { return a + b; }</code> on two instruction sets.</figcaption>
+<figcaption><strong>Same idea, different dialects.</strong> Real compiler output for <code>int add(int a, int b) { return a + b; }</code>.</figcaption>
 </figure>
 
 <details class="hv-more" markdown="1">

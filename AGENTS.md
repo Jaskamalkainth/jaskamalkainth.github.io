@@ -147,6 +147,20 @@ People skim; agents read everything. So each post has two layers in the same pag
   `blog_posts/experiments/hnsw-simul/hnsw-post.js` and `hnsw-post.css` (11 figures: diagrams,
   a replayable layered search, sliders, a calculator, a measured benchmark chart).
 
+**Playable posts (the newer, preferred format for explainers).** Write for a curious
+non-technical reader first, without dumbing down the facts:
+- **A character, not a diagram.** Give the system a mascot whose parts have a kid name *and* a real
+  name (Chip's "hands" are registers). Data moves physically: tokens fly between parts.
+- **Five beats:** a *hero* that autoplays the core idea on scroll-into-view; a *scroll story*
+  (sticky stage, step cards that change it); a *game* where the reader does the system's job (and
+  gets a measured payoff, like their time versus the real machine's); a *speed or scale* toy
+  (slow → lightning); and a *peek under the hood* that touches the real thing (real bytes, real data).
+- **One engine** drives every figure, runs the real algorithm, and has a wide and a phone layout.
+  Stages may go full-bleed with `class="hv bleed"`; sections that open with a figure get chapter numbers.
+- Text for agents is unchanged: fallbacks, captions and "Read more" folds hold the full prose.
+- **Reference:** `blog_posts/assembly-language-explained-simply.md` with
+  `blog_posts/experiments/assembly-language/asm-post.js` and `asm-post.css`.
+
 ### Step 5: FAQ (front matter `faq:`)
 - 3-5 questions real people search, phrased as they'd type them and ending with `?`.
 - Each answer: 40-80 words, factual, standalone (no "as mentioned above"), consistent with the body.

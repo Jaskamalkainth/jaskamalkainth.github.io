@@ -8,7 +8,7 @@ work:
   # —— Technical ——
   - title: "Assembly Language, Explained Simply"
     kind: "notes"
-    date: "2026-11-13"
+    date: "2026-11-14"
     desc: "Registers as hands, memory as boxes: step through a tiny CPU running real assembly instructions."
     meta: "Nov 2026"
     links:
