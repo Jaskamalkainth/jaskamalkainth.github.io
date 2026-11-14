@@ -235,12 +235,14 @@ image:
         <button type="button" data-kind="experiments">experiments</button>
         <button type="button" data-kind="notes">notes</button>
       </div>
-      <div class="cards" id="work-cards">
+      <div class="rows" id="work-cards">
         {% comment %}
-          Newest first. A card's "published" date is its post's `date` front matter (falling back
-          to the entry's own `date:` for demos and external links), so publishing a post puts it on
-          top automatically. Same-day ties keep file order (higher in work_beyond.yml = first).
-          Sort key: "YYYY-MM-DD|<999 - index>|<index>".
+          One row per entry, newest first, grouped under year dividers. Each row has a small live
+          animation (js/thumbs.js) picked by the entry's `anim:` in _data/work_beyond.yml (falls
+          back to one per `kind`). A row's "published" date is its post's `date` front matter
+          (falling back to the entry's own `date:` for demos and external links), so publishing a
+          post puts it on top automatically. Same-day ties keep file order (higher in
+          work_beyond.yml = first). Sort key: "YYYY-MM-DD|<999 - index>|<index>".
         {% endcomment %}
         {% assign work_all = site.data.work_beyond.work %}
         {% assign work_keys = "" | split: "" %}
@@ -252,23 +254,32 @@ image:
           {% assign work_keys = work_keys | push: wkey %}
         {% endfor %}
         {% assign work_keys = work_keys | sort | reverse %}
+        {% assign prev_year = "" %}
         {% for wkey in work_keys %}
         {% assign widx = wkey | split: "|" | last | plus: 0 %}
+        {% assign wyear = wkey | slice: 0, 4 %}
         {% assign item = work_all[widx] %}
         {% assign wp = site.pages | where: "url", item.href | first %}
         {% assign demo = item.links | where: "demo", true | first %}
         {% capture wdate %}{% if wp and wp.date %}{{ wp.date | date: "%b %-d, %Y" }}{% elsif item.date.size == 7 %}{{ item.date | append: "-01" | date: "%b %Y" }}{% else %}{{ item.date | date: "%b %-d, %Y" }}{% endif %}{% endcapture %}
+        {% capture wshort %}{% if wp and wp.date %}{{ wp.date | date: "%b %-d" }}{% elsif item.date.size == 7 %}{{ item.date | append: "-01" | date: "%b" }}{% else %}{{ item.date | date: "%b %-d" }}{% endif %}{% endcapture %}
+        {% capture wiso %}{% if wp and wp.date %}{{ wp.date | date: "%Y-%m-%d" }}{% else %}{{ item.date }}{% endif %}{% endcapture %}
         {% assign wupd = "" %}
         {% if wp and wp.date and wp.last_modified_at %}
           {% assign wpub_day = wp.date | date: "%Y-%m-%d" %}{% assign wmod_day = wp.last_modified_at | date: "%Y-%m-%d" %}
           {% if wmod_day > wpub_day %}{% assign wupd = wp.last_modified_at | date: "%b %-d, %Y" %}{% endif %}
         {% endif %}
-        <article class="card{% if demo %} has-demo{% endif %}" data-kind="{{ item.kind }}{% if demo and item.kind != 'experiments' %} experiments{% endif %}">
-          <div class="card-top mono"><span class="card-tags"><span class="tag">{{ item.kind }}</span>{% if demo %}<span class="demo-badge">▶ interactive demo</span>{% endif %}</span><span class="card-dates muted"><span title="Published">{{ wdate | strip }}</span>{% if wupd != "" %}<span class="card-updated" title="Last updated">updated {{ wupd }}</span>{% endif %}</span></div>
-          <h3><a href="{% if item.external %}{{ item.href }}{% else %}{{ site.baseurl }}{{ item.href }}{% endif %}" {% if item.external %}target="_blank" rel="noopener"{% endif %}>{{ item.title }}</a></h3>
-          <p>{{ item.desc }}</p>
+        {% capture whref %}{% if item.external %}{{ item.href }}{% else %}{{ site.baseurl }}{{ item.href }}{% endif %}{% endcapture %}
+        {% if wyear != prev_year %}<div class="row-year mono" data-year="{{ wyear }}"><span>{{ wyear }}</span></div>{% assign prev_year = wyear %}{% endif %}
+        <article class="row{% if demo %} has-demo{% endif %}" data-kind="{{ item.kind }}{% if demo and item.kind != 'experiments' %} experiments{% endif %}" data-year="{{ wyear }}">
+          <div class="row-thumb" aria-hidden="true"><canvas data-anim="{{ item.anim }}" data-kind="{{ item.kind }}" width="128" height="80"></canvas></div>
+          <div class="row-body">
+            <div class="row-meta mono"><time datetime="{{ wiso | strip }}" title="Published {{ wdate | strip }}">{{ wshort | strip }}</time><span class="tag">{{ item.kind }}</span>{% if demo %}<span class="demo-badge">▶ interactive</span>{% endif %}{% if wupd != "" %}<span class="card-updated" title="Last updated">updated {{ wupd }}</span>{% endif %}</div>
+            <h3><a class="row-link" href="{{ whref | strip }}" {% if item.external %}target="_blank" rel="noopener"{% endif %}>{{ item.title }}{% if item.external %}<span class="ext" aria-label="(external)"> ↗</span>{% endif %}</a></h3>
+            <p>{{ item.desc }}</p>
+          </div>
           {% if item.links.size > 0 %}
-          <div class="card-links mono">
+          <div class="row-links mono">
             {% for link in item.links %}<a href="{% if link.external %}{{ link.url }}{% else %}{{ site.baseurl }}{{ link.url }}{% endif %}" {% if link.external %}target="_blank" rel="noopener"{% endif %}{% if link.demo %} class="is-demo"{% endif %}>{% if link.demo %}▶ {% endif %}{{ link.label | downcase }}</a>{% endfor %}
           </div>
           {% endif %}
@@ -418,5 +429,6 @@ image:
   {% include analytics.html %}
   <script src="{{ site.baseurl }}/js/bg.js" defer></script>
   <script src="{{ site.baseurl }}/js/site.js" defer></script>
+  <script src="{{ site.baseurl }}/js/thumbs.js" defer></script>
 </body>
 </html>

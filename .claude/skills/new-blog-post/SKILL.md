@@ -39,7 +39,8 @@ pictures and small simulations alone; the complete prose stays in the page, fold
    `homepage: false` and skip `_data/work_beyond.yml`. The post keeps its URL, sitemap and
    `llms.txt` entry. C++ notes also go in the `notes:` list of `blog_posts/CppNotes.md`.
    If the post has an interactive demo, put it on the **same** card as a link with `demo: true`;
-   never add a second card for it.
+   never add a second card for it. Give the entry an `anim:` live thumbnail: add a small animation
+   of the post's core idea to `js/thumbs.js` (see AGENTS.md step 7, "Row thumbnails").
 7. **Verify**:
    ```sh
    jekyll build -d /tmp/site
