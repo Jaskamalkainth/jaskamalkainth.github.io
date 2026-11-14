@@ -6,6 +6,16 @@
 #  - Same-day ties: the entry higher in this file shows first, so add new entries at the top.
 work:
   # —— Technical ——
+  - title: "Assembly Language, Explained Simply"
+    kind: "notes"
+    date: "2026-11-14"
+    desc: "Registers as hands, memory as boxes: step through a tiny CPU running real assembly instructions."
+    meta: "Nov 2026"
+    links:
+      - label: "Article"
+        url: "/blog_posts/assembly-language-explained-simply.html"
+    href: "/blog_posts/assembly-language-explained-simply.html"
+
   - title: "My Room in 3D"
     kind: "experiments"
     date: "2026-11-10"

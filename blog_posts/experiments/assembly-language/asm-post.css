@@ -1,0 +1,251 @@
+/* Playable explainer styles for /blog_posts/assembly-language-explained-simply.html.
+   asm-post.js builds "Chip" (a cartoon CPU) into each <figure class="hv" data-hv="...">;
+   the <p class="hv-fallback"> inside is the text version for agents and no-JS readers.
+   Colors use the post tokens from css/blog_post.css plus a few extra, defined for both themes. */
+
+.hv {
+  --c-a: #2563eb;        /* hands / registers */
+  --c-m: #b45309;        /* boxes / memory */
+  --c-alu: #7c3aed;      /* belly calculator / ALU */
+  --c-hot: #f59e0b;      /* antenna / zero flag */
+  --c-paper: #fffcf2;    /* recipe card */
+  --c-body: #e9f6f4;     /* Chip's body */
+  --c-face: #0f1d2e;     /* Chip's screen face */
+  --c-eye: #5eead4;
+  --c-mono: var(--font-mono, ui-monospace, Menlo, Consolas, monospace);
+  margin: 2rem 0 2.25rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+}
+[data-post-theme="dark"] .hv {
+  --c-a: #60a5fa;
+  --c-m: #fbbf24;
+  --c-alu: #a78bfa;
+  --c-hot: #fde047;
+  --c-paper: #18213f;
+  --c-body: #13263a;
+  --c-face: #050a14;
+  --c-eye: #5eead4;
+}
+.hv figcaption { margin-top: 0.75rem; color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
+.hv figcaption strong { color: var(--text); }
+.hv-fallback { color: var(--muted); font-size: 0.92rem; }
+
+/* full-bleed: stages break out of the 900px text column on wide screens */
+.hv.bleed {
+  width: min(1180px, calc(100vw - 32px));
+  margin-left: calc(50% - min(590px, 50vw - 16px));
+  box-sizing: border-box;
+}
+
+/* chapter numbers on every section that opens with a playable figure */
+.post-content { counter-reset: chapter; }
+.post-content h2:has(+ figure.hv) { counter-increment: chapter; margin-top: 3.5rem; font-size: clamp(1.45rem, 3.2vw, 2rem); line-height: 1.2; }
+.post-content h2:has(+ figure.hv)::before {
+  content: "Chapter " counter(chapter);
+  display: block; width: max-content; margin-bottom: 0.5rem;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent-ink); background: var(--accent); padding: 0.2rem 0.65rem; border-radius: 999px;
+}
+
+/* hero */
+.hv.hero {
+  border: 0;
+  background:
+    radial-gradient(1200px 400px at 50% -10%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%),
+    radial-gradient(600px 300px at 90% 100%, color-mix(in srgb, var(--c-alu) 16%, transparent), transparent 70%),
+    var(--surface);
+  box-shadow: 0 20px 60px -30px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+
+/* ── Chip, the stage ───────────────────────────────────────────── */
+.chip-stage { position: relative; }
+.chip-svg svg { display: block; width: 100%; height: auto; max-width: 1000px; margin: 0 auto; overflow: visible; user-select: none; -webkit-user-select: none; }
+.chip-svg text { font-family: var(--font-body); fill: var(--text); }
+.chip-svg .c-title { font-weight: 800; font-size: 17px; }
+.chip-svg .c-sub { font-weight: 500; fill: var(--muted); font-size: 0.85em; }
+.chip-svg .c-tiny { fill: var(--muted); font-weight: 600; }
+.chip-svg .c-paper { fill: var(--c-paper); stroke: var(--border); stroke-width: 1.5; }
+.chip-svg .c-linehi { fill: color-mix(in srgb, var(--accent) 16%, transparent); stroke: var(--accent); stroke-width: 2; transition: y 0.25s ease; }
+.chip-svg .c-code { font-family: var(--c-mono); font-weight: 600; }
+.chip-svg .c-num { fill: var(--muted); font-family: var(--c-mono); }
+.chip-svg .c-line.cur .c-code { fill: var(--accent); }
+.chip-svg .c-line.appear { animation: c-appear 0.5s ease both; }
+.chip-svg .c-jump { fill: none; stroke: var(--c-hot); stroke-width: 4; stroke-linecap: round; }
+.chip-svg .c-shelf { fill: color-mix(in srgb, var(--c-m) 7%, var(--surface)); stroke: var(--border); stroke-width: 1.5; }
+.chip-svg .c-plank { stroke: color-mix(in srgb, var(--c-m) 45%, transparent); stroke-width: 4; stroke-linecap: round; }
+.chip-svg .c-boxr { fill: var(--surface); stroke: var(--c-m); stroke-width: 2.5; }
+.chip-svg .c-boxlbl { fill: var(--c-m); font-weight: 700; }
+.chip-svg .c-val { font-family: var(--c-mono); font-weight: 800; }
+.chip-svg .c-body { fill: var(--c-body); stroke: var(--accent); stroke-width: 3; }
+.chip-svg .c-pins rect { fill: var(--accent); opacity: 0.7; }
+.chip-svg .c-face { fill: var(--c-face); }
+.chip-svg .c-eye { fill: var(--c-eye); filter: drop-shadow(0 0 6px var(--c-eye)); }
+.chip-svg .c-pupil { fill: var(--c-face); transition: cx 0.2s, cy 0.2s; }
+.chip-svg .c-eyes { animation: c-blink 5s infinite; }
+.chip-svg .c-mouth { fill: none; stroke: var(--c-eye); stroke-width: 4; stroke-linecap: round; }
+.chip-svg .c-antl { stroke: var(--muted); stroke-width: 3; }
+.chip-svg .c-bulb { fill: var(--surface-2); stroke: var(--muted); stroke-width: 2; transition: fill 0.2s; }
+.chip-svg .c-bulb.on { fill: var(--c-hot); stroke: var(--c-hot); filter: drop-shadow(0 0 10px var(--c-hot)); }
+.chip-svg .c-slot { fill: var(--surface); stroke: var(--c-a); stroke-width: 3; }
+.chip-svg .c-reg .c-val { fill: var(--c-a); }
+.chip-svg .c-alu { fill: color-mix(in srgb, var(--c-alu) 12%, var(--surface)); stroke: var(--c-alu); stroke-width: 2.5; }
+.chip-svg .c-gear { fill: var(--c-alu); opacity: 0.85; }
+.chip-svg .c-gear.spin { animation: c-spin 0.8s linear infinite; }
+.chip-svg .c-expr { font-family: var(--c-mono); font-weight: 800; fill: var(--c-alu); }
+.chip-svg .c-tok { fill: var(--accent); }
+.chip-svg .c-tokt { fill: var(--accent-ink); font-family: var(--c-mono); font-weight: 800; }
+.chip-svg .c-card { fill: var(--surface); stroke: var(--accent); stroke-width: 2; }
+.chip-svg .c-cardt { font-family: var(--c-mono); font-weight: 700; fill: var(--text); }
+.chip-svg .c-k1 { fill: var(--accent); } .chip-svg .c-k2 { fill: var(--c-a); } .chip-svg .c-k3 { fill: var(--c-m); } .chip-svg .c-k4 { fill: var(--c-alu); }
+.chip-svg .flash { animation: c-pop 0.6s ease; }
+.chip-svg .flash .c-slot, .chip-svg .flash .c-boxr { stroke: var(--c-hot); stroke-width: 5; }
+
+/* focus mode (story): dim everything except the parts being talked about */
+.chip-stage [data-part] { transition: opacity 0.35s ease; }
+.chip-stage.focus [data-part]:not(.on) { opacity: 0.18; }
+
+/* interactive (game) */
+.chip-stage.interactive [data-hit] { cursor: pointer; }
+.chip-stage.interactive [data-hit]:hover .c-slot, .chip-stage.interactive [data-hit]:hover .c-boxr, .chip-stage.interactive [data-hit]:hover.c-alu,
+.chip-stage.interactive [data-hit="alu"]:hover .c-alu, .chip-stage.interactive [data-hit="chip"]:hover .c-face { stroke: var(--accent); stroke-width: 4; }
+.chip-stage .hint .c-slot, .chip-stage .hint .c-boxr, .chip-stage .hint .c-alu, .chip-stage .hint .c-face { stroke: var(--c-hot); stroke-width: 5; animation: c-glow 1s ease-in-out infinite; }
+.chip-stage .picked .c-slot, .chip-stage .picked .c-boxr { stroke: var(--accent); stroke-width: 6; }
+.chip-stage .nope { animation: c-shake 0.4s ease; }
+
+/* Chip's speech bubble */
+.chip-bubble { position: relative; margin: 0.9rem auto 0; max-width: 760px; background: var(--bg); border: 2px solid var(--accent); border-radius: 16px; padding: 0.6rem 0.9rem 0.7rem; }
+.chip-bubble::before { content: ""; position: absolute; top: -10px; left: 50%; width: 16px; height: 16px; background: var(--bg); border-left: 2px solid var(--accent); border-top: 2px solid var(--accent); transform: translateX(-50%) rotate(45deg); }
+.chip-phases { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.35rem; }
+.chip-phases span { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.12rem 0.55rem; border-radius: 999px; color: var(--muted); border: 1px solid var(--border); transition: all 0.2s; }
+.chip-phases span.on { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.chip-say { margin: 0; font-size: 1.02rem; line-height: 1.5; min-height: 3em; color: var(--text); }
+.chip-say code { font-family: var(--c-mono); background: var(--surface-2); padding: 0.05rem 0.35rem; border-radius: 5px; }
+
+.chip-bar { display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.75rem; }
+.chip-hint { font-size: 0.88rem; color: var(--muted); }
+.chip-btn { font: inherit; font-size: 0.9rem; font-weight: 600; padding: 0.45rem 1rem; border: 1px solid var(--border); border-radius: 999px; background: var(--surface-2); color: var(--text); cursor: pointer; transition: transform 0.1s, border-color 0.15s; }
+.chip-btn:hover { border-color: var(--accent); }
+.chip-btn:active { transform: scale(0.96); }
+.chip-btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); box-shadow: 0 6px 18px -8px var(--accent); }
+
+/* ── story (scroll-driven) ─────────────────────────────────────── */
+.hv.story { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 1.5rem; align-items: start; }
+.hv.story > .hv-canvas { position: sticky; top: 12px; z-index: 2; }
+.hv.story > figcaption { grid-column: 1 / -1; }
+.story-steps { list-style: none; margin: 0; padding: 0; counter-reset: st; }
+.story-steps > li { min-height: 75vh; display: flex; align-items: center; counter-increment: st; }
+.story-steps > li:first-child { min-height: 50vh; align-items: flex-start; }
+.story-steps > li:last-child { min-height: 60vh; }
+.story-card { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 1rem 1.1rem; box-shadow: 0 10px 30px -18px rgba(0,0,0,0.35); opacity: 0.45; transform: scale(0.97); transition: opacity 0.3s, transform 0.3s, border-color 0.3s; }
+.story-steps > li.on .story-card { opacity: 1; transform: none; border-color: var(--accent); }
+.story-card h3 { margin: 0 0 0.35rem; font-size: 1.1rem; }
+.story-card h3::before { content: counter(st); display: inline-grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font-size: 0.85rem; margin-right: 0.5rem; vertical-align: 2px; }
+.story-card p { margin: 0; font-size: 0.98rem; line-height: 1.55; }
+.story-card .real { display: block; margin-top: 0.5rem; font-size: 0.84rem; color: var(--muted); }
+.story-card .real b { color: var(--text); }
+@media (max-width: 860px) {
+  .hv.story { display: block; padding: 0.5rem; }
+  .hv.story > .hv-canvas { top: 0; background: var(--surface); padding: 0.4rem 0 0.5rem; border-bottom: 1px solid var(--border); margin: 0 -0.5rem; }
+  .hv.story .chip-svg svg { max-height: 50vh; width: auto; max-width: 100%; }
+  .story-steps > li { min-height: 65vh; align-items: flex-end; padding-bottom: 6vh; }
+  .story-steps > li:first-child { min-height: 40vh; align-items: flex-end; }
+}
+
+/* ── game ───────────────────────────────────────────────────────── */
+.game-top { background: var(--bg); border: 2px dashed var(--accent); border-radius: 16px; padding: 0.75rem 1rem; margin-bottom: 0.9rem; min-height: 6.5rem; }
+.game-line { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+.game-n { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.game-line code { font-family: var(--c-mono); font-size: 1.25rem; font-weight: 700; color: var(--accent); background: none; }
+.game-do { margin: 0.35rem 0 0.4rem; font-size: 1.05rem; line-height: 1.45; }
+.game-do span { color: var(--muted); font-size: 0.92rem; }
+.game-dots { display: flex; gap: 0.35rem; }
+.game-dots i { width: 0.7rem; height: 0.7rem; border-radius: 50%; border: 2px solid var(--border); }
+.game-dots i.done { background: var(--accent); border-color: var(--accent); }
+.game-dots i.cur { border-color: var(--c-hot); background: var(--c-hot); animation: c-glow 1s ease-in-out infinite; }
+.game-done h4 { margin: 0 0 0.6rem; font-size: 1.15rem; }
+.game-tiles, .turbo-meters { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.6rem; margin-bottom: 0.75rem; }
+.game-tiles div, .turbo-meters div { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 0.55rem 0.75rem; }
+.game-tiles b, .turbo-meters b { display: block; font-size: 1.45rem; line-height: 1.2; color: var(--accent); font-family: var(--c-mono); }
+.game-tiles span, .turbo-meters span { font-size: 0.8rem; color: var(--muted); }
+
+/* ── turbo ──────────────────────────────────────────────────────── */
+.turbo-top { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; justify-content: center; margin-bottom: 0.9rem; }
+.turbo-nums { display: flex; align-items: center; gap: 0.5rem; font-weight: 700; }
+.stepper { display: inline-flex; align-items: center; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; background: var(--bg); }
+.stepper button { font: inherit; width: 2rem; height: 2rem; border: 0; background: transparent; color: var(--text); cursor: pointer; font-size: 1.1rem; }
+.stepper button:hover { background: var(--surface-2); }
+.stepper b { min-width: 1.6rem; text-align: center; font-family: var(--c-mono); font-size: 1.2rem; color: var(--accent); }
+.turbo-speed { display: inline-flex; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; }
+.turbo-speed button { font: inherit; font-size: 0.88rem; padding: 0.4rem 0.8rem; border: 0; background: var(--bg); color: var(--text); cursor: pointer; }
+.turbo-speed button + button { border-left: 1px solid var(--border); }
+.turbo-speed button.on { background: var(--accent); color: var(--accent-ink); font-weight: 700; }
+.turbo-go { display: flex; gap: 0.5rem; }
+.turbo-meters { margin: 0.9rem 0 0; }
+
+/* ── bits ───────────────────────────────────────────────────────── */
+.bits-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; margin-bottom: 1rem; font-size: 0.88rem; color: var(--muted); }
+.bits-presets .chip-btn { font-family: var(--c-mono); font-size: 0.8rem; padding: 0.3rem 0.7rem; }
+.bits-bytes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+.bits-byte { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 0.6rem; }
+.bits-cap { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.3rem; }
+.bits-row { display: grid; grid-template-columns: repeat(8, 1fr); gap: 0.3rem; }
+.bit { font: inherit; display: flex; flex-direction: column; align-items: center; gap: 0.25rem; padding: 0.35rem 0; border: 0; background: transparent; color: var(--text); cursor: pointer; border-radius: 10px; }
+.bit:hover { background: var(--surface-2); }
+.bit-v { font-family: var(--c-mono); font-weight: 800; font-size: 1.15rem; color: var(--muted); }
+.bit.on .bit-v { color: var(--c-hot); text-shadow: 0 0 10px color-mix(in srgb, var(--c-hot) 60%, transparent); }
+.bit-sw { position: relative; width: 1.35rem; height: 2.3rem; border-radius: 999px; background: var(--surface-2); border: 2px solid var(--border); transition: background 0.2s; }
+.bit-sw span { position: absolute; left: 2px; right: 2px; bottom: 2px; height: calc(50% - 2px); border-radius: 999px; background: var(--muted); transition: transform 0.2s ease, background 0.2s; }
+.bit.on .bit-sw { background: color-mix(in srgb, var(--c-hot) 35%, var(--surface-2)); border-color: var(--c-hot); }
+.bit.on .bit-sw span { transform: translateY(-100%); background: var(--c-hot); }
+.bit-w { font-size: 0.66rem; color: var(--muted); }
+.bits-hex { margin-top: 0.4rem; font-family: var(--c-mono); font-weight: 700; text-align: right; }
+.bits-hex span { color: var(--muted); font-weight: 500; }
+.bits-out { margin-top: 1rem; border: 2px solid var(--border); border-radius: 16px; padding: 0.8rem 1rem; transition: border-color 0.2s, box-shadow 0.2s; }
+.bits-out.ok { border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 15%, transparent); }
+.bits-ladder { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+.bits-ladder > div:not(.arr) { flex: 1 1 140px; }
+.bits-ladder span { display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.bits-ladder b { font-family: var(--c-mono); font-size: 1.2rem; color: var(--text); overflow-wrap: anywhere; }
+.bits-ladder .arr { color: var(--accent); font-size: 1.4rem; font-weight: 800; }
+.bits-note { margin: 0.6rem 0 0; font-size: 0.92rem; color: var(--muted); }
+.bits-note code { font-family: var(--c-mono); }
+@media (max-width: 560px) { .bits-ladder .arr { display: none; } .bits-bytes { grid-template-columns: 1fr; } }
+
+/* ── isa + uses ─────────────────────────────────────────────────── */
+.isa-wrap { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0.9rem; align-items: center; }
+.isa-card { background: var(--bg); border: 2px solid var(--border); border-radius: 16px; padding: 0.9rem; }
+.isa-card.x86 { border-color: var(--c-a); } .isa-card.arm { border-color: var(--c-alu); }
+.isa-card h4 { margin: 0; font-size: 1.1rem; } .isa-card h4 small { font-weight: 500; color: var(--muted); font-size: 0.8rem; margin-left: 0.25rem; }
+.isa-card .sub { margin: 0.1rem 0 0.5rem; font-size: 0.8rem; color: var(--muted); }
+.isa-card pre { margin: 0 0 0.6rem; padding: 0.6rem 0.75rem; background: var(--surface-2); border-radius: 10px; font-family: var(--c-mono); font-size: 0.98rem; color: var(--text); overflow-x: auto; }
+.isa-regs { font-size: 0.9rem; } .isa-regs b { font-size: 1.5rem; font-family: var(--c-mono); color: var(--accent); }
+.isa-card p { margin: 0.35rem 0 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
+.isa-vs { font-weight: 800; text-align: center; color: var(--accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; }
+@media (max-width: 680px) { .isa-wrap { grid-template-columns: 1fr; } }
+.use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.75rem; }
+.use-card { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 0.9rem; transition: transform 0.2s, border-color 0.2s; }
+.use-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+.use-card .ico { font-size: 1.8rem; line-height: 1; }
+.use-card h4 { margin: 0.5rem 0 0.25rem; font-size: 1rem; }
+.use-card p { margin: 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
+
+/* "read more" blocks: the full text, for readers who want it and for agents */
+details.hv-more { margin: 0.25rem 0 1.5rem; border-left: 3px solid var(--accent); padding: 0.1rem 0 0.1rem 1rem; }
+details.hv-more > summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 0.95rem; }
+details.hv-more[open] > summary { margin-bottom: 0.5rem; }
+
+@keyframes c-blink { 0%, 94%, 100% { transform: scaleY(1); } 96% { transform: scaleY(0.1); } }
+@keyframes c-spin { to { transform: rotate(360deg); } }
+@keyframes c-pop { 0% { transform: scale(1); } 40% { transform: scale(1.12); } 100% { transform: scale(1); } }
+@keyframes c-glow { 50% { opacity: 0.45; } }
+@keyframes c-shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+@keyframes c-appear { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .chip-svg .c-eyes, .chip-svg .c-gear.spin, .chip-svg .flash, .chip-stage .hint .c-slot, .chip-stage .hint .c-boxr,
+  .chip-stage .hint .c-alu, .chip-stage .hint .c-face, .chip-stage .nope, .game-dots i.cur, .chip-svg .c-line.appear { animation: none; }
+  .story-card, .use-card, .chip-stage [data-part] { transition: none; }
+}
