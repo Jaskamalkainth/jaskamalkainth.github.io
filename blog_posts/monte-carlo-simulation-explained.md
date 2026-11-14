@@ -28,6 +28,25 @@ faq:
 
 This post is mostly simulations you can run yourself: press the buttons, change the numbers, and watch the answers appear. Each one also has the short Python version, which I ran; the outputs shown are real. All four are also on one page in the [Monte Carlo simulation playground](/blog_posts/experiments/monte-carlo/).
 
+<figure class="mc-reel">
+  <video controls playsinline preload="none" width="720" height="1280"
+         poster="/blog_posts/experiments/monte-carlo/monte-carlo-pi-reel-poster.jpg"
+         aria-label="32-second video: one million random darts thrown at a quarter circle estimate pi as 3.14059">
+    <source src="/blog_posts/experiments/monte-carlo/monte-carlo-pi-reel.mp4" type="video/mp4">
+    <a href="/blog_posts/experiments/monte-carlo/monte-carlo-pi-reel.mp4">Download the 32-second video (MP4)</a>
+  </video>
+  <figcaption><strong>The whole idea in 32 seconds:</strong> a million random darts estimate π as 3.14059. It's a real simulation (Python's <code>random</code>, seed 42), not an animation of a made-up result.</figcaption>
+</figure>
+
+<details class="hv-more" markdown="1"><summary>Read more: what the video shows</summary>
+
+1. A quarter circle sits inside a square and covers π/4, about 78.5%, of it.
+2. Random darts land on the square. Each is marked inside or outside the circle, and the running estimate is π ≈ 4 × inside ÷ darts.
+3. The first 10 darts give 3.6 (9 inside). After 100 darts the estimate is 3.12 (78 inside), after 10,000 it's 3.126 (7,815 inside), and after 1,000,000 it's 3.14059 (785,148 inside). The true value is 3.14159…
+4. The catch: the typical error is about 1.64/√N, so ±0.16 at 100 darts, ±0.016 at 10,000 and ±0.0016 at a million. 100 times more darts buys only 10 times more precision.
+
+</details>
+
 ## What is Monte Carlo simulation?
 
 Monte Carlo simulation estimates an answer by **repeating a random experiment many times** and counting the results. Every run follows the same recipe:
