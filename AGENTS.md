@@ -204,13 +204,13 @@ AI engines repeat mistakes, so a wrong fact does more harm than a missing one.
          demo: true
      href: "/blog_posts/bloom_filters.html"
    ```
-   **Order and dates are automatic.** Cards are sorted newest first by the post's front matter
+   **Order and dates are automatic.** Rows are sorted newest first by the post's front matter
    `date`, and show the published date plus "updated <date>" when `last_modified_at` is later.
    Add new entries at the **top** of `work:`: on a same-day tie, the higher entry shows first.
    Demos and external links have no front matter, so give them `date: "YYYY-MM-DD"`.
-   **One topic, one card.** A post and its interactive demo share a single entry; never add a
-   second card for the demo. Mark the demo link with `demo: true`: the card then shows an
-   "▶ interactive demo" badge and a highlighted demo button, appears under the *experiments*
+   **One topic, one row.** A post and its interactive demo share a single entry; never add a
+   second row for the demo. Mark the demo link with `demo: true`: the row then shows an
+   "▶ interactive" badge and a highlighted demo button, appears under the *experiments*
    filter as well as its own `kind`, and homepage search mentions the demo.
    **Row thumbnails.** "Work & writing" is a list of rows, grouped by year, and each row has a
    small looping animation (a canvas in `js/thumbs.js`) that gives a glimpse of the post. `anim:`
@@ -290,6 +290,6 @@ Standalone HTML pages don't get the post layout, so each one needs by hand, in `
 Manager snippet (copy from `_includes/gtm-head.html` and `_includes/gtm-body.html`, or
 `{% include gtm-head.html %}` if the file has `layout: null` front matter). Link the demo from
 its article near the top (e.g. a "**Try it first:**" line), and link back to the article from the demo.
-On the homepage, a demo that has an article goes on **the article's card** as a link with `demo: true`
-(see step 7), not as a separate card. Only a demo with no article gets its own entry, with
+On the homepage, a demo that has an article goes on **the article's row** as a link with `demo: true`
+(see step 7), not as a separate row. Only a demo with no article gets its own entry, with
 `kind: "experiments"`.

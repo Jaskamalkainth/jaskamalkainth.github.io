@@ -1,7 +1,8 @@
 /* Live thumbnails for the homepage "Work & writing" list.
    Each row has <canvas data-anim="name">. One shared requestAnimationFrame loop draws only the
    thumbnails that are on screen, at ~30 fps, in the current theme's colors. Hovering a row
-   speeds its thumbnail up. With prefers-reduced-motion, each draws one still frame.
+   speeds its thumbnail up. With prefers-reduced-motion, each draws one still frame (its `still`
+   time, default 2.6 s).
    Add a new animation by adding a key to ANIMS and setting `anim:` in _data/work_beyond.yml. */
 (function () {
   'use strict';
@@ -79,6 +80,7 @@
 
     /* A rotating wireframe room with a desk and a lit window. */
     room3d: {
+      still: 1.3,
       draw: function (c, t) {
         var a = t * .6, ca = Math.cos(a), sa = Math.sin(a), tilt = .5;
         function P(x, y, z) {
@@ -137,6 +139,7 @@
 
     /* HNSW: greedy search on the top layer, then drop down a layer and keep going. */
     hnsw: {
+      still: 5,
       init: function (s) {
         var p = points(36, 11, 8), all = [], i;
         for (i = 0; i < p.length; i++) all.push(i);
@@ -182,6 +185,7 @@
 
     /* Monte Carlo: random darts in a unit square; the share inside the quarter circle estimates pi. */
     montecarlo: {
+      still: 8,
       init: function (s) { s.d = []; s.r = rng(3); s.n = 0; s.inside = 0; },
       draw: function (c, t, s, dt) {
         var x0 = 6, y0 = 6, sz = 68;
@@ -202,6 +206,7 @@
 
     /* Text watermark: word tokens get scored as a detector scans; the score bar fills. */
     watermark: {
+      still: 4.5,
       init: function (s) { var r = rng(5); s.w = []; for (var i = 0; i < 24; i++) s.w.push({ len: 10 + Math.floor(r() * 16), g: r() < .7 }); },
       draw: function (c, t, s) {
         var cyc = 5, u = (t % cyc) / (cyc - 1), x = 6, y = 8, n = 0, hit = 0, idx = 0;
@@ -221,6 +226,7 @@
 
     /* Bloom filter: each item hashes to 3 bits of a 16-bit array. */
     bloom: {
+      still: 5.6,
       init: function (s) { s.bits = []; for (var i = 0; i < 16; i++) s.bits.push(0); s.k = -1; },
       draw: function (c, t, s) {
         var per = 1.1, k = Math.floor(t / per), u = (t % per) / per;
@@ -286,6 +292,7 @@
 
     /* C++ notes: code being typed, with a blinking cursor. */
     cpp: {
+      still: 6.6,
       draw: function (c, t) {
         var L = ['template<class T>', 'T&& fwd(T& x) {', '  return std::move(x);', '}', 'constexpr int N = 1<<20;', 'auto [k, v] = *it;'];
         var total = L.join('').length, cps = 14, cyc = total / cps + 2.5, n = Math.floor((t % cyc) * cps), y = 9, last = [6, 9];
@@ -322,6 +329,7 @@
 
     /* DSU: random unions merge sets; every node points to its set's root. */
     dsu: {
+      still: 9.6,
       init: function (s) { s.k = -1; },
       draw: function (c, t, s) {
         var n = 10, per = .9, k = Math.floor(t / per) % 12;
@@ -345,6 +353,7 @@
 
     /* String matching: slide a pattern over the text; matches light up. */
     strings: {
+      still: 4.0,
       draw: function (c, t) {
         var T = 'abracadabraabra', P = 'abra', cw = 7.8, x0 = 6;
         var cyc = T.length - P.length + 1, sh = Math.floor(t / .55) % (cyc + 2);
@@ -366,6 +375,7 @@
 
     /* BFS: a wave spreads from a source, layer by layer, over a small graph. */
     graph: {
+      still: 4,
       init: function (s) {
         s.p = points(16, 41, 9); var all = []; for (var i = 0; i < 16; i++) all.push(i);
         s.g = knn(s.p, all, 2);
@@ -388,6 +398,7 @@
 
     /* Inverted index: a two-term query intersects the two posting lists. */
     elastic: {
+      still: 1.5,
       draw: function (c, t) {
         var terms = [['laptop', [1, 2, 4, 6, 7]], ['samsung', [0, 2, 3, 6]], ['ssd', [2, 5, 6, 8]]];
         var pairs = [[0, 1], [1, 2], [0, 2]], k = Math.floor(t / 2) % 3, pr = pairs[k], u = (t % 2) / 2;
@@ -400,8 +411,8 @@
             if (has) box(c, 48 + d * 8.4, y - 5, 7, 10, hit ? C.hot : on ? C.acc : C.muted, true, hit ? 1 : on ? .75 : .35);
           }
         });
-        text(c, terms[pr[0]][0] + ' AND ' + terms[pr[1]][0], 4, 70, C.muted, 8);
-        if (u > .35) text(c, '→ ' + both.length + ' docs', 124, 70, C.hot, 8, 'right');
+        text(c, terms[pr[0]][0] + ' AND ' + terms[pr[1]][0], 4, 66, C.muted, 8);
+        if (u > .35) text(c, '→ ' + both.length + ' docs', 4, 76, C.hot, 8);
       }
     },
 
@@ -424,6 +435,7 @@
 
     /* Fourier epicycles: a chain of rotating circles (a DFT of a heart curve) draws the shape. */
     epicycles: {
+      still: 5.9,
       init: function (s) {
         var N = 64, pts = [], i, k;
         for (i = 0; i < N; i++) { var th = i / N * TAU; pts.push([16 * Math.pow(Math.sin(th), 3), -(13 * Math.cos(th) - 5 * Math.cos(2 * th) - 2 * Math.cos(3 * th) - Math.cos(4 * th))]); }
@@ -454,6 +466,7 @@
 
     /* Pixelate: the same little scene, re-sampled at a block size that grows and shrinks. */
     pixelate: {
+      still: 0.4,
       draw: function (c, t) {
         function scene(x, y) {
           if (Math.hypot(x - 92, y - 24) < 13) return [C.hot, 1];
@@ -514,9 +527,15 @@
   new MutationObserver(function () { readColors(); if (reduced || !running) items.forEach(function (it) { paint(it, 0); }); })
     .observe(root, { attributes: true, attributeFilter: ['data-theme', 'data-mode'] });
 
+  // run a thumbnail forward in 1/30 s steps, so stateful ones (darts, unions, trails) have history
+  function advanceTo(it, T) { var d = 1 / 30; while (it.t + d <= T) { it.t += d; paint(it, d); } }
+  // canvas text drawn before the web font loads uses a fallback; repaint still frames once it arrives
+  function repaintWhenFontsLoad() { if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (reduced || !running) items.forEach(function (it) { paint(it, 0); }); }); }
+
   if (reduced) {
-    // one representative still frame each
-    items.forEach(function (it) { it.t = 2.6; paint(it, 1 / 30); });
+    // one representative still frame each (`still:` seconds into the loop, default 2.6)
+    items.forEach(function (it) { advanceTo(it, it.anim.still || 2.6); });
+    repaintWhenFontsLoad();
     return;
   }
 
@@ -538,7 +557,8 @@
     if (any && !running) { running = true; last = 0; requestAnimationFrame(frame); }
     else if (!any) running = false;
   }
-  items.forEach(function (it) { it.t = 0.4; paint(it, 0); });
+  items.forEach(function (it) { advanceTo(it, 0.4); });
+  repaintWhenFontsLoad();
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (en) {
       en.forEach(function (e) { items.forEach(function (it) { if (it.cv === e.target) it.visible = e.isIntersecting; }); });

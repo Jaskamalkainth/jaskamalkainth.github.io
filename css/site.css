@@ -419,6 +419,7 @@ a.hl:hover, a.hl:focus-visible { background: linear-gradient(transparent 0%, var
 .row-link::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius); }
 .row:hover h3 a { color: var(--accent); }
 .row-link .ext { font-size: .8em; opacity: .6; }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .row p { margin: 0; font-size: 14px; color: var(--muted); }
 .row-links { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; font-size: 12.5px; white-space: nowrap; }
 .row-links a { color: var(--muted); }
@@ -503,6 +504,7 @@ a.hl:hover, a.hl:focus-visible { background: linear-gradient(transparent 0%, var
 /* reveal on scroll */
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.is-in { opacity: 1; transform: none; }
+.row.reveal { transition: opacity .6s ease, transform .6s ease, background-color .25s; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

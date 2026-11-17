@@ -275,7 +275,7 @@ image:
           <div class="row-thumb" aria-hidden="true"><canvas data-anim="{{ item.anim }}" data-kind="{{ item.kind }}" width="128" height="80"></canvas></div>
           <div class="row-body">
             <div class="row-meta mono"><time datetime="{{ wiso | strip }}" title="Published {{ wdate | strip }}">{{ wshort | strip }}</time><span class="tag">{{ item.kind }}</span>{% if demo %}<span class="demo-badge">▶ interactive</span>{% endif %}{% if wupd != "" %}<span class="card-updated" title="Last updated">updated {{ wupd }}</span>{% endif %}</div>
-            <h3><a class="row-link" href="{{ whref | strip }}" {% if item.external %}target="_blank" rel="noopener"{% endif %}>{{ item.title }}{% if item.external %}<span class="ext" aria-label="(external)"> ↗</span>{% endif %}</a></h3>
+            <h3><a class="row-link" href="{{ whref | strip }}" {% if item.external %}target="_blank" rel="noopener"{% endif %}>{{ item.title }}{% if item.external %}<span class="ext" aria-hidden="true"> ↗</span><span class="sr-only"> (external site)</span>{% endif %}</a></h3>
             <p>{{ item.desc }}</p>
           </div>
           {% if item.links.size > 0 %}
