@@ -1,4 +1,4 @@
-/* Live thumbnails for the homepage "Work & writing" list.
+/* Live thumbnails for the homepage rows ("Work & writing", "Beyond code", "Awards").
    Each row has <canvas data-anim="name">. One shared requestAnimationFrame loop draws only the
    thumbnails that are on screen, at ~30 fps, in the current theme's colors. Hovering a row
    speeds its thumbnail up. With prefers-reduced-motion, each draws one still frame (its `still`
@@ -7,9 +7,31 @@
 (function () {
   'use strict';
   var canvases = [].slice.call(document.querySelectorAll('canvas[data-anim]'));
-  if (!canvases.length) return;
   var root = document.documentElement;
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Photo thumbnails (awards): a row with photos from several years cross-fades between them
+     every few seconds while it is on screen. Reduced motion keeps the newest photo. */
+  (function () {
+    var shows = [].slice.call(document.querySelectorAll('.row-photo')).filter(function (el) { return el.children.length > 1; });
+    if (reduced || !shows.length) return;
+    var vis = new Map();
+    function tick() {
+      shows.forEach(function (el) {
+        if (!vis.get(el) || document.hidden) return;
+        var imgs = el.children, i = 0;
+        for (var k = 0; k < imgs.length; k++) if (imgs[k].classList.contains('is-on')) i = k;
+        imgs[i].classList.remove('is-on'); imgs[(i + 1) % imgs.length].classList.add('is-on');
+      });
+    }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (en) { en.forEach(function (e) { vis.set(e.target, e.isIntersecting); }); });
+      shows.forEach(function (el) { io.observe(el); });
+    } else shows.forEach(function (el) { vis.set(el, true); });
+    setInterval(tick, 2800);
+  }());
+
+  if (!canvases.length) return;
   var W = 128, H = 80, TAU = Math.PI * 2;
 
   /* ---------- helpers ---------- */
@@ -483,6 +505,114 @@
       }
     },
 
+    /* Philosophy: the 25 thinkers of the timeline post, with their real dates, as dots on a time
+       axis with a break between 450 and 1100 CE. The cursor steps through them in order of birth. */
+    thinkers: {
+      still: 9.4,
+      init: function (s) {
+        // [name, born, died]; negative = BCE. Same list and dates as blog_posts/philosophy-notes.md
+        var P = [['Buddha', -563, -483], ['Confucius', -551, -479], ['Socrates', -470, -399], ['Plato', -428, -348], ['Aristotle', -384, -322],
+          ['Augustine', 354, 430], ['Ibn Rushd', 1126, 1198], ['Aquinas', 1225, 1274], ['Descartes', 1596, 1650], ['Spinoza', 1632, 1677],
+          ['Locke', 1632, 1704], ['Hume', 1711, 1776], ['Kant', 1724, 1804], ['Hegel', 1770, 1831], ['Kierkegaard', 1813, 1855],
+          ['Marx', 1818, 1883], ['Nietzsche', 1844, 1900], ['Freud', 1856, 1939], ['Wittgenstein', 1889, 1951], ['Heidegger', 1889, 1976],
+          ['Sartre', 1905, 1980], ['de Beauvoir', 1908, 1986], ['Foucault', 1926, 1984], ['Dennett', 1942, 2024], ['Nussbaum', 1947, null]];
+        // two axis segments with a break: 600 BCE..450 CE gets 38% of the width, 1100..today the rest
+        var a = 8, b = W - 8, cut = a + (b - a) * .38;
+        function X(y) { return y <= 450 ? a + (y + 600) / 1050 * (cut - 3 - a) : cut + 3 + (y - 1100) / 926 * (b - cut - 3); }
+        s.cut = cut;
+        s.p = P.map(function (t, i) { var d = t[2] == null ? 2026 : t[2]; return { n: t[0], b: t[1], d: t[2], x: X((t[1] + d) / 2), x1: X(t[1]), x2: X(d), lane: i % 3 }; });
+      },
+      draw: function (c, t, s) {
+        var per = 1.2, i = Math.floor(t / per) % s.p.length, u = ease(((t % per) / per) * 2.5);
+        var cur = s.p[i], prev = s.p[(i + s.p.length - 1) % s.p.length], cx = i ? lerp(prev.x, cur.x, u) : cur.x;
+        function yr(y) { return y < 0 ? -y + ' BCE' : String(y); }
+        text(c, cur.n, 8, 13, C.text, 11);
+        text(c, yr(cur.b) + (cur.d == null ? ' – ' : '–' + yr(cur.d)), 8, 26, C.muted, 8);
+        line(c, 8, 64, s.cut - 3, 64, C.border, 1); line(c, s.cut + 3, 64, W - 8, 64, C.border, 1);
+        text(c, '≈', s.cut, 64, C.muted, 8, 'center');
+        s.p.forEach(function (q, k) {
+          var on = k === i, y = 42 + q.lane * 6;
+          if (on) box(c, q.x1, y - 1.5, Math.max(2, q.x2 - q.x1), 3, C.hot, true, .5);
+          dot(c, q.x, y, on ? 3 : 1.7, on ? C.hot : C.acc, on ? 1 : .55);
+        });
+        line(c, cx, 34, cx, 66, C.text, 1, .35);
+        text(c, '600 BCE', 8, 73, C.muted, 7);
+        text(c, 'today', W - 8, 73, C.muted, 7, 'right');
+      }
+    },
+
+    /* Music: three layered waves under a soft envelope, like the old card's waveform. */
+    wave: {
+      draw: function (c, t) {
+        [[C.acc, 1, 0], [C.hot, .6, 1.7], [C.acc, .35, 3.1]].forEach(function (L) {
+          c.globalAlpha = L[1]; c.strokeStyle = L[0]; c.lineWidth = 1.5; c.beginPath();
+          for (var x = 0; x <= W; x += 2) {
+            var u = x / W, env = Math.sin(Math.PI * u);
+            var y = H / 2 + env * 13 * (Math.sin(u * 14 + t * 2.1 + L[2]) + .5 * Math.sin(u * 31 - t * 3.3 + L[2]) + .25 * Math.sin(u * 57 + t * 5));
+            x ? c.lineTo(x, y) : c.moveTo(x, y);
+          }
+          c.stroke();
+        });
+        c.globalAlpha = 1;
+      }
+    },
+
+    /* Hangul is an algorithm: jamo fly together and the syllable's code point is computed as
+       U+AC00 + (initial × 21 + vowel) × 28 + final, the Unicode composition formula. */
+    hangul: {
+      still: 1.9,
+      draw: function (c, t) {
+        var L = 'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ', V = 'ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ', F = ' ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ';
+        var words = [['ㅎ', 'ㅏ', 'ㄴ'], ['ㄱ', 'ㅜ', 'ㄱ'], ['ㅇ', 'ㅓ', '']], per = 2.4;
+        var k = Math.floor(t / per) % 3, u = ease(((t % per) / per) * 1.8), w = words[k];
+        var cp = 0xAC00 + (L.indexOf(w[0]) * 21 + V.indexOf(w[1])) * 28 + F.indexOf(w[2] || ' ');
+        var font = '"Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", "Noto Sans CJK KR", sans-serif';
+        c.textAlign = 'center'; c.textBaseline = 'middle';
+        // finished syllables so far on the left
+        var done = ''; for (var i = 0; i < k; i++) { var ww = words[i]; done += String.fromCharCode(0xAC00 + (L.indexOf(ww[0]) * 21 + V.indexOf(ww[1])) * 28 + F.indexOf(ww[2] || ' ')); }
+        c.fillStyle = C.muted; c.font = '18px ' + font; c.fillText(done, 22, 34);
+        var jamo = w.filter(function (j) { return j; }), tx = 84, ty = 34;
+        if (u < 1) {
+          jamo.forEach(function (j, i) {
+            var sx = 46 + i * 20, sy = 34 + (i - 1) * 12;
+            c.globalAlpha = 1 - u * .6; c.fillStyle = i === 1 ? C.hot : C.acc; c.font = '16px ' + font;
+            c.fillText(j, lerp(sx, tx, u), lerp(sy, ty, u));
+          });
+          c.globalAlpha = 1;
+        } else {
+          c.fillStyle = C.text; c.font = '30px ' + font; c.fillText(String.fromCharCode(cp), tx, ty + 1);
+        }
+        c.fillStyle = C.muted; c.font = '10px ' + font; c.textAlign = 'left'; c.fillText(jamo.join(' + '), 6, 68);
+        text(c, 'U+' + cp.toString(16).toUpperCase(), W - 6, 68, u >= 1 ? C.hot : C.muted, 8, 'right');
+      }
+    },
+
+    /* Ekman's hunger vs disgust toy model: hunger = 100 × (1 − e^(−h/24)); you eat a food only
+       when hunger is higher than its disgust (bread 0, unfamiliar 40, touched rot 80, disgusting 110). */
+    emotions: {
+      still: 7.2,
+      draw: function (c, t) {
+        var T = 9, h = Math.min(72, (t % T) / (T - 1.5) * 72), x0 = 8, x1 = 82, y0 = 74, y1 = 6;
+        function X(hh) { return x0 + hh / 72 * (x1 - x0); }
+        function Y(v) { return y0 - v / 120 * (y0 - y1); }
+        function hunger(hh) { return 100 * (1 - Math.exp(-hh / 24)); }
+        var foods = [['bread', 0], ['new', 40], ['rotten', 80], ['yuck', 110]];
+        foods.forEach(function (f) { line(c, x0, Y(f[1]), x1, Y(f[1]), C.border, 1, .9); });
+        line(c, x0, y0, x1, y0, C.muted, 1, .6);
+        c.strokeStyle = C.acc; c.lineWidth = 1.6; c.beginPath();
+        for (var hh = 0; hh <= h; hh += 1) { var px = X(hh), py = Y(hunger(hh)); hh ? c.lineTo(px, py) : c.moveTo(px, py); }
+        c.stroke();
+        var hv = hunger(h);
+        dot(c, X(h), Y(hv), 2.6, C.acc);
+        foods.forEach(function (f) {
+          var eat = f[1] === 0 || hv > f[1], y = Y(f[1]);
+          box(c, 87, y - 3.5, 7, 7, eat ? C.acc : C.hot, eat, eat ? .9 : 1);
+          text(c, f[0], 97, y, eat ? C.text : C.muted, 7.5);
+        });
+        text(c, Math.round(h) + ' h', x0 + 2, 8, C.muted, 8);
+      }
+    },
+
     /* Bouncing dots with short trails. */
     dots: {
       init: function (s) { var r = rng(9); s.b = []; for (var i = 0; i < 9; i++) s.b.push({ x: r() * W, y: r() * H, vx: (r() - .5) * 60, vy: (r() - .5) * 60, tr: [] }); },
@@ -498,7 +628,7 @@
       }
     }
   };
-  var FALLBACK = { search: 'elastic', algorithms: 'graph', math: 'fft', experiments: 'dots', notes: 'cpp' };
+  var FALLBACK = { search: 'elastic', algorithms: 'graph', math: 'fft', experiments: 'dots', notes: 'cpp', beyond: 'wave' };
 
   /* ---------- engine ---------- */
   var dpr = Math.min(window.devicePixelRatio || 1, 2);

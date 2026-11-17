@@ -295,72 +295,41 @@ image:
         <h2>Beyond code</h2>
         <p class="section-sub">What we do, and why we do it.</p>
       </header>
-      <div class="beyond">
-        <div class="beyond-card philosophy" id="beyond-philosophy">
-          <span class="beyond-glyph" aria-hidden="true">∴</span>
-          <h3>Philosophy</h3>
-          <blockquote id="quote" aria-live="polite">
-            <p>He who has a <em>why</em> to live can bear almost any <em>how</em>.</p>
-            <cite>Nietzsche</cite>
-          </blockquote>
-          <p>Psychology, consciousness, and the study of the human mind. What we do, and why we do it.</p>
-          <div class="beyond-links mono">
-            <a href="{{ site.baseurl }}/blog_posts/philosophy-notes.html">timeline of great thinkers →</a>
-            <a href="{{ site.baseurl }}/blog_posts/whatwedowhywedo.html">why do we do what we do? →</a>
-          </div>
-        </div>
-        <a class="beyond-card music" id="beyond-music" href="{{ site.baseurl }}/blog_posts/music.html">
-          <canvas class="wave" id="wave" aria-hidden="true"></canvas>
-          <h3>Music</h3>
-          <p>Without music, life would be a mistake. Rafi to Arijit Singh, The Beatles to Linkin Park, and the songs I keep on repeat.</p>
-          <span class="beyond-more mono">listen →</span>
-        </a>
-        <a class="beyond-card korean" href="{{ site.baseurl }}/blog_posts/korean-learning-notes.html">
-          <span class="beyond-glyph hangul" id="hangul" aria-hidden="true">한</span>
-          <h3>한국어 학습 여정</h3>
-          <p>Learning Korean, from Hangul to grammar. Hangul is an algorithm too: jamo compose into syllable blocks.</p>
-          <span class="beyond-more mono">my notes →</span>
-        </a>
+      <div class="rows" id="beyond-rows">
         {% comment %}
-          Every non-featured `beyond:` entry in _data/work_beyond.yml becomes a card here, newest first
-          by its post's `date` (same-day ties keep file order). Featured entries have the hand-built cards above.
+          One row per `beyond:` entry in _data/work_beyond.yml, newest first by its post's `date`
+          (same-day ties keep file order). `anim:` picks the live thumbnail (js/thumbs.js),
+          `anchor:` gives the row an id (the hero links to #beyond-philosophy and #beyond-music),
+          and `quote: true` adds the rotating philosophy quote (js/site.js).
         {% endcomment %}
         {% assign beyond_all = site.data.work_beyond.beyond %}
         {% assign beyond_keys = "" | split: "" %}
         {% for item in beyond_all %}
-          {% unless item.featured %}
           {% assign bp = site.pages | where: "url", item.href | first %}
           {% if bp and bp.date %}{% assign bd = bp.date | date: "%Y-%m-%d" %}{% else %}{% assign bd = item.date | append: "" %}{% if bd.size == 7 %}{% assign bd = bd | append: "-00" %}{% endif %}{% endif %}
           {% assign btie = 999 | minus: forloop.index0 | prepend: "00" | slice: -3, 3 %}
           {% capture bkey %}{{ bd }}|{{ btie }}|{{ forloop.index0 }}{% endcapture %}
           {% assign beyond_keys = beyond_keys | push: bkey %}
-          {% endunless %}
         {% endfor %}
         {% assign beyond_keys = beyond_keys | sort | reverse %}
         {% for bkey in beyond_keys %}
         {% assign bidx = bkey | split: "|" | last | plus: 0 %}
         {% assign item = beyond_all[bidx] %}
         {% assign bp = site.pages | where: "url", item.href | first %}
-        {% capture bdate %}{% if bp and bp.date %}{{ bp.date | date: "%b %-d, %Y" }}{% elsif item.date.size == 7 %}{{ item.date | append: "-01" | date: "%b %Y" }}{% else %}{{ item.date | date: "%b %-d, %Y" }}{% endif %}{% endcapture %}
-        {% if item.links.size > 1 %}
-        <div class="beyond-card">
-          <span class="beyond-glyph" aria-hidden="true">{{ item.glyph | default: "∗" }}</span>
-          <span class="beyond-date mono">{{ bdate | strip }}</span>
-          <h3><a href="{{ site.baseurl }}{{ item.href }}">{{ item.title }}</a></h3>
-          <p>{{ item.desc }}</p>
-          <div class="beyond-links mono">
-            {% for link in item.links %}<a href="{{ site.baseurl }}{{ link.url }}">{{ link.label | downcase }} →</a>{% endfor %}
+        {% capture bdate %}{% if bp and bp.date %}{{ bp.date | date: "%b %Y" }}{% elsif item.date.size == 7 %}{{ item.date | append: "-01" | date: "%b %Y" }}{% else %}{{ item.date | date: "%b %Y" }}{% endif %}{% endcapture %}
+        {% capture biso %}{% if bp and bp.date %}{{ bp.date | date: "%Y-%m-%d" }}{% else %}{{ item.date }}{% endif %}{% endcapture %}
+        <article class="row"{% if item.anchor %} id="{{ item.anchor }}"{% endif %}>
+          <div class="row-thumb" aria-hidden="true"><canvas data-anim="{{ item.anim }}" data-kind="beyond" width="128" height="80"></canvas></div>
+          <div class="row-body">
+            <div class="row-meta mono"><time datetime="{{ biso | strip }}">{{ bdate | strip }}</time>{% if item.tag %}<span class="tag">{{ item.tag }}</span>{% endif %}</div>
+            <h3><a class="row-link" href="{{ site.baseurl }}{{ item.href }}">{{ item.title }}</a></h3>
+            {% if item.quote %}<blockquote class="row-quote" id="quote" aria-live="polite"><p>He who has a <em>why</em> to live can bear almost any <em>how</em>.</p><cite>Nietzsche</cite></blockquote>{% endif %}
+            <p>{{ item.desc }}</p>
           </div>
-        </div>
-        {% else %}
-        <a class="beyond-card" href="{{ site.baseurl }}{{ item.href }}">
-          <span class="beyond-glyph" aria-hidden="true">{{ item.glyph | default: "∗" }}</span>
-          <span class="beyond-date mono">{{ bdate | strip }}</span>
-          <h3>{{ item.title }}</h3>
-          <p>{{ item.desc }}</p>
-          <span class="beyond-more mono">{{ item.links[0].label | default: "read" | downcase }} →</span>
-        </a>
-        {% endif %}
+          <div class="row-links mono">
+            {% for link in item.links %}<a href="{{ site.baseurl }}{{ link.url }}">{{ link.label | downcase }}</a>{% endfor %}
+          </div>
+        </article>
         {% endfor %}
       </div>
     </section>
@@ -371,22 +340,32 @@ image:
       <header class="section-head">
         <span class="section-idx mono">05</span>
         <h2>Awards &amp; recognition</h2>
-        <p class="section-sub">From Samsung and elsewhere. Click a year to see the certificate.</p>
+        <p class="section-sub">From Samsung and elsewhere. Click an award or a year to see the certificate.</p>
       </header>
-      <ul class="awards">
+      <div class="rows" id="award-rows">
+        {% comment %}
+          One row per award in _data/awards.yml, in file order. The thumbnail is a 256x160 crop of
+          each year's certificate photo from img/awards/thumbs/ (same file name as the full photo);
+          an award won in several years cross-fades between them (js/thumbs.js). The title opens the
+          newest certificate; each year pill opens that year's.
+        {% endcomment %}
         {% for a in site.data.awards.awards %}
-        <li class="award">
-          <span class="award-mark" aria-hidden="true">★</span>
-          <div>
-            <h3>{{ a.name }}</h3>
-            <div class="award-meta mono">
-              <span class="muted">{{ a.issuer }}</span>
-              {% if a.years %}<span class="award-years">{% for y in a.years %}{% if y.photo %}<a href="{{ site.baseurl }}{{ y.photo }}" target="_blank" rel="noopener">{{ y.year }}</a>{% else %}<span>{{ y.year }}</span>{% endif %}{% endfor %}</span>{% endif %}
-            </div>
+        {% assign newest = a.years | last %}
+        {% assign photos = a.years | map: "photo" | compact | uniq %}
+        <article class="row row-award">
+          <div class="row-thumb row-photo" aria-hidden="true">{% for ph in photos %}<img src="{{ site.baseurl }}{{ ph | replace: '/img/awards/', '/img/awards/thumbs/' }}" alt="" width="128" height="80" loading="lazy" decoding="async"{% if forloop.last %} class="is-on"{% endif %}>{% endfor %}</div>
+          <div class="row-body">
+            <div class="row-meta mono"><span><span class="award-star" aria-hidden="true">★</span> {{ a.issuer }}</span></div>
+            <h3>{% if newest.photo %}<a class="row-link" href="{{ site.baseurl }}{{ newest.photo }}" target="_blank" rel="noopener">{{ a.name }}</a>{% else %}{{ a.name }}{% endif %}</h3>
           </div>
-        </li>
+          {% if a.years %}
+          <div class="row-links award-years mono">
+            {% for y in a.years %}{% if y.photo %}<a href="{{ site.baseurl }}{{ y.photo }}" target="_blank" rel="noopener">{{ y.year }}</a>{% else %}<span>{{ y.year }}</span>{% endif %}{% endfor %}
+          </div>
+          {% endif %}
+        </article>
         {% endfor %}
-      </ul>
+      </div>
     </section>
     {% endif %}
 

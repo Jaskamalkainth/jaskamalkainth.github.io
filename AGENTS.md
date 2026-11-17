@@ -187,9 +187,11 @@ AI engines repeat mistakes, so a wrong fact does more harm than a missing one.
    (see "Unlisted posts" below). Without an entry, a listed post is an orphan page that only the
    sitemap points to. Technical posts go under `work:` with
    `kind:` one of `search | algorithms | math | experiments | notes`. Personal, non-technical posts
-   (psychology, philosophy, music, life) go under `beyond:`: each becomes a card in the homepage
-   "Beyond code" section automatically (newest first, after the three hand-built `featured: true` cards),
-   with an optional one-character `glyph:` for the card corner. `beyond:` entries take no `kind:`.
+   (psychology, philosophy, music, life) go under `beyond:`: each becomes a row in the homepage
+   "Beyond code" section automatically (newest first), with an `anim:` thumbnail (see "Row thumbnails"),
+   an optional short `tag:` (e.g. "psychology") and an optional `anchor:` id. `beyond:` entries take no `kind:`.
+   Awards (`_data/awards.yml`) are rows too: the thumbnail is each year's certificate photo, cropped
+   to 256×160 into `img/awards/thumbs/` under the same file name (add one when you add a photo).
    ```yaml
    - title: "Bloom Filters"
      kind: "algorithms"

@@ -1,4 +1,5 @@
 # Awards & Recognition — years link to certificate photos (img/awards/).
+# Each photo also needs a 256x160 crop with the same file name in img/awards/thumbs/ (the row thumbnail).
 # Combined images use one file for multiple years/awards (e.g. "and" in filename).
 awards:
   - name: "Best Mentor Award"

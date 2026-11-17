@@ -259,17 +259,16 @@ work:
         url: "/blog_posts/experiments/experiment1/dots.html"
     href: "/blog_posts/experiments/experiment1/dots.html"
 
-# Beyond Code
 # —— Beyond code ——
-# Rendered as cards in the homepage "Beyond code" section, and in homepage search.
-#  - `featured: true` entries (philosophy, music, Korean) have hand-built, animated cards in index.html;
-#    they are listed here for search only.
-#  - Every other entry becomes a card automatically, after the featured ones, newest first by the post's `date`.
-#    Optional `glyph:` is the large faint character in the card's corner (one character).
+# Rendered as rows in the homepage "Beyond code" section (newest first by the post's `date`), and in homepage search.
+#  - `anim:` picks the row's live thumbnail in js/thumbs.js (thinkers, wave, hangul, emotions, ...).
+#  - `tag:` optional short label in the row's meta line. `anchor:` optional id for the row.
+#  - `quote: true` shows the rotating philosophy quote (js/site.js) in that row.
 beyond:
   - title: "Paul Ekman: Emotions vs Hunger"
     date: "2026-11-07"
-    glyph: "Ψ"
+    anim: "emotions"
+    tag: "psychology"
     desc: "Ekman's six basic emotions, and how disgust and fear can beat hunger. Four small simulations."
     meta: "Nov 2026"
     href: "/blog_posts/paul-ekman-basic-emotions-override-hunger.html"
@@ -277,22 +276,26 @@ beyond:
       - label: "Read"
         url: "/blog_posts/paul-ekman-basic-emotions-override-hunger.html"
 
-  - title: "Philosophy Notes"
-    featured: true
+  - title: "Philosophy"
     date: "2025-01"
+    anim: "thinkers"
+    tag: "philosophy"
+    anchor: "beyond-philosophy"
+    quote: true
     desc: "25 great thinkers across 2,500 years: portraits, a timeline and a quiz on why we do what we do."
     meta: "Jan 2025"
     href: "/blog_posts/philosophy-notes.html"
     links:
       - label: "Timeline"
         url: "/blog_posts/philosophy-notes.html"
-      - label: "Essay: Why we do what we do"
+      - label: "Essay"
         url: "/blog_posts/whatwedowhywedo.html"
 
-  - title: "한국어 학습 여정"
-    featured: true
+  - title: "한국어 학습 여정 · Learning Korean"
     date: "2025-06"
-    desc: "Korean learning journey - Hangul to grammar."
+    anim: "hangul"
+    tag: "korean"
+    desc: "Learning Korean, from Hangul to grammar. Hangul is an algorithm too: jamo compose into syllable blocks."
     meta: "Jun 2025"
     href: "/blog_posts/korean-learning-notes.html"
     links:
@@ -300,12 +303,13 @@ beyond:
         url: "/blog_posts/korean-learning-notes.html"
 
   - title: "Music"
-    featured: true
     date: "2022-01"
-    desc: "Rafi to Arijit Singh, The Beatles to Linkin Park: artists and songs on repeat."
+    anim: "wave"
+    tag: "music"
+    anchor: "beyond-music"
+    desc: "Without music, life would be a mistake. Rafi to Arijit Singh, The Beatles to Linkin Park, and the songs I keep on repeat."
     meta: "Jan 2022"
     href: "/blog_posts/music.html"
     links:
-      - label: "Read"
+      - label: "Listen"
         url: "/blog_posts/music.html"
-
