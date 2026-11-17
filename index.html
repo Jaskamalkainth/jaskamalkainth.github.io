@@ -46,7 +46,8 @@ image:
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/site.css" />
+  {% comment %} ?v= is the build time, so each deploy gets fresh CSS/JS instead of a cached copy (GitHub Pages caches for 10 min). {% endcomment %}
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/site.css?v={{ site.time | date: '%s' }}" />
   {% if site.favicon %}<link rel="shortcut icon" href="{{ site.favicon }}" type="image/x-icon">{% endif %}
   {% if site.touch_icon %}<link rel="apple-touch-icon" href="{{ site.touch_icon }}">{% endif %}
   <script data-ad-client="ca-pub-4384498028906460" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -406,8 +407,8 @@ image:
   ]
   </script>
   {% include analytics.html %}
-  <script src="{{ site.baseurl }}/js/bg.js" defer></script>
-  <script src="{{ site.baseurl }}/js/site.js" defer></script>
-  <script src="{{ site.baseurl }}/js/thumbs.js" defer></script>
+  <script src="{{ site.baseurl }}/js/bg.js?v={{ site.time | date: '%s' }}" defer></script>
+  <script src="{{ site.baseurl }}/js/site.js?v={{ site.time | date: '%s' }}" defer></script>
+  <script src="{{ site.baseurl }}/js/thumbs.js?v={{ site.time | date: '%s' }}" defer></script>
 </body>
 </html>
