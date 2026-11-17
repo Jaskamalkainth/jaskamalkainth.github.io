@@ -511,7 +511,7 @@
       still: 9.4,
       init: function (s) {
         // [name, born, died]; negative = BCE. Same list and dates as blog_posts/philosophy-notes.md
-        var P = [['Buddha', -563, -483], ['Confucius', -551, -479], ['Socrates', -470, -399], ['Plato', -428, -348], ['Aristotle', -384, -322],
+        var P = [['Buddha', -563, -483, 1], ['Confucius', -551, -479], ['Socrates', -470, -399, 1], ['Plato', -428, -348, 1], ['Aristotle', -384, -322],
           ['Augustine', 354, 430], ['Ibn Rushd', 1126, 1198], ['Aquinas', 1225, 1274], ['Descartes', 1596, 1650], ['Spinoza', 1632, 1677],
           ['Locke', 1632, 1704], ['Hume', 1711, 1776], ['Kant', 1724, 1804], ['Hegel', 1770, 1831], ['Kierkegaard', 1813, 1855],
           ['Marx', 1818, 1883], ['Nietzsche', 1844, 1900], ['Freud', 1856, 1939], ['Wittgenstein', 1889, 1951], ['Heidegger', 1889, 1976],
@@ -520,14 +520,15 @@
         var a = 8, b = W - 8, cut = a + (b - a) * .38;
         function X(y) { return y <= 450 ? a + (y + 600) / 1050 * (cut - 3 - a) : cut + 3 + (y - 1100) / 926 * (b - cut - 3); }
         s.cut = cut;
-        s.p = P.map(function (t, i) { var d = t[2] == null ? 2026 : t[2]; return { n: t[0], b: t[1], d: t[2], x: X((t[1] + d) / 2), x1: X(t[1]), x2: X(d), lane: i % 3 }; });
+        s.p = P.map(function (t, i) { var d = t[2] == null ? 2026 : t[2]; return { n: t[0], b: t[1], d: t[2], c: t[3], x: X((t[1] + d) / 2), x1: X(t[1]), x2: X(d), lane: i % 3 }; });
       },
       draw: function (c, t, s) {
         var per = 1.2, i = Math.floor(t / per) % s.p.length, u = ease(((t % per) / per) * 2.5);
         var cur = s.p[i], prev = s.p[(i + s.p.length - 1) % s.p.length], cx = i ? lerp(prev.x, cur.x, u) : cur.x;
-        function yr(y) { return y < 0 ? -y + ' BCE' : String(y); }
-        text(c, cur.n, 8, 13, C.text, 11);
-        text(c, yr(cur.b) + (cur.d == null ? ' – ' : '–' + yr(cur.d)), 8, 26, C.muted, 8);
+        // "c. 470–399 BCE", "354–430", "born 1947"
+        var span = cur.d == null ? 'born ' + cur.b : cur.d < 0 ? (cur.c ? 'c. ' : '') + -cur.b + '–' + -cur.d + ' BCE' : cur.b + '–' + cur.d;
+        text(c, cur.n, 8, 13, C.text, 12);
+        text(c, span, 8, 27, C.muted, 8.5);
         line(c, 8, 64, s.cut - 3, 64, C.border, 1); line(c, s.cut + 3, 64, W - 8, 64, C.border, 1);
         text(c, '≈', s.cut, 64, C.muted, 8, 'center');
         s.p.forEach(function (q, k) {

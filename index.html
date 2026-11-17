@@ -356,7 +356,7 @@ image:
           <div class="row-thumb row-photo" aria-hidden="true">{% for ph in photos %}<img src="{{ site.baseurl }}{{ ph | replace: '/img/awards/', '/img/awards/thumbs/' }}" alt="" width="128" height="80" loading="lazy" decoding="async"{% if forloop.last %} class="is-on"{% endif %}>{% endfor %}</div>
           <div class="row-body">
             <div class="row-meta mono"><span><span class="award-star" aria-hidden="true">★</span> {{ a.issuer }}</span></div>
-            <h3>{% if newest.photo %}<a class="row-link" href="{{ site.baseurl }}{{ newest.photo }}" target="_blank" rel="noopener">{{ a.name }}</a>{% else %}{{ a.name }}{% endif %}</h3>
+            <h3>{% if newest.photo %}<a class="row-link" href="{{ site.baseurl }}{{ newest.photo }}" target="_blank" rel="noopener">{{ a.name }}<span class="sr-only"> (certificate photo, opens in a new tab)</span></a>{% else %}{{ a.name }}{% endif %}</h3>
           </div>
           {% if a.years %}
           <div class="row-links award-years mono">
