@@ -1,5 +1,5 @@
 /* Homepage behaviour: themes, keyboard shortcuts, the in-page search engine,
-   and the small animations (pipeline packet, epicycles, quotes, waveform, hangul). */
+   and the small animations (pipeline packet, epicycles, quotes). Row thumbnails live in thumbs.js. */
 (function () {
   var root = document.documentElement;
   var $ = function (s, el) { return (el || document).querySelector(s); };
@@ -317,7 +317,7 @@
 
   /* ================= reveal + active nav ================= */
   if ('IntersectionObserver' in window) {
-    var revealEls = $$('.section-head, .stage, .commit, .row, .beyond-card, .award, .contact, .about-grid');
+    var revealEls = $$('.section-head, .stage, .commit, .row, .contact, .about-grid');
     revealEls.forEach(function (el) { el.classList.add('reveal'); });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
@@ -438,43 +438,4 @@
     }, 6500);
   }());
 
-  /* ================= music waveform ================= */
-  (function () {
-    var canvas = $('#wave');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d'), card = canvas.parentNode, dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var running = false, amp = 1, target = 1, w = 0, h = 0;
-    card.addEventListener('pointerenter', function () { target = 2.2; });
-    card.addEventListener('pointerleave', function () { target = 1; });
-    function size() { w = canvas.clientWidth; h = canvas.clientHeight; canvas.width = w * dpr; canvas.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
-    function draw(time) {
-      var t = (time || 0) / 1000, acc = cssVar('--accent'), hot = cssVar('--accent-2');
-      amp += (target - amp) * .06;
-      ctx.clearRect(0, 0, w, h);
-      [[acc, 1, 0], [hot, .6, 1.7], [acc, .35, 3.1]].forEach(function (L) {
-        ctx.strokeStyle = L[0]; ctx.globalAlpha = L[1]; ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        for (var x = 0; x <= w; x += 3) {
-          var u = x / w, env = Math.sin(Math.PI * u);
-          var y = h / 2 + env * amp * 9 * (Math.sin(u * 14 + t * 2.1 + L[2]) + .5 * Math.sin(u * 31 - t * 3.3 + L[2]) + .25 * Math.sin(u * 57 + t * 5));
-          x ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
-        }
-        ctx.stroke();
-      });
-      ctx.globalAlpha = 1;
-      if (running) requestAnimationFrame(draw);
-    }
-    size();
-    window.addEventListener('resize', size);
-    if (reduced) { draw(0); return; }
-    whenVisible(canvas, function (v) { var was = running; running = v; if (v && !was) requestAnimationFrame(draw); });
-  }());
-
-  /* ================= hangul: jamo compose into blocks ================= */
-  (function () {
-    var el = $('#hangul');
-    if (!el || reduced) return;
-    var SEQ = ['ㅎ', '하', '한', 'ㄱ', '구', '국', 'ㅇ', '어'], i = 2;
-    setInterval(function () { i = (i + 1) % SEQ.length; el.textContent = SEQ[i]; }, 900);
-  }());
 }());

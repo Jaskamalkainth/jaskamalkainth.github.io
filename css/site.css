@@ -260,7 +260,7 @@ main, .footer, .topbar { position: relative; z-index: 1; }
 a.hl { text-decoration: none; transition: background-size .2s ease; }
 a.hl:hover, a.hl:focus-visible { background: linear-gradient(transparent 0%, var(--glow) 0%); }
 /* jumped to from the hero line (#beyond-philosophy, #beyond-music) */
-.beyond-card:target { animation: target-flash 1.6s ease 1; }
+.row:target { animation: target-flash 1.6s ease 1; }
 @keyframes target-flash { 0%, 40% { box-shadow: 0 0 0 2px var(--accent); } 100% { box-shadow: 0 0 0 2px transparent; } }
 
 /* search engine */
@@ -441,33 +441,12 @@ a.hl:hover, a.hl:focus-visible { background: linear-gradient(transparent 0%, var
   .row-links { grid-column: 2; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px 14px; margin-top: 4px; }
 }
 
-/* beyond */
-.beyond { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-@media (max-width: 900px) { .beyond { grid-template-columns: 1fr; } }
-.beyond-card {
-  position: relative; display: flex; flex-direction: column; overflow: hidden;
-  min-height: 300px; padding: 22px; border-radius: var(--radius);
-  background: var(--surface); border: 1px solid var(--border); color: var(--text);
-  transition: border-color .25s, transform .25s;
-}
-.beyond-card:hover { text-decoration: none; border-color: var(--accent); transform: translateY(-3px); }
-.beyond-card h3 { font-family: var(--font-head); font-size: 22px; margin: 0 0 8px; position: relative; }
-.beyond-card p { color: var(--muted); margin: 0 0 14px; position: relative; font-size: 15px; }
-.beyond-date { font-size: 12px; color: var(--muted); margin: 0 0 8px; position: relative; }
-.beyond-more { margin-top: auto; font-size: 12.5px; color: var(--accent); position: relative; }
-.beyond-links { margin-top: auto; display: flex; flex-direction: column; gap: 6px; font-size: 12.5px; position: relative; }
-.beyond-glyph {
-  position: absolute; right: 14px; top: -6px; font-family: var(--font-head);
-  font-size: 120px; line-height: 1; color: var(--accent); opacity: .12; pointer-events: none;
-  transition: opacity .4s;
-}
-.beyond-card:hover .beyond-glyph { opacity: .22; }
-.beyond-card blockquote { margin: 0 0 14px; position: relative; min-height: 84px; transition: opacity .5s; }
-.beyond-card blockquote p { font-family: var(--font-head); font-size: 19px; color: var(--text); margin: 0 0 4px; line-height: 1.4; }
-.beyond-card blockquote em { color: var(--accent); font-style: normal; }
-.beyond-card cite { font-family: var(--font-mono); font-size: 12px; color: var(--muted); font-style: normal; }
-.beyond-card cite::before { content: '— '; }
-.wave { position: absolute; inset: auto 0 52px 0; width: 100%; height: 80px; opacity: .55; pointer-events: none; }
+/* beyond: rows (see "work"); the philosophy row adds a rotating quote */
+.row-quote { margin: 4px 0 6px; transition: opacity .5s; }
+.row-quote p { font-family: var(--font-head); font-size: 16px; line-height: 1.4; color: var(--text); margin: 0; }
+.row-quote em { color: var(--accent); font-style: normal; }
+.row-quote cite { font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); font-style: normal; }
+.row-quote cite::before { content: '— '; }
 
 /* contact */
 .contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; font-size: 14px; }
@@ -477,21 +456,18 @@ a.hl:hover, a.hl:focus-visible { background: linear-gradient(transparent 0%, var
 }
 .contact a:hover { border-color: var(--accent); text-decoration: none; }
 .contact .k { color: var(--accent); font-size: 11.5px; }
-/* awards */
-.awards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
-.award {
-  display: grid; grid-template-columns: 36px 1fr; gap: 12px; align-items: start;
-  padding: 14px 16px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border);
-  transition: border-color .25s, transform .25s;
-}
-.award:hover { border-color: var(--accent); transform: translateY(-2px); }
-.award-mark { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: var(--surface-2); color: var(--accent-2); font-size: 16px; }
-.award h3 { font-family: var(--font-head); font-size: 16px; margin: 0 0 4px; line-height: 1.3; }
-.award-meta { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: 12px; }
-.award-years { display: inline-flex; flex-wrap: wrap; gap: 6px; }
-.award-years a, .award-years span { padding: 1px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--accent); }
-.award-years a:hover { border-color: var(--accent); text-decoration: none; }
-@media (max-width: 400px) { .awards { grid-template-columns: 1fr; } }
+/* awards: rows with certificate photos */
+.row-photo { position: relative; }
+.row-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .9s ease, transform .6s ease; }
+.row-photo img.is-on { opacity: 1; }
+.row-award:hover .row-photo img { transform: scale(1.06); }
+.award-star { color: var(--accent-2); }
+.row-award h3 { margin-bottom: 0; }
+.award-years { flex-direction: row; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+.award-years a, .award-years span { padding: 1px 9px; border-radius: 999px; border: 1px solid var(--border); color: var(--accent); }
+.award-years a::after { content: none; }
+.award-years a:hover { border-color: var(--accent); }
+@media (max-width: 720px) { .award-years { justify-content: flex-start; } }
 
 /* footer */
 .footer { padding-top: 56px; padding-bottom: 40px; text-align: center; }
