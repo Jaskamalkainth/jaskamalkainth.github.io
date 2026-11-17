@@ -36,7 +36,7 @@ text. See step 4b.
 | `_layouts/post.html` | Post layout. **Already emits** all meta/OG tags, JSON-LD, byline, FAQ, author card, related links. |
 | `_includes/post_schema.html` | Person, BreadcrumbList and FAQPage JSON-LD. |
 | `_data/authors.yml` | Author bio, job, `sameAs` profiles (E-E-A-T). Update here, never per post. |
-| `_data/work_beyond.yml` | **Homepage cards and homepage search.** Every post goes here unless it has `homepage: false`. |
+| `_data/work_beyond.yml` | **Homepage rows (with `anim:` thumbnails from `js/thumbs.js`) and homepage search.** Every post goes here unless it has `homepage: false`. |
 | `_config.yml` | `defaults:` give every post `layout: post`, `author`, default `image`. |
 | `llms.txt`, `llms-full.txt`, `feed.xml`, `sitemap.xml`, `robots.txt` | Generated or static; new posts (and demos listed in `_data/work_beyond.yml`) appear in all but `robots.txt` **automatically**. Unlisted posts stay out of `feed.xml`. |
 | `agents.md` | The `/agents.html` page for AI agents: entry points, structured data, citation policy. Update it if you add a new machine-readable file. |
@@ -193,6 +193,7 @@ AI engines repeat mistakes, so a wrong fact does more harm than a missing one.
    ```yaml
    - title: "Bloom Filters"
      kind: "algorithms"
+     anim: "bloom"                # live thumbnail in js/thumbs.js; see "Row thumbnails" below
      date: "2025-03-15"           # fallback only; posts use their own front matter `date`
      desc: "One line, under ~100 chars."
      links:
@@ -203,14 +204,21 @@ AI engines repeat mistakes, so a wrong fact does more harm than a missing one.
          demo: true
      href: "/blog_posts/bloom_filters.html"
    ```
-   **Order and dates are automatic.** Cards are sorted newest first by the post's front matter
+   **Order and dates are automatic.** Rows are sorted newest first by the post's front matter
    `date`, and show the published date plus "updated <date>" when `last_modified_at` is later.
    Add new entries at the **top** of `work:`: on a same-day tie, the higher entry shows first.
    Demos and external links have no front matter, so give them `date: "YYYY-MM-DD"`.
-   **One topic, one card.** A post and its interactive demo share a single entry; never add a
-   second card for the demo. Mark the demo link with `demo: true`: the card then shows an
-   "▶ interactive demo" badge and a highlighted demo button, appears under the *experiments*
+   **One topic, one row.** A post and its interactive demo share a single entry; never add a
+   second row for the demo. Mark the demo link with `demo: true`: the row then shows an
+   "▶ interactive" badge and a highlighted demo button, appears under the *experiments*
    filter as well as its own `kind`, and homepage search mentions the demo.
+   **Row thumbnails.** "Work & writing" is a list of rows, grouped by year, and each row has a
+   small looping animation (a canvas in `js/thumbs.js`) that gives a glimpse of the post. `anim:`
+   picks it; without one, the row gets a default for its `kind`. For a new post, add a new
+   animation to `ANIMS` in `js/thumbs.js` that runs the post's core idea on fixed inputs (the same
+   "accurate before pretty" rule as post figures): a 128×80 drawing, colors from `C.acc`, `C.hot`,
+   `C.text`, `C.muted` and `C.border` only, and big enough to read at 96×60 on a phone.
+   Then screenshot the row in a light and a dark theme.
 2. **Related posts**: add the new URL to the `related:` list of 1-3 existing posts it relates to.
 3. **C++ notes only**: add `{ n: N, title: "...", date: YYYY-MM-DD }` to `notes:` in `blog_posts/CppNotes.md`.
 4. Sitemap, `llms.txt`, `llms-full.txt`, `feed.xml` and analytics need **no** changes; they pick the post up automatically.
@@ -282,6 +290,6 @@ Standalone HTML pages don't get the post layout, so each one needs by hand, in `
 Manager snippet (copy from `_includes/gtm-head.html` and `_includes/gtm-body.html`, or
 `{% include gtm-head.html %}` if the file has `layout: null` front matter). Link the demo from
 its article near the top (e.g. a "**Try it first:**" line), and link back to the article from the demo.
-On the homepage, a demo that has an article goes on **the article's card** as a link with `demo: true`
-(see step 7), not as a separate card. Only a demo with no article gets its own entry, with
+On the homepage, a demo that has an article goes on **the article's row** as a link with `demo: true`
+(see step 7), not as a separate row. Only a demo with no article gets its own entry, with
 `kind: "experiments"`.

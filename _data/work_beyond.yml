@@ -4,10 +4,15 @@
 #    and an "updated" line appears when its `last_modified_at` is later. The `date:` here is only a fallback.
 #  - Demos and external links: use `date: "YYYY-MM-DD"` (or "YYYY-MM" if the day is unknown).
 #  - Same-day ties: the entry higher in this file shows first, so add new entries at the top.
+#  - `anim:` picks the row's live thumbnail, a small canvas loop in js/thumbs.js (asm, room3d, weights,
+#    chip, hnsw, montecarlo, watermark, bloom, fft, triplets, cpp, segtree, dsu, strings, graph, elastic,
+#    agents, epicycles, pixelate, dots). Omit it to get the default for the entry's `kind`. For a new
+#    post, prefer adding a new animation to js/thumbs.js that shows the post's core idea.
 work:
   # —— Technical ——
   - title: "Assembly Language, Explained Simply"
     kind: "notes"
+    anim: "asm"
     date: "2026-11-14"
     desc: "Registers as hands, memory as boxes: step through a tiny CPU running real assembly instructions."
     meta: "Nov 2026"
@@ -18,6 +23,7 @@ work:
 
   - title: "My Room in 3D"
     kind: "experiments"
+    anim: "room3d"
     date: "2026-11-10"
     desc: "A 3D dollhouse of my home office that follows your time of day. Every object opens a post or demo."
     meta: "Nov 2026"
@@ -28,6 +34,7 @@ work:
 
   - title: "Weight-Space Programming"
     kind: "notes"
+    anim: "weights"
     date: "2026-11-04"
     desc: "LLMs that read and edit raw weights, explained with one tiny example and the Qwen3.5-0.8B loop fix."
     meta: "Nov 2026"
@@ -38,6 +45,7 @@ work:
 
   - title: "Taalas HC1: An LLM Hardwired in Silicon"
     kind: "notes"
+    anim: "chip"
     date: "2026-10"
     desc: "How chatjimmy.ai runs Llama 3.1 8B at ~15,600 tokens/s with the weights built into the chip."
     meta: "Oct 2026"
@@ -48,6 +56,7 @@ work:
 
   - title: "HNSW: How Vector Search Works"
     kind: "search"
+    anim: "hnsw"
     date: "2026-10"
     desc: "The layered graph behind vector databases: how search and inserts work, M and ef, a 1M-vector benchmark."
     meta: "Oct 2026"
@@ -61,6 +70,7 @@ work:
 
   - title: "Monte Carlo Simulation"
     kind: "math"
+    anim: "montecarlo"
     date: "2026-10"
     desc: "Monte Carlo simulation, hands-on: throw darts for π, fill birthday rooms, test a project deadline."
     meta: "Oct 2026"
@@ -74,6 +84,7 @@ work:
 
   - title: "textGrain: OpenAI's Text Watermark"
     kind: "math"
+    anim: "watermark"
     date: "2026-10"
     desc: "How OpenAI watermarks ChatGPT text with optimal transport and an entropy budget, and how it's detected."
     meta: "Oct 2026"
@@ -87,6 +98,7 @@ work:
 
   - title: "Bloom Filters"
     kind: "algorithms"
+    anim: "bloom"
     date: "2023-03"
     desc: "Space-efficient probabilistic data structures; implementation and false-positive analysis."
     meta: "Mar 2023"
@@ -103,6 +115,7 @@ work:
 
   - title: "Fast Fourier Transformation (FFT)"
     kind: "math"
+    anim: "fft"
     date: "2020-02"
     desc: "Multiply polynomials in O(n log n); applications for large number multiplication."
     meta: "Feb 2020"
@@ -117,6 +130,7 @@ work:
 
   - title: "7 Solutions to 1 Problem"
     kind: "algorithms"
+    anim: "triplets"
     date: "2020-03"
     desc: "Multiple approaches: triplets A[i] < B[j] < C[k]."
     meta: "Mar 2020"
@@ -131,6 +145,7 @@ work:
 
   - title: "C++ Notes"
     kind: "notes"
+    anim: "cpp"
     date: "2019-01"
     desc: "Programming language concepts and techniques."
     meta: "Jan 2019"
@@ -141,6 +156,7 @@ work:
 
   - title: "Segment Tree Problems"
     kind: "algorithms"
+    anim: "segtree"
     date: "2017-07"
     desc: "Curated list of 20 problems, Easy to Hard."
     meta: "Jul 2017"
@@ -151,6 +167,7 @@ work:
 
   - title: "Disjoint Set Union (DSU) Problems"
     kind: "algorithms"
+    anim: "dsu"
     date: "2017-05"
     desc: "Problems using the DSU data structure."
     meta: "May 2017"
@@ -161,6 +178,7 @@ work:
 
   - title: "String Algorithm Problems"
     kind: "algorithms"
+    anim: "strings"
     date: "2017-06"
     desc: "Z-Algorithm, Trie, Suffix Array, Aho–Corasick, Hashing."
     meta: "Jun 2017"
@@ -173,6 +191,7 @@ work:
 
   - title: "Graph Theory Notes"
     kind: "algorithms"
+    anim: "graph"
     date: "2015-04"
     desc: "Concepts and problem-solving techniques."
     meta: "Apr 2015"
@@ -185,6 +204,7 @@ work:
 
   - title: "Elasticsearch Notes"
     kind: "search"
+    anim: "elastic"
     date: "2019-09"
     desc: "Concepts and best practices for Elasticsearch."
     meta: "Sep 2019"
@@ -196,6 +216,7 @@ work:
   # —— Experiments ——
   - title: "Multi-Agent Patterns"
     kind: "experiments"
+    anim: "agents"
     date: "2026-10-24"
     desc: "Eight agent coordination patterns animated, plus replayable LangGraph and CrewAI runs."
     meta: "Oct 2026"
@@ -206,6 +227,7 @@ work:
 
   - title: "Fourier Epicycles"
     kind: "experiments"
+    anim: "epicycles"
     date: "2025-05"
     desc: "Rotating circles summing to draw any shape — a visual proof of the DFT."
     meta: "May 2025"
@@ -216,6 +238,7 @@ work:
 
   - title: "Pixelate Your Image"
     kind: "experiments"
+    anim: "pixelate"
     date: "2025-04"
     desc: "Upload any image and transform it into pixel art with character overlays."
     meta: "Apr 2025"
@@ -227,6 +250,7 @@ work:
 
   - title: "Random Bounce Pattern (Dots)"
     kind: "experiments"
+    anim: "dots"
     date: "2023-03"
     desc: "Interactive particle simulation with bouncing dots."
     meta: "Mar 2023"

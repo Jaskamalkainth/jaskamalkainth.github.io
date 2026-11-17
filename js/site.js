@@ -297,7 +297,13 @@
   $$('.filters button').forEach(function (b) {
     b.addEventListener('click', function () {
       $$('.filters button').forEach(function (x) { x.classList.toggle('is-on', x === b); });
-      $$('#work-cards .card').forEach(function (c) { c.hidden = b.dataset.kind !== 'all' && c.dataset.kind.split(' ').indexOf(b.dataset.kind) < 0; });
+      var seen = {};
+      $$('#work-cards .row').forEach(function (c) {
+        c.hidden = b.dataset.kind !== 'all' && c.dataset.kind.split(' ').indexOf(b.dataset.kind) < 0;
+        if (!c.hidden) seen[c.dataset.year] = true;
+      });
+      /* hide a year divider when the filter leaves no rows under it */
+      $$('#work-cards .row-year').forEach(function (y) { y.hidden = !seen[y.dataset.year]; });
     });
   });
 
@@ -311,7 +317,7 @@
 
   /* ================= reveal + active nav ================= */
   if ('IntersectionObserver' in window) {
-    var revealEls = $$('.section-head, .stage, .commit, .card, .beyond-card, .award, .contact, .about-grid');
+    var revealEls = $$('.section-head, .stage, .commit, .row, .beyond-card, .award, .contact, .about-grid');
     revealEls.forEach(function (el) { el.classList.add('reveal'); });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
