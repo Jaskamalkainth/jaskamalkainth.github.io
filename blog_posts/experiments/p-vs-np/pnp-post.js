@@ -6,6 +6,7 @@
 // Every figure runs the real algorithm on fixed inputs:
 //   hero   - Solver brute-forces colorings in order (12,183 tries of 3^10 = 59,049), Checker then checks 19 roads
 //   story  - scroll-driven tour of P, NP, NP-complete and the two possible worlds (sticky Euler diagram)
+//   venn   - static Euler diagrams of P, NP, NP-complete and NP-hard, if P != NP and if P = NP
 //   play   - the reader is Solver (colors the map, timed), then Checker (judges 3 maps, timed)
 //   scale  - steps vs n for 3-SAT: check ~13n, n^3, 1.308^n, 2^(n/sqrt(ln n)), 2^n (illustrative constants = 1)
 //   sat    - a real random 3-SAT formula; brute-force #SAT timed on the reader's device, plus the checker
@@ -226,6 +227,34 @@
     if (!('IntersectionObserver' in window)) return;
     const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) go(steps.indexOf(e.target)); }), { rootMargin: '-55% 0px -30% 0px' });
     steps.forEach((s) => io.observe(s));
+  };
+
+  // ── 2b. Static Euler ("Venn") diagram: P, NP, NP-complete, NP-hard in both worlds ──
+  builders.venn = (host) => {
+    const id = uid();
+    const T = (x, y, t, cls) => `<text class="${cls || 'v-ex'}" x="${x}" y="${y}" text-anchor="middle">${t}</text>`;
+    const neq = `<svg viewBox="0 0 440 300" role="img" aria-label="If P is not equal to NP: P inside NP; NP-complete is where NP overlaps NP-hard; NP-hard extends beyond NP">` +
+      `<defs><clipPath id="${id}a"><ellipse cx="150" cy="158" rx="128" ry="112"/></clipPath><clipPath id="${id}box"><rect x="0" y="0" width="440" height="300" rx="14"/></clipPath></defs>` +
+      `<g clip-path="url(#${id}box)"><ellipse class="v-hard" cx="315" cy="150" rx="150" ry="130"/>` +
+      `<ellipse class="v-np" cx="150" cy="158" rx="128" ry="112"/>` +
+      `<g clip-path="url(#${id}a)"><ellipse class="v-npc" cx="315" cy="150" rx="150" ry="130"/></g>` +
+      `<ellipse class="v-edge-hard" cx="315" cy="150" rx="150" ry="130"/>` +
+      `<circle class="v-p" cx="90" cy="165" r="52"/></g>` +
+      T(84, 82, 'NP', 'v-lbl v-np-t') + T(90, 150, 'P', 'v-lbl v-p-t') + T(90, 170, 'sorting') + T(90, 188, 'shortest path') +
+      T(132, 250, 'factoring') +
+      T(221, 118, 'NP-complete', 'v-lbl2 v-npc-t') + T(221, 142, 'SAT') + T(221, 161, '3-coloring') + T(221, 180, 'TSP (yes/no)') +
+      T(362, 72, 'NP-hard', 'v-lbl2 v-hard-t') + T(366, 150, 'shortest tour') + T(366, 170, 'halting problem') + '</svg>';
+    const eq = `<svg viewBox="0 0 440 300" role="img" aria-label="If P equals NP: P, NP and NP-complete are one circle inside the larger NP-hard region">` +
+      `<defs><clipPath id="${id}box2"><rect x="0" y="0" width="440" height="300" rx="14"/></clipPath></defs>` +
+      `<g clip-path="url(#${id}box2)"><ellipse class="v-hard" cx="240" cy="150" rx="200" ry="135"/><ellipse class="v-edge-hard" cx="240" cy="150" rx="200" ry="135"/>` +
+      `<circle class="v-merged" cx="170" cy="160" r="95"/></g>` +
+      T(170, 128, 'P = NP', 'v-lbl v-p-t') + T(170, 152, '= NP-complete*', 'v-lbl2 v-npc-t') +
+      T(170, 186, 'sorting · SAT') + T(170, 206, 'factoring · TSP (yes/no)') +
+      T(352, 72, 'NP-hard', 'v-lbl2 v-hard-t') + T(352, 160, 'shortest tour') + T(352, 180, 'halting problem') + '</svg>';
+    host.innerHTML = '<div class="venn-two">' +
+      `<div class="venn-panel"><h4>If P ≠ NP <small>what most experts expect</small></h4>${neq}</div>` +
+      `<div class="venn-panel"><h4>If P = NP</h4>${eq}</div></div>` +
+      '<p class="venn-note">* Every NP problem except two trivial ones (“always yes” and “always no”) would be NP-complete. Problems outside NP, like the halting problem, stay NP-hard either way.</p>';
   };
 
   // ── 3. Game: be Solver, then be Checker ────────────────────────────────

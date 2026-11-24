@@ -48,6 +48,11 @@ This post is meant to be played more than read. Meet **Solver**, a robot who has
 <figcaption><strong>Two circles, one question: is the small one secretly the big one?</strong> Scroll to move through the tour. The circles show the two possible worlds; nobody knows which one we live in.</figcaption>
 </figure>
 
+<figure class="hv" data-hv="venn">
+<div class="hv-canvas"><p class="hv-fallback">Figure: two Euler diagrams of P, NP, NP-complete and NP-hard. Left, if P ≠ NP: P (sorting, shortest path) is a circle inside NP; NP-complete (SAT, map 3-coloring, traveling salesman yes/no) is the part of NP that overlaps NP-hard; NP-hard also reaches outside NP (shortest traveling salesman tour, the halting problem); factoring sits in NP, outside P as far as anyone knows, and is not believed to be NP-complete. Right, if P = NP: P, NP and NP-complete become one circle (except for two trivial problems), which lies inside the larger NP-hard region; problems outside NP, such as the halting problem, stay NP-hard but not in NP.</p></div>
+<figcaption><strong>NP-complete is where NP and NP-hard overlap.</strong> NP-hard problems are at least as hard as everything in NP, but they don't have to be in NP themselves. A static map of the classes in both possible worlds.</figcaption>
+</figure>
+
 <details class="hv-more" markdown="1">
 <summary>Read more: what P, NP and NP-complete mean</summary>
 
@@ -61,7 +66,7 @@ $$\text{P} \overset{?}{=} \text{NP}$$
 
 A problem is **NP-complete** if it is in NP and every other NP problem can be translated into it in polynomial time (a *reduction*). In 1971 Stephen Cook proved that SAT, deciding whether a logic formula can be made true, is NP-complete; Leonid Levin found the same result independently in the Soviet Union. In 1972 Richard Karp showed 21 more classic problems are NP-complete, and today thousands are known. Because they all translate into each other, **one fast algorithm for any NP-complete problem would give a fast algorithm for every problem in NP**, and P would equal NP.
 
-A problem that is at least as hard as every NP problem, but not necessarily in NP itself, is **NP-hard**. "Find the shortest traveling salesman tour" is NP-hard; "is there a tour shorter than L?" is NP-complete.
+A problem that is at least as hard as every NP problem, but not necessarily in NP itself, is **NP-hard**. "Find the shortest traveling salesman tour" is NP-hard; "is there a tour shorter than L?" is NP-complete. NP-hard problems need not be in NP at all: the halting problem is NP-hard but cannot be solved by any algorithm. So **NP-complete = NP ∩ NP-hard**. If P = NP turned out to be true, every problem in NP except the two trivial ones (the problem whose answer is always "yes" and the one whose answer is always "no") would be NP-complete.
 
 | Problem | Class (as far as anyone knows) | Why |
 |---|---|---|

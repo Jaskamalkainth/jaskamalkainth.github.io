@@ -178,6 +178,25 @@
   .story-steps > li:first-child { min-height: 40vh; align-items: flex-end; }
 }
 
+/* static Euler diagram */
+.venn-two { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.venn-panel h4 { margin: 0 0 0.4rem; font-size: 1rem; }
+.venn-panel h4 small { font-weight: 400; color: var(--muted); font-size: 0.82rem; margin-left: 0.3rem; }
+.venn-panel svg { display: block; width: 100%; height: auto; background: var(--bg); border: 1px solid var(--border); border-radius: 14px; }
+.venn-panel .v-hard { fill: color-mix(in srgb, var(--c1) 14%, transparent); }
+.venn-panel .v-edge-hard { fill: none; stroke: var(--c1); stroke-width: 2.5; stroke-dasharray: 7 5; }
+.venn-panel .v-np { fill: color-mix(in srgb, var(--checker) 14%, var(--bg)); stroke: var(--checker); stroke-width: 2.5; }
+.venn-panel .v-npc { fill: color-mix(in srgb, var(--bad) 24%, var(--bg)); }
+.venn-panel .v-p { fill: color-mix(in srgb, var(--solver) 22%, var(--bg)); stroke: var(--solver); stroke-width: 2.5; }
+.venn-panel .v-merged { fill: color-mix(in srgb, var(--solver) 18%, var(--bg)); stroke: var(--solver); stroke-width: 3; }
+.venn-panel .v-lbl { font-size: 20px; font-weight: 800; fill: var(--text); }
+.venn-panel .v-lbl2 { font-size: 15px; font-weight: 800; }
+.venn-panel .v-npc-t { fill: var(--bad); }
+.venn-panel .v-hard-t { fill: var(--c1); }
+.venn-panel .v-ex { font-size: 13.5px; font-weight: 600; fill: var(--text); }
+.venn-note { margin: 0.6rem 0 0; font-size: 0.84rem; color: var(--muted); }
+@media (max-width: 700px) { .venn-two { grid-template-columns: 1fr; } }
+
 /* game */
 .game { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 1.2rem; align-items: start; }
 .game-side { display: flex; flex-direction: column; gap: 0.7rem; }
