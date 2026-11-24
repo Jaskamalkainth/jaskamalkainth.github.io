@@ -4,12 +4,23 @@
 #    and an "updated" line appears when its `last_modified_at` is later. The `date:` here is only a fallback.
 #  - Demos and external links: use `date: "YYYY-MM-DD"` (or "YYYY-MM" if the day is unknown).
 #  - Same-day ties: the entry higher in this file shows first, so add new entries at the top.
-#  - `anim:` picks the row's live thumbnail, a small canvas loop in js/thumbs.js (asm, room3d, weights,
+#  - `anim:` picks the row's live thumbnail, a small canvas loop in js/thumbs.js (pnp, asm, room3d, weights,
 #    chip, hnsw, montecarlo, watermark, bloom, fft, triplets, cpp, segtree, dsu, strings, graph, elastic,
 #    agents, epicycles, pixelate, dots). Omit it to get the default for the entry's `kind`. For a new
 #    post, prefer adding a new animation to js/thumbs.js that shows the post's core idea.
 work:
   # —— Technical ——
+  - title: "P vs NP, Explained Simply"
+    kind: "algorithms"
+    anim: "pnp"
+    date: "2026-11-24"
+    desc: "Quick to check vs quick to solve: race a robot and an owl, then see what 2026's AI claims changed."
+    meta: "Nov 2026"
+    links:
+      - label: "Article"
+        url: "/blog_posts/p-vs-np-explained-simply.html"
+    href: "/blog_posts/p-vs-np-explained-simply.html"
+
   - title: "Assembly Language, Explained Simply"
     kind: "notes"
     anim: "asm"
