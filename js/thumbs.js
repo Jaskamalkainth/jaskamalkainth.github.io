@@ -71,6 +71,33 @@
 
   /* ---------- animations: each is { init?(s), draw(c, t, s) }, t in seconds ---------- */
   var ANIMS = {
+    /* P vs NP: brute force really searches 3-colorings of a 6-node map (counter climbs), then the
+       checker walks each of the 9 roads once and a check mark appears. */
+    pnp: {
+      still: 9,
+      init: function (s) {
+        s.P = [[14, 38], [44, 32], [72, 40], [18, 70], [48, 64], [76, 72]];
+        s.E = [[0, 1], [1, 2], [3, 4], [4, 5], [0, 3], [0, 4], [1, 4], [1, 5], [2, 5]];
+        s.dec = function (k) { var c = []; for (var i = 5; i >= 0; i--) { c[i] = k % 3; k = Math.floor(k / 3); } return c; };
+        for (var k = 0; k < 729; k++) { var c = s.dec(k); if (s.E.every(function (e) { return c[e[0]] !== c[e[1]]; })) { s.first = k + 1; break; } }
+      },
+      draw: function (c, t, s) {
+        var cyc = 7, u = t % cyc, cols = [C.acc, C.hot, C.text];
+        var search = Math.min(1, u / 3.2), k = Math.max(1, Math.round(s.first * search));
+        var col = s.dec(k - 1), checking = u > 3.6, seen = checking ? Math.min(s.E.length, Math.floor((u - 3.6) / 0.22)) : 0;
+        s.E.forEach(function (e, i) {
+          var bad = col[e[0]] === col[e[1]];
+          var a = s.P[e[0]], b = s.P[e[1]];
+          line(c, a[0], a[1], b[0], b[1], i < seen ? C.acc : bad ? C.hot : C.muted, i < seen ? 2 : 1.4, i < seen || bad ? 1 : .6);
+        });
+        s.P.forEach(function (p, i) { dot(c, p[0], p[1], 6.5, cols[col[i]]); dot(c, p[0], p[1], 6.5, C.border, .25); });
+        text(c, (checking ? s.first : k) + ' tries', W - 4, 9, C.text, 9, 'right');
+        text(c, checking ? seen + '/9 roads' : 'solving…', W - 4, 21, checking ? C.acc : C.muted, 8, 'right');
+        if (seen === s.E.length) { c.strokeStyle = C.acc; c.lineWidth = 3; c.beginPath(); c.moveTo(98, 56); c.lineTo(106, 65); c.lineTo(121, 44); c.stroke(); }
+        text(c, 'P=NP?', 4, 9, C.muted, 8, 'left', .8);
+      }
+    },
+
     /* Assembly: a 4-instruction program moves values between memory and registers. */
     asm: {
       draw: function (c, t) {

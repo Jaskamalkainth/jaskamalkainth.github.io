@@ -5,7 +5,7 @@ date: 2026-11-14
 last_modified_at: 2026-11-14
 keywords: [assembly language explained, what is assembly language, assembly language for beginners, CPU registers explained, fetch decode execute cycle, machine code vs assembly, x86-64 assembly, ARM64 assembly]
 categories: computers hardware assembly
-related: ["/blog_posts/taalas-hc1-chatjimmy-explained.html", "/blog_posts/CppNotes.html", "/blog_posts/weight-space-programming-explained.html"]
+related: ["/blog_posts/taalas-hc1-chatjimmy-explained.html", "/blog_posts/CppNotes.html", "/blog_posts/weight-space-programming-explained.html", "/blog_posts/p-vs-np-explained-simply.html"]
 faq:
   - q: "Is assembly language the same as machine code?"
     a: "Almost, but not quite. Machine code is the raw numbers the CPU reads, such as the two bytes 01 D8. Assembly is the same instruction written as a short word a person can read, such as add eax, ebx. A program called an assembler turns one into the other, usually one assembly line into one machine instruction. So assembly is machine code with names instead of numbers."
