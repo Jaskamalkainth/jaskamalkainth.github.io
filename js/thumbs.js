@@ -641,6 +641,40 @@
       }
     },
 
+    /* A knight's tour (Warnsdorff's rule: always jump to the square with the fewest onward moves)
+       on a mini board. The number is how many squares the knight controls from where it stands:
+       2 in a corner, 8 in the centre. */
+    chess: {
+      still: 4.2,
+      init: function (s) {
+        var J = [[1, 2], [2, 1], [2, -1], [1, -2], [-1, -2], [-2, -1], [-2, 1], [-1, 2]];
+        function nb(q) { var o = []; J.forEach(function (j) { var f = (q & 7) + j[0], r = (q >> 3) + j[1]; if (f >= 0 && f < 8 && r >= 0 && r < 8) o.push(r * 8 + f); }); return o; }
+        var seen = {}, cur = 0; s.path = [0]; seen[0] = 1; s.nb = nb;
+        for (var k = 1; k < 64; k++) {
+          var opts = nb(cur).filter(function (q) { return !seen[q]; });
+          if (!opts.length) break;
+          opts.sort(function (a, b) { return nb(a).filter(function (q) { return !seen[q]; }).length - nb(b).filter(function (q) { return !seen[q]; }).length || a - b; });
+          cur = opts[0]; seen[cur] = 1; s.path.push(cur);
+        }
+      },
+      draw: function (c, t, s) {
+        var Z = 9, X0 = 6, Y0 = 4, step = 0.7, n = s.path.length;
+        var i = Math.floor(t / step) % n, u = ease((t / step) % 1 * 1.6);
+        for (var q = 0; q < 64; q++) if (((q & 7) + (q >> 3)) % 2 === 0) box(c, X0 + (q & 7) * Z, Y0 + (7 - (q >> 3)) * Z, Z, Z, C.border, true, .7);
+        box(c, X0, Y0, 8 * Z, 8 * Z, C.border, false);
+        function cxy(q) { return [X0 + (q & 7) * Z + Z / 2, Y0 + (7 - (q >> 3)) * Z + Z / 2]; }
+        for (var k = Math.max(1, i - 10); k <= i; k++) { var a = cxy(s.path[k - 1]), b = cxy(s.path[k]); line(c, a[0], a[1], b[0], b[1], C.acc, 1, .25 + .5 * (k - i + 10) / 10); }
+        var to = s.path[i], from = s.path[Math.max(0, i - 1)], p0 = cxy(from), p1 = cxy(to);
+        var x = lerp(p0[0], p1[0], u), y = lerp(p0[1], p1[1], u);
+        var moves = s.nb(to);
+        if (u >= 1) moves.forEach(function (q) { var d = cxy(q); dot(c, d[0], d[1], 1.6, C.acc, .9); });
+        dot(c, x, y, 3.6, C.hot);
+        text(c, String(moves.length), 107, 32, C.text, 24, 'center');
+        text(c, 'squares', 107, 52, C.muted, 8, 'center');
+        text(c, 'tour ' + (i + 1) + '/' + n, 107, 68, C.muted, 7.5, 'center');
+      }
+    },
+
     /* Bouncing dots with short trails. */
     dots: {
       init: function (s) { var r = rng(9); s.b = []; for (var i = 0; i < 9; i++) s.b.push({ x: r() * W, y: r() * H, vx: (r() - .5) * 60, vy: (r() - .5) * 60, tr: [] }); },

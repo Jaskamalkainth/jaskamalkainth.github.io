@@ -6,7 +6,7 @@ last_modified_at: 2026-11-24
 keywords: [P vs NP explained, what is P vs NP, P vs NP problem in simple terms, what happens if P = NP, NP-complete problems, P vs NP 2026, exponential time hypothesis, millennium prize problems]
 categories: computers algorithms complexity
 math: true
-related: ["/blog_posts/assembly-language-explained-simply.html", "/blog_posts/monte-carlo-simulation-explained.html", "/blog_posts/hnsw-explained.html"]
+related: ["/blog_posts/assembly-language-explained-simply.html", "/blog_posts/monte-carlo-simulation-explained.html", "/blog_posts/hnsw-explained.html", "/blog_posts/chess-openings-middlegame-endgame-guide.html"]
 faq:
   - q: "Has anyone won the $1 million prize for P vs NP?"
     a: "No. As of November 2026 the Clay Mathematics Institute still lists P vs NP as unsolved. Hundreds of claimed proofs have been posted over the years, including a widely covered one by Vinay Deolalikar in 2010, and all have had errors. Clay's rules only consider a solution after it is published in a refereed journal and has been accepted by mathematicians for at least two years."
