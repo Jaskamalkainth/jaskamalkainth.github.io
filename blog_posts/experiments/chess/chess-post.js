@@ -289,7 +289,7 @@
     const btns = h('div', 'pz-btns', '<button type="button" class="cg-btn" data-a="hint">Hint</button><button type="button" class="cg-btn" data-a="show">Show solution</button><button type="button" class="cg-btn" data-a="reset">Reset</button>');
     root.append(board.el, side);
     host.appendChild(root);
-    let pos, step, done;
+    let pos, step, done, gen = 0;
     const mover = Mover(board, () => pos, (m) => {
       if (done) return false;
       const want = pos.parse(pz.solution[step]);
@@ -311,7 +311,9 @@
       if (step >= pz.solution.length) { finish(true); return; }
       mover.enable(false);
       status.innerHTML = 'Good. Black replies…';
+      const g = gen;
       setTimeout(() => {
+        if (g !== gen) return; // reset or replaced meanwhile
         const r = pos.parse(pz.solution[step]); const rs = pos.san(r);
         pos.play(r); step++;
         board.set(pos.fen(), { last: [r.from, r.to], anim: true });
@@ -325,16 +327,16 @@
       status.innerHTML = `${solved ? '<b class="ok">Solved!</b> ' : ''}<span class="pz-line">${esc(line)}</span> ${esc(pz.why)}`;
       if (solved && opt.onSolved) opt.onSolved(pz);
     }
-    function reset() { pos = new Position(pz.fen); step = 0; done = false; board.set(pz.fen); mover.enable(true); status.textContent = 'Find the best move. Tap a piece, then a square, or type the move.'; }
+    function reset() { gen++; pos = new Position(pz.fen); step = 0; done = false; board.set(pz.fen); mover.enable(true); status.textContent = 'Find the best move. Tap a piece, then a square, or type the move.'; }
     btns.addEventListener('click', (e) => {
       const a = e.target.closest('button'); if (!a) return;
       if (a.dataset.a === 'hint') status.innerHTML = `<b>Hint:</b> ${esc(pz.hint)}`;
       if (a.dataset.a === 'reset') reset();
       if (a.dataset.a === 'show') {
-        reset(); mover.enable(false);
-        const L = Chess.line(pz.fen, pz.solution);
-        L.slice(1).forEach((x, i) => setTimeout(() => board.set(x.fen, { last: [x.move.from, x.move.to], anim: true }), 600 * i));
-        setTimeout(() => finish(false), 600 * (L.length - 1));
+        reset(); mover.enable(false); done = true;
+        const g = gen, L = Chess.line(pz.fen, pz.solution);
+        L.slice(1).forEach((x, i) => setTimeout(() => { if (g === gen) board.set(x.fen, { last: [x.move.from, x.move.to], anim: true }); }, 600 * i));
+        setTimeout(() => { if (g === gen) finish(false); }, 600 * (L.length - 1));
       }
     });
     reset();
@@ -347,8 +349,7 @@
     const root = h('div', 'daily');
     host.appendChild(root);
     const top = h('div', 'daily-top');
-    const date = new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
-    top.innerHTML = `<p class="kicker">Today’s card · ${esc(date)}</p><div class="daily-btns"><button type="button" class="cg-btn" data-a="prev">◀ Previous card</button><button type="button" class="cg-btn" data-a="next">Next card ▶</button></div>`;
+    top.innerHTML = `<p class="kicker"></p><div class="daily-btns"><button type="button" class="cg-btn" data-a="prev">◀ Previous card</button><button type="button" class="cg-btn" data-a="next">Next card ▶</button></div>`;
     const grid = h('div', 'daily-grid');
     const pzHost = h('div', 'daily-pz');
     const cards = h('div', 'daily-cards');
@@ -357,6 +358,8 @@
     root.append(top, grid, solved);
     function count() { const s = store.get('solved', []); solved.textContent = s.length ? `Puzzles you have solved on this device: ${s.length} of ${D.puzzles.length}.` : ''; }
     function render() {
+      const when = new Date(Date.now() + (k - day) * 86400000).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+      top.querySelector('.kicker').textContent = (k === day ? 'Today’s card · ' : 'Card for ') + when;
       const pz = D.puzzles[((k % D.puzzles.length) + D.puzzles.length) % D.puzzles.length];
       const pr = D.principles[((k % D.principles.length) + D.principles.length) % D.principles.length];
       const fc = D.facts[((k * 7 % D.facts.length) + D.facts.length) % D.facts.length];
@@ -407,14 +410,14 @@
       const again = h('button', 'cg-btn', 'Start again'); again.type = 'button';
       wrap.append(board.el, side);
       stage.appendChild(wrap);
-      let ply = 0, misses = 0, tries = 0;
+      let ply = 0, misses = 0, tries = 0, gen = 0;
       const pos = () => new Position(L[ply].fen);
       const mover = Mover(board, pos, (mv) => {
         const want = L[ply + 1].move;
         if (mv.from === want.from && mv.to === want.to) { tries = 0; step(); return true; }
         misses++; tries++; board.shake();
         const san = pos().san(mv);
-        status.innerHTML = tries >= 2 ? `<b>${esc(san)}</b> is playable in general, but the book move here is <b>${esc(L[ply + 1].san)}</b>. Play it to continue.` : `<b>${esc(san)}</b> is not the main line. Try again (think: ${esc(o.idea.split('.')[0].toLowerCase())}).`;
+        status.innerHTML = tries >= 2 ? `<b>${esc(san)}</b> isn’t the book move. The main line plays <b>${esc(L[ply + 1].san)}</b> here; play it to continue.` : `<b>${esc(san)}</b> isn’t the main line. Try again. Hint: ${esc(o.idea.split('. ')[0])}.`;
         return false;
       });
       side.append(h('p', 'op-you', `You play <b>${you === 'w' ? 'White' : 'Black'}</b> in the <b>${esc(o.name)}</b>. The other side’s book moves are played for you.`), status, mover.form, prog, again);
@@ -429,7 +432,8 @@
         ply++; draw();
         if (ply >= L.length - 1) return finish();
         mover.enable(false);
-        setTimeout(() => { ply++; draw(); if (ply >= L.length - 1) return finish(); mover.enable(true); status.innerHTML = `Book move <b>${esc(L[ply].san)}</b>. Your move.`; }, 650);
+        const g = gen;
+        setTimeout(() => { if (g !== gen) return; ply++; draw(); if (ply >= L.length - 1) return finish(); mover.enable(true); status.innerHTML = `Book move <b>${esc(L[ply].san)}</b>. Your move.`; }, 650);
       }
       function finish() {
         mover.enable(false);
@@ -437,9 +441,10 @@
         status.innerHTML = misses ? `<b>Line complete</b> with ${misses} slip${misses > 1 ? 's' : ''}. Go again until it is clean.` : '<b class="ok">Perfect: the whole line from memory.</b> This opening now has a ✓ (saved on this device).';
       }
       function start() {
-        ply = 0; misses = 0; tries = 0; draw();
+        gen++; ply = 0; misses = 0; tries = 0; draw();
         status.innerHTML = you === 'w' ? 'Your move: play White’s first move.' : 'White starts…';
-        if (you === 'b') { mover.enable(false); setTimeout(() => { ply = 1; draw(); mover.enable(true); status.innerHTML = `White played <b>${esc(L[1].san)}</b>. Your move.`; }, 700); } else mover.enable(true);
+        const g = gen;
+        if (you === 'b') { mover.enable(false); setTimeout(() => { if (g !== gen) return; ply = 1; draw(); mover.enable(true); status.innerHTML = `White played <b>${esc(L[1].san)}</b>. Your move.`; }, 700); } else mover.enable(true);
       }
       again.addEventListener('click', start);
       start();
@@ -560,14 +565,15 @@
     const btns = h('div', 'pz-btns', '<button type="button" class="cg-btn" data-a="undo">Undo</button><button type="button" class="cg-btn" data-a="reset">Restart</button><button type="button" class="cg-btn" data-a="tip">Tip</button>');
     root.append(board.el, side);
     host.appendChild(root);
-    let lesson, hist, pos, over, ready = false;
+    let lesson, hist, pos, over, ready = false, gen = 0, threw = false;
     const mover = Mover(board, () => pos, (m) => {
       if (over || pos.turn !== 'w') return false;
       const before = Chess.kpk.probe(pos);
       play(m);
       const after = over ? null : Chess.kpk.probe(pos);
-      if (!over && before === 'win' && after === 'draw') status.innerHTML = '<b class="bad">That move threw away the win.</b> The table now says draw. Press Undo and try another move.';
-      if (!over) { mover.enable(false); setTimeout(reply, 550); }
+      threw = !over && before === 'win' && after === 'draw';
+      if (threw) status.innerHTML = '<b class="bad">That move threw away the win.</b> The table now says draw.';
+      if (!over) { mover.enable(false); const g = gen; setTimeout(() => { if (g === gen) reply(); }, 550); }
       return true;
     }, { promo: (p, ms) => { const q = ms.find((x) => x.promo === 'Q'); return q && p.clone().play(q).status() === 'stalemate' ? 'R' : 'Q'; } });
     side.append(goal, verdict, status, mover.form, btns, tip);
@@ -587,7 +593,7 @@
       setVerdict();
     }
     function reply() {
-      if (over) return;
+      if (over || pos.turn !== 'b') return;
       const ms = pos.moves();
       const scored = ms.map((m) => { const q = pos.clone().play(m); return { m, v: Chess.kpk.probe(q) || (q.board.includes('P') ? 'win' : 'draw'), d: q.board.includes('P') ? Chess.kpk.depth(q) || 0 : 0 }; });
       // perfect defence: keep the draw if possible (prefer taking the pawn), else make the win as long as possible
@@ -596,11 +602,11 @@
       else best = scored.sort((a, b) => b.d - a.d);
       const m = best[0].m, san = pos.san(m);
       play(m);
-      if (!over) { mover.enable(true); if (!/threw/.test(status.innerHTML) || Chess.kpk.probe(pos) === 'win') status.innerHTML = `Black played <b>${esc(san)}</b>. Your move.`; }
+      if (!over) { mover.enable(true); status.innerHTML = (threw ? '<b class="bad">Your last move threw away the win.</b> Press Undo to try another. ' : '') + `Black played <b>${esc(san)}</b>. Your move.`; }
       else if (over === 'draw' && !pos.board.includes('P')) status.innerHTML = `Black played <b>${esc(san)}</b> and took the pawn: draw. Press Undo or Restart.`;
     }
     function start(i) {
-      lesson = D.kpk[i]; pos = new Position(lesson.fen); hist = []; over = null;
+      gen++; threw = false; lesson = D.kpk[i]; pos = new Position(lesson.fen); hist = []; over = null;
       board.set(lesson.fen); goal.innerHTML = `<b>${esc(lesson.name)}.</b> ${esc(lesson.goal)} You are White.`;
       tip.textContent = '';
       if (!ready) { status.textContent = 'Building the perfect-play table (about 330,000 positions)…'; mover.enable(false); return; }
@@ -613,7 +619,7 @@
       if (b.dataset.a === 'undo' && hist.length) {
         // undo back to White's last turn
         let f = hist.pop(); while (new Position(f).turn !== 'w' && hist.length) f = hist.pop();
-        pos = new Position(f); over = null; board.set(f); setVerdict(); mover.enable(true); status.textContent = 'Move taken back. Your move.';
+        gen++; threw = false; pos = new Position(f); over = null; board.set(f); setVerdict(); mover.enable(true); status.textContent = 'Move taken back. Your move.';
       }
     });
     start(0);
